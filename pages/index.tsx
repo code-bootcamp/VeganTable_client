@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <div>
-      <button>develop check</button>
+      <button>develop example check</button>
     </div>
   );
 }
