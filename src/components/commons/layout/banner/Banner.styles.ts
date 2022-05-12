@@ -14,13 +14,9 @@ export const Wrapper = styled.div`
   .slick-dots {
     bottom: 132px;
     position: absolute;
-    color: #fff;
 
     button::before {
-      font-size: 1rem;
-      font-weight: 500;
       color: #0fbaa3;
-      content: "●";
     }
 
     .slick-active {
@@ -28,7 +24,6 @@ export const Wrapper = styled.div`
         color: #0fbaa3;
         border: 1px solid #0fbaa3;
         border-radius: 50%;
-        content: "●";
       }
     }
   }
@@ -64,7 +59,7 @@ export const TextTop = styled.div`
   word-break: keep-all;
   color: rgba(0, 0, 0, 0.7);
   margin-bottom: 1rem;
-  transform: translateX(80px);
+  transform: translateX(50%);
   opacity: 0;
   transition: all 1.5s ease;
   &.isActive {
@@ -76,7 +71,7 @@ export const TextTop = styled.div`
 export const TextMiddle = styled.div`
   font-size: 3.43rem;
   font-weight: 700;
-  transform: translateY(80px);
+  transform: translateY(50%);
   opacity: 0;
   transition: all 1.5s ease;
   transition-delay: 0.5s;
