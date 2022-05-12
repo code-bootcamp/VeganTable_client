@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.ul`
   width: 100%;
   height: 130px;
-  margin: 100px auto;
+  margin: 50px auto;
   display: flex;
   justify-content: center;
 `;
@@ -16,6 +16,7 @@ export const VeganType = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 100px;
+
   &:last-of-type {
     margin-right: 0;
   }
