@@ -1,3 +1,6 @@
 import { atom } from "recoil";
 
-// export const
+export const visitedPageState = atom({
+  key: "visitedPageState",
+  default: "/",
+});
