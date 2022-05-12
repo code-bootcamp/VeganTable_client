@@ -12,6 +12,10 @@ export const globalStyles = css`
     font-size: 16px;
   }
 
+  ul {
+    list-style: none;
+  }
+
   /* Pretendard */
 
   @font-face {
