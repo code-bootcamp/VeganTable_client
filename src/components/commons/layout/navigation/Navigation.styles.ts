@@ -16,6 +16,9 @@ export const VeganType = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 100px;
+  &:last-of-type {
+    margin-right: 0;
+  }
 `;
 
 export const VeganTypeImg = styled.img`

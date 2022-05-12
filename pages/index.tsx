@@ -1,8 +1,3 @@
 export default function Home() {
-  return (
-    <div>
-      <button>develop example check</button>
-      <button>changmo's button</button>
-    </div>
-  );
+  return <div>안녕하세요 메인페이지입니다.</div>;
 }
