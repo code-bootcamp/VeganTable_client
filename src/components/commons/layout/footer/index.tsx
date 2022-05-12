@@ -4,7 +4,7 @@ export default function LayoutFooter() {
   return (
     <Foot.Wrapper>
       <Foot.LogoWrapper>
-        <Foot.Logo src="/footer/logo.png" />
+        <Foot.Logo src="/img/footer/logo.png" />
         <Foot.LogoCopyWrite>@ COPY NUN AN DE YO</Foot.LogoCopyWrite>
       </Foot.LogoWrapper>
       <Foot.MenuInfoWrapper>

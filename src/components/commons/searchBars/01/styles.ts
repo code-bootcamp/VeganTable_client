@@ -15,6 +15,7 @@ export const Container = styled.div`
 
   & > img {
     padding-right: 1rem;
+    width: 3rem;
   }
 
   & > input {

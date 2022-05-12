@@ -37,9 +37,13 @@ export const MenuItem = styled.li`
   }
 `;
 
-export const Circle = styled.img`
+export const Circle = styled.span`
   display: none;
   position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #0fbaa3;
+  border-radius: 50%;
   left: 50%;
   bottom: -0.5rem;
   transform: translate(-50%, 50%);
@@ -55,7 +59,9 @@ export const UserWrapper = styled.ul`
   /* width: 11rem; */
 `;
 
-export const UserIcon = styled.img``;
+export const UserIcon = styled.img`
+  height: 2rem;
+`;
 
 export const UserName = styled.li``;
 
