@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { Fragment, MouseEvent } from "react";
-import * as Header from "./Header.styles";
+import * as Header from "./styles";
 
 export default function LayoutHeader() {
   const router = useRouter();
