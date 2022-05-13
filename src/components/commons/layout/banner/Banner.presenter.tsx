@@ -23,17 +23,17 @@ export default function LayoutBannerUI(props) {
                     >
                       {(el === 1 && (
                         <>
-                          나에게 맞는<span>채식 레시피</span>로1
+                          나에게 맞는 <span>채식 레시피</span>로1
                         </>
                       )) ||
                         (el === 2 && (
                           <>
-                            나에게 맞는<span>채식 레시피</span>로2
+                            나에게 맞는 <span>채식 레시피</span>로2
                           </>
                         )) ||
                         (el === 3 && (
                           <>
-                            나에게 맞는<span>채식 레시피</span>로3
+                            나에게 맞는 <span>채식 레시피</span>로3
                           </>
                         ))}
                     </Banner.TextMiddle>

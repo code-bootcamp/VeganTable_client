@@ -23,6 +23,7 @@ export const VeganType = styled.div`
 `;
 
 export const VeganTypeImg = styled.img`
+  height: 3.3rem;
   margin-bottom: 15px;
 `;
 

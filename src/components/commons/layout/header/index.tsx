@@ -23,7 +23,7 @@ export default function LayoutHeader() {
     <Header.Container>
       <Header.Wrapper>
         <Header.LogoWrapper>
-          <Header.Logo src="header/Logo.png" />
+          <Header.Logo src="/img/header/Logo.png" />
         </Header.LogoWrapper>
 
         <Header.MenuWrapper>
@@ -32,7 +32,6 @@ export default function LayoutHeader() {
               <Header.MenuItem id={el.page} onClick={onClickMenu}>
                 {el.name}
                 <Header.Circle
-                  src="header/circle.png"
                   className={router.asPath === el.page ? "isActive" : ""}
                 />
               </Header.MenuItem>
@@ -41,7 +40,7 @@ export default function LayoutHeader() {
         </Header.MenuWrapper>
 
         <Header.UserWrapper>
-          <Header.UserIcon src="header/Profile.png" />
+          <Header.UserIcon src="/img/header/icon-profile.svg" />
           <Header.UserName>Guest 님</Header.UserName>
           {/* <Header.UserPoint>300 Point</Header.UserPoint> */}
         </Header.UserWrapper>

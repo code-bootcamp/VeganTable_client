@@ -1,3 +1,5 @@
+import RecipeList from "../src/components/units/recipe/list/RecipeList.container";
+
 export default function Home() {
-  return <div>안녕하세요 메인페이지입니다.</div>;
+  return <RecipeList />;
 }
