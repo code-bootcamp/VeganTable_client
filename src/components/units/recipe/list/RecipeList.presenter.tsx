@@ -20,6 +20,14 @@ export default function RecipeListUI() {
           {[1, 2, 3, 4].map((el) => (
             <List.RecipeItem key={`a${el}`}>
               <List.RecipeItemImageWrapper>
+                <List.IconBookmark>
+                  {el % 2 === 1 ? (
+                    <img src="/img/recipeList/icon-bookmark-on.svg" />
+                  ) : (
+                    <img src="/img/recipeList/icon-bookmark-off.svg" />
+                  )}
+                  <span>{el % 2 === 1 ? "+999" : "24"}</span>
+                </List.IconBookmark>
                 <img src="/img/recipeList/img-recipe-01.png" />
               </List.RecipeItemImageWrapper>
               <List.RecipeItemTextWrapper>

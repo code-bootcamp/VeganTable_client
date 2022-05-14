@@ -23,7 +23,7 @@ export default function LayoutHeader() {
     <Header.Container>
       <Header.Wrapper>
         <Header.LogoWrapper>
-          <Header.Logo src="/img/header/Logo.png" />
+          <Header.Logo src="/img/header/icon-logo-header.svg" />
         </Header.LogoWrapper>
 
         <Header.MenuWrapper>

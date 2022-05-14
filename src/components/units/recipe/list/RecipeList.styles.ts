@@ -73,10 +73,27 @@ export const RecipeItem = styled.div`
 `;
 
 export const RecipeItemImageWrapper = styled.div`
-  & > img {
+  position: relative;
+  img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+`;
+
+export const IconBookmark = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  height: 2rem;
+  transform: translate(-10%, 40%);
+
+  & > span {
+    color: #ffffff;
+    font-size: 0.75rem;
   }
 `;
 
