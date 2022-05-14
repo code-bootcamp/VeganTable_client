@@ -14,9 +14,12 @@ export default function LayoutBannerUI(props) {
                     <Banner.TextTop
                       className={index === props.slideIndex ? "isActive" : ""}
                     >
-                      {(el === 1 && "채식한상이 함께 합니다1") ||
-                        (el === 2 && "채식한상이 함께 합니다2") ||
-                        (el === 3 && "채식한상이 함께 합니다3")}
+                      <img src="/img/banner/img-banner-text.svg" />
+                      <span>
+                        {(el === 1 && "채식한상이 함께 합니다1") ||
+                          (el === 2 && "채식한상이 함께 합니다2") ||
+                          (el === 3 && "채식한상이 함께 합니다3")}
+                      </span>
                     </Banner.TextTop>
                     <Banner.TextMiddle
                       className={index === props.slideIndex ? "isActive" : ""}
@@ -46,6 +49,21 @@ export default function LayoutBannerUI(props) {
                     </Banner.TextMiddle>
                   </div>
                 </Banner.TextGroup>
+                <Banner.ImageGroup
+                  num={el}
+                  className={index === props.slideIndex ? "isActive" : ""}
+                >
+                  <div className={index === props.slideIndex ? "isActive" : ""}>
+                    <img src="/img/banner/img-banner-fruit.png" />
+                  </div>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </Banner.ImageGroup>
               </Banner.SliderWrapper>
             </Banner.SliderContainer>
           ))}

@@ -12,7 +12,7 @@ export default function LayoutBanner() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
     arrows: false,
     autoplay: true,
     cssEase: "linear",

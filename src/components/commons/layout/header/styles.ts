@@ -19,8 +19,7 @@ export const LogoWrapper = styled.div`
   width: 45%;
 `;
 export const Logo = styled.img`
-  width: 8rem;
-  height: 2rem;
+  height: 2.5rem;
 `;
 
 export const MenuWrapper = styled.ul`
