@@ -24,8 +24,8 @@ export default function LoginUI() {
           </Login.BodyContents>
           <Login.SNSLoginWrapper>
             <Login.SNSIcon src="/img/snsIcon/kakaotalk.svg" />
-            <Login.SNSIcon src="/img/snsIcon/naver.png" />
-            <Login.SNSIcon src="/img/snsIcon/Facebook.svg" />
+            <Login.SNSIcon src="/img/snsIcon/naver.svg" />
+            <Login.SNSIcon src="/img/snsIcon/google.svg" />
           </Login.SNSLoginWrapper>
         </Login.BodyWrapper>
       </Login.Wrapper>
