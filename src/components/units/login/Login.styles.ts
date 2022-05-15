@@ -33,6 +33,7 @@ export const BodyWrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: white;
+  border-radius: 2rem;
 `;
 
 // 회원 로그인 선택 부분
@@ -41,11 +42,11 @@ export const BodyTitle = styled.ul`
   flex-direction: column;
   align-items: center;
   font-size: 1.25rem;
-  margin-bottom: 17px;
+  margin-bottom: 1rem;
 `;
 
 export const LoginTitle = styled.li`
-  margin-bottom: 17px;
+  margin-bottom: 1rem;
 `;
 
 export const LoginTitleUnderBar = styled.li`
@@ -64,8 +65,9 @@ export const BodyContentsInput = styled.input`
   width: 100%;
   height: 3.875rem;
   border: 1px solid #bfbfbf;
-  margin-bottom: 10px;
+  border-radius: 2rem;
   padding: 20px;
+  margin-bottom: 10px;
   &:last-of-type {
     margin-bottom: 30px;
   }
@@ -78,6 +80,7 @@ export const BodyContentsLoginButton = styled.button`
   margin-bottom: 0.625rem;
   background-color: #0fbaa3;
   border: 1px solid #0fbaa3;
+  border-radius: 2rem;
   color: white;
   font-weight: 700;
   font-size: 1rem;
@@ -90,6 +93,7 @@ export const BodyContentsSignUpButton = styled.button`
   margin-bottom: 1.875rem;
   background-color: white;
   border: 1px solid #0fbaa3;
+  border-radius: 2rem;
   color: #0fbaa3;
   font-weight: 700;
   font-size: 1rem;
@@ -104,7 +108,7 @@ export const SNSLoginWrapper = styled.ul`
 `;
 
 export const SNSIcon = styled.img`
-  width: 60px;
+  width: 3.125rem;
   height: auto;
   margin-right: 2.75rem;
   cursor: pointer;
