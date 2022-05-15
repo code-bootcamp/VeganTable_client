@@ -1,5 +1,5 @@
-import RecipeList from "../src/components/units/recipe/list/RecipeList.container";
+import Main from "../src/components/units/main";
 
 export default function Home() {
-  return <RecipeList />;
+  return <Main />;
 }

@@ -20,7 +20,7 @@ export default function Button01() {
   return (
     <Button>
       전체보기
-      <img src="/img/recipeList/icon-arrow-right-02.svg" />
+      <img src="/img/bestRecipe/icon-arrow-right-02.svg" />
     </Button>
   );
 }
