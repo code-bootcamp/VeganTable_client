@@ -11,11 +11,11 @@ const MoveY = keyframes`
 `;
 
 const Rotation = keyframes`
-	from{
-		transform: rotate(0deg)
+  from{
+		transform: rotate(0deg);
 	}
 	to{
-		transform: rotate(360deg)
+		transform: rotate(360deg);
 	}
 `;
 
@@ -55,7 +55,7 @@ export const SliderContainer = styled.div`
   display: flex;
   justify-content: center;
   background-color: ${(props) =>
-    props.num === 1 ? "#fcf7e1" : props.num === 2 ? "#eff18b" : "#fcf7e1"};
+    props.num === 1 ? "#fcf7e1" : props.num === 2 ? "#A5E0E9" : "#F3E3FF"};
 `;
 
 export const SliderWrapper = styled.div`
@@ -72,6 +72,7 @@ export const TextGroup = styled.div`
   display: flex;
   flex-direction: column;
   color: #000000;
+  white-space: nowrap;
 `;
 
 export const ImageGroup = styled.div`
@@ -83,23 +84,51 @@ export const ImageGroup = styled.div`
   }
 
   & > div {
-    width: 500px;
-    height: auto;
     transition: all 2.5s ease;
     filter: blur(12px);
-    & > img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+
     &.isActive {
       filter: blur(0px);
     }
   }
+`;
+
+export const TextTop = styled.div`
+  font-size: 2rem;
+  font-weight: 500;
+  word-break: keep-all;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 1rem;
+  transform: translateY(50%);
+  opacity: 0;
+  transition: all 1.5s ease;
+
+  & > img {
+    transform: translateY(-50%);
+  }
+
+  &.isActive {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+
+export const SliderImage1 = styled.div`
+  position: relative;
+  width: 750px;
+  height: auto;
+  transform: translate(20%, -15%);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
   // 초록색 동그라미
   & > span:nth-of-type(1) {
-    top: 10rem;
-    right: -8rem;
+    top: 25rem;
+    right: 8rem;
     width: 26px;
     height: 26px;
     border: 5px solid #cfe869;
@@ -108,8 +137,8 @@ export const ImageGroup = styled.div`
   }
   // 보라색 동그라미
   & > span:nth-of-type(2) {
-    top: 4rem;
-    right: -4rem;
+    top: 20rem;
+    right: 12rem;
     width: 16px;
     height: 16px;
     border: 4px solid #b991fa;
@@ -136,46 +165,41 @@ export const ImageGroup = styled.div`
     border-radius: 50%;
     animation: ${MoveY} 3s 1s infinite ease-in-out alternate;
   }
-  // dash 동그라미
-  & > span:nth-of-type(5) {
-    top: -10rem;
-    left: -9rem;
-    width: 250px;
-    height: 250px;
-    border: 6px dashed #cee135;
-    border-radius: 50%;
+
+  & > div {
+    position: absolute;
+  }
+
+  & > div:nth-of-type(1) {
+    top: 0;
+    left: -10%;
+    width: 300px;
+    height: auto;
     animation: ${Rotation} 30s 1s infinite ease-in-out alternate;
   }
 
-  // dash 동그라미
-  & > span:nth-of-type(6) {
-    right: -40rem;
-    bottom: -15rem;
+  & > div:nth-of-type(2) {
+    bottom: -30%;
+    right: -65%;
     width: 600px;
-    height: 600px;
-    border: 8px dashed #cee135;
-    border-radius: 50%;
+    height: auto;
     animation: ${Rotation} 30s 1s infinite ease-in-out alternate;
   }
 `;
 
-export const TextTop = styled.div`
-  font-size: 2rem;
-  font-weight: 500;
-  word-break: keep-all;
-  color: rgba(0, 0, 0, 0.7);
-  margin-bottom: 1rem;
-  transform: translateY(50%);
-  opacity: 0;
-  transition: all 1.5s ease;
-
-  & > img {
-    transform: translateY(-50%);
+export const SliderImage2 = styled.div`
+  img {
+    margin-top: -1px;
+    height: calc(100% + 2px);
+    object-fit: contain;
   }
+`;
 
-  &.isActive {
-    transform: translateY(0);
-    opacity: 1;
+export const SliderImage3 = styled.div`
+  img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
   }
 `;
 
