@@ -97,7 +97,7 @@ export const ImageGroup = styled.div`
     }
   }
   // 초록색 동그라미
-  & > span:nth-of-type(2) {
+  & > span:nth-of-type(1) {
     top: 10rem;
     right: -8rem;
     width: 26px;
@@ -107,7 +107,7 @@ export const ImageGroup = styled.div`
     animation: ${MoveY} 3s 1s infinite ease-in-out alternate;
   }
   // 보라색 동그라미
-  & > span:nth-of-type(3) {
+  & > span:nth-of-type(2) {
     top: 4rem;
     right: -4rem;
     width: 16px;
@@ -117,7 +117,7 @@ export const ImageGroup = styled.div`
     animation: ${MoveY} 2s 1s infinite ease-in-out alternate;
   }
   // 보라색 동그라미
-  & > span:nth-of-type(4) {
+  & > span:nth-of-type(3) {
     left: -2.5rem;
     bottom: 9.5rem;
     width: 84px;
@@ -127,7 +127,7 @@ export const ImageGroup = styled.div`
     animation: ${MoveY} 4s 1s infinite ease-in-out alternate;
   }
   // 초록색 동그라미
-  & > span:nth-of-type(5) {
+  & > span:nth-of-type(4) {
     left: -5rem;
     bottom: 8rem;
     width: 29px;
@@ -137,25 +137,25 @@ export const ImageGroup = styled.div`
     animation: ${MoveY} 3s 1s infinite ease-in-out alternate;
   }
   // dash 동그라미
-  & > span:nth-of-type(6) {
+  & > span:nth-of-type(5) {
     top: -10rem;
     left: -9rem;
     width: 250px;
     height: 250px;
     border: 6px dashed #cee135;
     border-radius: 50%;
-    animation: ${Rotation} 15s 15s infinite ease-in-out alternate;
+    animation: ${Rotation} 30s 1s infinite ease-in-out alternate;
   }
 
   // dash 동그라미
-  & > span:nth-of-type(7) {
+  & > span:nth-of-type(6) {
     right: -40rem;
     bottom: -15rem;
     width: 600px;
     height: 600px;
     border: 8px dashed #cee135;
     border-radius: 50%;
-    animation: ${Rotation} 20s 20s infinite ease-in-out alternate;
+    animation: ${Rotation} 30s 1s infinite ease-in-out alternate;
   }
 `;
 
