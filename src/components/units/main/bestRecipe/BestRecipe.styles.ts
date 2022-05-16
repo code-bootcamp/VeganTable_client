@@ -4,7 +4,7 @@ export const Container = styled.div`
   margin: 0 auto;
   width: 100%;
   max-width: 1440px;
-  padding: 110px 0;
+  padding: 4.25rem 0;
 `;
 
 export const Wrapper = styled.div`
