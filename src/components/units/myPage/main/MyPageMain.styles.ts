@@ -9,9 +9,14 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   display: flex;
+  justify-content: center;
+  width: 90rem;
+`;
+
+export const MainWrapper = styled.div`
+  display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90rem;
 `;
 
 export const UserProfile = styled.div`
@@ -34,7 +39,7 @@ export const UserWrapper = styled.div`
 export const UserIcon = styled.img``;
 
 export const UserGrade = styled.button`
-  width: 6.1875rem;
+  width: 4.6875rem;
   height: 1.5rem;
   background-color: #bfab87;
   border: none;
@@ -77,7 +82,7 @@ export const TypeIcon = styled.img`
 
 export const Name = styled.span`
   padding-top: 0.4rem;
-  color: #4b4b4b;
+  color: #424242;
 `;
 
 export const Subscribe = styled.span`
@@ -87,13 +92,39 @@ export const Subscribe = styled.span`
 `;
 
 export const RecipeWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
   width: 100%;
 `;
 export const Recipe = styled.div`
+  padding-top: 4.75rem;
+`;
+export const Recipe2 = styled.div`
+  padding-top: 4.75rem;
+  width: 49%;
+`;
+
+export const Head = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #c4c4c4;
+  padding-bottom: 0.625rem;
+`;
+
+export const Title = styled.h2`
+  & > span {
+  }
+`;
+
+export const Body = styled.ul`
+  display: flex;
+  padding-top: 2.5rem;
+`;
+
+export const Menu = styled.li`
+  padding-right: 1rem;
+`;
+
+export const Flex = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-
-export const Title = styled.h2``;
