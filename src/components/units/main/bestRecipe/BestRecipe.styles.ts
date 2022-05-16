@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 export const Container = styled.div`
   margin: 0 auto;
   width: 100%;
-  max-width: 1200px;
-  padding-bottom: 100px;
+  max-width: 1440px;
+  padding: 110px 0;
 `;
 
 export const Wrapper = styled.div`
@@ -20,33 +20,35 @@ export const RecommendRecipeHead = styled.div`
   padding-bottom: 3.5rem;
   width: 100%;
 
-  & > div > span {
-    padding-bottom: 0.5rem;
-    font-size: 1.375rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    color: #0fbaa3;
-  }
-
-  & > div > h1 > span {
-    font-weight: 500;
-  }
-
   & > button {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    padding: 0.9rem 1.56rem;
-    font-size: 1.375rem;
-    color: #c4c4c4;
+    padding: 0.93rem 1.5rem;
+    font-size: 0.875rem;
+    color: #848484;
     background: #ffffff;
     border: 1px solid #c4c4c4;
-    border-radius: 2px;
+    border-radius: 8px;
     cursor: pointer;
 
     img {
-      padding-left: 6px;
+      padding-left: 4rem;
     }
+  }
+`;
+
+export const HeadText = styled.div`
+  & > span {
+    font-size: 1.375rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #0fbaa3;
+  }
+  & > h1 {
+    padding-top: 8px;
+    font-size: 2.25rem;
+    font-weight: 400;
   }
 `;
 
@@ -74,10 +76,13 @@ export const RecipeItem = styled.div`
 
 export const RecipeItemImageWrapper = styled.div`
   position: relative;
-  img {
+  height: 342px;
+
+  & > img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 24px;
   }
 `;
 
@@ -87,9 +92,9 @@ export const IconBookmark = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
+
   right: 0;
-  height: 2rem;
-  transform: translate(-10%, 40%);
+  transform: translate(-50%, 50%);
 
   & > span {
     color: #ffffff;
@@ -107,17 +112,9 @@ const Tag = styled.span`
   padding: 2px 1.2rem;
   border-radius: 1rem;
   margin-right: 4px;
-  margin-bottom: 14px;
+  margin-top: 1.25rem;
   color: #ffffff;
   font-size: 0.875rem;
-
-  &:nth-of-type(4n) {
-    margin-right: 0;
-  }
-
-  &:nth-of-type(n + 5) {
-    margin-bottom: 0;
-  }
 `;
 
 export const TagVegan = styled(Tag)`
@@ -148,9 +145,5 @@ export const RecipeItemTextWrapper = styled.div`
 
   & > p {
     padding-top: 0.5rem;
-  }
-
-  & > div {
-    padding-top: 2rem;
   }
 `;

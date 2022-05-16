@@ -3,6 +3,10 @@ import * as Foot from "./Footer.styles";
 export default function LayoutFooter() {
   return (
     <Foot.Wrapper>
+      <Foot.TopButton>
+        <img src="/img/footer/icon-top-arrow.svg" />
+        <span>TOP</span>
+      </Foot.TopButton>
       <Foot.LogoWrapper>
         <Foot.Logo src="/img/footer/logo.png" />
         <Foot.LogoCopyWrite>@ COPY NUN AN DE YO</Foot.LogoCopyWrite>

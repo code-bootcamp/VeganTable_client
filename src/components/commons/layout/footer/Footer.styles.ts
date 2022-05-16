@@ -2,12 +2,35 @@ import styled from "@emotion/styled";
 
 // 전체
 export const Wrapper = styled.div`
+  position: relative;
   width: 100%;
   height: 200px;
   padding: 30px 130px;
   background-color: #f5f7f2;
   display: flex;
   justify-content: space-between;
+`;
+
+// Top button
+export const TopButton = styled.button`
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  bottom: 0;
+  transform: translate(-10%, -10%);
+  width: 9.375rem;
+  height: 9.375rem;
+  background: #0fbaa3;
+  border-radius: 50%;
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.375rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
 `;
 
 // logo

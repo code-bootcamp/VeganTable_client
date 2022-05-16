@@ -1,6 +1,6 @@
 import * as Nav from "./Navigation.styles";
 
-export default function LayoutNavigation() {
+export default function Navigation01() {
   return (
     <Nav.Wrapper>
       <Nav.VeganType>
