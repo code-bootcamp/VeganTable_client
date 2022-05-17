@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 export const RecommendRecipeHead = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   padding-bottom: 3.5rem;
   width: 100%;
 `;
