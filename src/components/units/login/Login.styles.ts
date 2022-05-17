@@ -74,19 +74,6 @@ export const BodyContentsInput = styled.input`
 `;
 
 // 로그인 회원가입 버튼
-export const BodyContentsLoginButton = styled.button`
-  width: 100%;
-  height: 3.875rem;
-  margin-bottom: 0.625rem;
-  background-color: #0fbaa3;
-  border: 1px solid #0fbaa3;
-  border-radius: 2rem;
-  color: white;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-`;
-
 export const BodyContentsSignUpButton = styled.button`
   width: 100%;
   height: 3.875rem;
@@ -105,6 +92,7 @@ export const SNSLoginWrapper = styled.ul`
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 2rem;
 `;
 
 export const SNSIcon = styled.img`

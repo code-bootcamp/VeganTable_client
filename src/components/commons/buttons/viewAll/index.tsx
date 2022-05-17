@@ -16,11 +16,13 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-export default function Button01() {
+export default function ViewAllButton(props) {
   return (
     <Button>
-      전체보기
+      {props.title}
       <img src="/img/bestRecipe/icon-arrow-right-02.svg" />
     </Button>
   );
 }
+
+// title에 쓰고싶은거 넣어서 쓰시면 됩니다.
