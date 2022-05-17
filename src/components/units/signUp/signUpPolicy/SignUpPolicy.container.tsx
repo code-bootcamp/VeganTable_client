@@ -5,6 +5,7 @@ import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { CheckboxProps, withStyles } from "@material-ui/core";
 import { useEffect, useState } from "react";
+import SubmitButton from "../../../commons/buttons/submit";
 
 const PolicyCheckbox = withStyles({
   root: {
@@ -13,8 +14,9 @@ const PolicyCheckbox = withStyles({
   checked: { color: "#0fbaa3" },
 })((props: CheckboxProps) => <Checkbox color="default" {...props} />);
 
-export default function SignUpPolicy() {
+export default function SignUpPolicy(props) {
   const [checked, setChecked] = useState([true, true]);
+  const isActive = !checked.includes(false);
 
   const handleCheck = (i) => (e) => {
     const newChecked = [...checked];
@@ -25,6 +27,10 @@ export default function SignUpPolicy() {
   useEffect(() => {
     setChecked([false, false]);
   }, []);
+
+  const onClickAgree = () => {
+    props.setAgreePolicy((prev) => !prev);
+  };
 
   return (
     <SignUp.Wrapper>
@@ -68,7 +74,11 @@ export default function SignUpPolicy() {
           </SignUp.PolicyTitleWrapper>
           <SignUp.PolicyContents />
         </SignUp.BodyContents>
-        <SignUp.SignUpButton>회원가입</SignUp.SignUpButton>
+        <SubmitButton
+          isActive={isActive}
+          title={"회원가입"}
+          onClick={onClickAgree}
+        />
       </SignUp.BodyWrapper>
     </SignUp.Wrapper>
   );

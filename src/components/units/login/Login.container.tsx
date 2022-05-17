@@ -1,5 +1,11 @@
+import { useRouter } from "next/router";
 import LoginUI from "./Login.presenter";
 
 export default function Login() {
-  return <LoginUI />;
+  const router = useRouter();
+  const onClickSignUp = () => {
+    router.push("/signUp");
+  };
+
+  return <LoginUI onClickSignUp={onClickSignUp} />;
 }

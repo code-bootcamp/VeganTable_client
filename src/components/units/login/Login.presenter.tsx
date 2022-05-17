@@ -1,6 +1,10 @@
+import OutlineSubmitButton from "../../commons/buttons/outlineSubmit";
+import SubmitButton from "../../commons/buttons/submit";
 import * as Login from "./Login.styles";
 
-export default function LoginUI() {
+export default function LoginUI(props) {
+  const isActive = true;
+
   return (
     <Login.Container>
       <Login.Wrapper>
@@ -15,12 +19,12 @@ export default function LoginUI() {
           <Login.BodyContents>
             <Login.BodyContentsInput type="text" placeholder="아이디" />
             <Login.BodyContentsInput type="password" placeholder="비밀번호" />
-            <Login.BodyContentsLoginButton>
-              로그인
-            </Login.BodyContentsLoginButton>
-            <Login.BodyContentsSignUpButton>
-              회원가입
-            </Login.BodyContentsSignUpButton>
+            <SubmitButton title={"로그인"} isActive={isActive} />
+            <OutlineSubmitButton
+              title={"회원가입"}
+              isActive={isActive}
+              onClick={props.onClickSignUp}
+            />
           </Login.BodyContents>
           <Login.SNSLoginWrapper>
             <Login.SNSIcon src="/img/snsIcon/kakaotalk.svg" />
