@@ -10,7 +10,7 @@ export default function MyPageMainUI() {
 
         <My.MainWrapper>
           <My.UserWrapper>
-            <My.UserIcon src="img/mypage/icon-profile.svg" />
+            <My.UserIcon src="img/myPage/icon-profile.svg" />
             <My.UserProfile>
               <My.UserGrade>전문가</My.UserGrade>
               <My.UserName>
@@ -40,7 +40,7 @@ export default function MyPageMainUI() {
               <My.Body>
                 {[1, 2, 3, 4, 5].map((el) => (
                   <My.Menu key={el}>
-                    <img src="img/mypage/img-ex.png" />
+                    <img src="img/myPage/img-ex.png" />
                     <h2> 메뉴 01 </h2>
                   </My.Menu>
                 ))}
@@ -57,48 +57,29 @@ export default function MyPageMainUI() {
               <My.Body>
                 {[1, 2, 3, 4, 5].map((el) => (
                   <My.Menu key={el}>
-                    <img src="img/mypage/img-ex.png" />
+                    <img src="img/myPage/img-ex.png" />
                     <h2> 메뉴 01 </h2>
                   </My.Menu>
                 ))}
               </My.Body>
             </My.Recipe>
 
-            <My.Flex>
-              <My.Recipe2>
-                <My.Head>
-                  <My.Title>
-                    찜한 레시피 <span>150</span>
-                  </My.Title>
-                  <Button01 />
-                </My.Head>
-                <My.Body>
-                  {[1, 2, 3].map((el) => (
-                    <My.Menu key={el}>
-                      <img src="img/mypage/img-ex.png" />
-                      <h2> 메뉴 01 </h2>
-                    </My.Menu>
-                  ))}
-                </My.Body>
-              </My.Recipe2>
-
-              <My.Recipe2>
-                <My.Head>
-                  <My.Title>
-                    좋아요 한 레시피 <span>150</span>
-                  </My.Title>
-                  <Button01 />
-                </My.Head>
-                <My.Body>
-                  {[1, 2, 3].map((el) => (
-                    <My.Menu key={el}>
-                      <img src="img/mypage/img-ex.png" />
-                      <h2> 메뉴 01 </h2>
-                    </My.Menu>
-                  ))}
-                </My.Body>
-              </My.Recipe2>
-            </My.Flex>
+            <My.Recipe>
+              <My.Head>
+                <My.Title>
+                  찜한 레시피 <span>150</span>
+                </My.Title>
+                <Button01 />
+              </My.Head>
+              <My.Body>
+                {[1, 2, 3, 4, 5].map((el) => (
+                  <My.Menu key={el}>
+                    <img src="img/myPage/img-ex.png" />
+                    <h2> 메뉴 01 </h2>
+                  </My.Menu>
+                ))}
+              </My.Body>
+            </My.Recipe>
           </My.RecipeWrapper>
         </My.MainWrapper>
       </My.Wrapper>

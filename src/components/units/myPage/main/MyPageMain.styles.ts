@@ -5,6 +5,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin: 6.25rem auto;
 `;
 
 export const Wrapper = styled.div`
@@ -22,7 +23,7 @@ export const MainWrapper = styled.div`
 export const UserProfile = styled.div`
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 57%;
 `;
 
 export const UserWrapper = styled.div`
@@ -38,14 +39,16 @@ export const UserWrapper = styled.div`
 
 export const UserIcon = styled.img``;
 
-export const UserGrade = styled.button`
+export const UserGrade = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 4.6875rem;
   height: 1.5rem;
   background-color: #bfab87;
   border: none;
   color: #ffffff;
   border-radius: 20px;
-  cursor: pointer;
 `;
 
 export const UserName = styled.span`
@@ -97,10 +100,6 @@ export const RecipeWrapper = styled.div`
 export const Recipe = styled.div`
   padding-top: 4.75rem;
 `;
-export const Recipe2 = styled.div`
-  padding-top: 4.75rem;
-  width: 49%;
-`;
 
 export const Head = styled.div`
   display: flex;
@@ -110,8 +109,11 @@ export const Head = styled.div`
   padding-bottom: 0.625rem;
 `;
 
-export const Title = styled.h2`
+export const Title = styled.span`
+  font-weight: 600;
+  font-size: 1.5rem;
   & > span {
+    color: #848484;
   }
 `;
 
@@ -122,9 +124,4 @@ export const Body = styled.ul`
 
 export const Menu = styled.li`
   padding-right: 1rem;
-`;
-
-export const Flex = styled.div`
-  display: flex;
-  justify-content: space-between;
 `;
