@@ -36,24 +36,6 @@ export const BodyWrapper = styled.div`
   border-radius: 2rem;
 `;
 
-// 회원 로그인 선택 부분
-export const BodyTitle = styled.ul`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-`;
-
-export const LoginTitle = styled.li`
-  margin-bottom: 1rem;
-`;
-
-export const LoginTitleUnderBar = styled.li`
-  border-bottom: 4px solid #0fbaa3;
-  width: 29rem;
-`;
-
 // 아이디 비밀번호 인풋
 export const BodyContents = styled.ul`
   width: 29rem;
@@ -99,6 +81,8 @@ export const SNSIcon = styled.img`
   width: 3.125rem;
   height: auto;
   margin-right: 2.75rem;
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   &:last-of-type {
     margin-right: 0;

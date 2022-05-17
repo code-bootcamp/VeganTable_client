@@ -12,10 +12,6 @@ export default function LoginUI(props) {
           <Login.HeaderTitle>로그인</Login.HeaderTitle>
         </Login.HeaderWrapper>
         <Login.BodyWrapper>
-          <Login.BodyTitle>
-            <Login.LoginTitle>회원로그인</Login.LoginTitle>
-            <Login.LoginTitleUnderBar />
-          </Login.BodyTitle>
           <Login.BodyContents>
             <Login.BodyContentsInput type="text" placeholder="아이디" />
             <Login.BodyContentsInput type="password" placeholder="비밀번호" />
