@@ -1,4 +1,4 @@
-import Button01 from "../../../commons/buttons/01";
+import ViewAllButton from "../../../commons/buttons/viewAll";
 import * as Magazine from "./Magazine.styles";
 
 export default function MagazineUI() {
@@ -10,7 +10,7 @@ export default function MagazineUI() {
             <span>MAGAZINE</span>
             <h1>테마별로 골라보는 구독 식단</h1>
           </Magazine.HeadText>
-          <Button01 />
+          <ViewAllButton />
         </Magazine.MagazineHead>
         <Magazine.Contents>
           <Magazine.Item>

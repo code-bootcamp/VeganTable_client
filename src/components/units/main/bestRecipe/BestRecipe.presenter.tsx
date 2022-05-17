@@ -1,4 +1,4 @@
-import Button01 from "../../../commons/buttons/01";
+import ViewAllButton from "../../../commons/buttons/viewAll";
 import * as BestRecipe from "./BestRecipe.styles";
 
 export default function BestRecipeUI() {
@@ -12,7 +12,7 @@ export default function BestRecipeUI() {
               채식한상이 추천하는 <b>레시피</b>
             </h1>
           </BestRecipe.HeadText>
-          <Button01 />
+          <ViewAllButton />
         </BestRecipe.RecommendRecipeHead>
         <BestRecipe.RecommendRecipeItems>
           {[1, 2, 3, 4].map((el) => (
