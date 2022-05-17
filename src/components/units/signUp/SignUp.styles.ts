@@ -158,6 +158,7 @@ export const SexSelect = styled.select`
   margin-left: 0.8rem;
   border-radius: 2rem;
   border: 1px solid #bfbfbf;
+  color: #848484;
 `;
 
 // 휴대폰 인증 버튼
@@ -201,11 +202,10 @@ export const CheckIcon = styled.img`
 
 export const Cake = styled.img`
   margin-bottom: 2rem;
-  position: relative;
 `;
 export const FlowerShower = styled.img`
   position: absolute;
-  bottom: 6rem;
+  bottom: 4.8rem;
 `;
 
 export const CompleteTitle = styled.h2`

@@ -1,9 +1,19 @@
+import { useRouter } from "next/router";
 import OutlineSubmitButton from "../../../commons/buttons/outlineSubmit";
 import SubmitButton from "../../../commons/buttons/submit";
 import * as SignUp from "../SignUp.styles";
 
 export default function SignUpComplete() {
+  const router = useRouter();
+
   const isActive = true;
+
+  const onClickMoveVeganType = () => {
+    router.push("/typeCheck");
+  };
+  const onClickMoveHome = () => {
+    router.push("/");
+  };
   return (
     <SignUp.Wrapper>
       <SignUp.HeaderWrapper>
@@ -14,8 +24,16 @@ export default function SignUpComplete() {
         <SignUp.CheckIcon src="/img/icon/checkIcon.svg" />
         <SignUp.CompleteTitle>회원 가입 완료</SignUp.CompleteTitle>
         <SignUp.Cake src="/img/cake.svg" />
-        <SubmitButton title={"나의 채식유형 체크"} isActive={isActive} />
-        <OutlineSubmitButton title={"메인으로"} isActive={isActive} />
+        <SubmitButton
+          title={"나의 채식유형 체크"}
+          isActive={isActive}
+          onClick={onClickMoveVeganType}
+        />
+        <OutlineSubmitButton
+          title={"메인으로"}
+          isActive={isActive}
+          onClick={onClickMoveHome}
+        />
       </SignUp.CompleteWrapper>
     </SignUp.Wrapper>
   );
