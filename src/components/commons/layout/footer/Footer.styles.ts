@@ -18,19 +18,28 @@ export const TopButton = styled.button`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   right: 0;
   bottom: 0;
-  transform: translate(-10%, -10%);
-  width: 9.375rem;
-  height: 9.375rem;
+  transform: translate(-20%, -20%);
+  width: 5.5rem;
+  height: 5.5rem;
   background: #0fbaa3;
   border-radius: 50%;
   border: none;
   color: #ffffff;
   font-weight: 600;
-  font-size: 1.375rem;
   letter-spacing: 0.1em;
   cursor: pointer;
+
+  img {
+    height: 1.31rem;
+    width: auto;
+  }
+
+  span {
+    padding-top: 0.5rem;
+  }
 `;
 
 // logo
