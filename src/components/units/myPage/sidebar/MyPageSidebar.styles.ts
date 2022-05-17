@@ -8,7 +8,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 6.6875rem;
-  height: 22.25rem;
 `;
 
 export const MenuItem1 = styled.li`
@@ -27,7 +26,7 @@ export const MenuItem2 = styled.li`
   font-weight: 500;
   letter-spacing: -0.06rem;
   color: #848484;
-  padding: 0.8rem 0;
+  padding: 0.7rem 0;
 
   cursor: pointer;
 

@@ -15,7 +15,13 @@ interface LayoutProps {
 }
 
 // 컴포넌트 hidden
-const HIDDEN_BANNER = ["/login", "/signUp"];
+const HIDDEN_BANNER = [
+  "/login",
+  "/signUp",
+  "/myPage",
+  "/myPage/edit",
+  "/typeCheck",
+];
 
 export default function Layout(props: LayoutProps) {
   const router = useRouter();

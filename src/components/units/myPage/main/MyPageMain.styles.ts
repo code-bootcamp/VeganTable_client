@@ -18,12 +18,7 @@ export const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-export const UserProfile = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 57%;
+  width: 100%;
 `;
 
 export const UserWrapper = styled.div`
@@ -35,6 +30,12 @@ export const UserWrapper = styled.div`
   background-color: #faf9f9;
   border-radius: 24px;
   padding: 0 4rem;
+`;
+
+export const UserProfile = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 57%;
 `;
 
 export const UserIcon = styled.img``;
