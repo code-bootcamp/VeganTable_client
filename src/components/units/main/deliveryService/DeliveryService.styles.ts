@@ -59,7 +59,15 @@ export const ContentsText = styled.div`
   font-weight: 700;
   font-size: 3.125rem;
   letter-spacing: -0.05em;
-  transform: translateY(-70%);
+  transform: translateY(0%);
+  opacity: 0;
+  transition: all 2.5s ease;
+  transition-delay: 0.5s;
+
+  &.isActive {
+    transform: translateY(-70%);
+    opacity: 1;
+  }
 
   & > span:first-of-type {
     height: 5px;

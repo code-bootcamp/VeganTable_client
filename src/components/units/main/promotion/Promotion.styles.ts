@@ -4,6 +4,7 @@ export const Container = styled.div`
   background: rgba(196, 196, 196, 0.1);
   padding: 4.06rem 0;
 `;
+
 export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -36,6 +37,7 @@ export const Contents = styled.div`
     margin-right: 1.31rem;
   }
 `;
+
 export const Text = styled.div`
   & > h1 {
     padding-bottom: 0.562rem;
@@ -49,4 +51,5 @@ export const Text = styled.div`
     letter-spacing: -0.05em;
   }
 `;
+
 export const ImageWrapper = styled.div``;

@@ -1,6 +1,12 @@
 import * as DeliveryService from "./DeliveryService.styles";
+import { useInView } from "react-intersection-observer";
 
 export default function DeliveryServiceUI() {
+  const [ref, inView] = useInView({
+    // 라이브러리 옵션
+    threshold: 0,
+  });
+
   return (
     <DeliveryService.Container>
       <DeliveryService.Wrapper>
@@ -17,7 +23,10 @@ export default function DeliveryServiceUI() {
               <img src="/img/deliveryService/img-deliveryService-02.png" />
             </DeliveryService.ImageWrapper>
           </DeliveryService.ImageContainer>
-          <DeliveryService.ContentsText>
+          <DeliveryService.ContentsText
+            ref={ref}
+            className={inView ? "isActive" : ""}
+          >
             <span></span>
             <span>채식한상 밀키트로</span>
             <span>가볍게 아침식사 해결하세요</span>
