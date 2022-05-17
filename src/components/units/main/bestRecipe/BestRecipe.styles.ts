@@ -19,23 +19,6 @@ export const RecommendRecipeHead = styled.div`
   align-items: center;
   padding-bottom: 3.5rem;
   width: 100%;
-
-  & > button {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0.93rem 1.5rem;
-    font-size: 0.875rem;
-    color: #848484;
-    background: #ffffff;
-    border: 1px solid #c4c4c4;
-    border-radius: 8px;
-    cursor: pointer;
-
-    img {
-      padding-left: 4rem;
-    }
-  }
 `;
 
 export const HeadText = styled.div`
@@ -109,12 +92,15 @@ export const Tags = styled.div`
 `;
 
 const Tag = styled.span`
-  padding: 2px 1.2rem;
+  padding: 2px 0;
   border-radius: 1rem;
   margin-right: 4px;
   margin-top: 1.25rem;
   color: #ffffff;
   font-size: 0.875rem;
+  width: 5.125rem;
+  display: flex;
+  justify-content: center;
 `;
 
 export const TagVegan = styled(Tag)`

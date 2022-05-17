@@ -1,3 +1,4 @@
+import Button01 from "../../../commons/buttons/01";
 import * as BestRecipe from "./BestRecipe.styles";
 
 export default function BestRecipeUI() {
@@ -11,10 +12,7 @@ export default function BestRecipeUI() {
               채식한상이 추천하는 <b>레시피</b>
             </h1>
           </BestRecipe.HeadText>
-          <button>
-            전체보기
-            <img src="/img/bestRecipe/icon-arrow-right.svg" />
-          </button>
+          <Button01 />
         </BestRecipe.RecommendRecipeHead>
         <BestRecipe.RecommendRecipeItems>
           {[1, 2, 3, 4].map((el) => (
