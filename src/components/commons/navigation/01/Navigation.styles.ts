@@ -16,7 +16,7 @@ export const VeganType = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 100px;
-
+  cursor: pointer;
   &:last-of-type {
     margin-right: 0;
   }
@@ -25,6 +25,10 @@ export const VeganType = styled.div`
 export const VeganTypeImg = styled.img`
   height: 3.3rem;
   margin-bottom: 15px;
+  :hover {
+    filter: invert(67%) sepia(61%) saturate(4393%) hue-rotate(132deg)
+      brightness(95%) contrast(88%);
+  }
 `;
 
 export const VeganTypeName = styled.li`
