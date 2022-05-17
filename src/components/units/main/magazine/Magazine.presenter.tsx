@@ -10,7 +10,7 @@ export default function MagazineUI() {
             <span>MAGAZINE</span>
             <h1>테마별로 골라보는 구독 식단</h1>
           </Magazine.HeadText>
-          <ViewAllButton />
+          <ViewAllButton title="전체보기" />
         </Magazine.MagazineHead>
         <Magazine.Contents>
           <Magazine.Item>
