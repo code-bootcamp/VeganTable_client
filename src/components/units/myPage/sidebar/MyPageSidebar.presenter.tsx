@@ -8,7 +8,6 @@ export default function MyPageSidebarUI() {
 
   const MYPAGE_MENUS = [
     { name: "MY 홈", page: "/myPage" },
-    { name: "레시피관리", page: "" },
     { name: "최근 본 레시피", page: "/myPage/recent", list: true },
     { name: "찜한 레시피", page: "/myPage/wish", list: true },
     { name: "등록 레시피 관리", page: "/myPage/myRecipe", list: true },
@@ -23,21 +22,16 @@ export default function MyPageSidebarUI() {
         <ul>
           {MYPAGE_MENUS.map((el) => (
             <Fragment key={el.page}>
-              {!el.list &&
-                (el.name === "레시피관리" ? (
-                  <My.MenuItem1>
-                    <span>{el.name}</span>
+              {!el.list && (
+                <Link href={el.page}>
+                  <My.MenuItem1
+                    id={el.page}
+                    className={router.asPath === el.page ? "isActive" : ""}
+                  >
+                    <a>{el.name}</a>
                   </My.MenuItem1>
-                ) : (
-                  <Link href={el.page}>
-                    <My.MenuItem1
-                      id={el.page}
-                      className={router.asPath === el.page ? "isActive" : ""}
-                    >
-                      <a>{el.name}</a>
-                    </My.MenuItem1>
-                  </Link>
-                ))}
+                </Link>
+              )}
 
               {el.list && (
                 <Link href={el.page}>
