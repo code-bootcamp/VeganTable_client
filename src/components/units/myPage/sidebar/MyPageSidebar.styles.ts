@@ -26,7 +26,7 @@ export const MenuItem2 = styled.li`
   font-weight: 500;
   letter-spacing: -0.06rem;
   color: #848484;
-  padding: 0.7rem 0;
+  padding: 0.9rem 0;
 
   cursor: pointer;
 
