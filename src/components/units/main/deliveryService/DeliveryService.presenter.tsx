@@ -5,6 +5,7 @@ export default function DeliveryServiceUI() {
   const [ref, inView] = useInView({
     // 라이브러리 옵션
     threshold: 0,
+    triggerOnce: true,
   });
 
   return (
