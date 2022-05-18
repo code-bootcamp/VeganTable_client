@@ -1,6 +1,6 @@
-import OutlineSubmitButton from "../../../commons/buttons/outlineSubmit";
 import SubmitButton from "../../../commons/buttons/submit";
 import UserInput from "../../../commons/inputs";
+import Navigation02 from "../../../commons/navigation/02";
 import MyPageSidebar from "../sidebar/MyPageSidebar.container";
 import * as My from "./MyPageEdit.styles";
 
@@ -14,8 +14,25 @@ export default function MyPageEditUI() {
         <My.EditWrapper>
           <My.TitleWrapper>
             <My.Title>회원정보 수정</My.Title>
+            <My.SignOut>회원탈퇴</My.SignOut>
           </My.TitleWrapper>
-          <My.InfoWrapper>
+          <My.ProfileWrapper>
+            <My.FlexRow>
+              <My.Image src="/img/myPage/icon-myProfile.svg" />
+              <My.FlexColumn>
+                <My.InputWrapper>
+                  <My.Label>닉네임</My.Label>
+                  <UserInput placeholder={"닉네임"} inputSize={"medium"} />
+                </My.InputWrapper>
+
+                <My.VeganTypeWrapper>
+                  <My.Label>채식타입</My.Label>
+                  <Navigation02 />
+                </My.VeganTypeWrapper>
+              </My.FlexColumn>
+            </My.FlexRow>
+          </My.ProfileWrapper>
+          <My.ProfileWrapper>
             <My.InputWrapper>
               <My.Label>이름</My.Label>
               <UserInput placeholder={"홍예원"} disabled={true} />
@@ -36,11 +53,14 @@ export default function MyPageEditUI() {
               <UserInput placeholder={"aa@aa.com"} disabled={true} />
             </My.InputWrapper>
             <My.InputWrapper>
-              <My.Label>비밀번호</My.Label>
+              <My.Label />○<span>정보성 메일 수신에 동의합니다.</span>
+            </My.InputWrapper>
+            <My.InputWrapper>
+              <My.Label>새 비밀번호</My.Label>
               <UserInput placeholder={"비밀번호"} />
             </My.InputWrapper>
             <My.InputWrapper>
-              <My.Label>비밀번호 확인</My.Label>
+              <My.Label>새 비밀번호 확인</My.Label>
               <UserInput placeholder={"비밀번호 확인"} />
             </My.InputWrapper>
             <My.InputWrapper>
@@ -53,12 +73,19 @@ export default function MyPageEditUI() {
               <UserInput placeholder={"인증번호"} />
               <My.Button>확인</My.Button>
             </My.InputWrapper>
-            <My.InputWrapper>
-              <My.Label />○<span>정보성 메일 수신에 동의합니다.</span>
-            </My.InputWrapper>
-          </My.InfoWrapper>
 
-          <My.InfoWrapper>
+            <My.InputWrapper>
+              <My.Label>주소</My.Label>
+              <UserInput placeholder={"우편번호"} />
+              <My.Button>찾기</My.Button>
+            </My.InputWrapper>
+            <My.InputWrapper>
+              <My.Label />
+              <UserInput placeholder={"주소"} />
+            </My.InputWrapper>
+          </My.ProfileWrapper>
+
+          <My.ProfileWrapper>
             <My.ExpertTitleWrapper>
               <My.Title>전문가 등록하기</My.Title>
               <p>
@@ -76,9 +103,8 @@ export default function MyPageEditUI() {
               <UserInput placeholder={"URL"} />
               <My.Button>등록하기</My.Button>
             </My.InputWrapper>
-          </My.InfoWrapper>
+          </My.ProfileWrapper>
           <My.ButtonWrapper>
-            <OutlineSubmitButton title={"탈퇴하기"} isActive={isActive} />
             <SubmitButton title={"회원정보수정"} isActive={isActive} />
           </My.ButtonWrapper>
         </My.EditWrapper>
