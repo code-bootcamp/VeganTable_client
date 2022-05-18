@@ -21,6 +21,7 @@ const HIDDEN_BANNER = [
   "/myPage",
   "/myPage/edit",
   "/typeCheck",
+  "/recipe",
 ];
 
 export default function Layout(props: LayoutProps) {

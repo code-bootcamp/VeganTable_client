@@ -197,6 +197,7 @@ export const CompleteWrapper = styled.div`
 `;
 
 export const CheckIcon = styled.img`
+  position: relative;
   margin-bottom: 1rem;
 `;
 
@@ -205,7 +206,7 @@ export const Cake = styled.img`
 `;
 export const FlowerShower = styled.img`
   position: absolute;
-  bottom: 4.8rem;
+  top: 20rem;
 `;
 
 export const CompleteTitle = styled.h2`
