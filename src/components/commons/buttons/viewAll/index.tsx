@@ -19,7 +19,7 @@ const Button = styled.button`
 
 export default function ViewAllButton(props) {
   return (
-    <Link href={props.href}>
+    <Link href={props?.href}>
       <Button>
         <a>{props.title}</a>
         <img src="/img/bestRecipe/icon-arrow-right-02.svg" />
