@@ -20,6 +20,13 @@ export const globalStyles = css`
     list-style: none;
   }
 
+  a {
+    text-decoration: none;
+    :visited {
+      color: #000000;
+    }
+  }
+
   /* Pretendard */
 
   @font-face {

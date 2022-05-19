@@ -1,5 +1,6 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
-import { Fragment, MouseEvent } from "react";
+import { Fragment } from "react";
 import * as Header from "./styles";
 
 export default function LayoutHeader() {
@@ -8,47 +9,56 @@ export default function LayoutHeader() {
   const HEADER_MENUS = [
     { name: "홈", page: "/" },
     { name: "레시피", page: "/recipe" },
-    { name: "커뮤니티", page: "/community" },
     { name: "구독서비스", page: "/subscribe" },
-    { name: "식당찾기", page: "/searchTable" },
   ];
-
-  const onClickMenu = (event: MouseEvent<HTMLElement>) => {
-    if (event.target instanceof Element) {
-      router.push(event.target.id);
-    }
-  };
 
   return (
     <Header.Container>
       <Header.Wrapper>
         <Header.LogoWrapper>
-          <Header.Logo src="/img/header/icon-logo-header.svg" />
+          <Link href={"/"}>
+            <Header.Logo src="/img/header/icon-logo-header.svg" />
+          </Link>
         </Header.LogoWrapper>
 
         <Header.MenuWrapper>
           {HEADER_MENUS.map((el) => (
             <Fragment key={el.page}>
-              <Header.MenuItem id={el.page} onClick={onClickMenu}>
-                {el.name}
-                <Header.Circle
-                  className={router.asPath === el.page ? "isActive" : ""}
-                />
-              </Header.MenuItem>
+              <Link href={el.page}>
+                <Header.MenuItem id={el.page}>
+                  <a>{el.name}</a>
+                  <Header.Circle
+                    className={router.asPath === el.page ? "isActive" : ""}
+                  />
+                </Header.MenuItem>
+              </Link>
             </Fragment>
           ))}
         </Header.MenuWrapper>
 
         <Header.UserWrapper>
-          <Header.UserName>
+          {/* <Header.UserName>
             안녕하세요 <b>홍예원</b> 님
+          </Header.UserName> */}
+
+          <Header.UserName>
+            <Link href={"/login"}>
+              <a>로그인</a>
+            </Link>
           </Header.UserName>
-          <Header.HeaderIcon src="/img/header/icon-profile.svg" />
+
+          <Header.UserName>
+            <Link href={"/signUp"}>
+              <a>회원가입</a>
+            </Link>
+          </Header.UserName>
+          <Link href={"/myPage"}>
+            <Header.HeaderIcon src="/img/header/icon-profile.svg" />
+          </Link>
           <Header.AlertIcon>
             <Header.HeaderIcon src="/img/header/icon-header-alert.svg" />
             <span></span>
           </Header.AlertIcon>
-          {/* <Header.UserPoint>300 Point</Header.UserPoint> */}
         </Header.UserWrapper>
       </Header.Wrapper>
     </Header.Container>
