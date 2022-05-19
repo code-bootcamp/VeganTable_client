@@ -1,5 +1,6 @@
-// 회원가입 전체
 import styled from "@emotion/styled";
+
+// 회원가입 전체
 
 // 회원가입 전체 컴포넌트
 export const Container = styled.div`

@@ -121,13 +121,13 @@ export const RecipeRecommendSticker = styled.img`
   position: absolute;
   z-index: 2;
   right: 1rem;
-  bottom: 180px;
+  bottom: 200px;
 `;
 export const RecipeLevelSticker = styled.img`
   position: absolute;
   z-index: 1;
   right: 1rem;
-  bottom: 120px;
+  bottom: 135px;
 `;
 
 export const RecipeTitle = styled.h3`

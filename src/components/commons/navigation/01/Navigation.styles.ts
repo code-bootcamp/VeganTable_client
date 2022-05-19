@@ -20,14 +20,23 @@ export const VeganType = styled.div`
   &:last-of-type {
     margin-right: 0;
   }
+  color: ${(props) => props.isPicked && "#0fbaa3"};
+  :hover {
+    color: #0fbaa3;
+    & > div {
+      background-image: url(${(props) => props.hover});
+    }
+  }
 `;
 
-export const VeganTypeImg = styled.img`
+export const VeganTypeImg = styled.div`
+  width: 3.3rem;
   height: 3.3rem;
   margin-bottom: 15px;
+  background-image: url(${(props) =>
+    props.isPicked ? props.hover : props.image});
   :hover {
-    filter: invert(67%) sepia(61%) saturate(4393%) hue-rotate(132deg)
-      brightness(95%) contrast(88%);
+    background-image: url(${(props) => props.hover});
   }
 `;
 

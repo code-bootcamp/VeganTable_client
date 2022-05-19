@@ -23,16 +23,16 @@ export default function Navigation02() {
       hover: "/img/navigation/icon-vegan-lacto-hover.svg",
     },
     {
-      name: "오보",
-      En: "Ovo",
-      image: "/img/navigation/icon-vegan-ovo.svg",
-      hover: "/img/navigation/icon-vegan-ovo-hover.svg",
-    },
-    {
       name: "락토오보",
       En: "Lacto-Ovo",
       image: "/img/navigation/icon-vegan-lactoOvo.svg",
       hover: "/img/navigation/icon-vegan-lactoOvo-hover.svg",
+    },
+    {
+      name: "오보",
+      En: "Ovo",
+      image: "/img/navigation/icon-vegan-ovo.svg",
+      hover: "/img/navigation/icon-vegan-ovo-hover.svg",
     },
     {
       name: "페스코",
