@@ -18,6 +18,63 @@ export default function TypeCheck() {
     setIsCheckKeyword((prev) => !prev);
   };
 
+  const TYPE_CHECK_LIST = [
+    {
+      name: "비건",
+      enName: "Vegan",
+      image: "/img/navigation/icon-vegan-vegan.svg",
+      hover: "/img/navigation/icon-vegan-vegan-hover.svg",
+      eat: "완전 채식",
+      ban: "",
+    },
+    {
+      name: "락토",
+      enName: "Lacto",
+      image: "/img/navigation/icon-vegan-lacto.svg",
+      hover: "/img/navigation/icon-vegan-lacto-hover.svg",
+      eat: "유제품 섭취",
+      ban: "",
+    },
+    {
+      name: "오보",
+      enName: "Ovo",
+      image: "/img/navigation/icon-vegan-ovo.svg",
+      hover: "/img/navigation/icon-vegan-ovo-hover.svg",
+      eat: "달걀 섭취",
+      ban: "",
+    },
+    {
+      name: "락토오보",
+      enName: "Lacto-Ovo",
+      image: "/img/navigation/icon-vegan-lactoOvo.svg",
+      hover: "/img/navigation/icon-vegan-lactoOvo-hover.svg",
+      eat: "유제품, 달걀 섭취",
+      ban: "육류,어류 금지",
+    },
+    {
+      name: "페스코",
+      enName: "Pesco",
+      image: "/img/navigation/icon-vegan-pesco.svg",
+      hover: "/img/navigation/icon-vegan-pesco-hover.svg",
+      eat: "어류 섭취",
+      ban: "육류 금지",
+    },
+    {
+      name: "폴로",
+      enName: "Pollo",
+      image: "/img/navigation/icon-vegan-pollo.svg",
+      hover: "/img/navigation/icon-vegan-pollo-hover.svg",
+      eat: "닭고기 섭취",
+      ban: "붉은 살코기 금지",
+    },
+  ];
+
+  const [isPicked, setIsPicked] = useState("");
+
+  const onClickVeganType = (el) => () => {
+    setIsPicked(el.name);
+  };
+
   return (
     <Type.Container>
       <Type.Wrapper>
@@ -36,67 +93,34 @@ export default function TypeCheck() {
             <Type.StepQuestion>
               Q1. 어떤 타입의 채식주의자 인가요?
             </Type.StepQuestion>
-            <Type.VeganTypeRow>
-              <Type.VeganType>
-                <Type.VeganTypeImgCircle>
-                  <Type.VeganTypeImg src="/img/navigation/icon-vegan-vegan.svg" />
-                </Type.VeganTypeImgCircle>
-                <Type.VeganTypeName>비건</Type.VeganTypeName>
-                <Type.VeganTypeEnName>Vegan</Type.VeganTypeEnName>
-                <Type.VeganTypeDetail>완전 채식</Type.VeganTypeDetail>
-              </Type.VeganType>
-              <Type.VeganType>
-                <Type.VeganTypeImgCircle>
-                  <Type.VeganTypeImg src="/img/navigation/icon-vegan-lacto.svg" />
-                </Type.VeganTypeImgCircle>
-                <Type.VeganTypeName>락토</Type.VeganTypeName>
-                <Type.VeganTypeEnName>Lacto</Type.VeganTypeEnName>
-                <Type.VeganTypeDetail>유제품 섭취</Type.VeganTypeDetail>
-              </Type.VeganType>
-              <Type.VeganType>
-                <Type.VeganTypeImgCircle>
-                  <Type.VeganTypeImg src="/img/navigation/icon-vegan-ovo.svg" />
-                </Type.VeganTypeImgCircle>
-                <Type.VeganTypeName>오보</Type.VeganTypeName>
-                <Type.VeganTypeEnName>Ovo</Type.VeganTypeEnName>
-                <Type.VeganTypeDetail>달걀 섭취</Type.VeganTypeDetail>
-              </Type.VeganType>
-            </Type.VeganTypeRow>
-            <Type.VeganTypeRow>
-              <Type.VeganType>
-                <Type.VeganTypeImgCircle>
-                  <Type.VeganTypeImg src="/img/navigation/icon-vegan-lactoOvo.svg" />
-                </Type.VeganTypeImgCircle>
-                <Type.VeganTypeName>락토오보</Type.VeganTypeName>
-                <Type.VeganTypeEnName>Lacto-Ovo</Type.VeganTypeEnName>
-                <Type.VeganTypeDetail>
-                  유제품, 달걀 섭취
-                  <p>육류,어류 금지</p>
-                </Type.VeganTypeDetail>
-              </Type.VeganType>
-              <Type.VeganType>
-                <Type.VeganTypeImgCircle>
-                  <Type.VeganTypeImg src="/img/navigation/icon-vegan-pesco.svg" />
-                </Type.VeganTypeImgCircle>
-                <Type.VeganTypeName>페스코</Type.VeganTypeName>
-                <Type.VeganTypeEnName>Pesco</Type.VeganTypeEnName>
-                <Type.VeganTypeDetail>
-                  어류 섭취
-                  <p>육류 금지</p>
-                </Type.VeganTypeDetail>
-              </Type.VeganType>
-              <Type.VeganType>
-                <Type.VeganTypeImgCircle>
-                  <Type.VeganTypeImg src="/img/navigation/icon-vegan-pollo.svg" />
-                </Type.VeganTypeImgCircle>
-                <Type.VeganTypeName>폴로</Type.VeganTypeName>
-                <Type.VeganTypeEnName>Pollo</Type.VeganTypeEnName>
-                <Type.VeganTypeDetail>
-                  닭고기 섭취
-                  <p>붉은 살코기 금지</p>
-                </Type.VeganTypeDetail>
-              </Type.VeganType>
-            </Type.VeganTypeRow>
+            <Type.VeganTypeWrapper>
+              {TYPE_CHECK_LIST.map((el, i) => (
+                <Type.VeganType
+                  key={i}
+                  onClick={onClickVeganType(el)}
+                  isPicked={isPicked === el.name}
+                >
+                  <Type.VeganTypeImgCircle
+                    isPicked={isPicked === el.name}
+                    image={el.image}
+                    hover={el.hover}
+                  >
+                    <Type.VeganTypeImg
+                      image={el.image}
+                      hover={el.hover}
+                      isPicked={isPicked === el.name}
+                    />
+                  </Type.VeganTypeImgCircle>
+                  <Type.VeganTypeName>{el.name}</Type.VeganTypeName>
+                  <Type.VeganTypeEnName>{el.enName}</Type.VeganTypeEnName>
+                  <Type.VeganTypeDetail isPicked={isPicked === el.name}>
+                    {el.eat}
+                    <p>{el.ban}</p>
+                  </Type.VeganTypeDetail>
+                </Type.VeganType>
+              ))}
+            </Type.VeganTypeWrapper>
+
             <SubmitButton
               title={"다음"}
               isActive={isActive}

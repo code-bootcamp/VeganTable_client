@@ -89,10 +89,11 @@ export const StepQuestion = styled.div`
 `;
 
 // 각 타입
-export const VeganTypeRow = styled.div`
+export const VeganTypeWrapper = styled.div`
   display: flex;
-  width: 100%;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 40.75rem;
   margin-bottom: 5rem;
 `;
 
@@ -100,17 +101,25 @@ export const VeganType = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 5.5rem;
+  margin: 0 3rem;
+  margin-bottom: 1rem;
   cursor: pointer;
   &:last-of-type {
-    margin-right: 0;
+    margin-right: 3rem;
+  }
+  color: ${(props) => props.isPicked && "#0fbaa3"};
+  :hover {
+    color: #0fbaa3;
+    & > div {
+      background-image: url(${(props) => props.hover});
+    }
   }
 `;
 
-export const VeganTypeImgCircle = styled.div`
+export const VeganTypeImgCircle = styled.li`
   width: 6rem;
   height: 6rem;
-  border: 2px solid #7f7f7f;
+  border: 2px solid ${(props) => (props.isPicked ? "#0fbaa3" : "#7f7f7f")};
   border-radius: 50%;
   display: flex;
   flex-direction: column;
@@ -118,13 +127,18 @@ export const VeganTypeImgCircle = styled.div`
   align-items: center;
   margin-bottom: 20px;
   :hover {
-    filter: invert(67%) sepia(61%) saturate(4393%) hue-rotate(132deg)
-      brightness(95%) contrast(88%);
+    border: 2px solid #0fbaa3;
+    & > div {
+      background-image: url(${(props) => props.hover});
+    }
   }
 `;
 
-export const VeganTypeImg = styled.img`
+export const VeganTypeImg = styled.div`
+  width: 3.3rem;
   height: 3.3rem;
+  background-image: url(${(props) =>
+    props.isPicked ? props.hover : props.image});
 `;
 
 export const VeganTypeName = styled.li`
