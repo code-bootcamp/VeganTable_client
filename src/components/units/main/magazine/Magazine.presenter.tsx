@@ -1,4 +1,3 @@
-import ViewAllButton from "../../../commons/buttons/viewAll";
 import * as Magazine from "./Magazine.styles";
 
 export default function MagazineUI() {
@@ -10,7 +9,6 @@ export default function MagazineUI() {
             <span>MAGAZINE</span>
             <h1>테마별로 골라보는 구독 식단</h1>
           </Magazine.HeadText>
-          <ViewAllButton title="전체보기" />
         </Magazine.MagazineHead>
         <Magazine.Contents>
           <Magazine.Item>
@@ -19,7 +17,7 @@ export default function MagazineUI() {
             <div>
               <span>인물 인터뷰</span>
               <p>
-                '나의 비거니즘 만화'의
+                {"'"}나의 비거니즘 만화{"'"}의
                 <br />
                 보선 작가를 만나다
               </p>
