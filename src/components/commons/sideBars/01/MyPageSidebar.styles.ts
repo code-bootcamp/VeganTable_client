@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-  padding: 0 8rem;
+  padding-right: 7rem;
 `;
 
 export const Wrapper = styled.div`

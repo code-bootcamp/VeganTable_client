@@ -5,7 +5,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 6.25rem auto;
+  padding: 6.25rem 15rem;
 `;
 
 export const Wrapper = styled.div`
@@ -21,13 +21,6 @@ export const EditWrapper = styled.div`
   width: 100%;
 `;
 
-export const TitleWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  border-bottom: 1px solid #c4c4c4;
-`;
-
 export const SignOut = styled.button`
   border: none;
   background-color: #ffffff;
@@ -36,7 +29,7 @@ export const SignOut = styled.button`
   cursor: pointer;
 `;
 
-export const ExpertTitleWrapper = styled.div`
+export const TitleWrapper = styled.div`
   display: flex;
   align-items: baseline;
   padding-bottom: 2rem;
@@ -71,7 +64,13 @@ export const FlexRow = styled.div`
 export const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 0 2rem;
+`;
+
+export const ImageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const Image = styled.img`
@@ -80,6 +79,19 @@ export const Image = styled.img`
   background-color: #c4c4c4;
   border-radius: 50%;
   margin: 2rem;
+`;
+
+export const ImageButton = styled.button`
+  border: 1px solid #c4c4c4;
+  border-radius: 2rem;
+  background-color: #ffffff;
+  width: 11.25rem;
+  height: 2.5rem;
+  color: #c4c4c4;
+  font-size: 1.25rem;
+  letter-spacing: -0.06rem;
+  font-weight: 500;
+  cursor: pointer;
 `;
 
 export const InputWrapper = styled.div`

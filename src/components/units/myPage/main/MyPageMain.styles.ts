@@ -5,7 +5,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 6.25rem auto;
+  padding: 6.25rem 15rem;
 `;
 
 export const Wrapper = styled.div`
@@ -124,5 +124,22 @@ export const Body = styled.ul`
 `;
 
 export const Menu = styled.li`
-  padding-right: 1rem;
+  width: 13.5rem;
+  margin-right: 0.8rem;
+
+  &:last-of-type {
+    margin-right: 0rem;
+  }
+
+  & > img {
+    width: 13.5rem;
+    height: 13.5rem;
+  }
+
+  & > h2 {
+    padding: 0.4rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;

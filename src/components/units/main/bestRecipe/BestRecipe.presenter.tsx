@@ -12,7 +12,7 @@ export default function BestRecipeUI() {
               채식한상이 추천하는 <b>레시피</b>
             </h1>
           </BestRecipe.HeadText>
-          <ViewAllButton title="전체보기" />
+          <ViewAllButton href={"/recipe"} title="전체보기" />
         </BestRecipe.RecommendRecipeHead>
         <BestRecipe.RecommendRecipeItems>
           {[1, 2, 3, 4].map((el) => (
