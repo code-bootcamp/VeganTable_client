@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 // 전체
 export const Wrapper = styled.ul`
-  width: 100%;
+  width: 90rem;
   height: 130px;
   margin: 50px auto;
   display: flex;

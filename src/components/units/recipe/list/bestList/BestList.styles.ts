@@ -12,7 +12,7 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  width: 75%;
+  width: 90rem;
   display: flex;
   /* justify-content: center; */
 `;
