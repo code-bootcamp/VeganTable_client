@@ -1,13 +1,9 @@
 import RecipeDetailMenu from "./menu/RecipeDetailMenu.container";
 import * as RecipeDetail from "./RecipeDetail.styles";
 import Slider01 from "../../../../components/commons/sliders/01";
-import { useInView } from "react-intersection-observer";
+import RecipeReview from "../detail/review/RecipeReview.container";
 
 export default function RecipeDetailUI() {
-  const [ref, inView] = useInView({
-    // 라이브러리 옵션
-    threshold: 0,
-  });
   return (
     <>
       <RecipeDetail.Container>
@@ -28,6 +24,31 @@ export default function RecipeDetailUI() {
             <li>리뷰(10)</li>
             <li>추천</li>
           </RecipeDetail.Navigation>
+
+          <RecipeDetail.Contents>
+            <h2>준비재료</h2>
+            <h2>요리순서</h2>
+            {[1, 2, 3, 4].map((el) => (
+              <RecipeDetail.Order key={el}>
+                <span>Step {el}</span>
+                <div>
+                  <img
+                    src={`/img/recipeDetail/img-recipeDetail-0${el}.png`}
+                    alt=""
+                  />
+                </div>
+
+                <p>
+                  멸치를 넣고 공간이 넉넉한 접시 준비 잔멸치와 견과류,
+                  <br />
+                  포도씨유를 넣고 잘 섞어주세요. 전자레인지에 1분간
+                  <br />
+                  조리해주세요.
+                </p>
+              </RecipeDetail.Order>
+            ))}
+          </RecipeDetail.Contents>
+          <RecipeReview />
         </RecipeDetail.Wrapper>
 
         <RecipeDetail.MenuWrapper>
