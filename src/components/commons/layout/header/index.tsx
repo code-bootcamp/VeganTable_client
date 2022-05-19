@@ -40,8 +40,14 @@ export default function LayoutHeader() {
         </Header.MenuWrapper>
 
         <Header.UserWrapper>
-          <Header.UserIcon src="/img/header/icon-profile.svg" />
-          <Header.UserName>Guest 님</Header.UserName>
+          <Header.UserName>
+            안녕하세요 <b>홍예원</b> 님
+          </Header.UserName>
+          <Header.HeaderIcon src="/img/header/icon-profile.svg" />
+          <Header.AlertIcon>
+            <Header.HeaderIcon src="/img/header/icon-header-alert.svg" />
+            <span></span>
+          </Header.AlertIcon>
           {/* <Header.UserPoint>300 Point</Header.UserPoint> */}
         </Header.UserWrapper>
       </Header.Wrapper>

@@ -10,26 +10,27 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  width: 75rem;
+  width: 100%;
+  max-width: 1440px;
 `;
 
-export const LogoWrapper = styled.div`
-  width: 45%;
-`;
+export const LogoWrapper = styled.div``;
 export const Logo = styled.img`
-  height: 2.5rem;
+  height: 3rem;
 `;
 
 export const MenuWrapper = styled.ul`
   display: flex;
   justify-content: space-between;
-  width: 25rem;
+  padding-left: 5rem;
 `;
 
 export const MenuItem = styled.li`
   position: relative;
+  align-self: flex-end;
+  margin-right: 3.375rem;
   list-style: none;
   cursor: pointer;
   :hover {
@@ -53,13 +54,32 @@ export const Circle = styled.span`
 
 export const UserWrapper = styled.ul`
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  margin-left: auto;
   list-style: none;
-  /* width: 11rem; */
+  width: 14rem;
 `;
 
-export const UserIcon = styled.img`
+export const HeaderIcon = styled.img`
   height: 2rem;
+`;
+
+export const AlertIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  & > span {
+    position: absolute;
+    width: 0.68rem;
+    height: 0.68rem;
+    border-radius: 50%;
+    right: 2px;
+    top: 0;
+    background: #f72727;
+  }
 `;
 
 export const UserName = styled.li``;
