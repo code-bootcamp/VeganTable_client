@@ -21,6 +21,16 @@ export const EditWrapper = styled.div`
   width: 100%;
 `;
 
+export const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #c4c4c4;
+  padding-bottom: 1.5rem;
+
+  width: 100%;
+`;
+
 export const SignOut = styled.button`
   border: none;
   background-color: #ffffff;
@@ -29,7 +39,7 @@ export const SignOut = styled.button`
   cursor: pointer;
 `;
 
-export const TitleWrapper = styled.div`
+export const ExpertTitleWrapper = styled.div`
   display: flex;
   align-items: baseline;
   padding-bottom: 2rem;
@@ -44,7 +54,6 @@ export const TitleWrapper = styled.div`
 export const Title = styled.span`
   font-size: 1.5rem;
   font-weight: 600;
-  padding-bottom: 1.5rem;
 `;
 
 export const ProfileWrapper = styled.div`
@@ -103,7 +112,7 @@ export const InputWrapper = styled.div`
 export const Label = styled.label`
   font-size: 1.25rem;
   font-weight: 600;
-  width: 25%;
+  width: 20%;
   color: #464646;
 `;
 
@@ -126,7 +135,10 @@ export const Button = styled.button`
   margin-bottom: 10px;
   margin-left: 25px;
   font-weight: 500;
+  font-size: 1rem;
+  color: #464646;
   background-color: #c4c4c4;
+
   cursor: pointer;
 `;
 
