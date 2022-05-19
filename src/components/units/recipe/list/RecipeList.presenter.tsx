@@ -1,4 +1,6 @@
+import { useState } from "react";
 import Navigation01 from "../../../commons/navigation/01";
+import Pagination02 from "../../../commons/pagination/02/Pagination02";
 import BestRecipeList from "./bestList/BestList.container";
 import ExpertRecipeList from "./expertList/ExpertList.container";
 import * as List from "./RecipeList.styles";
@@ -11,6 +13,8 @@ export default function RecipeListUI() {
       image: "/img/recipeList/recipeExample.png",
       level: "쉬움",
       commentsCount: 52,
+      bookmarkCount: 25,
+      bookmark: true,
     },
     {
       title: "메뉴 02",
@@ -18,6 +22,80 @@ export default function RecipeListUI() {
       image: "/img/recipeList/recipeExample.png",
       level: "중간",
       commentsCount: 52,
+      bookmarkCount: 25,
+      bookmark: false,
+    },
+    {
+      title: "메뉴 03",
+      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
+      image: "/img/recipeList/recipeExample.png",
+      level: "어려움",
+      commentsCount: 52,
+      bookmarkCount: 25,
+      bookmark: true,
+    },
+    {
+      title: "메뉴 03",
+      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
+      image: "/img/recipeList/recipeExample.png",
+      level: "쉬움",
+      commentsCount: 52,
+      bookmarkCount: 25,
+      bookmark: true,
+    },
+    {
+      title: "메뉴 03",
+      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
+      image: "/img/recipeList/recipeExample.png",
+      level: "중간",
+      commentsCount: 52,
+      bookmarkCount: 25,
+      bookmark: false,
+    },
+    {
+      title: "메뉴 03",
+      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
+      image: "/img/recipeList/recipeExample.png",
+      level: "쉬움",
+      commentsCount: 52,
+      bookmarkCount: 25,
+      bookmark: true,
+    },
+    {
+      title: "메뉴 03",
+      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
+      image: "/img/recipeList/recipeExample.png",
+      level: "중간",
+      commentsCount: 52,
+      bookmarkCount: 25,
+      bookmark: true,
+    },
+    {
+      title: "메뉴 03",
+      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
+      image: "/img/recipeList/recipeExample.png",
+      level: "쉬움",
+      commentsCount: 52,
+      bookmarkCount: 25,
+      bookmark: false,
+    },
+    {
+      title: "메뉴 03",
+      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
+      image: "/img/recipeList/recipeExample.png",
+      level: "어려움",
+      commentsCount: 52,
+      bookmarkCount: 25,
+      bookmark: true,
+    },
+    {
+      title: "메뉴 03",
+      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
+      image: "/img/recipeList/recipeExample.png",
+      level: "중간",
+      commentsCount: 52,
+      bookmarkCount: 25,
+      bookmark: true,
     },
     {
       title: "메뉴 03",
@@ -30,17 +108,34 @@ export default function RecipeListUI() {
       title: "메뉴 03",
       subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
       image: "/img/recipeList/recipeExample.png",
-      level: "쉬움",
-      commentsCount: 52,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
       level: "중간",
       commentsCount: 52,
+      bookmarkCount: 25,
+      bookmark: false,
     },
   ];
+
+  const WHOLE_MENU_LIST = [{ name: "전체 메뉴" }, { name: "전문가 메뉴" }];
+
+  const MENU_LIST = [
+    { name: "최신순" },
+    { name: "인기순" },
+    { name: "난이도순" },
+  ];
+
+  const [isPicked, setIsPicked] = useState({
+    wholeMenu: "전체 메뉴",
+    selectList: "최신순",
+  });
+
+  const onClickWholeMenu = (el) => () => {
+    setIsPicked({ ...isPicked, wholeMenu: el.name });
+  };
+
+  const onClickSelectList = (el) => () => {
+    setIsPicked({ ...isPicked, selectList: el.name });
+  };
+
   return (
     <List.Container>
       <List.Banner src="/img/banner/banner-recipeList.png" />
@@ -48,22 +143,47 @@ export default function RecipeListUI() {
       <BestRecipeList />
       <List.NavigationWrapper>
         <List.NavigationTitle>고객님 맞춤 레시피</List.NavigationTitle>
-        <Navigation01 />
       </List.NavigationWrapper>
+      <Navigation01 />
       <List.Wrapper>
         <List.MenuWrapper>
-          <List.WholeList>전체 메뉴</List.WholeList>
+          <List.WholeListBox>
+            {WHOLE_MENU_LIST.map((el, i) => (
+              <List.WholeList
+                key={i}
+                onClick={onClickWholeMenu(el)}
+                name={el.name}
+                isPicked={isPicked}
+              >
+                {el.name}
+              </List.WholeList>
+            ))}
+          </List.WholeListBox>
           <List.ListSelectBox>
-            <List.ListSelect>최신순</List.ListSelect>
-            <List.ListSelect>인기순</List.ListSelect>
-            <List.ListSelect>전문가 메뉴</List.ListSelect>
-            <List.ListSelect>난이도순</List.ListSelect>
+            {MENU_LIST.map((el, i) => (
+              <List.ListSelect
+                key={i}
+                onClick={onClickSelectList(el)}
+                name={el.name}
+                isPicked={isPicked}
+              >
+                {el.name}
+              </List.ListSelect>
+            ))}
           </List.ListSelectBox>
         </List.MenuWrapper>
         <List.ListWrapper>
           {RECIPE_EXAMPLE.map((el, i) => (
-            <List.RecipeBox key={el.title}>
+            <List.RecipeBox key={i}>
               <List.RecipeImg src={el.image} />
+              <List.IconBookmark>
+                {el.bookmark ? (
+                  <img src="/img/bestRecipe/icon-bookmark-on.svg" />
+                ) : (
+                  <img src="/img/bestRecipe/icon-bookmark-off.svg" />
+                )}
+                <span>{el.bookmarkCount}</span>
+              </List.IconBookmark>
               <List.RecipeRecommendSticker src="/img/icon/recommend.svg" />
               {el.level === "쉬움" && (
                 <List.RecipeLevelSticker src="/img/icon/level1.svg" />
@@ -85,6 +205,7 @@ export default function RecipeListUI() {
             </List.RecipeBox>
           ))}
         </List.ListWrapper>
+        <Pagination02 />
       </List.Wrapper>
     </List.Container>
   );

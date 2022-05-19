@@ -13,13 +13,13 @@ export const Banner = styled.img`
 `;
 
 export const Wrapper = styled.div`
-  width: 75%;
+  width: 90rem;
   display: flex;
   flex-direction: column;
 `;
 
 export const NavigationWrapper = styled.div`
-  width: 75%;
+  width: 90rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,40 +37,61 @@ export const MenuWrapper = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
-  font-weight: 500;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
+  font-size: 1.3rem;
+`;
+
+export const WholeListBox = styled.ul`
+  display: flex;
 `;
 
 export const WholeList = styled.li`
-  font-weight: 600;
-`;
-export const ListSelectBox = styled.ul`
-  display: flex;
-`;
-export const ListSelect = styled.li`
-  border-right: 1px solid #c4c4c4;
+  font-weight: 500;
+  cursor: pointer;
+  border-right: 1px solid black;
   padding-right: 1rem;
   margin-right: 1rem;
-  font-weight: 500;
-  color: rgba(0, 0, 0, 0.5);
+  color: ${(props) =>
+    props?.name === props?.isPicked.wholeMenu ? "#0FBAA3" : "black"};
   &:last-of-type {
     border-right: 0;
     margin-right: 0;
   }
 `;
 
+export const ListSelectBox = styled.ul`
+  display: flex;
+`;
+
+export const ListSelect = styled.li`
+  border-right: 1px solid #c4c4c4;
+  padding-right: 1rem;
+  margin-right: 1rem;
+  font-weight: 500;
+  color: ${(props) =>
+    props?.name === props?.isPicked.selectList
+      ? "#0FBAA3"
+      : "rgba(0, 0, 0, 0.5)"};
+  cursor: pointer;
+  &:last-of-type {
+    border-right: 0;
+    margin-right: 0;
+  }
+`;
 // 리스트 부분
 export const ListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 3rem;
 `;
 
 export const RecipeBox = styled.div`
-  margin-right: 1.5rem;
   height: auto;
   position: relative;
   margin-bottom: 3rem;
+  width: 25%;
 `;
 
 export const RecipeImg = styled.img`
@@ -78,18 +99,34 @@ export const RecipeImg = styled.img`
   width: 21.375rem;
   height: 21.375rem;
   margin-bottom: 1.5rem;
+  cursor: pointer;
+`;
+
+export const IconBookmark = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 3;
+  right: 2.2rem;
+  top: 20px;
+  & > span {
+    color: #ffffff;
+    font-size: 0.75rem;
+  }
 `;
 
 export const RecipeRecommendSticker = styled.img`
   position: absolute;
   z-index: 2;
-  right: 0px;
+  right: 1rem;
   bottom: 180px;
 `;
 export const RecipeLevelSticker = styled.img`
   position: absolute;
   z-index: 1;
-  right: 0px;
+  right: 1rem;
   bottom: 120px;
 `;
 
@@ -97,6 +134,7 @@ export const RecipeTitle = styled.h3`
   font-weight: 600;
   font-size: 2rem;
   margin-bottom: 0.5rem;
+  cursor: pointer;
 `;
 
 export const RecipeSubtitle = styled.p`
@@ -104,6 +142,7 @@ export const RecipeSubtitle = styled.p`
   font-size: 1rem;
   color: rgba(38, 38, 38, 0.6);
   margin-bottom: 1.5rem;
+  cursor: pointer;
 `;
 
 export const RecipeCommentBox = styled.ul`
