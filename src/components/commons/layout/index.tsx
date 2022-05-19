@@ -27,6 +27,7 @@ const HIDDEN_BANNER = [
   "/myPage/qna",
   "/typeCheck",
   "/recipe",
+  "/recipe/detail", // 디테일 페이지 임시
 ];
 
 export default function Layout(props: LayoutProps) {

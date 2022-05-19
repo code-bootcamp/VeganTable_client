@@ -39,25 +39,26 @@ export const SliderWrapper = styled.div`
   position: relative;
 `;
 
-export const Contents = styled.div``;
-export const Item = styled.div``;
 export const MenuWrapper = styled.div`
   position: relative;
   padding: 3rem 1.5rem;
   width: 500px;
   height: 100%;
   box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.25);
+
+  // 스크롤 내리면 active 발듕!
+  .active {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 1rem 2rem;
+    background: #ffffff;
+    height: 100%;
+    box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.25);
+    z-index: 3;
+  }
 `;
-export const MenuInnerWrapper = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  padding: 1rem 2rem;
-  background: #ffffff;
-  height: 100%;
-  box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.25);
-  z-index: 3;
-`;
+export const MenuInnerWrapper = styled.div``;
 
 export const Navigation = styled.ul`
   display: flex;
@@ -76,5 +77,33 @@ export const Navigation = styled.ul`
 
   .active {
     border-bottom: 3px solid #0fbaa3;
+  }
+`;
+
+export const Contents = styled.div`
+  & > h2 {
+    padding-bottom: 4rem;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: -0.05em;
+  }
+`;
+
+export const Order = styled.div`
+  position: relative;
+
+  & > span {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1.31rem 1rem;
+    background: #eff18b;
+    border-radius: 50%;
+  }
+  & > p {
+    padding: 88px 40px;
+    text-align: center;
   }
 `;
