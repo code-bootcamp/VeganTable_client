@@ -1,12 +1,19 @@
 import styled from "@emotion/styled";
 
 // 전체
+export const Container = styled.div`
+  width: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+`;
+
 export const Wrapper = styled.div`
   position: relative;
-  width: 100%;
-  height: 200px;
-  padding: 30px 130px;
-  background-color: #f5f7f2;
+  width: 90rem;
+  height: 180px;
+  padding: 2rem;
+  margin: 2rem 0;
   display: flex;
   justify-content: space-between;
 `;
@@ -46,21 +53,23 @@ export const TopButton = styled.button`
 export const LogoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  color: white;
 `;
 export const Logo = styled.img`
-  width: 8.63rem;
-  height: 2.8125rem;
   margin-bottom: 20px;
+  width: 8.75rem;
+  height: 4.125rem;
 `;
 export const LogoCopyWrite = styled.div`
   font-size: 0.7rem;
+  color: rgba(196, 196, 196, 1);
 `;
 
 // Footer Menu
 export const MenuInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  color: white;
 `;
 
 export const MenuWrapper = styled.ul`
@@ -69,13 +78,13 @@ export const MenuWrapper = styled.ul`
 `;
 export const Menu = styled.li`
   margin-right: 20px;
-  border-right: 1px solid black;
+  border-right: 1px solid white;
   padding-right: 20px;
   cursor: pointer;
   &:last-of-type {
     border: none;
   }
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.1rem;
 `;
 
@@ -85,7 +94,7 @@ export const Info = styled.div`
   margin-bottom: 10px;
   font-weight: 400;
   font-size: 0.9rem;
-  color: #424242;
+  color: rgba(196, 196, 196, 1);
 `;
 
 // Footer 고객센터
@@ -93,14 +102,19 @@ export const CSWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  color: white;
+  font-weight: 600;
 `;
 export const CSNumber = styled.div`
   margin-bottom: 20px;
 `;
 export const CSChat = styled.button`
-  width: 7.8rem;
-  height: 2.1rem;
-  border: 1px solid #0fbaa3;
-  background-color: #f5f7f2;
-  border-radius: 0.25rem;
+  width: 6rem;
+  height: 2rem;
+  border: 1px solid white;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: black;
+  border-radius: 2rem;
+  color: white;
 `;
