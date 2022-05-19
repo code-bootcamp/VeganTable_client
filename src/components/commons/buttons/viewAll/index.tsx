@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 const Button = styled.button`
   display: flex;
@@ -18,10 +19,12 @@ const Button = styled.button`
 
 export default function ViewAllButton(props) {
   return (
-    <Button>
-      {props.title}
-      <img src="/img/bestRecipe/icon-arrow-right-02.svg" />
-    </Button>
+    <Link href={props.href}>
+      <Button>
+        <a>{props.title}</a>
+        <img src="/img/bestRecipe/icon-arrow-right-02.svg" />
+      </Button>
+    </Link>
   );
 }
 

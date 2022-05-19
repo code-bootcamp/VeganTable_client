@@ -1,7 +1,8 @@
 import SubmitButton from "../../../commons/buttons/submit";
 import UserInput from "../../../commons/inputs";
 import Navigation02 from "../../../commons/navigation/02";
-import MyPageSidebar from "../sidebar/MyPageSidebar.container";
+import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container";
+import MyPageTitleBar from "../../../commons/titleBars/01";
 import * as My from "./MyPageEdit.styles";
 
 export default function MyPageEditUI() {
@@ -12,13 +13,15 @@ export default function MyPageEditUI() {
       <My.Wrapper>
         <MyPageSidebar />
         <My.EditWrapper>
-          <My.TitleWrapper>
-            <My.Title>회원정보 수정</My.Title>
-            <My.SignOut>회원탈퇴</My.SignOut>
-          </My.TitleWrapper>
+          <MyPageTitleBar title={"회원정보수정"} />
+
           <My.ProfileWrapper>
             <My.FlexRow>
-              <My.Image src="/img/myPage/icon-myProfile.svg" />
+              <My.ImageWrapper>
+                <My.Image src="/img/myPage/icon-myProfile.svg" />
+                <My.ImageButton>프로필 사진 변경</My.ImageButton>
+              </My.ImageWrapper>
+
               <My.FlexColumn>
                 <My.InputWrapper>
                   <My.Label>닉네임</My.Label>
@@ -86,13 +89,13 @@ export default function MyPageEditUI() {
           </My.ProfileWrapper>
 
           <My.ProfileWrapper>
-            <My.ExpertTitleWrapper>
+            <My.TitleWrapper>
               <My.Title>전문가 등록하기</My.Title>
               <p>
                 전문가 등록하기를 원하시면 관련 자격증 또는 전문가 인증이 가능한
                 링크를 입력하세요.
               </p>
-            </My.ExpertTitleWrapper>
+            </My.TitleWrapper>
             <My.InputWrapper>
               <My.Label>자격증 등록</My.Label>
               <UserInput placeholder={"이미지 업로드"} />

@@ -20,6 +20,11 @@ const HIDDEN_BANNER = [
   "/signUp",
   "/myPage",
   "/myPage/edit",
+  "/myPage/recent",
+  "/myPage/wish",
+  "/myPage/myRecipe",
+  "/myPage/subscribe",
+  "/myPage/qna",
   "/typeCheck",
   "/recipe",
 ];
