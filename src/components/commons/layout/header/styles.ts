@@ -5,7 +5,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 6.25rem;
+  height: 5.75rem;
 `;
 
 export const Wrapper = styled.div`
@@ -19,6 +19,7 @@ export const Wrapper = styled.div`
 export const LogoWrapper = styled.div``;
 export const Logo = styled.img`
   height: 3rem;
+  cursor: pointer;
 `;
 
 export const MenuWrapper = styled.ul`
@@ -63,6 +64,7 @@ export const UserWrapper = styled.ul`
 
 export const HeaderIcon = styled.img`
   height: 2rem;
+  cursor: pointer;
 `;
 
 export const AlertIcon = styled.div`
