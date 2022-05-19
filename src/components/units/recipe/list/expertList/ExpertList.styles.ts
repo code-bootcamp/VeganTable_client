@@ -50,6 +50,7 @@ export const RecipeBox = styled.div`
   margin-right: 1.5rem;
   height: auto;
   position: relative;
+  cursor: pointer;
 `;
 
 export const RecipeImg = styled.img`
