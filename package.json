@@ -30,11 +30,13 @@
     "react-slick": "^0.28.1",
     "recoil": "^0.7.2",
     "slick-carousel": "^1.8.1",
+    "uuid": "^8.3.2",
     "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/react": "^17.0.43",
     "@types/react-slick": "^0.23.8",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.16.0",
     "@typescript-eslint/parser": "^5.16.0",
     "eslint": "^7.32.0",
