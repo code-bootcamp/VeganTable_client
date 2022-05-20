@@ -104,7 +104,7 @@ export const FlexColumn = styled.div`
   flex-direction: column;
 `;
 
-export const ButtonGray = styled.button`
+const Button = styled.button`
   width: 13.75rem;
   height: 4rem;
   border: none;
@@ -112,22 +112,16 @@ export const ButtonGray = styled.button`
   padding: 20px;
   font-weight: 500;
   font-size: 1rem;
-  background-color: #c4c4c4;
-  color: #737373;
   cursor: pointer;
 `;
 
-export const ButtonGreen = styled.button`
-  width: 13.75rem;
-  height: 4rem;
-  border: none;
-  border-radius: 2rem;
-  padding: 20px;
-  font-weight: 500;
-  font-size: 1rem;
+export const ButtonGray = styled(Button)`
+  background-color: #c4c4c4;
+  color: #737373;
+`;
+export const ButtonGreen = styled(Button)`
   background-color: #0fbaa3;
   color: #ffffff;
-  cursor: pointer;
 `;
 
 export const Pass = styled.div`

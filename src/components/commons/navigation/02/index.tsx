@@ -2,10 +2,9 @@ import { useState } from "react";
 import * as Nav from "./styles";
 
 export default function Navigation02() {
-  const [isHover, setIsHover] = useState(false);
   const [isPicked, setIsPicked] = useState("");
 
-  const onClickVeganType = (el) => (event) => {
+  const onClickVeganType = (el) => () => {
     setIsPicked(el.name);
   };
 
@@ -51,17 +50,18 @@ export default function Navigation02() {
   return (
     <Nav.Wrapper>
       {VEGAN_TYPE.map((el) => (
-        <Nav.VeganType key={el.name} onClick={onClickVeganType(el)}>
-          {isPicked === el.name ? (
-            <Nav.Circle style={{ border: "2px solid #0FBAA3" }}>
-              <Nav.VeganTypeImg src={el.hover} />
-            </Nav.Circle>
-          ) : (
-            <Nav.Circle>
-              <Nav.VeganTypeImg src={el.image} />
-            </Nav.Circle>
-          )}
+        <Nav.VeganType
+          key={el.name}
+          onClick={onClickVeganType(el)}
+          image={el.image}
+          hover={el.hover}
+          isPicked={isPicked === el.name}
+        >
+          <Nav.Circle>
+            <Nav.VeganTypeImg />
+          </Nav.Circle>
           <Nav.VeganTypeName>{el.name}</Nav.VeganTypeName>
+
           <Nav.VeganTypeEnName>{el.En}</Nav.VeganTypeEnName>
         </Nav.VeganType>
       ))}
