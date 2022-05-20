@@ -27,16 +27,21 @@ export default function RecipeDetailUI() {
 
           <RecipeDetail.Contents>
             <h2>준비재료</h2>
+            <RecipeDetail.Ingredient>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el) => (
+                <span key={el}>멸치 1컵(30g)</span>
+              ))}
+            </RecipeDetail.Ingredient>
             <h2>요리순서</h2>
             {[1, 2, 3, 4].map((el) => (
               <RecipeDetail.Order key={el}>
                 <span>Step {el}</span>
-                <div>
+                <RecipeDetail.ImageWrapper>
                   <img
                     src={`/img/recipeDetail/img-recipeDetail-0${el}.png`}
                     alt=""
                   />
-                </div>
+                </RecipeDetail.ImageWrapper>
 
                 <p>
                   멸치를 넣고 공간이 넉넉한 접시 준비 잔멸치와 견과류,

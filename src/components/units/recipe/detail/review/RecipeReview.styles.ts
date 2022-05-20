@@ -84,10 +84,40 @@ export const CommentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 2.5rem 0;
+  border-bottom: 1px solid #c4c4c4;
 `;
 
 export const Comment = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 2rem;
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    word-break: keep-all;
+    color: #848484;
+
+    & > span {
+      padding: 0 5px;
+      font-size: 0.75rem;
+    }
+
+    & > span:nth-of-type(2) {
+      color: #0fbaa3;
+    }
+
+    & > span:nth-of-type(n + 2) {
+      border-left: 1px solid #848484;
+    }
+  }
+`;
+
+export const Recommend = styled.div`
+  color: #848484;
+`;
+
+export const Pagination = styled.div`
+  padding: 2.5rem 0;
 `;

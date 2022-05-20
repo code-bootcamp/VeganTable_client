@@ -42,8 +42,6 @@ export const Wrapper = styled.div`
     .slick-active {
       button::before {
         color: #0fbaa3;
-        border: 1px solid #0fbaa3;
-        border-radius: 50%;
       }
     }
   }
