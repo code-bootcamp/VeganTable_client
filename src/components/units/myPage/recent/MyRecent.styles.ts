@@ -39,6 +39,7 @@ export const Menu = styled.li`
   }
   & h2 {
     padding: 0.4rem;
+    font-weight: 500;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -1,3 +1,8 @@
+import { CheckboxProps, withStyles } from "@material-ui/core";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
+import Checkbox from "@mui/material/Checkbox";
+import { useEffect, useState } from "react";
 import SubmitButton from "../../../commons/buttons/submit";
 import UserInput from "../../../commons/inputs";
 import Navigation02 from "../../../commons/navigation/02";
@@ -5,6 +10,23 @@ import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container"
 import * as My from "./MyPageEdit.styles";
 
 export default function MyPageEditUI() {
+  const PolicyCheckbox = withStyles({
+    root: {
+      color: "#c4c4c4",
+    },
+    checked: { color: "#0fbaa3" },
+  })((props: CheckboxProps) => <Checkbox color="default" {...props} />);
+
+  const [checked, setChecked] = useState(true);
+
+  const handleCheck = (e: any) => {
+    setChecked(e.target.checked);
+  };
+
+  useEffect(() => {
+    setChecked(false);
+  }, []);
+
   const isActive = true;
 
   return (
@@ -58,7 +80,15 @@ export default function MyPageEditUI() {
               <UserInput placeholder={"aa@aa.com"} disabled={true} />
             </My.InputWrapper>
             <My.InputWrapper>
-              <My.Label />○<span>정보성 메일 수신에 동의합니다.</span>
+              <My.Label />
+              <PolicyCheckbox
+                id="checkbox"
+                icon={<RadioButtonUncheckedIcon />}
+                checkedIcon={<CheckCircleIcon />}
+                checked={checked}
+                onChange={handleCheck}
+              />
+              정보성 메일 수신에 동의합니다.
             </My.InputWrapper>
             <My.InputWrapper>
               <My.Label>새 비밀번호</My.Label>
