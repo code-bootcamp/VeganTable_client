@@ -44,12 +44,26 @@ export const ImageWrapper = styled.div`
   & > img:nth-of-type(1) {
     width: 100%;
     max-width: 782px;
+    opacity: 0;
+    transition: all 2.5s ease;
+    transition-delay: 0.1s;
+  }
+
+  &.isActive > img:nth-of-type(1) {
+    opacity: 1;
     transform: translateX(10%);
   }
+
   & > img:nth-of-type(2) {
     z-index: 2;
     width: 100%;
     max-width: 673px;
+    opacity: 0;
+    transition: all 2.5s ease;
+  }
+
+  &.isActive > img:nth-of-type(2) {
+    opacity: 1;
     transform: translateY(15%);
   }
 `;
@@ -62,7 +76,6 @@ export const ContentsText = styled.div`
   transform: translateY(0%);
   opacity: 0;
   transition: all 2.5s ease;
-  transition-delay: 0.5s;
 
   &.isActive {
     transform: translateY(-70%);

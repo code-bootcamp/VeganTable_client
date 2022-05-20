@@ -1,7 +1,11 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
+  margin: 0 auto;
+  width: 100%;
+  max-width: 585px;
   & > h2 {
+    text-align: center;
     font-weight: 500;
   }
 `;
@@ -10,7 +14,6 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
 `;
 
 export const HeadText = styled.div`
@@ -40,6 +43,51 @@ export const AlignType = styled.ul`
     &:last-of-type {
       padding-left: 1rem;
       border: none;
+      color: rgba(0, 0, 0, 0.5);
     }
   }
+`;
+
+export const ReviewImagesWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 3.25rem;
+  border-bottom: 1px solid #c4c4c4;
+
+  & > div {
+    border-radius: 2rem;
+    padding-right: 1rem;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+export const NextButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.55rem 1rem;
+  background: #ffffff;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: #464646;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+`;
+
+export const CommentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 0;
+`;
+
+export const Comment = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 2rem;
 `;
