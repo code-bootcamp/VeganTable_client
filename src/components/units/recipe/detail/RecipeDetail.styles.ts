@@ -107,3 +107,20 @@ export const Order = styled.div`
     text-align: center;
   }
 `;
+
+export const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+export const Ingredient = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+
+  & > span {
+    flex: 1 0 20%;
+  }
+`;

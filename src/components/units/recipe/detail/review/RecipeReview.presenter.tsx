@@ -1,3 +1,4 @@
+import Pagination02 from "../../../../commons/pagination/02/Pagination02";
 import * as Review from "./RecipeReview.styles";
 
 export default function RecipeReviewUI() {
@@ -39,22 +40,27 @@ export default function RecipeReviewUI() {
           <span>{">"}</span>
         </Review.NextButton>
       </Review.ReviewImagesWrapper>
-      <Review.CommentWrapper>
-        <Review.Comment>
-          <p>
-            멸치를 넣고 공간이 넉넉한 접시 준비 잔멸치와 견과류, 포도씨유를 넣고
-            잘 섞어주세요. 전자레인지에 1분간 조리해주세요.
-          </p>
-          <div>
-            <span>iamye****</span>
-            <span>비건</span>
-            <span>2일전</span>
-          </div>
-        </Review.Comment>
-        <div>
-          <span>후기가 도움 되었어요! 👍</span>
-        </div>
-      </Review.CommentWrapper>
+      {[1, 2, 3].map((el) => (
+        <Review.CommentWrapper key={el}>
+          <Review.Comment>
+            <p>
+              멸치를 넣고 공간이 넉넉한 접시 준비 잔멸치와 견과류, 포도씨유를
+              넣고 잘 섞어주세요. 전자레인지에 1분간 조리해주세요.
+            </p>
+            <div>
+              <span>iamye****</span>
+              <span>비건</span>
+              <span>2일전</span>
+            </div>
+          </Review.Comment>
+          <Review.Recommend>
+            <span>후기가 도움 되었어요! 👍</span>
+          </Review.Recommend>
+        </Review.CommentWrapper>
+      ))}
+      <Review.Pagination>
+        <Pagination02 />
+      </Review.Pagination>
     </Review.Container>
   );
 }

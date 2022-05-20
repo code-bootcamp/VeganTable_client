@@ -10,6 +10,9 @@ export default function RecipeListPage() {
       <button onClick={() => router.push("/recipe/new")}>
         레시피 등록하기
       </button>
+      <button onClick={() => router.push("/recipe/detail")}>
+        레시피 상세보기페이지
+      </button>
     </>
   );
 }
