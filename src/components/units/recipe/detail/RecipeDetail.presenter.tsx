@@ -2,14 +2,17 @@ import RecipeDetailMenu from "./menu/RecipeDetailMenu.container";
 import * as RecipeDetail from "./RecipeDetail.styles";
 import Slider01 from "../../../../components/commons/sliders/01";
 import RecipeReview from "../detail/review/RecipeReview.container";
+import { useRouter } from "next/router";
 
 export default function RecipeDetailUI() {
+  const router = useRouter();
+
   return (
     <>
       <RecipeDetail.Container>
         <RecipeDetail.Wrapper>
           <RecipeDetail.TopWrapper>
-            <RecipeDetail.BackButton>
+            <RecipeDetail.BackButton onClick={() => router.push("/recipe")}>
               <img src="/img/recipeDetail/icon-arrow-left.svg" alt="" />
               목록으로
             </RecipeDetail.BackButton>
@@ -28,7 +31,7 @@ export default function RecipeDetailUI() {
           <RecipeDetail.Contents>
             <h2>준비재료</h2>
             <RecipeDetail.Ingredient>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el) => (
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((el) => (
                 <span key={el}>멸치 1컵(30g)</span>
               ))}
             </RecipeDetail.Ingredient>
