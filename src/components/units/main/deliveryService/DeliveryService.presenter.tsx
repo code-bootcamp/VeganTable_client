@@ -18,15 +18,15 @@ export default function DeliveryServiceUI() {
         </DeliveryService.HeadText>
         <DeliveryService.Contents>
           <DeliveryService.ImageContainer>
-            <DeliveryService.ImageWrapper>
+            <DeliveryService.ImageWrapper
+              ref={ref}
+              className={inView ? "isActive" : ""}
+            >
               <img src="/img/deliveryService/img-deliveryService-01.png" />
               <img src="/img/deliveryService/img-deliveryService-02.png" />
             </DeliveryService.ImageWrapper>
           </DeliveryService.ImageContainer>
-          <DeliveryService.ContentsText
-            ref={ref}
-            className={inView ? "isActive" : ""}
-          >
+          <DeliveryService.ContentsText className={inView ? "isActive" : ""}>
             <span></span>
             <span>채식한상 밀키트로</span>
             <span>가볍게 아침식사 해결하세요</span>
