@@ -98,6 +98,8 @@ export default function TypeCheck() {
                 <Type.VeganType
                   key={i}
                   onClick={onClickVeganType(el)}
+                  hover={el.hover}
+                  image={el.image}
                   isPicked={isPicked === el.name}
                 >
                   <Type.VeganTypeImgCircle
@@ -105,16 +107,12 @@ export default function TypeCheck() {
                     image={el.image}
                     hover={el.hover}
                   >
-                    <Type.VeganTypeImg
-                      image={el.image}
-                      hover={el.hover}
-                      isPicked={isPicked === el.name}
-                    />
+                    <Type.VeganTypeImg />
                   </Type.VeganTypeImgCircle>
                   <Type.VeganTypeName>{el.name}</Type.VeganTypeName>
                   <Type.VeganTypeEnName>{el.enName}</Type.VeganTypeEnName>
-                  <Type.VeganTypeDetail isPicked={isPicked === el.name}>
-                    {el.eat}
+                  <Type.VeganTypeDetail>
+                    <p>{el.eat}</p>
                     <p>{el.ban}</p>
                   </Type.VeganTypeDetail>
                 </Type.VeganType>
