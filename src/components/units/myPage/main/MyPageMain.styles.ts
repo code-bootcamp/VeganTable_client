@@ -132,12 +132,12 @@ export const Menu = styled.li`
   }
 
   & > img {
-    width: 13.5rem;
-    height: 13.5rem;
+    width: 100%;
   }
 
   & > h2 {
     padding: 0.4rem;
+    font-weight: 500;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
