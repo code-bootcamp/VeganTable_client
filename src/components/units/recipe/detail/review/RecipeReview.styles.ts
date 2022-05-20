@@ -5,6 +5,7 @@ export const Container = styled.div`
   width: 100%;
   max-width: 585px;
   & > h2 {
+    padding-bottom: 2.56rem;
     text-align: center;
     font-weight: 500;
   }
@@ -17,6 +18,7 @@ export const Wrapper = styled.div`
 `;
 
 export const HeadText = styled.div`
+  padding-bottom: 2.43rem;
   & > span {
     padding-right: 1rem;
     font-weight: 500;

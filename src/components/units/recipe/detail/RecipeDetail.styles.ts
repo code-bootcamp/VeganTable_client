@@ -18,6 +18,7 @@ export const TopWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  padding-top: 2.18rem;
   width: 100%;
 `;
 
@@ -40,23 +41,13 @@ export const SliderWrapper = styled.div`
 `;
 
 export const MenuWrapper = styled.div`
-  position: relative;
+  position: sticky;
+  overflow-y: auto;
+  top: 0;
   padding: 3rem 1.5rem;
-  width: 500px;
-  height: 100%;
+  width: 40%;
+  height: 100vh;
   box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.25);
-
-  // 스크롤 내리면 active 발듕!
-  .active {
-    position: fixed;
-    top: 0;
-    right: 0;
-    padding: 1rem 2rem;
-    background: #ffffff;
-    height: 100%;
-    box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.25);
-    z-index: 3;
-  }
 `;
 export const MenuInnerWrapper = styled.div``;
 
@@ -65,7 +56,11 @@ export const Navigation = styled.ul`
   justify-content: center;
   align-items: center;
   margin-top: 7rem;
+  position: sticky;
   width: 100%;
+  top: 0;
+  z-index: 9;
+  background: #ffffff;
   border: 1px solid #c4c4c4;
 
   & > li {
@@ -82,6 +77,7 @@ export const Navigation = styled.ul`
 
 export const Contents = styled.div`
   & > h2 {
+    padding-top: 4.625rem;
     padding-bottom: 4rem;
     text-align: center;
     font-weight: 500;
@@ -118,9 +114,10 @@ export const Ingredient = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  text-align: center;
   width: 100%;
 
   & > span {
-    flex: 1 0 20%;
+    flex: 1 0 25%;
   }
 `;
