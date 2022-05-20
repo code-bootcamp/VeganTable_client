@@ -7,6 +7,12 @@ export const Wrapper = styled.div`
   padding-top: 1.5rem;
 `;
 
+interface INavigation02Props {
+  isPicked: boolean;
+  hover: string;
+  image: string;
+}
+
 // prettier-ignore
 export const VeganType = styled.li`
   display: flex;
@@ -15,7 +21,7 @@ export const VeganType = styled.li`
   width: 6.125rem;
   cursor: pointer;
   & > div {
-    border: 2px solid ${(props) => (props.isPicked ? "#0fbaa3" : "#7f7f7f")};
+    border: 2px solid ${(props: INavigation02Props) => (props.isPicked ? "#0fbaa3" : "#7f7f7f")};
   }
 
   & > div > div {

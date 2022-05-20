@@ -1,4 +1,5 @@
 import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container";
+import Slider02 from "../../../commons/sliders/02";
 import * as My from "./MySubscribe.styles";
 export default function MySubscribeUI() {
   return (
@@ -19,6 +20,7 @@ export default function MySubscribeUI() {
 
           <My.PayHistory>
             <My.Title>결제 내역</My.Title>
+            <Slider02 />
           </My.PayHistory>
 
           <My.Pay>
