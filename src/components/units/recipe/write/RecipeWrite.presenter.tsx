@@ -1,7 +1,7 @@
 import Editor01 from "../../../commons/editors/01";
 import * as RecipeWrite from "./RecipeWrite.styles";
 import { useRouter } from "next/router";
-import RecipeDetailMenu from "../detail/menu/RecipeDetailMenu.container";
+import RecipeWriteMenu from "./menu/RecipeWriteMenu.container";
 
 export default function RecipeWriteUI() {
   const router = useRouter();
@@ -33,9 +33,7 @@ export default function RecipeWriteUI() {
         </RecipeWrite.Wrapper>
 
         <RecipeWrite.MenuWrapper>
-          <RecipeWrite.MenuInnerWrapper>
-            <RecipeDetailMenu />
-          </RecipeWrite.MenuInnerWrapper>
+          <RecipeWriteMenu />
         </RecipeWrite.MenuWrapper>
       </RecipeWrite.Container>
     </>

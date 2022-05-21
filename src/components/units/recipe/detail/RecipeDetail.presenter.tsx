@@ -60,9 +60,7 @@ export default function RecipeDetailUI() {
         </RecipeDetail.Wrapper>
 
         <RecipeDetail.MenuWrapper>
-          <RecipeDetail.MenuInnerWrapper>
-            <RecipeDetailMenu />
-          </RecipeDetail.MenuInnerWrapper>
+          <RecipeDetailMenu />
         </RecipeDetail.MenuWrapper>
       </RecipeDetail.Container>
     </>

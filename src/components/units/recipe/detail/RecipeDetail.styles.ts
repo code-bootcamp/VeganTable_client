@@ -49,7 +49,6 @@ export const MenuWrapper = styled.div`
   height: 100vh;
   box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.25);
 `;
-export const MenuInnerWrapper = styled.div``;
 
 export const Navigation = styled.ul`
   display: flex;
