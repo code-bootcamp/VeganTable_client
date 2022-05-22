@@ -28,13 +28,13 @@ export const HeadText = styled.div`
 
 export const TagsWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding-top: 2.375rem;
+  padding: 2.625rem 0;
   width: 100%;
 
   & > button {
     padding: 0.81rem 4.125rem;
+    margin-right: 1.5rem;
     border-radius: 40px;
     font-weight: 500;
     letter-spacing: -0.05em;
@@ -54,21 +54,101 @@ export const TagsWrapper = styled.div`
   }
 `;
 
-export const RecipeItems = styled.div`
+export const RecommendRecipeItems = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-top: 3.56rem;
+  width: 100%;
+`;
+
+export const RecipeItem = styled.div`
+  padding-right: 1.68rem;
+  &:last-of-type {
+    padding-right: 0;
+  }
+
+  h1 {
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 0.85rem;
+    color: #262626;
+  }
 `;
 
 export const RecipeItemImageWrapper = styled.div`
-  width: 464px;
-  height: 464px;
-  padding-bottom: 1.81rem;
+  position: relative;
+  height: 342px;
 
-  img {
+  & > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 32px;
+    border-radius: 24px;
+  }
+`;
+
+export const IconBookmark = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+
+  right: 0;
+  transform: translate(-50%, 50%);
+
+  & > span {
+    color: #ffffff;
+    font-size: 0.75rem;
+  }
+`;
+
+// 태그 : 비건 타입 [start]
+export const Tags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const Tag = styled.span`
+  padding: 2px 0;
+  border-radius: 1rem;
+  margin-right: 4px;
+  margin-top: 1.25rem;
+  color: #ffffff;
+  font-size: 0.875rem;
+  width: 5.125rem;
+  display: flex;
+  justify-content: center;
+`;
+
+export const TagVegan = styled(Tag)`
+  background: #0fbaa3;
+`;
+export const TagLacto = styled(Tag)`
+  background: #cee135;
+`;
+export const TagOvo = styled(Tag)`
+  background: #fcd921;
+`;
+export const TagLactoOvo = styled(Tag)`
+  background: #b991fa;
+`;
+export const TagPesco = styled(Tag)`
+  background: #ef7c90;
+`;
+export const TagPollo = styled(Tag)`
+  background: #fe974d;
+`;
+// 태그 : 비건 타입 [end]
+
+export const RecipeItemTextWrapper = styled.div`
+  & > h1 {
+    font-weight: 500;
+    padding-top: 2rem;
+  }
+
+  & > p {
+    padding-top: 0.5rem;
   }
 `;

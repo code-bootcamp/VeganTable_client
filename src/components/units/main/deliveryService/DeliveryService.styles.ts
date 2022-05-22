@@ -46,7 +46,7 @@ export const ImageWrapper = styled.div`
     max-width: 782px;
     opacity: 0;
     transition: all 2.5s ease;
-    transition-delay: 0.1s;
+    transform: translateX(-30%);
   }
 
   &.isActive > img:nth-of-type(1) {
@@ -60,11 +60,12 @@ export const ImageWrapper = styled.div`
     max-width: 673px;
     opacity: 0;
     transition: all 2.5s ease;
+    transform: translate(20%, 15%);
   }
 
   &.isActive > img:nth-of-type(2) {
     opacity: 1;
-    transform: translateY(15%);
+    transform: translate(0%, 15%);
   }
 `;
 export const ContentsText = styled.div`

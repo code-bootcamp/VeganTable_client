@@ -14,7 +14,7 @@ export default function LayoutBanner() {
     slidesToScroll: 1,
     autoplaySpeed: 3000,
     arrows: false,
-    autoplay: true,
+    autoplay: false,
     cssEase: "linear",
     beforeChange: (current, next) => setSlideIndex(next),
   };
