@@ -112,10 +112,9 @@ export const TextTop = styled.div`
 `;
 
 export const SliderImage1 = styled.div`
-  position: relative;
   width: 750px;
   height: auto;
-  transform: translate(20%, -15%);
+  transform: translate(15%, 10%);
 
   img {
     width: 100%;
@@ -125,8 +124,8 @@ export const SliderImage1 = styled.div`
 
   // 초록색 동그라미
   & > span:nth-of-type(1) {
-    top: 25rem;
-    right: 8rem;
+    top: 15%;
+    right: 20%;
     width: 26px;
     height: 26px;
     border: 5px solid #cfe869;
@@ -135,8 +134,8 @@ export const SliderImage1 = styled.div`
   }
   // 보라색 동그라미
   & > span:nth-of-type(2) {
-    top: 20rem;
-    right: 12rem;
+    top: 0;
+    right: 30%;
     width: 16px;
     height: 16px;
     border: 4px solid #b991fa;
@@ -145,8 +144,8 @@ export const SliderImage1 = styled.div`
   }
   // 보라색 동그라미
   & > span:nth-of-type(3) {
-    left: -2.5rem;
-    bottom: 9.5rem;
+    left: -5%;
+    bottom: 30%;
     width: 84px;
     height: 84px;
     border: 4px solid #b991fa;
@@ -155,8 +154,8 @@ export const SliderImage1 = styled.div`
   }
   // 초록색 동그라미
   & > span:nth-of-type(4) {
-    left: -5rem;
-    bottom: 8rem;
+    left: -10%;
+    bottom: 25%;
     width: 29px;
     height: 29px;
     border: 4px solid #cfe869;
@@ -169,7 +168,7 @@ export const SliderImage1 = styled.div`
   }
 
   & > div:nth-of-type(1) {
-    top: 0;
+    top: -50%;
     left: -10%;
     width: 300px;
     height: auto;
@@ -177,8 +176,9 @@ export const SliderImage1 = styled.div`
   }
 
   & > div:nth-of-type(2) {
+    z-index: -1;
     bottom: -30%;
-    right: -65%;
+    right: -60%;
     width: 600px;
     height: auto;
     animation: ${Rotation} 30s 1s infinite ease-in-out alternate;
