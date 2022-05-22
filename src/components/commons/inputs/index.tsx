@@ -5,6 +5,7 @@ interface IUserInputProps {
   inputSize?: string | undefined;
   disabled?: boolean;
   onChange?: () => void;
+  type?: string | undefined;
 }
 
 const Input = styled.input`
@@ -23,6 +24,8 @@ export default function UserInput(props: IUserInputProps) {
       inputSize={props?.inputSize}
       onChange={props?.onChange}
       disabled={props.disabled}
+      type={props.type}
+      {...props.register}
     />
   );
 }

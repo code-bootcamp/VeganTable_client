@@ -13,3 +13,15 @@ export const CREATE_USER = gql`
     }
   }
 `;
+
+export const SEND_TOKEN_TO_SMS = gql`
+  mutation getToken($phone: String!) {
+    getToken(phone: $phone)
+  }
+`;
+
+export const CHECK_VALID_TOKEN = gql`
+  mutation checkValidToken($phone: String!, $token: String!) {
+    checkValidToken(phone: $phone, token: $token)
+  }
+`;

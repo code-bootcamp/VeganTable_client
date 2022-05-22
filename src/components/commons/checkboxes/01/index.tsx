@@ -6,6 +6,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 interface ICheckBox01Props {
   title?: String;
   onClick?: () => void;
+  onChange?: (e: any) => void;
+  id?: String;
+  checked?: boolean | undefined;
 }
 
 export default function CheckBox01(props: ICheckBox01Props) {
@@ -26,6 +29,8 @@ export default function CheckBox01(props: ICheckBox01Props) {
         icon={<RadioButtonUncheckedIcon color="secondary" />}
         checkedIcon={<CheckCircleIcon />}
         onClick={props.onClick}
+        onChange={props.onChange}
+        checked={props.checked}
       />
     </ThemeProvider>
   );
