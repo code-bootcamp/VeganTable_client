@@ -17,7 +17,7 @@ const PolicyCheckbox = withStyles({
   checked: { color: "#0fbaa3" },
 })((props: CheckboxProps) => <Checkbox color="default" {...props} />);
 
-export default function SignUpUI() {
+export default function SignUpUI(props) {
   const [checked, setChecked] = useState(true);
 
   const handleCheck = (e: any) => {
@@ -44,101 +44,112 @@ export default function SignUpUI() {
           <SignUp.HeaderWrapper>
             <SignUp.HeaderTitle>회원가입</SignUp.HeaderTitle>
           </SignUp.HeaderWrapper>
-          <SignUp.BodyWrapper>
-            <SignUp.BodyTitleWrapper>
-              <SignUp.BodyTitle>
-                <SignUp.SignUpTitle>01 약관동의</SignUp.SignUpTitle>
-                <SignUp.SignUpTitleOn>02 정보입력</SignUp.SignUpTitleOn>
-                <SignUp.SignUpTitle>03 가입완료</SignUp.SignUpTitle>
-              </SignUp.BodyTitle>
-              <SignUp.SignUpTitleUnderBarWrapper>
-                <SignUp.SignUpTitleUnderBar />
-                <SignUp.SignUpTitleUnderBarOn />
-                <SignUp.SignUpTitleUnderBar />
-              </SignUp.SignUpTitleUnderBarWrapper>
-            </SignUp.BodyTitleWrapper>
-            <SignUp.InputContentsWrapper>
-              <SignUp.InputContents>
-                <SignUp.InputTitleWrapper>이름</SignUp.InputTitleWrapper>
-                <SignUp.InputWrapper>
-                  <UserInput placeholder={"이름"} />
-                </SignUp.InputWrapper>
-              </SignUp.InputContents>
-              <SignUp.InputContents>
-                <SignUp.InputTitleWrapper>
-                  생년월일 / 성별
-                </SignUp.InputTitleWrapper>
-                <SignUp.InputWrapper>
-                  <UserInput
-                    placeholder={"생년월일 6글자"}
-                    inputSize={"medium"}
-                  />
-                  <SignUp.SelectWrapper>
-                    <SignUp.SexSelect>
-                      <option selected={true} disabled={true}>
-                        성별
-                      </option>
-                      <option value={"male"}>남자</option>
-                      <option value={"female"}>여자 </option>
-                    </SignUp.SexSelect>
-                  </SignUp.SelectWrapper>
-                </SignUp.InputWrapper>
-              </SignUp.InputContents>
-              <SignUp.InputContents>
-                <SignUp.InputTitleWrapper>이메일</SignUp.InputTitleWrapper>
-                <SignUp.InputWrapper>
-                  <UserInput placeholder={"이메일"} />
-                </SignUp.InputWrapper>
-              </SignUp.InputContents>
-              <SignUp.InputContents>
-                <SignUp.InputTitleWrapper>비밀번호</SignUp.InputTitleWrapper>
-                <SignUp.InputWrapper>
-                  <UserInput placeholder={"비밀번호"} />
-                </SignUp.InputWrapper>
-              </SignUp.InputContents>
-              <SignUp.InputContents>
-                <SignUp.InputTitleWrapper>
-                  비밀번호 확인
-                </SignUp.InputTitleWrapper>
-                <SignUp.InputWrapper>
-                  <UserInput placeholder={"비밀번호 확인"} />
-                </SignUp.InputWrapper>
-              </SignUp.InputContents>
-              <SignUp.InputContents>
-                <SignUp.InputTitleWrapper>휴대폰번호</SignUp.InputTitleWrapper>
-                <SignUp.InputWrapper>
-                  <UserInput placeholder={"-제외"} inputSize={"medium"} />
-                  <SignUp.PhoneNumberCertify>
-                    인증받기
-                  </SignUp.PhoneNumberCertify>
-                </SignUp.InputWrapper>
-              </SignUp.InputContents>
-              <SignUp.InputContents>
-                <SignUp.InputTitleWrapper></SignUp.InputTitleWrapper>
-                <SignUp.InputWrapper>
-                  <UserInput placeholder={"인증번호"} inputSize={"medium"} />
-                  <SignUp.PhoneNumberCertify>확인</SignUp.PhoneNumberCertify>
-                </SignUp.InputWrapper>
-              </SignUp.InputContents>
-            </SignUp.InputContentsWrapper>
-            <SignUp.CheckboxWrapper>
-              <PolicyCheckbox
-                id="checkbox"
-                icon={<RadioButtonUncheckedIcon />}
-                checkedIcon={<CheckCircleIcon />}
-                checked={checked}
-                onChange={handleCheck}
+          <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
+            <SignUp.BodyWrapper>
+              <SignUp.BodyTitleWrapper>
+                <SignUp.BodyTitle>
+                  <SignUp.SignUpTitle>01 약관동의</SignUp.SignUpTitle>
+                  <SignUp.SignUpTitleOn>02 정보입력</SignUp.SignUpTitleOn>
+                  <SignUp.SignUpTitle>03 가입완료</SignUp.SignUpTitle>
+                </SignUp.BodyTitle>
+                <SignUp.SignUpTitleUnderBarWrapper>
+                  <SignUp.SignUpTitleUnderBar />
+                  <SignUp.SignUpTitleUnderBarOn />
+                  <SignUp.SignUpTitleUnderBar />
+                </SignUp.SignUpTitleUnderBarWrapper>
+              </SignUp.BodyTitleWrapper>
+              <SignUp.InputContentsWrapper>
+                <SignUp.InputContents>
+                  <SignUp.InputTitleWrapper>이름</SignUp.InputTitleWrapper>
+                  <SignUp.InputWrapper>
+                    <UserInput placeholder={"이름"} />
+                  </SignUp.InputWrapper>
+                </SignUp.InputContents>
+                <SignUp.InputError>12312</SignUp.InputError>
+                <SignUp.InputContents>
+                  <SignUp.InputTitleWrapper>
+                    생년월일 / 성별
+                  </SignUp.InputTitleWrapper>
+                  <SignUp.InputWrapper>
+                    <UserInput
+                      placeholder={"생년월일 6글자"}
+                      inputSize={"medium"}
+                    />
+                    <SignUp.SelectWrapper>
+                      <SignUp.SexSelect>
+                        <option selected={true} disabled={true}>
+                          성별
+                        </option>
+                        <option value={"male"}>남자</option>
+                        <option value={"female"}>여자 </option>
+                      </SignUp.SexSelect>
+                    </SignUp.SelectWrapper>
+                  </SignUp.InputWrapper>
+                </SignUp.InputContents>
+                <SignUp.InputError>12312</SignUp.InputError>
+                <SignUp.InputContents>
+                  <SignUp.InputTitleWrapper>이메일</SignUp.InputTitleWrapper>
+                  <SignUp.InputWrapper>
+                    <UserInput placeholder={"이메일"} />
+                  </SignUp.InputWrapper>
+                </SignUp.InputContents>
+                <SignUp.InputError>12312</SignUp.InputError>
+                <SignUp.InputContents>
+                  <SignUp.InputTitleWrapper>비밀번호</SignUp.InputTitleWrapper>
+                  <SignUp.InputWrapper>
+                    <UserInput placeholder={"비밀번호"} />
+                  </SignUp.InputWrapper>
+                </SignUp.InputContents>
+                <SignUp.InputError>12312</SignUp.InputError>
+                <SignUp.InputContents>
+                  <SignUp.InputTitleWrapper>
+                    비밀번호 확인
+                  </SignUp.InputTitleWrapper>
+                  <SignUp.InputWrapper>
+                    <UserInput placeholder={"비밀번호 확인"} />
+                  </SignUp.InputWrapper>
+                </SignUp.InputContents>
+                <SignUp.InputError>12312</SignUp.InputError>
+                <SignUp.InputContents>
+                  <SignUp.InputTitleWrapper>
+                    휴대폰번호
+                  </SignUp.InputTitleWrapper>
+                  <SignUp.InputWrapper>
+                    <UserInput placeholder={"-제외"} inputSize={"medium"} />
+                    <SignUp.PhoneNumberCertify>
+                      인증받기
+                    </SignUp.PhoneNumberCertify>
+                  </SignUp.InputWrapper>
+                </SignUp.InputContents>
+                <SignUp.InputError>12312</SignUp.InputError>
+                <SignUp.InputContents>
+                  <SignUp.InputTitleWrapper></SignUp.InputTitleWrapper>
+                  <SignUp.InputWrapper>
+                    <UserInput placeholder={"인증번호"} inputSize={"medium"} />
+                    <SignUp.PhoneNumberCertify>확인</SignUp.PhoneNumberCertify>
+                  </SignUp.InputWrapper>
+                </SignUp.InputContents>
+                <SignUp.InputError>12312</SignUp.InputError>
+              </SignUp.InputContentsWrapper>
+              <SignUp.CheckboxWrapper>
+                <PolicyCheckbox
+                  id="checkbox"
+                  icon={<RadioButtonUncheckedIcon />}
+                  checkedIcon={<CheckCircleIcon />}
+                  checked={checked}
+                  onChange={handleCheck}
+                />
+                <SignUp.CheckboxLabel htmlFor="checkbox">
+                  정보성 메일 수신에 동의합니다.
+                </SignUp.CheckboxLabel>
+              </SignUp.CheckboxWrapper>
+              <SubmitButton
+                title={"가입하기"}
+                isActive={isActive}
+                onClick={onClickSubmit}
               />
-              <SignUp.CheckboxLabel htmlFor="checkbox">
-                정보성 메일 수신에 동의합니다.
-              </SignUp.CheckboxLabel>
-            </SignUp.CheckboxWrapper>
-          </SignUp.BodyWrapper>
-          <SubmitButton
-            title={"가입하기"}
-            isActive={isActive}
-            onClick={onClickSubmit}
-          />
+            </SignUp.BodyWrapper>
+          </form>
         </SignUp.Wrapper>
       )}
       {isSubmit && <SignUpComplete />}
