@@ -42,7 +42,7 @@ export const SignOut = styled.button`
 export const ExpertTitleWrapper = styled.div`
   display: flex;
   align-items: baseline;
-  padding-bottom: 2rem;
+  padding-bottom: 3.4375rem;
   width: 100%;
 
   & p {
@@ -106,7 +106,12 @@ export const ImageButton = styled.button`
 export const InputWrapper = styled.div`
   display: flex;
   align-items: center;
-  padding-bottom: 1rem;
+  padding-bottom: 1.5rem;
+
+  & > span {
+    font-weight: 600;
+    color: #464646;
+  }
 `;
 
 export const Label = styled.label`

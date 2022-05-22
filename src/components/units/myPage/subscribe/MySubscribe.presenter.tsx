@@ -1,3 +1,4 @@
+import NormalButton from "../../../commons/buttons/normal";
 import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container";
 import Slider02 from "../../../commons/sliders/02";
 import * as My from "./MySubscribe.styles";
@@ -33,7 +34,7 @@ export default function MySubscribeUI() {
                   <span className="cardNumber">1010-****-****-1010</span>
                 </span>
               </My.FlexColumn>
-              <My.ButtonGray>카드정보 등록 / 변경</My.ButtonGray>
+              <NormalButton title={"카드정보 등록 / 변경"} />
             </My.Contents>
           </My.Pay>
 
@@ -46,7 +47,7 @@ export default function MySubscribeUI() {
                   월 <span className="price">29,900</span>원
                 </span>
                 <p>주 1회 밀키트 정기 배송</p>
-                <My.ButtonGreen>구독하기</My.ButtonGreen>
+                <NormalButton title={"구독하기"} color={"green"} />
               </My.Basic>
               <My.Premium>
                 <h1>프리미엄</h1>
@@ -54,7 +55,7 @@ export default function MySubscribeUI() {
                   월 <span className="price">39,900</span>원
                 </span>
                 <p>주 2회 밀키트 정기 배송</p>
-                <My.ButtonGreen>구독하기</My.ButtonGreen>
+                <NormalButton title={"구독하기"} color={"green"} />
               </My.Premium>
             </My.FlexRow>
           </My.Pass>

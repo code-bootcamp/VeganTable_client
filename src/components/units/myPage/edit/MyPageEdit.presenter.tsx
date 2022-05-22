@@ -1,3 +1,4 @@
+import NormalButton from "../../../commons/buttons/normal";
 import SubmitButton from "../../../commons/buttons/submit";
 import CheckBox01 from "../../../commons/checkboxes/01";
 import UserInput from "../../../commons/inputs";
@@ -60,7 +61,8 @@ export default function MyPageEditUI() {
             </My.InputWrapper>
             <My.InputWrapper>
               <My.Label />
-              <CheckBox01 title={" 정보성 메일 수신에 동의합니다.     "} />
+              <CheckBox01 />
+              <span>정보성 메일 수신에 동의합니다.</span>
             </My.InputWrapper>
             <My.InputWrapper>
               <My.Label>새 비밀번호</My.Label>
@@ -73,18 +75,18 @@ export default function MyPageEditUI() {
             <My.InputWrapper>
               <My.Label>휴대폰 번호</My.Label>
               <UserInput placeholder={"010-0000-0000"} />
-              <My.Button>인증하기</My.Button>
+              <NormalButton title={"인증받기"} />
             </My.InputWrapper>
             <My.InputWrapper>
               <My.Label />
               <UserInput placeholder={"인증번호"} />
-              <My.Button>확인</My.Button>
+              <NormalButton title={"확인"} />
             </My.InputWrapper>
 
             <My.InputWrapper>
               <My.Label>주소</My.Label>
               <UserInput placeholder={"우편번호"} />
-              <My.Button>찾기</My.Button>
+              <NormalButton title={"찾기"} />
             </My.InputWrapper>
             <My.InputWrapper>
               <My.Label />
@@ -102,12 +104,12 @@ export default function MyPageEditUI() {
             <My.InputWrapper>
               <My.Label>자격증 등록</My.Label>
               <UserInput placeholder={"이미지 업로드"} />
-              <My.Button>등록하기</My.Button>
+              <NormalButton title={"등록하기"} />
             </My.InputWrapper>
             <My.InputWrapper>
               <My.Label>인증 링크 등록</My.Label>
               <UserInput placeholder={"URL"} />
-              <My.Button>등록하기</My.Button>
+              <NormalButton title={"등록하기"} />
             </My.InputWrapper>
           </My.ProfileWrapper>
           <My.ButtonWrapper>

@@ -14,7 +14,6 @@ const Input = styled.input`
   border: 1px solid #bfbfbf;
   border-radius: 2rem;
   padding: 30px;
-  margin-bottom: 10px;
 `;
 
 export default function UserInput(props: IUserInputProps) {
