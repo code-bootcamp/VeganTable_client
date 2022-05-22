@@ -5,17 +5,7 @@ import UserInput from "../../commons/inputs";
 import * as SignUp from "./SignUp.styles";
 import SignUpComplete from "./signUpComplete/SignUpComplete.container";
 import SignUpPolicy from "./signUpPolicy/SignUpPolicy.container";
-import { CheckboxProps, withStyles } from "@material-ui/core";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import Checkbox from "@mui/material/Checkbox";
-
-const PolicyCheckbox = withStyles({
-  root: {
-    color: "#c4c4c4",
-  },
-  checked: { color: "#0fbaa3" },
-})((props: CheckboxProps) => <Checkbox color="default" {...props} />);
+import CheckBox01 from "../../commons/checkboxes/01";
 
 export default function SignUpUI(props) {
   const [checked, setChecked] = useState(true);
@@ -29,17 +19,11 @@ export default function SignUpUI(props) {
   }, []);
 
   const [agreePolicy, setAgreePolicy] = useState(false);
-  const [isSubmit, setIsSubmit] = useState(false);
-  const isActive = checked;
-
-  const onClickSubmit = () => {
-    setIsSubmit((prev) => !prev);
-  };
 
   return (
     <SignUp.Container>
       {!agreePolicy && <SignUpPolicy setAgreePolicy={setAgreePolicy} />}
-      {agreePolicy && !isSubmit && (
+      {agreePolicy && !props.isSubmit && (
         <SignUp.Wrapper>
           <SignUp.HeaderWrapper>
             <SignUp.HeaderTitle>회원가입</SignUp.HeaderTitle>
@@ -62,10 +46,16 @@ export default function SignUpUI(props) {
                 <SignUp.InputContents>
                   <SignUp.InputTitleWrapper>이름</SignUp.InputTitleWrapper>
                   <SignUp.InputWrapper>
-                    <UserInput placeholder={"이름"} />
+                    <UserInput
+                      placeholder={"이름"}
+                      type={"text"}
+                      register={props.register("name")}
+                    />
                   </SignUp.InputWrapper>
                 </SignUp.InputContents>
-                <SignUp.InputError>12312</SignUp.InputError>
+                <SignUp.InputError>
+                  {props.formState.errors.name?.message}
+                </SignUp.InputError>
                 <SignUp.InputContents>
                   <SignUp.InputTitleWrapper>
                     생년월일 / 성별
@@ -74,6 +64,8 @@ export default function SignUpUI(props) {
                     <UserInput
                       placeholder={"생년월일 6글자"}
                       inputSize={"medium"}
+                      type={"text"}
+                      register={props.register("birth")}
                     />
                     <SignUp.SelectWrapper>
                       <SignUp.SexSelect>
@@ -86,37 +78,61 @@ export default function SignUpUI(props) {
                     </SignUp.SelectWrapper>
                   </SignUp.InputWrapper>
                 </SignUp.InputContents>
-                <SignUp.InputError>12312</SignUp.InputError>
+                <SignUp.InputError>
+                  {props.formState.errors.birth?.message}
+                </SignUp.InputError>
                 <SignUp.InputContents>
                   <SignUp.InputTitleWrapper>이메일</SignUp.InputTitleWrapper>
                   <SignUp.InputWrapper>
-                    <UserInput placeholder={"이메일"} />
+                    <UserInput
+                      placeholder={"이메일"}
+                      type={"text"}
+                      register={props.register("email")}
+                    />
                   </SignUp.InputWrapper>
                 </SignUp.InputContents>
-                <SignUp.InputError>12312</SignUp.InputError>
+                <SignUp.InputError>
+                  {props.formState.errors.email?.message}
+                </SignUp.InputError>
                 <SignUp.InputContents>
                   <SignUp.InputTitleWrapper>비밀번호</SignUp.InputTitleWrapper>
                   <SignUp.InputWrapper>
-                    <UserInput placeholder={"비밀번호"} />
+                    <UserInput
+                      placeholder={"비밀번호"}
+                      type={"password"}
+                      register={props.register("password")}
+                    />
                   </SignUp.InputWrapper>
                 </SignUp.InputContents>
-                <SignUp.InputError>12312</SignUp.InputError>
+                <SignUp.InputError>
+                  {props.formState.errors.password?.message}
+                </SignUp.InputError>
                 <SignUp.InputContents>
                   <SignUp.InputTitleWrapper>
                     비밀번호 확인
                   </SignUp.InputTitleWrapper>
                   <SignUp.InputWrapper>
-                    <UserInput placeholder={"비밀번호 확인"} />
+                    <UserInput
+                      placeholder={"비밀번호 확인"}
+                      type={"password"}
+                      register={props.register("passwordCheck")}
+                    />
                   </SignUp.InputWrapper>
                 </SignUp.InputContents>
-                <SignUp.InputError>12312</SignUp.InputError>
+                <SignUp.InputError>
+                  {props.formState.errors.passwordCheck?.message}
+                </SignUp.InputError>
                 <SignUp.InputContents>
                   <SignUp.InputTitleWrapper>
                     휴대폰번호
                   </SignUp.InputTitleWrapper>
                   <SignUp.InputWrapper>
-                    <UserInput placeholder={"-제외"} inputSize={"medium"} />
-                    <SignUp.PhoneNumberCertify>
+                    <UserInput
+                      placeholder={"-제외"}
+                      inputSize={"medium"}
+                      onChange={props.onChangeUserInputs("phone")}
+                    />
+                    <SignUp.PhoneNumberCertify onClick={props.onClickGetToken}>
                       인증받기
                     </SignUp.PhoneNumberCertify>
                   </SignUp.InputWrapper>
@@ -126,16 +142,19 @@ export default function SignUpUI(props) {
                   <SignUp.InputTitleWrapper></SignUp.InputTitleWrapper>
                   <SignUp.InputWrapper>
                     <UserInput placeholder={"인증번호"} inputSize={"medium"} />
-                    <SignUp.PhoneNumberCertify>확인</SignUp.PhoneNumberCertify>
+                    <SignUp.PhoneNumberCertify
+                      onClick={props.onClickCheckValid}
+                    >
+                      확인
+                    </SignUp.PhoneNumberCertify>
                   </SignUp.InputWrapper>
                 </SignUp.InputContents>
                 <SignUp.InputError>12312</SignUp.InputError>
               </SignUp.InputContentsWrapper>
+
               <SignUp.CheckboxWrapper>
-                <PolicyCheckbox
+                <CheckBox01
                   id="checkbox"
-                  icon={<RadioButtonUncheckedIcon />}
-                  checkedIcon={<CheckCircleIcon />}
                   checked={checked}
                   onChange={handleCheck}
                 />
@@ -144,15 +163,16 @@ export default function SignUpUI(props) {
                 </SignUp.CheckboxLabel>
               </SignUp.CheckboxWrapper>
               <SubmitButton
+                type="submit"
                 title={"가입하기"}
-                isActive={isActive}
-                onClick={onClickSubmit}
+                isActive={props.formState.isValid && checked}
+                onClick={props.onClickSubmit}
               />
             </SignUp.BodyWrapper>
           </form>
         </SignUp.Wrapper>
       )}
-      {isSubmit && <SignUpComplete />}
+      {props.isSubmit && <SignUpComplete />}
     </SignUp.Container>
   );
 }

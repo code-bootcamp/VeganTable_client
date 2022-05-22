@@ -2,7 +2,14 @@ import * as yup from "yup";
 
 export const SignUpSchema = yup.object({
   name: yup.string().required("이름을 입력해주세요."),
-  birth: yup.number().required("생년월일을 입력해주세요."),
+  birth: yup
+    .string()
+    .required("생년월일을 입력해주세요.")
+    .max(6, "6글자까지만 입력가능합니다.")
+    .matches(
+      /^(\(?\+?[0-9]*\)?)?[0-9_\-()]*$/,
+      "생년월일을 6글자로 숫자만 입력해주세요."
+    ),
   email: yup
     .string()
     .email("사용가능한 이메일 형식이 아닙니다.")

@@ -30,7 +30,7 @@ export const HeaderTitle = styled.h1`
 export const BodyWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40.75rem;
+  width: 45rem;
   height: 65rem;
   justify-content: center;
   align-items: center;
@@ -126,6 +126,8 @@ export const InputContentsWrapper = styled.ul`
 export const InputContents = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
+  width: 36rem;
 `;
 
 // 정보 입력 카테고리 부분
@@ -172,7 +174,7 @@ export const SexSelect = styled.select`
 `;
 
 // 휴대폰 인증 버튼
-export const PhoneNumberCertify = styled.button`
+export const PhoneNumberCertify = styled.div`
   width: 7.56rem;
   height: 3.93rem;
   border: 0;
@@ -180,6 +182,9 @@ export const PhoneNumberCertify = styled.button`
   background-color: #c4c4c4;
   margin-left: 0.5rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 // 정보성 메일 체크박스 부분
