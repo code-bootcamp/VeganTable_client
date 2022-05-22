@@ -125,6 +125,8 @@ export const ButtonGreen = styled(Button)`
 `;
 
 export const Pass = styled.div`
+  display: flex;
+  flex-direction: column;
   padding: 5.5rem 0;
 `;
 

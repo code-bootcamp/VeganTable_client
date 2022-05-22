@@ -10,9 +10,8 @@ const Button = styled.button`
   width: 29rem;
   height: 3.875rem;
   background-color: ${(props: ISubmitButtonProps) =>
-    props.isActive ? "#0fbaa3" : "#f9f9f9"};
-  border: 1px solid
-    ${(props: ISubmitButtonProps) => (props.isActive ? "#0fbaa3" : "#f9f9f9")};
+    props.isActive ? "#0fbaa3" : "#c4c4c4"};
+  border: none;
   border-radius: 2rem;
   color: white;
   font-weight: 700;

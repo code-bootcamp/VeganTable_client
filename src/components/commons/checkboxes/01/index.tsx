@@ -27,7 +27,6 @@ export default function CheckBox01(props: ICheckBox01Props) {
         checkedIcon={<CheckCircleIcon />}
         onClick={props.onClick}
       />
-      {props.title}
     </ThemeProvider>
   );
 }
