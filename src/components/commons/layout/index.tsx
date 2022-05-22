@@ -28,6 +28,7 @@ const HIDDEN_BANNER = [
   "/typeCheck",
   "/recipe",
   "/recipe/detail", // 디테일 페이지 임시
+  "/subscribe",
 ];
 
 export default function Layout(props: LayoutProps) {
