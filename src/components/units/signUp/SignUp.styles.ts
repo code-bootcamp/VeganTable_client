@@ -31,7 +31,7 @@ export const BodyWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 40.75rem;
-  height: 54.75rem;
+  height: 65rem;
   justify-content: center;
   align-items: center;
   background-color: white;
@@ -126,7 +126,6 @@ export const InputContentsWrapper = styled.ul`
 export const InputContents = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
 `;
 
 // 정보 입력 카테고리 부분
@@ -142,6 +141,16 @@ export const InputTitleWrapper = styled.li`
 // 정보 입력 인풋 부분
 export const InputWrapper = styled.li`
   display: flex;
+`;
+
+export const InputError = styled.div`
+  color: red;
+  height: 1rem;
+  display: flex;
+  margin-left: 11rem;
+  margin-bottom: 0.8rem;
+  font-weight: 400;
+  font-size: 0.8rem;
 `;
 
 // 성별 선택
@@ -177,6 +186,7 @@ export const PhoneNumberCertify = styled.button`
 export const CheckboxWrapper = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
 `;
 
 export const CheckboxLabel = styled.label`
