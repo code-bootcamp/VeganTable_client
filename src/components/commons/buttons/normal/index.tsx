@@ -13,7 +13,7 @@ export const Button = styled.button`
   border: none;
   border-radius: 2rem;
   padding: 20px;
-  margin-left: 25px;
+  margin: 0 20px;
   font-weight: 500;
   font-size: 1rem;
   color: ${(props: INormalButtonProps) =>
