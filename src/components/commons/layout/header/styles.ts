@@ -68,23 +68,6 @@ export const HeaderIcon = styled.img`
   cursor: pointer;
 `;
 
-export const AlertIcon = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-
-  & > span {
-    position: absolute;
-    width: 0.68rem;
-    height: 0.68rem;
-    border-radius: 50%;
-    right: 2px;
-    top: 0;
-    background: #f72727;
-  }
-`;
-
 export const UserName = styled.li``;
 
 export const UserPoint = styled.li``;
