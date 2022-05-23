@@ -4,7 +4,6 @@ import { useInView } from "react-intersection-observer";
 export default function DeliveryServiceUI() {
   const [ref, inView] = useInView({
     threshold: 0,
-    triggerOnce: true,
   });
 
   return (
