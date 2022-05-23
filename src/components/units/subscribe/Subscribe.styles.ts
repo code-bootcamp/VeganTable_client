@@ -1,23 +1,23 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
   overflow-x: hidden;
 `;
 
 export const Wrapper = styled.div`
-  width: 120rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 `;
 
 export const IntroWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 120rem;
 `;
 
-export const Title = styled.h2`
+export const Title = styled.h1`
   font-size: 2.25rem;
 `;
 
@@ -36,7 +36,7 @@ export const IntroTop1 = styled.div`
   padding-top: 7.6875rem;
   padding-bottom: 5.75rem;
 
-  & img {
+  & > img {
     position: relative;
     left: 10%;
   }
@@ -47,6 +47,10 @@ export const TopText1 = styled.div`
   left: 14.8125rem;
   width: 100%;
   z-index: 1;
+
+  & > h1 {
+    padding-bottom: 0;
+  }
 `;
 
 export const IntroTop2 = styled.div`
@@ -66,9 +70,9 @@ export const IntroTop2 = styled.div`
 export const TopText2 = styled.div`
   position: absolute;
   left: 15%;
-  bottom: -10%;
+  bottom: -10.5%;
 
-  & > h2 {
+  & > h1 {
     padding-bottom: 1.1875rem;
   }
 `;
@@ -93,10 +97,10 @@ export const IntroTop3 = styled.div`
 export const TopText3 = styled.div`
   position: absolute;
   right: 26%;
-  bottom: -9%;
+  bottom: -9.5%;
   text-align: right;
 
-  & > h2 {
+  & > h1 {
     padding-bottom: 1.1875rem;
   }
 `;
@@ -132,6 +136,7 @@ export const Delivery = styled.div`
 `;
 
 export const ReviewWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -139,11 +144,83 @@ export const ReviewWrapper = styled.div`
   width: 100%;
   height: 50.4375rem;
   background-color: #f7f9f3;
+  text-align: center;
 
-  & > h2 {
-    text-align: center;
+  & > h1 {
     padding-bottom: 1.5rem;
   }
 `;
 
-export const PassWrapper = styled.div``;
+export const ImageWrapper = styled.div`
+  position: relative;
+  width: 120rem;
+
+  & .img-05 {
+    position: absolute;
+    left: 20%;
+    bottom: -2rem;
+  }
+
+  & .img-06 {
+    position: absolute;
+    right: 20%;
+    bottom: -16rem;
+  }
+`;
+
+export const PassWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 120rem;
+  padding: 5.5rem 0;
+
+  & > h1 {
+    padding-bottom: 1.5rem;
+  }
+`;
+
+export const FlexRow = styled.div`
+  display: flex;
+  width: 74.75rem;
+  justify-content: space-between;
+  padding-top: 2.625rem;
+`;
+
+export const Pass = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 36.625rem;
+  height: 27.8125rem;
+  border-radius: 2rem;
+  border: 4px solid #0fbaa3;
+
+  & > h2 {
+    padding-bottom: 2.6875rem;
+    font-size: 2.25rem;
+  }
+  & .month {
+    color: #737373;
+    font-size: 2rem;
+    font-weight: 600;
+    padding-bottom: 0.8rem;
+  }
+
+  & .price {
+    color: #262626;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  & > p {
+    color: #c4c4c4;
+    font-size: 1.5rem;
+    letter-spacing: -0.06rem;
+    font-weight: 500;
+    padding-bottom: 3.3125rem;
+  }
+`;
