@@ -13,9 +13,21 @@ export default function LoginUI(props) {
         </Login.HeaderWrapper>
         <Login.BodyWrapper>
           <Login.BodyContents>
-            <Login.BodyContentsInput type="text" placeholder="아이디" />
-            <Login.BodyContentsInput type="password" placeholder="비밀번호" />
-            <SubmitButton title={"로그인"} isActive={isActive} />
+            <Login.BodyContentsInput
+              type="text"
+              placeholder="아이디"
+              onChange={props.onChangeLoginInputs("email")}
+            />
+            <Login.BodyContentsInput
+              type="password"
+              placeholder="비밀번호"
+              onChange={props.onChangeLoginInputs("password")}
+            />
+            <SubmitButton
+              title={"로그인"}
+              isActive={isActive}
+              onClick={props.onClickLogin}
+            />
             <OutlineSubmitButton
               title={"회원가입"}
               isActive={isActive}
