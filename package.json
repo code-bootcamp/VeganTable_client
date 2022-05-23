@@ -32,6 +32,7 @@
     "react-slick": "^0.28.1",
     "recoil": "^0.7.2",
     "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.4.16",
     "uuid": "^8.3.2",
     "yup": "^0.32.11"
   },
