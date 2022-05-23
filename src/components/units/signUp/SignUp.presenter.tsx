@@ -68,18 +68,21 @@ export default function SignUpUI(props) {
                       register={props.register("birth")}
                     />
                     <SignUp.SelectWrapper>
-                      <SignUp.SexSelect>
-                        <option selected={true} disabled={true}>
+                      <SignUp.GenderSelect
+                        onChange={props.onChangeUserInputs("gender")}
+                      >
+                        <option value={""} selected={true} disabled={true}>
                           성별
                         </option>
                         <option value={"male"}>남자</option>
                         <option value={"female"}>여자 </option>
-                      </SignUp.SexSelect>
+                      </SignUp.GenderSelect>
                     </SignUp.SelectWrapper>
                   </SignUp.InputWrapper>
                 </SignUp.InputContents>
                 <SignUp.InputError>
                   {props.formState.errors.birth?.message}
+                  {props.userInputsErrors?.genderError}
                 </SignUp.InputError>
                 <SignUp.InputContents>
                   <SignUp.InputTitleWrapper>이메일</SignUp.InputTitleWrapper>
@@ -128,30 +131,43 @@ export default function SignUpUI(props) {
                   </SignUp.InputTitleWrapper>
                   <SignUp.InputWrapper>
                     <UserInput
+                      type="text"
                       placeholder={"-제외"}
                       inputSize={"medium"}
                       onChange={props.onChangeUserInputs("phone")}
                     />
-                    <SignUp.PhoneNumberCertify onClick={props.onClickGetToken}>
-                      인증받기
+                    <SignUp.PhoneNumberCertify
+                      type="button"
+                      onClick={props.onClickGetToken}
+                      isReady={props.userInputs?.phone !== ""}
+                      disabled={props.userInputs?.phone === ""}
+                    >
+                      인증번호전송
                     </SignUp.PhoneNumberCertify>
                   </SignUp.InputWrapper>
                 </SignUp.InputContents>
-                <SignUp.InputError>12312</SignUp.InputError>
                 <SignUp.InputContents>
                   <SignUp.InputTitleWrapper></SignUp.InputTitleWrapper>
                   <SignUp.InputWrapper>
-                    <UserInput placeholder={"인증번호"} inputSize={"medium"} />
+                    <UserInput
+                      placeholder={"인증번호"}
+                      inputSize={"medium"}
+                      onChange={props.onChangeUserInputs("token")}
+                    />
                     <SignUp.PhoneNumberCertify
+                      type="button"
                       onClick={props.onClickCheckValid}
+                      isReady={props.userInputs?.token !== ""}
+                      disabled={props.userInputs?.token === ""}
                     >
-                      확인
+                      인증하기
                     </SignUp.PhoneNumberCertify>
                   </SignUp.InputWrapper>
                 </SignUp.InputContents>
-                <SignUp.InputError>12312</SignUp.InputError>
+                <SignUp.InputError>
+                  {props.userInputsErrors?.tokenError}
+                </SignUp.InputError>
               </SignUp.InputContentsWrapper>
-
               <SignUp.CheckboxWrapper>
                 <CheckBox01
                   id="checkbox"
@@ -165,7 +181,11 @@ export default function SignUpUI(props) {
               <SubmitButton
                 type="submit"
                 title={"가입하기"}
-                isActive={props.formState.isValid && checked}
+                isActive={
+                  props.formState.isValid &&
+                  checked &&
+                  props.userInputs?.isValid
+                }
                 onClick={props.onClickSubmit}
               />
             </SignUp.BodyWrapper>

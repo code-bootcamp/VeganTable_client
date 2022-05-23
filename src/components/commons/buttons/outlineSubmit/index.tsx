@@ -11,7 +11,7 @@ const Button = styled.button`
   height: 3.875rem;
   background-color: ${(props: ISubmitButtonProps) =>
     props.isActive ? "white" : "none"};
-  border: 1px solid
+  border: 2px solid
     ${(props: ISubmitButtonProps) => (props.isActive ? "#0fbaa3" : "#f9f9f9")};
   border-radius: 2rem;
   color: ${(props: ISubmitButtonProps) =>

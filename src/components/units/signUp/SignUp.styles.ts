@@ -162,7 +162,7 @@ export const SelectWrapper = styled.div`
   align-items: center;
 `;
 
-export const SexSelect = styled.select`
+export const GenderSelect = styled.select`
   width: 7rem;
   height: 4rem;
   padding: 20px;
@@ -174,12 +174,13 @@ export const SexSelect = styled.select`
 `;
 
 // 휴대폰 인증 버튼
-export const PhoneNumberCertify = styled.div`
+export const PhoneNumberCertify = styled.button`
   width: 7.56rem;
   height: 3.93rem;
   border: 0;
   border-radius: 2rem;
-  background-color: #c4c4c4;
+  background-color: ${(props) => (props.isReady ? "#0FBAA3" : "#c4c4c4")};
+  color: white;
   margin-left: 0.5rem;
   cursor: pointer;
   display: flex;

@@ -11,27 +11,37 @@ import {
 import { useState } from "react";
 
 export default function SignUp() {
+  const [createUser] = useMutation(CREATE_USER);
   // form 부분
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(SignUpSchema),
     mode: "onChange",
   });
 
-  // 다음페이지로 넘어가는 state
-  const [isSubmit, setIsSubmit] = useState(false);
-
   // form에서 검증하지 않는 state
   const [userInputs, setUserInputs] = useState({
+    gender: "",
     phone: "",
     token: "",
     isValid: false,
   });
 
+  // form에서 검증하지 않는 state errors
+  const [userInputsErrors, setUserInputsErrors] = useState({
+    genderError: "",
+    tokenError: "",
+  });
+
+  // 가입완료로 넘어가는 state
+  const [isSubmit, setIsSubmit] = useState(false);
+
   const onChangeUserInputs = (id) => (e) => {
-    setUserInputs({
+    setUserInputs((prev) => ({
       ...userInputs,
       [id]: e.target.value,
-    });
+    }));
+    if (userInputs.gender !== "")
+      setUserInputsErrors({ ...userInputsErrors, genderError: "" });
   };
 
   // 핸드폰 인증 부분
@@ -40,14 +50,14 @@ export default function SignUp() {
 
   const onClickGetToken = async () => {
     try {
-      const result = await getToken({
+      await getToken({
         variables: {
           phone: String(userInputs.phone),
         },
       });
-      setUserInputs({ ...userInputs, token: result.data?.getToken });
+      alert("인증번호가 발송되었습니다.");
     } catch (error) {
-      if (error instanceof Error) alert(error.message);
+      if (error instanceof Error) console.log(error.message);
     }
   };
 
@@ -61,15 +71,26 @@ export default function SignUp() {
         },
       });
       setUserInputs({ ...userInputs, isValid: result.data?.checkValidToken });
+      if (!result.data?.checkValidToken) {
+        setUserInputsErrors({
+          ...userInputsErrors,
+          tokenError: "인증번호가 일치하지 않습니다.",
+        });
+      }
+      alert("인증되었습니다.");
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
   };
 
   // 회원가입 mutation
-  const [createUser] = useMutation(CREATE_USER);
-
   const onClickSubmit = async (data) => {
+    if (userInputs.gender === "") {
+      return setUserInputsErrors({
+        ...userInputsErrors,
+        genderError: "성별을 선택해주세요.",
+      });
+    }
     try {
       await createUser({
         variables: {
@@ -79,9 +100,9 @@ export default function SignUp() {
           phone: String(userInputs.phone),
         },
       });
-      setIsSubmit((prev) => !prev);
+      setIsSubmit(true);
     } catch (error) {
-      if (error instanceof Error) alert(error.message);
+      if (error instanceof Error) console.log(error.message);
     }
   };
 
@@ -93,6 +114,7 @@ export default function SignUp() {
       onClickSubmit={onClickSubmit}
       isSubmit={isSubmit}
       userInputs={userInputs}
+      userInputsErrors={userInputsErrors}
       onChangeUserInputs={onChangeUserInputs}
       // 폰 인증 부분
       onClickGetToken={onClickGetToken}

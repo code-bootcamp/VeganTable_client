@@ -4,10 +4,10 @@ import Checkbox from "@mui/material/Checkbox";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 interface ICheckBox01Props {
-  title?: String;
+  title?: string;
   onClick?: () => void;
   onChange?: (e: any) => void;
-  id?: String;
+  id?: string | undefined;
   checked?: boolean | undefined;
 }
 
@@ -31,6 +31,7 @@ export default function CheckBox01(props: ICheckBox01Props) {
         onClick={props.onClick}
         onChange={props.onChange}
         checked={props.checked}
+        id={props.id}
       />
     </ThemeProvider>
   );
