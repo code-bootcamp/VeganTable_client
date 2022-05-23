@@ -22,6 +22,49 @@ export const TopWrapper = styled.div`
   width: 100%;
 `;
 
+export const RepImagesWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const RepImage = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 585px;
+  height: 559px;
+  background: #ebebeb;
+  border-radius: 2rem;
+
+  span {
+    padding-top: 1.25rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+`;
+
+export const UploadIconsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2.25rem;
+
+  & > div {
+    width: 6.06rem;
+    height: 6.06rem;
+    background: #ebebeb;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:nth-of-type(n + 2) {
+      margin-left: 1rem;
+    }
+  }
+`;
+
 export const Navigation = styled.ul`
   display: flex;
   justify-content: center;
@@ -65,7 +108,7 @@ export const BackButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 5rem;
+  padding-right: 3rem;
   font-size: 0.75rem;
   background: #ffffff;
   border: none;
@@ -84,4 +127,29 @@ export const MenuWrapper = styled.div`
   width: 40%;
   height: 100vh;
   box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.25);
+`;
+
+export const IngredientsHead = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+
+  & > div {
+    width: calc(100% / 3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  span {
+    padding: 0.3rem 1rem;
+    background: #0fbaa3;
+    color: #ffffff;
+    border-radius: 1rem;
+  }
+`;
+
+export const IngredientInputs = styled.input`
+  padding-bottom: 1rem;
 `;
