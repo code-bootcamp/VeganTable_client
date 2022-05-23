@@ -20,6 +20,7 @@ export const Wrapper = styled.div`
 
 // Top button
 export const TopButton = styled.button`
+  z-index: 999;
   position: fixed;
   display: flex;
   flex-direction: column;

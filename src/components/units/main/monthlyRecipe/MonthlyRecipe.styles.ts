@@ -7,6 +7,45 @@ export const Container = styled.div`
   padding: 4.25rem 0;
 `;
 
+export const SliderWrapper = styled.div`
+  width: 100%;
+
+  .slick-slide {
+    padding-right: 20px;
+  }
+
+  .slick-arrow {
+    z-index: 3;
+    top: 38%;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+
+  .slick-prev {
+    left: -4.2rem;
+  }
+
+  .slick-next {
+    right: -3rem;
+  }
+
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 2rem;
+    color: #000000;
+  }
+
+  .slick-prev:before {
+    content: "<";
+  }
+  .slick-next:before {
+    content: ">";
+  }
+`;
+
 export const HeadText = styled.div`
   display: flex;
   flex-direction: column;
