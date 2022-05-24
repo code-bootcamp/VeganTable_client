@@ -1,10 +1,47 @@
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
+
+const MoveX = keyframes`
+  0%{
+    transform: translateX(400%);
+  }
+  50%{
+    transform: translateX(0) ;
+  }
+  70%{
+    transform: translateX(20%) ;
+  }
+  100%{
+    transform: translateX(0) ;
+  }
+`;
+
+const MoveY = keyframes`
+  from{
+    transform: translateY(20%);
+  }
+  to{
+    transform: translateY(0);
+  }
+
+`;
+
+const FadeIn = keyframes`
+from{
+opacity: 0;
+}
+to{
+opacity: 1;
+}
+`;
 
 export const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   background-color: #e5e5e5;
+  overflow-x: hidden;
+  overflow-y: hidden;
 `;
 
 // 공통 내용 전체
@@ -22,6 +59,8 @@ export const HeaderWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 13rem;
+  transition: all 3s ease;
+  animation: ${FadeIn} 3s ease;
 `;
 
 export const HeaderCompleteIcon = styled.div`
@@ -31,6 +70,7 @@ export const HeaderCompleteIcon = styled.div`
 `;
 
 export const HeaderCompleteNotice = styled.p`
+  opacity: 1;
   font-size: 1.5rem;
   font-weight: 500;
 `;
@@ -48,44 +88,20 @@ export const DeliveryMan = styled.img`
   position: absolute;
   z-index: 100;
   top: -150px;
+  animation: ${MoveX} 1s ease-in-out;
 `;
 
 export const Receipt = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 44.25rem;
-  height: 50rem;
+  width: 47.25rem;
+  height: 60rem;
   z-index: 3;
   background-image: url("/img/subscribe/img-complete-03.png");
+  background-repeat: no-repeat;
   position: relative;
-`;
-
-export const BackLetter = styled.div`
-  width: 47.25rem;
-  height: 13.5rem;
-  background-color: #0fbaa3;
-  border-radius: 1.5rem;
-  transform: translateY(-65%);
-  display: flex;
-  justify-content: center;
-`;
-
-export const FrontLetter = styled.div`
-  width: 46rem;
-  height: 5.625rem;
-  background-image: url("/img/subscribe/img-complete-04.png");
-  z-index: 4;
-  position: absolute;
-  bottom: 0px;
-  transform: translateY(50%);
-`;
-
-export const LetterLogo = styled.img`
-  position: absolute;
-  z-index: 7;
-  bottom: 0;
-  left: 1rem;
+  animation: ${MoveY} 1s ease;
 `;
 
 export const TextWrapper = styled.div`
@@ -93,7 +109,7 @@ export const TextWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 37rem;
-  margin-top: 11rem;
+  margin-top: 12rem;
 `;
 
 export const TextHeader = styled.div`
@@ -117,6 +133,11 @@ export const TextRow = styled.div`
   font-size: 1rem;
   margin-bottom: 1.5rem;
   &:last-of-type {
+    border-bottom: 2px solid #c4c4c4;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+  }
+  &:nth-of-type(5) {
     border-bottom: 2px solid #c4c4c4;
     padding-bottom: 2rem;
   }

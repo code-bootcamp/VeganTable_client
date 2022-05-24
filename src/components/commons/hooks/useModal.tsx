@@ -1,8 +1,10 @@
 import Swal from "sweetalert2";
 
 interface IUseModalProps {
-  SuccessTitle?: string;
-  SuccessText?: string;
+  SuccessTitle01?: string;
+  SuccessText01?: string;
+  SuccessTitle02?: string;
+  SuccessText02?: string;
   WarningTitle?: string;
   WarningText?: string;
   ErrorTitle?: string;
@@ -12,10 +14,21 @@ interface IUseModalProps {
 }
 
 export function useModal(data: IUseModalProps) {
-  const Success = () => {
+  const Success01 = () => {
     Swal.fire({
-      title: data.SuccessTitle,
-      text: data.SuccessText,
+      title: data.SuccessTitle01,
+      text: data.SuccessText01,
+      icon: "success",
+      confirmButtonColor: "#0fbaa3",
+      showConfirmButton: false,
+      timer: 1700,
+    });
+  };
+
+  const Success02 = () => {
+    Swal.fire({
+      title: data.SuccessTitle02,
+      text: data.SuccessText02,
       icon: "success",
       confirmButtonColor: "#0fbaa3",
       showConfirmButton: false,
@@ -57,7 +70,8 @@ export function useModal(data: IUseModalProps) {
   };
 
   return {
-    Success,
+    Success01,
+    Success02,
     Warning,
     Error,
     WarningConfirm,

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import OutlineSubmitButton from "../../../commons/buttons/outlineSubmit";
 import * as Subs from "./SubscribeComplete.styles";
 
@@ -49,9 +50,17 @@ export default function SubscribeCompleteUI(props) {
               </Subs.TextRow>
               <Subs.DetailGuide>
                 해당 내역에 대한 내용은{" "}
-                <b style={{ color: "#848484", fontWeight: "700" }}>
-                  정기구독관리
-                </b>{" "}
+                <Link href={"/myPage/subscribe"}>
+                  <a
+                    style={{
+                      color: "#848484",
+                      fontWeight: "700",
+                      cursor: "pointer",
+                    }}
+                  >
+                    정기구독관리
+                  </a>
+                </Link>{" "}
                 페이지에서 보다 자세히 확인하실 수 있습니다.
               </Subs.DetailGuide>
               <OutlineSubmitButton
@@ -60,10 +69,7 @@ export default function SubscribeCompleteUI(props) {
                 onClick={props.onClickMoveToMain}
               />
             </Subs.TextWrapper>
-            <Subs.FrontLetter />
-            <Subs.LetterLogo src="/img/subscribe/img-complete-05.png" />
           </Subs.Receipt>
-          <Subs.BackLetter />
         </Subs.BodyWrapper>
       </Subs.Wrapper>
     </Subs.Container>
