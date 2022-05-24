@@ -1,3 +1,4 @@
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
@@ -40,8 +41,27 @@ export const Contents = styled.div`
   color: #ffffff;
 `;
 
+const ItemOpacity = keyframes`
+from{
+  opacity: 1;
+}
+to{
+  opacity: 0;
+}
+`;
+
 export const Item = styled.div`
   position: relative;
+  cursor: pointer;
+  :hover {
+    & > div {
+      animation: ${ItemOpacity} 2s ease;
+      animation-fill-mode: forwards;
+    }
+    & > img {
+      transition: all 2s ease;
+    }
+  }
 
   & > img {
     height: 100%;
@@ -63,7 +83,6 @@ export const Item = styled.div`
     border-radius: 2rem;
     letter-spacing: -0.05em;
     font-weight: 700;
-
     p {
       padding-top: 1.14rem;
       font-size: 1.5rem;
