@@ -40,7 +40,7 @@ export default function MagazineUI() {
             </div>
           </Magazine.Item>
           <Magazine.Item>
-            <img src="/img/magazine/img-magazine-03.png" alt="" />
+            <img src="/img/magazine/img-magazine-04.png" alt="" />
 
             <div>
               <span>뉴스</span>

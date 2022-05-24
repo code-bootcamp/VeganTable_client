@@ -1,9 +1,10 @@
 // apollo 설정
+
 import {
   ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
   ApolloLink,
+  ApolloProvider,
+  InMemoryCache,
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import { createUploadLink } from "apollo-upload-client";
@@ -33,6 +34,7 @@ export default function ApolloSetting(props) {
                 Authorization: `Bearer ${accessToken}`,
               },
             });
+            return forward(operation);
           });
         }
       }
