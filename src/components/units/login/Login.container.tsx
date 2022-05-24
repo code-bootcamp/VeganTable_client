@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../commons/store";
+import { useModal } from "../../commons/hooks/useModal";
 import LoginUI from "./Login.presenter";
 import { FETCH_USER, LOG_IN } from "./Login.queries";
 
@@ -31,7 +32,14 @@ export default function Login() {
     router.push("/signUp");
   };
 
-  console.log(loginInputs, data);
+  // 모달 부분
+  const { Success01, Error } = useModal({
+    SuccessTitle01: "로그인",
+    SuccessText01: "로그인에 성공하였습니다.",
+    ErrorTitle: "로그인",
+    ErrorText: "로그인에 실패하였습니다.",
+  });
+
   const onClickLogin = async () => {
     try {
       const result = await login({
@@ -43,10 +51,10 @@ export default function Login() {
       console.log(result);
       const myAccessToken = result.data?.login; // 결과 어떻게 받는지 확인
       setAccessToken(myAccessToken);
-      alert("로그인에 성공하였습니다.");
+      Success01();
       router.push("/");
     } catch (error) {
-      if (error instanceof Error) alert(error.message);
+      if (error instanceof Error) Error();
     }
   };
 

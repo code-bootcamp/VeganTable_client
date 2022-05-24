@@ -9,6 +9,7 @@ import {
   SEND_TOKEN_TO_SMS,
 } from "./SignUp.queries";
 import { useState } from "react";
+import { useModal } from "../../commons/hooks/useModal";
 
 export default function SignUp() {
   const [createUser] = useMutation(CREATE_USER);
@@ -44,6 +45,18 @@ export default function SignUp() {
       setUserInputsErrors({ ...userInputsErrors, genderError: "" });
   };
 
+  // 모달 부분
+  const { Success01, Success02, Error, Warning } = useModal({
+    SuccessTitle01: "발송 완료",
+    SuccessText01: "인증번호를 발송하였습니다",
+    SuccessTitle02: "인증 완료",
+    SuccessText02: "인증번호가 일치합니다.",
+    ErrorTitle: "인증 실패",
+    ErrorText: "인증번호가 일치하지 않습니다.",
+    WarningTitle: "발송 실패",
+    WarningText: "인증번호 발송에 실패하였습니다.",
+  });
+
   // 핸드폰 인증 부분
   const [getToken] = useMutation(SEND_TOKEN_TO_SMS);
   const [checkValidToken] = useMutation(CHECK_VALID_TOKEN);
@@ -55,9 +68,9 @@ export default function SignUp() {
           phone: String(userInputs.phone),
         },
       });
-      alert("인증번호가 발송되었습니다.");
+      Success01();
     } catch (error) {
-      if (error instanceof Error) console.log(error.message);
+      if (error instanceof Error) Warning();
     }
   };
 
@@ -77,9 +90,9 @@ export default function SignUp() {
           tokenError: "인증번호가 일치하지 않습니다.",
         });
       }
-      alert("인증되었습니다.");
+      Success02();
     } catch (error) {
-      if (error instanceof Error) alert(error.message);
+      if (error instanceof Error) Error();
     }
   };
 
