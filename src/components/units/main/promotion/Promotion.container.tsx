@@ -2,10 +2,10 @@ import { useModal } from "../../../commons/hooks/useModal";
 import PromotionUI from "./Promotion.presenter";
 
 export default function Promotion() {
-  const { MapModal } = useModal({});
+  const { PromotionModal } = useModal({});
 
   const onClickContents = () => {
-    MapModal();
+    PromotionModal();
   };
   return <PromotionUI onClickContents={onClickContents} />;
 }
