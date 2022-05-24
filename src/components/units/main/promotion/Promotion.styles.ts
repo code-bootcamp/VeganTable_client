@@ -33,6 +33,8 @@ export const Contents = styled.div`
   padding: 0 6.125rem;
   width: 50%;
   height: 13.3rem;
+  cursor: pointer;
+
   &:first-of-type {
     margin-right: 1.31rem;
   }

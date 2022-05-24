@@ -69,12 +69,22 @@ export function useModal(data: IUseModalProps) {
     });
   };
 
+  const MapModal = () => {
+    Swal.fire({
+      width: 1000,
+      imageUrl: "/img/Promotion/img-map-03.png",
+      imageWidth: 900,
+      confirmButtonColor: "#0fbaa3",
+    });
+  };
+
   return {
     Success01,
     Success02,
     Warning,
     Error,
     WarningConfirm,
+    MapModal,
   };
 }
 
@@ -84,10 +94,10 @@ export function useModal(data: IUseModalProps) {
 
 // export default function MyPage() {
 //   const { Success, Error } = useModal({
-//     SuccessTitle: "호이호이",
-//     SuccessText: "제가 해냈어요",
-//     ErrorTitle: "어이쿠저이쿠",
-//     ErrorText: "안녕히가세요",
+//     SuccessTitle: "등록 완료",
+//     SuccessText: "레시피가 등록되었습니다.",
+//     ErrorTitle: "등록 실패",
+//     ErrorText: "레시피 등록에 실패했습니다.",
 //   });
 
 //   const onClickModal = () => {
