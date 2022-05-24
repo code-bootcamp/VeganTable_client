@@ -69,7 +69,7 @@ export function useModal(data: IUseModalProps) {
     });
   };
 
-  const MapModal = () => {
+  const PromotionModal = () => {
     Swal.fire({
       width: 1000,
       imageUrl: "/img/Promotion/img-map-03.png",
@@ -84,7 +84,7 @@ export function useModal(data: IUseModalProps) {
     Warning,
     Error,
     WarningConfirm,
-    MapModal,
+    PromotionModal,
   };
 }
 
