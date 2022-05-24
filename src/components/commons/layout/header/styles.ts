@@ -56,7 +56,7 @@ export const Circle = styled.span`
 
 export const UserWrapper = styled.ul`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin-left: auto;
   list-style: none;

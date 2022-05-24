@@ -32,16 +32,13 @@ export default function Login() {
     router.push("/signUp");
   };
 
-  // // 모달 부분
-  // const {
-  //   Success01,
-  //   // Error
-  // } = useModal({
-  //   SuccessTitle01: "로그인",
-  //   SuccessText01: "로그인에 성공하였습니다.",
-  //   ErrorTitle: "로그인",
-  //   ErrorText: "로그인에 실패하였습니다.",
-  // });
+  // 모달 부분
+  const { Success01, Error } = useModal({
+    SuccessTitle01: "로그인 성공",
+    SuccessText01: "로그인에 성공하였습니다.",
+    ErrorTitle: "로그인 실패",
+    ErrorText: "로그인에 실패하였습니다.",
+  });
 
   const onClickLogin = async () => {
     try {
@@ -53,11 +50,10 @@ export default function Login() {
       });
       const myAccessToken = result.data?.login;
       setAccessToken(myAccessToken);
-      alert("성공좀 해라 ");
+      Success01();
       router.push("/");
     } catch (error) {
-      alert("안돼");
-      if (error instanceof Error) console.log(error.message);
+      Error();
     }
   };
 
