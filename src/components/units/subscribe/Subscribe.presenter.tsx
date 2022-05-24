@@ -3,13 +3,18 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import NormalButton from "../../commons/buttons/normal";
+import { useInView } from "react-intersection-observer";
 
 export default function SubscribeUI() {
+  const [ref, inView] = useInView({
+    threshold: 0,
+  });
+
   useEffect(() => {
     AOS.init({
       duration: 1200,
     });
-  });
+  }, [inView]);
 
   return (
     <Subs.Container>
@@ -18,7 +23,7 @@ export default function SubscribeUI() {
           <Subs.IntroTop1>
             <Subs.TopText1 data-aos="fade-up">
               <Subs.Title>채식이 어렵다면</Subs.Title>
-              <Subs.SubTitle>
+              <Subs.SubTitle ref={ref}>
                 채식한상 정기 구독으로 시작해 보세요
               </Subs.SubTitle>
             </Subs.TopText1>
@@ -121,11 +126,13 @@ export default function SubscribeUI() {
               className={"img-05"}
               src="/img/subscribe/img-review-01.png"
               data-aos="fade-down"
+              data-aos-duration="1500"
             />
             <img
               className={"img-06"}
               src="/img/subscribe/img-review-02.png"
               data-aos="fade-up"
+              data-aos-duration="1500"
             />
           </Subs.ImageWrapper>
         </Subs.ReviewWrapper>
