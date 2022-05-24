@@ -23,7 +23,7 @@ export default function Login() {
   };
 
   // 로그인 회원 정보 가져오기
-  const { data } = useQuery(FETCH_USER);
+  // const { data } = useQuery(FETCH_USER);
 
   // 로그인 mutation
   const [login] = useMutation(LOG_IN);
@@ -32,13 +32,16 @@ export default function Login() {
     router.push("/signUp");
   };
 
-  // 모달 부분
-  const { Success01, Error } = useModal({
-    SuccessTitle01: "로그인",
-    SuccessText01: "로그인에 성공하였습니다.",
-    ErrorTitle: "로그인",
-    ErrorText: "로그인에 실패하였습니다.",
-  });
+  // // 모달 부분
+  // const {
+  //   Success01,
+  //   // Error
+  // } = useModal({
+  //   SuccessTitle01: "로그인",
+  //   SuccessText01: "로그인에 성공하였습니다.",
+  //   ErrorTitle: "로그인",
+  //   ErrorText: "로그인에 실패하였습니다.",
+  // });
 
   const onClickLogin = async () => {
     try {
@@ -48,13 +51,13 @@ export default function Login() {
           password: String(loginInputs.password),
         },
       });
-      console.log(result);
-      const myAccessToken = result.data?.login; // 결과 어떻게 받는지 확인
+      const myAccessToken = result.data?.login;
       setAccessToken(myAccessToken);
-      Success01();
+      alert("성공좀 해라 ");
       router.push("/");
     } catch (error) {
-      if (error instanceof Error) Error();
+      alert("안돼");
+      if (error instanceof Error) console.log(error.message);
     }
   };
 
