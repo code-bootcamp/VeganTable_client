@@ -38,7 +38,7 @@ export default function TemporaryDrawer(props) {
           </div>
           <div>
             <span>
-              안녕하세요 <b>홍예원</b>님 :)
+              안녕하세요 <b>홍예원</b>님 {":)"}
             </span>
           </div>
         </S.DrawerHead>

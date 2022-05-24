@@ -31,14 +31,20 @@ export const DrawerHead = styled.div`
   & > div {
     margin-bottom: 1.23rem;
   }
-  & > div:nth-of-type(2) > span {
-    padding: 0.5rem 1.25rem;
-    background: #bfab87;
+  & > div:nth-of-type(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4.6875rem;
+    height: 1.5rem;
+    background-color: #bfab87;
     border-radius: 1rem;
+  }
+
+  & > div:nth-of-type(2) > span {
     color: #ffffff;
     font-size: 0.875rem;
     font-weight: 400;
-    letter-spacing: -0.05em;
   }
   & > div:nth-of-type(3) > span {
     font-size: 1.5rem;
@@ -48,7 +54,7 @@ export const DrawerHead = styled.div`
 `;
 export const DrawerBody = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding-bottom: 2.375rem;
 `;
@@ -57,7 +63,7 @@ export const VeganType = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-right: 1.75rem;
+  padding-right: 2.75rem;
   border-right: 1px solid #c4c4c4;
 
   & > img {
