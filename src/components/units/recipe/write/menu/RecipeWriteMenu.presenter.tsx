@@ -1,16 +1,21 @@
 import * as Menu from "./RecipeWriteMenu.styles";
+import { v4 as uuidv4 } from "uuid";
 
-export default function RecipeWriteMenuUI() {
+export default function RecipeWriteMenuUI(props) {
   return (
     <Menu.Container>
       <Menu.MenuName>
         <img src="/img/recipeWrite/icon-recipeWrite-pencil.svg" alt="" />
-        <input type="text" placeholder="메뉴명" />
+        <input type="text" placeholder="메뉴명" {...props.register("title")} />
       </Menu.MenuName>
-      <Menu.Remarks>
+      <Menu.Summary>
         <img src="/img/recipeWrite/icon-recipeWrite-pencil.svg" alt="" />
-        <input type="text" placeholder="레시피의 한줄평을 적어주세요" />
-      </Menu.Remarks>
+        <input
+          type="text"
+          placeholder="레시피의 한줄평을 적어주세요"
+          {...props.register("summary")}
+        />
+      </Menu.Summary>
       <Menu.Vegan>
         <Menu.VeganTypeHead>
           <img src="/img/recipeWrite/icon-recipeWrite-check.svg" alt="" />
@@ -45,8 +50,11 @@ export default function RecipeWriteMenuUI() {
             <span>난이도</span>
           </Menu.RecipeInfoTop>
           <Menu.RecipeInfoBottom>
-            <select>
+            <select {...props.register("level")}>
               <option value="선택">선택</option>
+              <option value="SIMPLE">쉬움</option>
+              <option value="NORMAL">보통</option>
+              <option value="DIFFICULT">어려움</option>
             </select>
           </Menu.RecipeInfoBottom>
         </Menu.RecipeInfoItem>
@@ -57,9 +65,10 @@ export default function RecipeWriteMenuUI() {
             <span>분량</span>
           </Menu.RecipeInfoTop>
           <Menu.RecipeInfoBottom>
-            <select>
-              <option value="선택">선택</option>
-            </select>
+            <Menu.RecipeInfoServing>
+              <input type="number" placeholder="2" min={1} />
+              <span>인분</span>
+            </Menu.RecipeInfoServing>
           </Menu.RecipeInfoBottom>
         </Menu.RecipeInfoItem>
       </Menu.RecipeInfoWrapper>
@@ -67,15 +76,19 @@ export default function RecipeWriteMenuUI() {
       <Menu.TagsWrapper>
         <Menu.TagHead>
           <img src="/img/recipeWrite/icon-recipeWrite-pencil.svg" alt="" />
-          <span>태그로 표현해보세요</span>
+          <input
+            type="text"
+            {...props.register("tags")}
+            placeholder="태그를 입력하고 스페이스바를 눌러주세요."
+            onKeyUp={props.onKeyUpHash}
+          />
         </Menu.TagHead>
         <Menu.Tags>
-          <Menu.Tag>#태그</Menu.Tag>
-          <Menu.Tag>#태그</Menu.Tag>
-          <Menu.Tag>#태그</Menu.Tag>
-          <Menu.Tag>#태그</Menu.Tag>
-          <Menu.Tag>#태그</Menu.Tag>
-          <Menu.Tag>#태그</Menu.Tag>
+          {props.hashArr.map((el, idx) => (
+            <Menu.Tag key={uuidv4()} onClick={props.onClickDeleteTag(el)}>
+              {el}
+            </Menu.Tag>
+          ))}
         </Menu.Tags>
       </Menu.TagsWrapper>
     </Menu.Container>

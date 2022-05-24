@@ -33,7 +33,7 @@ export const MenuName = styled.div`
   }
 `;
 
-export const Remarks = styled.div`
+export const Summary = styled.div`
   display: flex;
   align-items: center;
   background: #f4f4f4;
@@ -168,6 +168,22 @@ export const RecipeInfoBottom = styled.div`
   }
 `;
 
+export const RecipeInfoServing = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  font-size: 1rem;
+
+  & > input {
+    border: none;
+    width: 40px;
+    :focus {
+      outline: none;
+    }
+  }
+`;
+
 export const TagsWrapper = styled.div`
   padding: 0.93rem;
   background: #f4f4f4;
@@ -184,15 +200,32 @@ export const TagHead = styled.div`
     padding-right: 7px;
   }
 
-  & > span {
-    color: #848484;
-    font-weight: 400;
-    letter-spacing: -0.05em;
+  & > input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    :focus {
+      outline: none;
+    }
   }
 `;
 export const Tags = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 `;
-export const Tag = styled.span``;
+export const Tag = styled.span`
+  border: 1px solid #848484;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  color: #848484;
+  padding: 0.3rem 1rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+
+  :hover {
+    background: #848484;
+    color: #ffffff;
+  }
+`;
