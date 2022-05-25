@@ -28,16 +28,18 @@ export const DrawerHead = styled.div`
       }
     }
   }
+
   & > div {
     margin-bottom: 1.23rem;
   }
+
   & > div:nth-of-type(2) {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 4.6875rem;
     height: 1.5rem;
-    background-color: #bfab87;
+    background-color: ${(props) => (props.isPro ? "#bfab87" : "#C2BFB9")};
     border-radius: 1rem;
   }
 
@@ -46,6 +48,7 @@ export const DrawerHead = styled.div`
     font-size: 0.875rem;
     font-weight: 400;
   }
+
   & > div:nth-of-type(3) > span {
     font-size: 1.5rem;
     font-weight: 400;
@@ -68,7 +71,8 @@ export const VeganType = styled.div`
 
   & > img {
     width: 2.43rem;
-    height: auto;
+    height: 2.43rem;
+    margin-bottom: 7px;
   }
   & > span {
     color: #464646;
@@ -84,6 +88,7 @@ export const SubsInfo = styled.div`
   padding-right: 1.75rem;
 
   & > span:nth-of-type(1) {
+    padding-top: 6px;
     padding-bottom: 1rem;
     color: #0fbaa3;
     font-size: 1.25rem;
