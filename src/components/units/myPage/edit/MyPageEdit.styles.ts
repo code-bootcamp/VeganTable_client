@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import "animate.css";
 
 export const Container = styled.div`
   display: flex;
@@ -6,6 +7,11 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   padding: 6.25rem 15rem;
+
+  &.active {
+    height: 100vh;
+    overflow: hidden;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -121,7 +127,7 @@ export const Label = styled.label`
   color: #464646;
 `;
 
-export const SexSelect = styled.select`
+export const GenderSelect = styled.select`
   width: 7rem;
   height: 4rem;
   padding: 20px;
@@ -152,4 +158,31 @@ export const ButtonWrapper = styled.div`
   justify-content: center;
   padding-top: 4rem;
   width: 59.5rem;
+`;
+
+export const Modal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+
+  .modal-section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 20px;
+    width: 35rem;
+  }
+
+  .modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.25rem;
+  }
 `;

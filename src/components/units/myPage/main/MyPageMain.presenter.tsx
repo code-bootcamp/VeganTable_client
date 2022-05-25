@@ -2,25 +2,76 @@ import ViewAllButton from "../../../commons/buttons/viewAll";
 import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container";
 import * as My from "./MyPageMain.styles";
 
-export default function MyPageMainUI() {
+export default function MyPageMainUI(props) {
+  console.log(props.data?.fetchUser);
   return (
     <My.Container>
       <My.Wrapper>
         <MyPageSidebar />
-
         <My.MainWrapper>
           <My.UserWrapper>
-            <My.UserIcon src="/img/myPage/icon-profile.svg" />
+            {props.data?.fetchUser.profilePic ? (
+              <My.UserIcon
+                src={`https://storage.googleapis.com/${props.data?.fetchUser.profilePic}`}
+              />
+            ) : (
+              <My.UserIcon src="/img/myPage/icon-profile.svg" />
+            )}
             <My.UserProfile>
-              <My.UserGrade>전문가</My.UserGrade>
+              {props.data?.fetchUser.isPro.PRO ? (
+                <My.UserGrade className="expert">전문가</My.UserGrade>
+              ) : (
+                <My.UserGrade className="common">회원</My.UserGrade>
+              )}
+
               <My.UserName>
-                안녕하세요 <span>홍예원</span>님 {":)"}
+                안녕하세요 <span>{props.data?.fetchUser.name}</span>님 {":)"}
               </My.UserName>
             </My.UserProfile>
             <My.UserInfo>
               <My.Info>
-                <My.TypeIcon src="/img/navigation/icon-vegan-vegan.svg" />
-                <My.Name>비건</My.Name>
+                {props.data?.fetchUser.type === "NON_VEGAN" && (
+                  <>
+                    <My.TypeIcon src="/img/navigation/icon-vegan-nonVegan.svg" />
+                    <My.Name>채린이</My.Name>
+                  </>
+                )}
+                {props.data?.fetchUser.type === "VEGAN" && (
+                  <>
+                    <My.TypeIcon src="/img/navigation/icon-vegan-vegan.svg" />
+                    <My.Name>비건</My.Name>
+                  </>
+                )}
+                {props.data?.fetchUser.type === "LACTO" && (
+                  <>
+                    <My.TypeIcon src="/img/navigation/icon-vegan-lacto.svg" />
+                    <My.Name>락토</My.Name>
+                  </>
+                )}
+                {props.data?.fetchUser.type === "OVO" && (
+                  <>
+                    <My.TypeIcon src="/img/navigation/icon-vegan-ovo.svg" />
+                    <My.Name>오보</My.Name>
+                  </>
+                )}
+                {props.data?.fetchUser.type === "LACTO_OVO" && (
+                  <>
+                    <My.TypeIcon src="/img/navigation/icon-vegan-lactoOvo.svg" />
+                    <My.Name>락토오보</My.Name>
+                  </>
+                )}
+                {props.data?.fetchUser.type === "PESCO" && (
+                  <>
+                    <My.TypeIcon src="/img/navigation/icon-vegan-pesco.svg" />
+                    <My.Name>페스코</My.Name>
+                  </>
+                )}
+                {props.data?.fetchUser.type === "POLLO" && (
+                  <>
+                    <My.TypeIcon src="/img/navigation/icon-vegan-pollo.svg" />
+                    <My.Name>폴로</My.Name>
+                  </>
+                )}
               </My.Info>
               <My.Info>
                 <My.Subscribe>3달째</My.Subscribe>
