@@ -1,11 +1,12 @@
-import Editor01 from "../../../commons/editors/01";
 import * as RecipeWrite from "./RecipeWrite.styles";
 import { useRouter } from "next/router";
 import RecipeWriteMenu from "./menu/RecipeWriteMenu.container";
 import { v4 as uuidv4 } from "uuid";
+import DOMPurify from "dompurify";
 
 export default function RecipeWriteUI(props) {
   const router = useRouter();
+
   return (
     <>
       <form>
@@ -41,57 +42,93 @@ export default function RecipeWriteUI(props) {
             <RecipeWrite.Navigation>
               <li className="active">준비재료</li>
               <li>요리순서</li>
-              <li>리뷰(10)</li>
-              <li>추천</li>
             </RecipeWrite.Navigation>
 
             <RecipeWrite.Contents>
               <h2>준비재료</h2>
-
-              <div>
-                <RecipeWrite.IngredientsHead>
-                  <div>
-                    <span>재료</span>
-                  </div>
-                  <div>
-                    <span>용량</span>
-                  </div>
-                  <div>
-                    <span>단위</span>
-                  </div>
-                </RecipeWrite.IngredientsHead>
-                <div>
-                  {[1, 2, 3, 4].map((e, i) => (
-                    <div style={{ display: "flex" }} key={uuidv4()}>
-                      <div>
-                        <input
-                          type="text"
-                          name="name"
-                          placeholder="재료"
-                          {...props.register("ingredientName")}
-                        />
-                        <input
-                          type="text"
-                          name="amount"
-                          placeholder="용량"
-                          {...props.register("ingredientAmount")}
-                        />
-                        <input
-                          type="text"
-                          name="unit"
-                          placeholder="단위"
-                          {...props.register("ingredientUnit")}
-                        />
-                      </div>
-                      <button>재료삭제</button>
+              <RecipeWrite.IngredientsWrapper>
+                <RecipeWrite.IngredientArr>
+                  {props.ingredientArr.map((el) => (
+                    <div
+                      key={uuidv4()}
+                      onClick={props.onClickDeleteIngredient(el)}
+                    >
+                      <span>
+                        {el.name} {el.amount}
+                        {el.unit}
+                      </span>
                     </div>
                   ))}
+                </RecipeWrite.IngredientArr>
+
+                <div style={{ display: "flex" }}>
+                  <RecipeWrite.IngredientInputs>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="재료 이름"
+                      onChange={props.onChangeIngredient}
+                    />
+                    <RecipeWrite.InputAmount
+                      type="number"
+                      name="amount"
+                      placeholder="재료 용량"
+                      min={1}
+                      onChange={props.onChangeIngredient}
+                    />
+                    <RecipeWrite.InputUnit
+                      type="text"
+                      name="unit"
+                      placeholder="단위"
+                      onChange={props.onChangeIngredient}
+                    />
+                    <button type="button" onClick={props.onClickAddIngredient}>
+                      <span>재료추가</span>
+                    </button>
+                    <p>
+                      재료를 입력하고 재료추가를 누르면 추가됩니다.
+                      <br />
+                      추가된 재료를 클릭하면 삭제할 수 있습니다.
+                    </p>
+                  </RecipeWrite.IngredientInputs>
                 </div>
-              </div>
-              <button>재료추가</button>
-              <RecipeWrite.EditorWrapper>
-                <Editor01 />
-              </RecipeWrite.EditorWrapper>
+              </RecipeWrite.IngredientsWrapper>
+              <h2>요리순서</h2>
+              <RecipeWrite.CookingOrderWrapper>
+                {props.descArr.map((el) => (
+                  <RecipeWrite.CookingOrder key={uuidv4()}>
+                    <span>STEP {el.step}</span>
+                    <div>
+                      <img src="" alt="아직이미지가없네용" />
+                    </div>
+                    <div>
+                      {typeof window !== "undefined" ? (
+                        <p
+                          dangerouslySetInnerHTML={{
+                            __html: DOMPurify.sanitize(el.desc),
+                          }}
+                        ></p>
+                      ) : (
+                        <p></p>
+                      )}
+                    </div>
+                  </RecipeWrite.CookingOrder>
+                ))}
+              </RecipeWrite.CookingOrderWrapper>
+              <RecipeWrite.RepImage2>
+                <img src="/img/icon/icon-upload-image.svg" alt="" />
+                <span>사진을 넣어주세요</span>
+              </RecipeWrite.RepImage2>
+              <RecipeWrite.TextArea
+                onChange={props.onChangeTextArea}
+                placeholder="설명을 적어주세요"
+              ></RecipeWrite.TextArea>
+              <RecipeWrite.AddStepWrapper onClick={props.onClickAddDesc}>
+                <RecipeWrite.AddContentButton type="button">
+                  <img src="/img/icon/contentAdd.svg" alt="" />
+                </RecipeWrite.AddContentButton>
+                <span>STEP 추가하기</span>
+              </RecipeWrite.AddStepWrapper>
             </RecipeWrite.Contents>
           </RecipeWrite.Wrapper>
 
