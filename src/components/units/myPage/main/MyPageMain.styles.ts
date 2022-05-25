@@ -36,6 +36,14 @@ export const UserProfile = styled.div`
   display: flex;
   flex-direction: column;
   width: 57%;
+
+  & .expert {
+    background-color: #bfab87;
+  }
+
+  & .common {
+    background-color: #c2bfb9;
+  }
 `;
 
 export const UserIcon = styled.img``;
@@ -46,7 +54,6 @@ export const UserGrade = styled.div`
   align-items: center;
   width: 4.6875rem;
   height: 1.5rem;
-  background-color: #bfab87;
   border: none;
   color: #ffffff;
   border-radius: 20px;
