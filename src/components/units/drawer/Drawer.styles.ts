@@ -10,6 +10,16 @@ export const Wrapper = styled.div`
   min-width: 329px;
   height: 100vh;
 `;
+
+export const NonLoginWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 329px;
+`;
+
 export const DrawerHead = styled.div`
   margin-bottom: 2.56rem;
   & > div:nth-of-type(1) {
