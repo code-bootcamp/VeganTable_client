@@ -89,8 +89,8 @@ export default function TemporaryDrawer(props) {
                   <img src="/img/icon/Close.svg" alt="" />
                 </button>
               </div>
-              <div isPro={data?.fetchUser.isPro}>
-                {data?.fetchUser.isPro ? (
+              <div isPro={data?.fetchUser.isPro === "PRO"}>
+                {data?.fetchUser.isPro === "PRO" ? (
                   <span>전문가</span>
                 ) : (
                   <span>회원</span>
@@ -104,7 +104,7 @@ export default function TemporaryDrawer(props) {
             </S.DrawerHead>
             <S.DrawerBody>
               <S.VeganType>
-                <img src="/img/navigation/icon-vegan-non_vegan.svg" alt="" />
+                <img src="/img/navigation/icon-vegan-nonVegan.svg" alt="" />
                 <span>채린이</span>
               </S.VeganType>
               <S.SubsInfo>

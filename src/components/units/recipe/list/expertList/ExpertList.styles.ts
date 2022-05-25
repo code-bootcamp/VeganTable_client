@@ -7,17 +7,17 @@ export const Container = styled.div`
   align-items: center;
   height: 600px;
   padding: 5.5rem 0;
+  overflow: hidden;
 `;
 
 export const Wrapper = styled.div`
-  width: 90rem;
+  width: 88rem;
   display: flex;
-  /* justify-content: center; */
 `;
 
 // 리스트 설명
 export const TitleWrapper = styled.div`
-  margin-right: 6rem;
+  margin-right: 5rem;
 `;
 
 export const TitleBar = styled.div`
@@ -30,6 +30,7 @@ export const Title = styled.h2`
   font-weight: 600;
   font-size: 2.25rem;
   margin-bottom: 2rem;
+  width: 14rem;
 `;
 
 export const SubTitle = styled.p`
@@ -41,9 +42,49 @@ export const SubTitle = styled.p`
     margin-bottom: 30px;
   }
 `;
+
 // 리스트 부분
+export const SliderWrapper = styled.div`
+  width: 80%;
+
+  .slick-slide {
+    padding-right: 20px;
+  }
+
+  .slick-arrow {
+    z-index: 3;
+    top: 38%;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+
+  .slick-prev {
+    left: -4.2rem;
+  }
+
+  .slick-next {
+    right: -3rem;
+  }
+
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 2rem;
+    color: #000000;
+  }
+
+  .slick-prev:before {
+    content: "<";
+  }
+  .slick-next:before {
+    content: ">";
+  }
+`;
 export const ListWrapper = styled.div`
   display: flex;
+  width: 100%;
 `;
 
 export const RecipeBox = styled.div`
@@ -51,26 +92,42 @@ export const RecipeBox = styled.div`
   height: auto;
   position: relative;
   cursor: pointer;
+  width: 100%;
 `;
 
 export const RecipeImg = styled.img`
   border-radius: 2rem;
-  width: 21.375rem;
-  height: 21.375rem;
+  width: 100%;
+  height: 100%;
   margin-bottom: 1.5rem;
+`;
+
+export const IconBookmark = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 3;
+  right: 1rem;
+  top: 20px;
+  & > span {
+    color: #ffffff;
+    font-size: 0.75rem;
+  }
 `;
 
 export const RecipeRecommendSticker = styled.img`
   position: absolute;
   z-index: 2;
   right: 0px;
-  bottom: 140px;
+  bottom: 130px;
 `;
 export const RecipeLevelSticker = styled.img`
   position: absolute;
   z-index: 1;
   right: 0px;
-  bottom: 80px;
+  bottom: 70px;
 `;
 
 export const RecipeTitle = styled.h3`
