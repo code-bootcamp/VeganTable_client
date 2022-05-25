@@ -1,3 +1,4 @@
+import Link from "next/link";
 import OutlineSubmitButton from "../../commons/buttons/outlineSubmit";
 import SubmitButton from "../../commons/buttons/submit";
 import * as Login from "./Login.styles";
@@ -34,10 +35,27 @@ export default function LoginUI(props) {
               onClick={props.onClickSignUp}
             />
           </Login.BodyContents>
+          <Login.SNSLoginTitleWrapper>
+            <Login.SNSLoginTitleCenterLine />
+            <Login.SNSLoginTitle>소셜 로그인</Login.SNSLoginTitle>
+            <Login.SNSLoginTitleCenterLine />
+          </Login.SNSLoginTitleWrapper>
           <Login.SNSLoginWrapper>
-            <Login.SNSIcon src="/img/snsIcon/kakaotalk.svg" />
-            <Login.SNSIcon src="/img/snsIcon/naver.svg" />
-            <Login.SNSIcon src="/img/snsIcon/google.svg" />
+            <Link href={"https://itoutsider.shop/kakao"}>
+              <a style={{ marginRight: "3rem" }}>
+                <Login.SNSIcon src="/img/snsIcon/kakaotalk.svg" />
+              </a>
+            </Link>
+            <Link href={"https://itoutsider.shop/naver"}>
+              <a style={{ marginRight: "3rem" }}>
+                <Login.SNSIcon src="/img/snsIcon/naver.svg" />
+              </a>
+            </Link>
+            <Link href={"https://itoutsider.shop/google"}>
+              <a>
+                <Login.SNSIcon src="/img/snsIcon/google.svg" />
+              </a>
+            </Link>
           </Login.SNSLoginWrapper>
         </Login.BodyWrapper>
       </Login.Wrapper>

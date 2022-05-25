@@ -70,6 +70,24 @@ export const BodyContentsSignUpButton = styled.button`
 `;
 
 // 소셜 로그인 부분
+export const SNSLoginTitleWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+`;
+export const SNSLoginTitle = styled.h3`
+  font-weight: 400;
+  font-size: 1rem;
+  color: rgba(132, 132, 132, 1);
+  margin: 0 1rem;
+`;
+export const SNSLoginTitleCenterLine = styled.div`
+  border-bottom: 1px solid gray;
+  width: 11rem;
+`;
+
 export const SNSLoginWrapper = styled.ul`
   width: 100%;
   display: flex;
@@ -78,7 +96,7 @@ export const SNSLoginWrapper = styled.ul`
 `;
 
 export const SNSIcon = styled.img`
-  width: 3.125rem;
+  width: 3.5rem;
   height: auto;
   margin-right: 2.75rem;
   border-radius: 50%;

@@ -49,7 +49,7 @@ export const DrawerHead = styled.div`
     align-items: center;
     width: 4.6875rem;
     height: 1.5rem;
-    background-color: ${(props) => (props.isPro ? "#bfab87" : "#C2BFB9")};
+    background-color: ${(props) => (props.isPro ? "#C2BFB9" : "#bfab87")};
     border-radius: 1rem;
   }
 
