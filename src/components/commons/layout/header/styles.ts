@@ -56,11 +56,11 @@ export const Circle = styled.span`
 
 export const UserWrapper = styled.ul`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   margin-left: auto;
   list-style: none;
-  width: 14rem;
+  width: 18rem;
 `;
 
 export const HeaderIcon = styled.img`
@@ -68,6 +68,8 @@ export const HeaderIcon = styled.img`
   cursor: pointer;
 `;
 
-export const UserName = styled.li``;
+export const UserName = styled.li`
+  margin-right: 1.5rem;
+`;
 
 export const UserPoint = styled.li``;

@@ -19,7 +19,6 @@ export default function MagazineUI() {
           >
             <Magazine.Item>
               <img src="/img/magazine/img-magazine-01.png" alt="" />
-
               <div>
                 <span>인물 인터뷰</span>
                 <p>
@@ -33,7 +32,6 @@ export default function MagazineUI() {
           <Link href={"http://veganfesta.kr/main/"}>
             <Magazine.Item>
               <img src="/img/magazine/img-magazine-02.png" alt="" />
-
               <div>
                 <span>정보 공유</span>
                 <p>2022 비건 페스타</p>

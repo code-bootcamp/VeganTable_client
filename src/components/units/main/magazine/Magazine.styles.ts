@@ -42,24 +42,28 @@ export const Contents = styled.div`
 `;
 
 const ItemOpacity = keyframes`
-from{
-  opacity: 1;
-}
 to{
-  opacity: 0;
+  background: none
 }
 `;
 
 export const Item = styled.div`
   position: relative;
   cursor: pointer;
+  overflow: hidden;
+  border-radius: 2rem;
   :hover {
     & > div {
-      animation: ${ItemOpacity} 2s ease;
+      animation: ${ItemOpacity} 1s ease;
       animation-fill-mode: forwards;
+      height: calc(100% + 3px);
     }
     & > img {
-      transition: all 2s ease;
+      transition: all 1s ease;
+      transform: scale(1.2);
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
     }
   }
 

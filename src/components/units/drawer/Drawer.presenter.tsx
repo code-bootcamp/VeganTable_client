@@ -2,13 +2,40 @@ import { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import * as S from "./Drawer.styles";
 import Link from "next/link";
+import { useModal } from "../../commons/hooks/useModal";
+import { useRouter } from "next/router";
+import { gql, useMutation, useQuery } from "@apollo/client";
 
 type Anchor = "right";
+
+const LOGOUT = gql`
+  mutation logout {
+    logout
+  }
+`;
+
+const FETCH_USER = gql`
+  query fetchUser {
+    fetchUser {
+      user_id
+      email
+      name
+      phone
+      address
+      type
+      nickname
+      isPro
+      isSubs
+      SubsHistory
+    }
+  }
+`;
 
 export default function TemporaryDrawer(props) {
   const [state, setState] = useState({
     right: false,
   });
+  const router = useRouter();
 
   // 모달 토글 단축키
   const toggleDrawer =
@@ -24,6 +51,28 @@ export default function TemporaryDrawer(props) {
       setState({ [anchor]: open });
     };
 
+  // 모달
+  const { Success01, Error } = useModal({
+    SuccessTitle01: "로그아웃 성공",
+    SuccessText01: "로그아웃을 성공하였습니다.",
+    ErrorTitle: "로그아웃 실패",
+    ErrorText: "로그아웃을 실패하였습니다.",
+  });
+
+  const [logout] = useMutation(LOGOUT);
+
+  const onClickLogout = async () => {
+    try {
+      await logout();
+      Success01();
+      router.push("/");
+    } catch (error) {
+      Error();
+    }
+  };
+
+  const { data } = useQuery(FETCH_USER);
+
   const list = (anchor: Anchor) => (
     <S.Container>
       <S.Wrapper>
@@ -33,26 +82,30 @@ export default function TemporaryDrawer(props) {
               <img src="/img/icon/Close.svg" alt="" />
             </button>
           </div>
-          <div>
-            <span>전문가</span>
+          <div isPro={data?.fetchUser.isPro}>
+            {data?.fetchUser.isPro ? <span>전문가</span> : <span>회원</span>}
           </div>
           <div>
             <span>
-              안녕하세요 <b>홍예원</b>님 {":)"}
+              안녕하세요 <b>{data?.fetchUser.name}</b>님 {":)"}
             </span>
           </div>
         </S.DrawerHead>
         <S.DrawerBody>
           <S.VeganType>
-            <img src="/img/navigation/icon-vegan-vegan.svg" alt="" />
-            <span>비건</span>
+            <img src="/img/navigation/icon-vegan-non_vegan.svg" alt="" />
+            <span>채린이</span>
           </S.VeganType>
           <S.SubsInfo>
             <span>3달째</span>
             <span>정기 구독 이용중</span>
           </S.SubsInfo>
         </S.DrawerBody>
-        <S.RegisterButton>레시피 등록하기</S.RegisterButton>
+        <Link href={"/recipe/new"}>
+          <S.RegisterButton onClick={toggleDrawer("right", false)}>
+            <a>레시피 등록하기</a>
+          </S.RegisterButton>
+        </Link>
         <S.DrawerNav onClick={toggleDrawer("right", false)}>
           <li>
             <Link href={"/myPage"}>
@@ -78,7 +131,7 @@ export default function TemporaryDrawer(props) {
             </Link>
           </li>
 
-          <li>
+          <li onClick={onClickLogout} style={{ cursor: "pointer" }}>
             <a>로그아웃</a>
           </li>
         </S.DrawerNav>
