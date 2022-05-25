@@ -1,18 +1,8 @@
 // 회원가입 약관동의
-import Checkbox from "@mui/material/Checkbox";
 import * as SignUp from "../SignUp.styles";
-import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { CheckboxProps, withStyles } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import SubmitButton from "../../../commons/buttons/submit";
-
-const PolicyCheckbox = withStyles({
-  root: {
-    color: "#c4c4c4",
-  },
-  checked: { color: "#0fbaa3" },
-})((props: CheckboxProps) => <Checkbox color="default" {...props} />);
+import CheckBox01 from "../../../commons/checkboxes/01";
 
 export default function SignUpPolicy(props) {
   const [checked, setChecked] = useState([true, true]);
@@ -52,24 +42,18 @@ export default function SignUpPolicy(props) {
         </SignUp.BodyTitleWrapper>
         <SignUp.BodyContents>
           <SignUp.PolicyTitleWrapper>
-            <PolicyCheckbox
-              icon={<RadioButtonUncheckedIcon />}
-              checkedIcon={<CheckCircleIcon />}
-              checked={checked[0]}
-              onChange={handleCheck(0)}
-            />
-            <SignUp.PolicyTitleEssential>[필수]</SignUp.PolicyTitleEssential>{" "}
+            <CheckBox01 checked={checked[0]} onChange={handleCheck(0)} />
+            <SignUp.PolicyTitleEssential>
+              [필수]
+            </SignUp.PolicyTitleEssential>{" "}
             <SignUp.PolicyTitle>이용약관</SignUp.PolicyTitle>
           </SignUp.PolicyTitleWrapper>
           <SignUp.PolicyContents />
           <SignUp.PolicyTitleWrapper>
-            <PolicyCheckbox
-              icon={<RadioButtonUncheckedIcon />}
-              checkedIcon={<CheckCircleIcon />}
-              checked={checked[1]}
-              onChange={handleCheck(1)}
-            />
-            <SignUp.PolicyTitleEssential>[필수]</SignUp.PolicyTitleEssential>{" "}
+            <CheckBox01 checked={checked[1]} onChange={handleCheck(1)} />
+            <SignUp.PolicyTitleEssential>
+              [필수]
+            </SignUp.PolicyTitleEssential>{" "}
             <SignUp.PolicyTitle>개인정보 수집 및 이용 동의</SignUp.PolicyTitle>
           </SignUp.PolicyTitleWrapper>
           <SignUp.PolicyContents />

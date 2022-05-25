@@ -5,6 +5,9 @@ import Link from "next/link";
 import { useModal } from "../../commons/hooks/useModal";
 import { useRouter } from "next/router";
 import { gql, useMutation, useQuery } from "@apollo/client";
+import { useRecoilState } from "recoil";
+import { accessTokenState } from "../../../commons/store";
+import OutlineSubmitButton from "../../commons/buttons/outlineSubmit";
 
 type Anchor = "right";
 
@@ -32,6 +35,8 @@ const FETCH_USER = gql`
 `;
 
 export default function TemporaryDrawer(props) {
+  const [accessToken] = useRecoilState(accessTokenState);
+
   const [state, setState] = useState({
     right: false,
   });
@@ -76,65 +81,85 @@ export default function TemporaryDrawer(props) {
   const list = (anchor: Anchor) => (
     <S.Container>
       <S.Wrapper>
-        <S.DrawerHead>
-          <div>
-            <button onClick={toggleDrawer("right", false)}>
-              <img src="/img/icon/Close.svg" alt="" />
-            </button>
-          </div>
-          <div isPro={data?.fetchUser.isPro}>
-            {data?.fetchUser.isPro ? <span>전문가</span> : <span>회원</span>}
-          </div>
-          <div>
-            <span>
-              안녕하세요 <b>{data?.fetchUser.name}</b>님 {":)"}
-            </span>
-          </div>
-        </S.DrawerHead>
-        <S.DrawerBody>
-          <S.VeganType>
-            <img src="/img/navigation/icon-vegan-non_vegan.svg" alt="" />
-            <span>채린이</span>
-          </S.VeganType>
-          <S.SubsInfo>
-            <span>3달째</span>
-            <span>정기 구독 이용중</span>
-          </S.SubsInfo>
-        </S.DrawerBody>
-        <Link href={"/recipe/new"}>
-          <S.RegisterButton onClick={toggleDrawer("right", false)}>
-            <a>레시피 등록하기</a>
-          </S.RegisterButton>
-        </Link>
-        <S.DrawerNav onClick={toggleDrawer("right", false)}>
-          <li>
-            <Link href={"/myPage"}>
-              <a>MY 홈</a>
+        {accessToken ? (
+          <>
+            <S.DrawerHead>
+              <div>
+                <button onClick={toggleDrawer("right", false)}>
+                  <img src="/img/icon/Close.svg" alt="" />
+                </button>
+              </div>
+              <div isPro={data?.fetchUser.isPro}>
+                {data?.fetchUser.isPro ? (
+                  <span>전문가</span>
+                ) : (
+                  <span>회원</span>
+                )}
+              </div>
+              <div>
+                <span>
+                  안녕하세요 <b>{data?.fetchUser.name}</b>님 {":)"}
+                </span>
+              </div>
+            </S.DrawerHead>
+            <S.DrawerBody>
+              <S.VeganType>
+                <img src="/img/navigation/icon-vegan-non_vegan.svg" alt="" />
+                <span>채린이</span>
+              </S.VeganType>
+              <S.SubsInfo>
+                <span>3달째</span>
+                <span>정기 구독 이용중</span>
+              </S.SubsInfo>
+            </S.DrawerBody>
+            <Link href={"/recipe/new"}>
+              <S.RegisterButton onClick={toggleDrawer("right", false)}>
+                <a>레시피 등록하기</a>
+              </S.RegisterButton>
             </Link>
-          </li>
+            <S.DrawerNav onClick={toggleDrawer("right", false)}>
+              <li>
+                <Link href={"/myPage"}>
+                  <a>MY 홈</a>
+                </Link>
+              </li>
 
-          <li>
-            <Link href={"/myPage/subscribe"}>
-              <a>정기 구독 관리</a>
+              <li>
+                <Link href={"/myPage/subscribe"}>
+                  <a>정기 구독 관리</a>
+                </Link>
+              </li>
+
+              <li>
+                <Link href={"/myPage/qna"}>
+                  <a>문의 내역</a>
+                </Link>
+              </li>
+
+              <li>
+                <Link href={"/myPage/edit"}>
+                  <a>회원 정보 수정</a>
+                </Link>
+              </li>
+
+              <li onClick={onClickLogout} style={{ cursor: "pointer" }}>
+                <a>로그아웃</a>
+              </li>
+            </S.DrawerNav>
+          </>
+        ) : (
+          <S.NonLoginWrapper onClick={toggleDrawer("right", false)}>
+            <Link href={"/login"}>
+              <a>
+                <OutlineSubmitButton
+                  isActive={true}
+                  title={"로그인하기"}
+                  size={"medium"}
+                />
+              </a>
             </Link>
-          </li>
-
-          <li>
-            <Link href={"/myPage/qna"}>
-              <a>문의 내역</a>
-            </Link>
-          </li>
-
-          <li>
-            <Link href={"/myPage/edit"}>
-              <a>회원 정보 수정</a>
-            </Link>
-          </li>
-
-          <li onClick={onClickLogout} style={{ cursor: "pointer" }}>
-            <a>로그아웃</a>
-          </li>
-        </S.DrawerNav>
+          </S.NonLoginWrapper>
+        )}
       </S.Wrapper>
     </S.Container>
   );

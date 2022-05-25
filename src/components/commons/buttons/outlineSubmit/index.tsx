@@ -4,10 +4,11 @@ interface ISubmitButtonProps {
   isActive?: Boolean;
   title?: String;
   onClick?: () => void;
+  size?: String;
 }
 
 const Button = styled.button`
-  width: 29rem;
+  width: ${(props) => (props.size === "medium" ? "16rem" : "29rem")};
   height: 3.875rem;
   background-color: ${(props: ISubmitButtonProps) =>
     props.isActive ? "white" : "none"};
@@ -28,6 +29,7 @@ export default function OutlineSubmitButton(props: ISubmitButtonProps) {
       isActive={props.isActive}
       disabled={!props.isActive}
       onClick={props.onClick}
+      size={props.size}
     >
       {props.title}
     </Button>

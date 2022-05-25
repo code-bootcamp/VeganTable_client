@@ -70,8 +70,9 @@ export default function SignUpUI(props) {
                     <SignUp.SelectWrapper>
                       <SignUp.GenderSelect
                         onChange={props.onChangeUserInputs("gender")}
+                        defaultValue={""}
                       >
-                        <option value={""} selected={true} disabled={true}>
+                        <option value={""} disabled={true}>
                           성별
                         </option>
                         <option value={"male"}>남자</option>
