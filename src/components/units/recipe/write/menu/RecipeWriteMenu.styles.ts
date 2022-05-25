@@ -168,7 +168,7 @@ export const RecipeInfoBottom = styled.div`
   }
 `;
 
-export const RecipeInfoServing = styled.div`
+export const RecipeInfoInput = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

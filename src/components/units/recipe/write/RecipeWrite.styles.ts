@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  padding-bottom: 10rem;
 `;
 
 export const Wrapper = styled.div`
@@ -41,6 +42,38 @@ export const RepImage = styled.div`
     padding-top: 1.25rem;
     font-size: 1.25rem;
     font-weight: 400;
+  }
+`;
+
+export const RepImage2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 585px;
+  height: 259px;
+  background: #ebebeb;
+  border-radius: 2rem;
+
+  span {
+    padding-top: 1.25rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+`;
+
+export const TextArea = styled.textarea`
+  margin-top: 1.375rem;
+  padding: 1rem;
+  width: 585px;
+  min-height: 114px;
+  height: auto;
+  background: #ebebeb;
+  border: none;
+  border-radius: 2rem;
+
+  :focus {
+    outline: none;
   }
 `;
 
@@ -90,6 +123,11 @@ export const Navigation = styled.ul`
 `;
 
 export const Contents = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   & > h2 {
     padding-top: 4.625rem;
     padding-bottom: 4rem;
@@ -100,10 +138,6 @@ export const Contents = styled.div`
   }
 `;
 
-export const EditorWrapper = styled.div`
-  margin: 0 auto;
-  width: 50%;
-`;
 export const BackButton = styled.button`
   display: flex;
   justify-content: center;
@@ -129,17 +163,64 @@ export const MenuWrapper = styled.div`
   box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.25);
 `;
 
-export const IngredientsHead = styled.div`
+export const IngredientsWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding-bottom: 1rem;
+  padding: 2rem 0;
+  background: #ebebeb;
+  border-radius: 2rem;
+`;
+
+export const CookingOrderWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const CookingOrder = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 2rem 0;
+  margin-bottom: 5rem;
+  width: 585px;
+  background: #ebebeb;
+  border-radius: 2rem;
+
+  & > div:first-of-type {
+  }
+
+  & > div:last-of-type {
+  }
+
+  & > span {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    background: #eff18b;
+    border-radius: 50%;
+    padding: 1.31rem 1rem;
+  }
+`;
+
+export const IngredientArr = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 585px;
 
   & > div {
-    width: calc(100% / 3);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 1rem;
+    margin-left: 1rem;
+    cursor: pointer;
   }
 
   span {
@@ -150,6 +231,75 @@ export const IngredientsHead = styled.div`
   }
 `;
 
-export const IngredientInputs = styled.input`
-  padding-bottom: 1rem;
+export const IngredientInputs = styled.div`
+  input {
+    margin-right: 1rem;
+    padding: 0.3rem 0.7rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1rem;
+
+    :focus {
+      outline: none;
+    }
+  }
+
+  button {
+    background: #0fbaa3;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1rem;
+    padding: 0.3rem 0.7rem;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    :hover {
+      background: #ffffff;
+      color: #0fbaa3;
+    }
+  }
+
+  p {
+    padding-top: 1rem;
+    font-size: 0.8rem;
+    color: #848484;
+  }
+`;
+export const InputAmount = styled.input`
+  width: 100px;
+`;
+
+export const InputUnit = styled.input`
+  width: 100px;
+`;
+
+export const AddContentButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background: #464646;
+  padding: 0.2rem;
+  border: none;
+  border-radius: 50%;
+`;
+
+export const AddStepWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  border-radius: 2rem;
+  padding: 0.3rem 1rem;
+  transition: all 0.5s ease;
+  cursor: pointer;
+
+  :hover {
+    background: #464646;
+    color: #ffffff;
+  }
+
+  span {
+    padding-left: 0.5rem;
+  }
 `;

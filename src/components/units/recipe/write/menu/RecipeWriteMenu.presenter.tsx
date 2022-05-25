@@ -38,9 +38,16 @@ export default function RecipeWriteMenuUI(props) {
             <span>조리시간</span>
           </Menu.RecipeInfoTop>
           <Menu.RecipeInfoBottom>
-            <select>
-              <option value="선택">선택</option>
-            </select>
+            <Menu.RecipeInfoInput>
+              <span>약</span>
+              <input
+                style={{ textAlign: "center" }}
+                type="number"
+                placeholder="2"
+                min={1}
+              />
+              <span>분</span>
+            </Menu.RecipeInfoInput>
           </Menu.RecipeInfoBottom>
         </Menu.RecipeInfoItem>
 
@@ -65,10 +72,10 @@ export default function RecipeWriteMenuUI(props) {
             <span>분량</span>
           </Menu.RecipeInfoTop>
           <Menu.RecipeInfoBottom>
-            <Menu.RecipeInfoServing>
+            <Menu.RecipeInfoInput>
               <input type="number" placeholder="2" min={1} />
               <span>인분</span>
-            </Menu.RecipeInfoServing>
+            </Menu.RecipeInfoInput>
           </Menu.RecipeInfoBottom>
         </Menu.RecipeInfoItem>
       </Menu.RecipeInfoWrapper>
