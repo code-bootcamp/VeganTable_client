@@ -56,8 +56,6 @@ export const TopButton = styled.button`
     padding-top: 0.5rem;
   }
   @media ${breakPoints.tablet} {
-    width: 4rem;
-    height: 4rem;
   }
   @media ${breakPoints.mobile} {
     display: none;

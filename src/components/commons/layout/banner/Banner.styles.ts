@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
+import { breakPoints } from "../../../../commons/styles/media";
 
 const MoveY = keyframes`
   from{
@@ -54,6 +55,12 @@ export const SliderContainer = styled.div`
   justify-content: center;
   background-color: ${(props) =>
     props.num === 1 ? "#fcf7e1" : props.num === 2 ? "#A5E0E9" : "#F3E3FF"};
+  @media ${breakPoints.tablet} {
+    height: 494px;
+  }
+  @media ${breakPoints.mobile} {
+    height: 394px;
+  }
 `;
 
 export const SliderWrapper = styled.div`
@@ -71,6 +78,9 @@ export const TextGroup = styled.div`
   flex-direction: column;
   color: #000000;
   white-space: nowrap;
+  @media (max-width: 1243px) {
+    margin-left: 1rem;
+  }
 `;
 
 export const ImageGroup = styled.div`
@@ -183,9 +193,68 @@ export const SliderImage1 = styled.div`
     height: auto;
     animation: ${Rotation} 30s 1s infinite ease-in-out alternate;
   }
+  @media ${breakPoints.tablet} {
+    width: 450px;
+    // 초록색 동그라미
+    & > span:nth-of-type(1) {
+      width: 16px;
+      height: 16px;
+    }
+    // 보라색 동그라미
+    & > span:nth-of-type(2) {
+      width: 16px;
+      height: 16px;
+    }
+    // 보라색 동그라미
+    & > span:nth-of-type(3) {
+      width: 44px;
+      height: 44px;
+    }
+    // 초록색 동그라미
+    & > span:nth-of-type(4) {
+      width: 19px;
+      height: 19px;
+    }
+    & > div:nth-of-type(1) {
+      width: 190px;
+    }
+    & > div:nth-of-type(2) {
+      width: 400px;
+    }
+  }
+  @media ${breakPoints.mobile} {
+    width: 300px;
+    // 초록색 동그라미
+    & > span:nth-of-type(1) {
+      width: 10px;
+      height: 10px;
+    }
+    // 보라색 동그라미
+    & > span:nth-of-type(2) {
+      width: 6px;
+      height: 6px;
+    }
+    // 보라색 동그라미
+    & > span:nth-of-type(3) {
+      width: 25px;
+      height: 25px;
+    }
+    // 초록색 동그라미
+    & > span:nth-of-type(4) {
+      width: 10px;
+      height: 10px;
+    }
+    & > div:nth-of-type(1) {
+      width: 120px;
+    }
+    & > div:nth-of-type(2) {
+      width: 260px;
+    }
+  }
 `;
 
 export const SliderImage2 = styled.div`
+  width: 100%;
   img {
     margin-top: -1px;
     height: calc(100% + 2px);
@@ -194,6 +263,7 @@ export const SliderImage2 = styled.div`
 `;
 
 export const SliderImage3 = styled.div`
+  width: 100%;
   img {
     height: 100%;
     width: auto;
@@ -214,5 +284,12 @@ export const TextMiddle = styled.div`
   }
   & > span {
     color: #0fbaa3;
+  }
+
+  @media ${breakPoints.tablet} {
+    font-size: 3rem;
+  }
+  @media ${breakPoints.mobile} {
+    font-size: 2.5rem;
   }
 `;

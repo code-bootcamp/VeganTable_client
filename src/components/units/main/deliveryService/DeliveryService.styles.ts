@@ -1,13 +1,20 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Container = styled.div`
   background: rgba(241, 241, 241, 0.6);
   padding: 4.25rem 0;
+  @media ${breakPoints.tablet} {
+    padding: 3rem 0;
+  }
+  @media ${breakPoints.mobile} {
+    padding: 2.5rem 0;
+  }
 `;
 
 export const Wrapper = styled.div`
   margin: 0 auto;
-  width: 100%;
+  width: 95%;
   max-width: 1440px;
 `;
 
@@ -44,6 +51,7 @@ export const ImageWrapper = styled.div`
   & > img:nth-of-type(1) {
     width: 100%;
     max-width: 782px;
+    min-width: 100px;
     opacity: 0;
     transition: all 2.5s ease;
     transform: translateX(-30%);
@@ -58,6 +66,7 @@ export const ImageWrapper = styled.div`
     z-index: 2;
     width: 100%;
     max-width: 673px;
+    min-width: 100px;
     opacity: 0;
     transition: all 2.5s ease;
     transform: translate(20%, 15%);
@@ -81,6 +90,14 @@ export const ContentsText = styled.div`
   &.isActive {
     transform: translateY(-70%);
     opacity: 1;
+    @media ${breakPoints.tablet} {
+      transform: translateY(-35%);
+      font-size: 3rem;
+    }
+    @media ${breakPoints.mobile} {
+      transform: translateY(0%);
+      font-size: 2.5rem;
+    }
   }
 
   & > span:first-of-type {

@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Container = styled.div`
   margin: 0 auto;
-  width: 100%;
+  width: 95%;
   max-width: 1440px;
   padding: 4.25rem 0;
 `;
@@ -43,6 +44,20 @@ export const SliderWrapper = styled.div`
   }
   .slick-next:before {
     content: ">";
+  }
+  @media ${breakPoints.tablet} {
+    button {
+      visibility: hidden;
+      position: fixed;
+      z-index: -99;
+    }
+  }
+  @media ${breakPoints.mobile} {
+    button {
+      visibility: hidden;
+      position: fixed;
+      z-index: -99;
+    }
   }
 `;
 
@@ -93,11 +108,11 @@ export const RecipeItem = styled.div`
 
 export const RecipeItemImageWrapper = styled.div`
   position: relative;
-  height: 342px;
 
   & > img {
     width: 100%;
     height: 100%;
+    max-height: 342px;
     object-fit: cover;
     border-radius: 24px;
   }

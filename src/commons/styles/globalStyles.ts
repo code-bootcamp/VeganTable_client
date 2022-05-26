@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { breakPoints } from "./media";
 
 export const globalStyles = css`
   * {
@@ -10,6 +11,12 @@ export const globalStyles = css`
 
   html {
     font-size: 16px;
+    @media ${breakPoints.tablet} {
+      font-size: 14px;
+    }
+    @media ${breakPoints.mobile} {
+      font-size: 12px;
+    }
   }
 
   ul {
