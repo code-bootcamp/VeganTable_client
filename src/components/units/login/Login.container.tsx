@@ -1,11 +1,11 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../commons/store";
 import { useModal } from "../../commons/hooks/useModal";
 import LoginUI from "./Login.presenter";
-import { FETCH_USER, LOG_IN } from "./Login.queries";
+import { LOG_IN } from "./Login.queries";
 
 export default function Login() {
   const [, setAccessToken] = useRecoilState(accessTokenState);
@@ -15,12 +15,13 @@ export default function Login() {
     password: "",
   });
 
-  const onChangeLoginInputs = (id) => (e) => {
-    setLoginInputs({
-      ...loginInputs,
-      [id]: e.target.value,
-    });
-  };
+  const onChangeLoginInputs =
+    (id: string) => (e: ChangeEvent<HTMLInputElement>) => {
+      setLoginInputs({
+        ...loginInputs,
+        [id]: e.target.value,
+      });
+    };
 
   // 로그인 회원 정보 가져오기
   // const { data } = useQuery(FETCH_USER);

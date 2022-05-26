@@ -9,6 +9,8 @@ interface IUseModalProps {
   WarningText?: string;
   ErrorTitle?: string;
   ErrorText?: string;
+  ErrorTitle02?: string;
+  ErrorText02?: string;
   WarningConfirmTitle?: string;
   WarningConfirmText?: string;
 }
@@ -58,6 +60,17 @@ export function useModal(data: IUseModalProps) {
     });
   };
 
+  const Error02 = () => {
+    Swal.fire({
+      title: data.ErrorTitle02,
+      text: data.ErrorText02,
+      icon: "error",
+      confirmButtonColor: "#0fbaa3",
+      showConfirmButton: false,
+      timer: 1700,
+    });
+  };
+
   const WarningConfirm = () => {
     Swal.fire({
       title: data.WarningConfirmTitle,
@@ -83,6 +96,7 @@ export function useModal(data: IUseModalProps) {
     Success02,
     Warning,
     Error,
+    Error02,
     WarningConfirm,
     PromotionModal,
   };

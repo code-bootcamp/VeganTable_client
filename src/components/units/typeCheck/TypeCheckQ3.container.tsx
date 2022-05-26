@@ -7,7 +7,7 @@ export default function TypeCheckQ3() {
   const router = useRouter();
   const [isPicked, setIsPicked] = useState([false]);
 
-  const onClickAllergy = (i) => (e) => {
+  const onClickAllergy = (i: number) => () => {
     const newPicked = [...isPicked];
     newPicked[i] = !isPicked[i];
     setIsPicked(newPicked);
