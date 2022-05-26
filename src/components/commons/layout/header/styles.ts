@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Container = styled.div`
   display: flex;
@@ -15,6 +16,12 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   max-width: 1440px;
+  @media ${breakPoints.tablet} {
+    width: 50rem;
+  }
+  @media ${breakPoints.mobile} {
+    width: 40rem;
+  }
 `;
 
 export const LogoWrapper = styled.div``;
@@ -27,6 +34,9 @@ export const MenuWrapper = styled.ul`
   display: flex;
   justify-content: space-between;
   padding-left: 5rem;
+  @media ${breakPoints.mobile} {
+    width: 24rem;
+  }
 `;
 
 export const MenuItem = styled.li`
@@ -61,6 +71,12 @@ export const UserWrapper = styled.ul`
   margin-left: auto;
   list-style: none;
   width: 18rem;
+  @media ${breakPoints.tablet} {
+    width: 12rem;
+  }
+  @media ${breakPoints.mobile} {
+    width: 12rem;
+  }
 `;
 
 export const HeaderIcon = styled.img`
@@ -71,5 +87,3 @@ export const HeaderIcon = styled.img`
 export const UserName = styled.li`
   margin-right: 1.5rem;
 `;
-
-export const UserPoint = styled.li``;

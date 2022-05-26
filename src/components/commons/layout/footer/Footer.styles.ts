@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 // 전체
 export const Container = styled.div`
@@ -16,6 +17,12 @@ export const Wrapper = styled.div`
   margin: 2rem 0;
   display: flex;
   justify-content: space-between;
+  @media ${breakPoints.tablet} {
+    width: 55rem;
+  }
+  @media ${breakPoints.mobile} {
+    width: 45rem;
+  }
 `;
 
 // Top button
@@ -48,6 +55,13 @@ export const TopButton = styled.button`
   span {
     padding-top: 0.5rem;
   }
+  @media ${breakPoints.tablet} {
+    width: 4rem;
+    height: 4rem;
+  }
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 // logo
@@ -60,10 +74,24 @@ export const Logo = styled.img`
   margin-bottom: 20px;
   width: 8.75rem;
   height: 4.125rem;
+  @media ${breakPoints.tablet} {
+    width: 6.75rem;
+    height: 3.125rem;
+  }
+  @media ${breakPoints.mobile} {
+    width: 6.75rem;
+    height: 3.125rem;
+  }
 `;
 export const LogoCopyWrite = styled.div`
   font-size: 0.7rem;
   color: rgba(196, 196, 196, 1);
+  @media ${breakPoints.tablet} {
+    width: 7rem;
+  }
+  @media ${breakPoints.mobile} {
+    width: 7rem;
+  }
 `;
 
 // Footer Menu
@@ -71,12 +99,21 @@ export const MenuInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   color: white;
+  @media ${breakPoints.tablet} {
+    width: 30rem;
+    word-break: word;
+  }
+  @media ${breakPoints.mobile} {
+    width: 24rem;
+    word-break: word;
+  }
 `;
 
 export const MenuWrapper = styled.ul`
   display: flex;
   margin-bottom: 20px;
 `;
+
 export const Menu = styled.li`
   margin-right: 20px;
   border-right: 1px solid white;
@@ -87,15 +124,38 @@ export const Menu = styled.li`
   }
   font-weight: 600;
   font-size: 1.1rem;
+  @media ${breakPoints.tablet} {
+    font-size: 1rem;
+    padding-right: 10px;
+  }
+  @media ${breakPoints.mobile} {
+    font-size: 0.7rem;
+    padding-right: 15px;
+  }
 `;
 
 // 기업 정보
-export const InfoWrapper = styled.div``;
+export const InfoWrapper = styled.div`
+  @media ${breakPoints.tablet} {
+    width: 30rem;
+    word-break: word;
+  }
+  @media ${breakPoints.mobile} {
+    width: 20rem;
+    word-break: word;
+  }
+`;
 export const Info = styled.div`
   margin-bottom: 10px;
   font-weight: 400;
   font-size: 0.9rem;
   color: rgba(196, 196, 196, 1);
+  @media ${breakPoints.tablet} {
+    font-size: 0.8rem;
+  }
+  @media ${breakPoints.mobile} {
+    font-size: 0.7rem;
+  }
 `;
 
 // Footer 고객센터
@@ -108,6 +168,12 @@ export const CSWrapper = styled.div`
 `;
 export const CSNumber = styled.div`
   margin-bottom: 20px;
+  @media ${breakPoints.tablet} {
+    font-size: 1rem;
+  }
+  @media ${breakPoints.mobile} {
+    font-size: 0.7rem;
+  }
 `;
 export const CSChat = styled.button`
   width: 6rem;
@@ -118,4 +184,11 @@ export const CSChat = styled.button`
   background-color: black;
   border-radius: 2rem;
   color: white;
+  @media ${breakPoints.tablet} {
+    width: 5rem;
+  }
+  @media ${breakPoints.mobile} {
+    width: 5rem;
+    font-size: 0.7rem;
+  }
 `;
