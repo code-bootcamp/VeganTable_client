@@ -115,14 +115,30 @@ export default function MonthlyRecipeUI(props) {
                   <h1>메뉴 01</h1>
                   <p>동해물과 백두산이 마르고 닳도록 하느님이 보우하사</p>
                   <MonthlyRecipe.Tags>
-                    <MonthlyRecipe.TagVegan>비건</MonthlyRecipe.TagVegan>
-                    <MonthlyRecipe.TagLacto>락토</MonthlyRecipe.TagLacto>
-                    <MonthlyRecipe.TagPesco>페스코</MonthlyRecipe.TagPesco>
-                    <MonthlyRecipe.TagPollo>폴로</MonthlyRecipe.TagPollo>
-                    <MonthlyRecipe.TagOvo>오보</MonthlyRecipe.TagOvo>
-                    <MonthlyRecipe.TagLactoOvo>
-                      락토오보
-                    </MonthlyRecipe.TagLactoOvo>
+                    {(el === 1 && (
+                      <MonthlyRecipe.TagVegan>비건</MonthlyRecipe.TagVegan>
+                    )) ||
+                      (el === 2 && (
+                        <MonthlyRecipe.TagLacto>락토</MonthlyRecipe.TagLacto>
+                      )) ||
+                      (el === 3 && (
+                        <MonthlyRecipe.TagPesco>페스코</MonthlyRecipe.TagPesco>
+                      )) ||
+                      (el === 4 && (
+                        <MonthlyRecipe.TagPollo>폴로</MonthlyRecipe.TagPollo>
+                      )) ||
+                      (el === 5 && (
+                        <MonthlyRecipe.TagOvo>오보</MonthlyRecipe.TagOvo>
+                      )) ||
+                      (el === 6 && (
+                        <MonthlyRecipe.TagLactoOvo>
+                          락토오보
+                        </MonthlyRecipe.TagLactoOvo>
+                      )) || (
+                        <MonthlyRecipe.TagLactoOvo>
+                          락토오보
+                        </MonthlyRecipe.TagLactoOvo>
+                      )}
                   </MonthlyRecipe.Tags>
                 </MonthlyRecipe.RecipeItemTextWrapper>
               </MonthlyRecipe.RecipeItem>
