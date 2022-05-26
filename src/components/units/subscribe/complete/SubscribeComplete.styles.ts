@@ -1,5 +1,6 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 const MoveX = keyframes`
   0%{
@@ -73,6 +74,9 @@ export const HeaderCompleteNotice = styled.p`
   opacity: 1;
   font-size: 1.5rem;
   font-weight: 500;
+  @media ${breakPoints.mobile} {
+    font-size: 1.3rem;
+  }
 `;
 
 // 메인 내용부분
@@ -89,6 +93,9 @@ export const DeliveryMan = styled.img`
   z-index: 100;
   top: -150px;
   animation: ${MoveX} 1s ease-in-out;
+  @media ${breakPoints.mobile} {
+    width: 16.25rem;
+  }
 `;
 
 export const Receipt = styled.div`
@@ -99,9 +106,14 @@ export const Receipt = styled.div`
   height: 60rem;
   z-index: 3;
   background-image: url("/img/subscribe/img-complete-03.png");
+  background-size: contain;
   background-repeat: no-repeat;
   position: relative;
   animation: ${MoveY} 1s ease;
+  @media ${breakPoints.mobile} {
+    width: 40rem;
+    height: 53rem;
+  }
 `;
 
 export const TextWrapper = styled.div`
@@ -110,6 +122,10 @@ export const TextWrapper = styled.div`
   align-items: center;
   width: 37rem;
   margin-top: 12rem;
+  @media ${breakPoints.mobile} {
+    width: 32rem;
+    margin-top: 8rem;
+  }
 `;
 
 export const TextHeader = styled.div`

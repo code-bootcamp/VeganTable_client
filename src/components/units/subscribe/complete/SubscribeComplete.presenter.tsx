@@ -2,7 +2,11 @@ import Link from "next/link";
 import OutlineSubmitButton from "../../../commons/buttons/outlineSubmit";
 import * as Subs from "./SubscribeComplete.styles";
 
-export default function SubscribeCompleteUI(props) {
+interface IPropsSubsComplete {
+  onClickMoveToMain: () => void;
+}
+
+export default function SubscribeCompleteUI(props: IPropsSubsComplete) {
   return (
     <Subs.Container>
       <Subs.Wrapper>

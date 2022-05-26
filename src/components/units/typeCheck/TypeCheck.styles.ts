@@ -1,5 +1,11 @@
 import styled from "@emotion/styled";
 
+interface IPropsVeganType {
+  isPicked?: boolean;
+  hover?: string;
+  image?: string;
+}
+
 // 컨테이너 전체
 export const Container = styled.div`
   display: flex;
@@ -98,6 +104,7 @@ export const VeganTypeWrapper = styled.div`
   margin-bottom: 5rem;
 `;
 
+// prettier-ignore
 export const VeganType = styled.div`
   display: flex;
   flex-direction: column;
@@ -108,11 +115,10 @@ export const VeganType = styled.div`
   &:last-of-type {
     margin-right: 3rem;
   }
-  color: ${(props) => props.isPicked && "#0fbaa3"};
+  color: ${(props: IPropsVeganType) => props.isPicked && "#0fbaa3"};
 
   & > div > div {
-    background-image: url(${(props) =>
-      props.isPicked ? props.hover : props.image});
+    background-image: url(${(props: IPropsVeganType) =>props.isPicked ? props.hover : props.image});
   }
 
   & > p {
@@ -136,7 +142,8 @@ export const VeganType = styled.div`
 export const VeganTypeImgCircle = styled.div`
   width: 6rem;
   height: 6rem;
-  border: 2px solid ${(props) => (props.isPicked ? "#0fbaa3" : "#7f7f7f")};
+  border: 2px solid
+    ${(props: IPropsVeganType) => (props.isPicked ? "#0fbaa3" : "#7f7f7f")};
   border-radius: 50%;
   display: flex;
   flex-direction: column;
@@ -200,7 +207,8 @@ export const VeganKeywordRow = styled.div`
 export const VeganKeyword = styled.li`
   width: 10rem;
   height: 3.625rem;
-  background-color: ${(props) => (props.isPicked ? "#EFF18B" : "#f5f5f5")};
+  background-color: ${(props: IPropsVeganType) =>
+    props.isPicked ? "#EFF18B" : "#f5f5f5"};
   border-radius: 2rem;
   display: flex;
   align-items: center;
@@ -244,7 +252,8 @@ export const AllergyKeywordRow = styled.div`
 export const AllergyKeyword = styled.li`
   width: 10rem;
   height: 3.625rem;
-  background-color: ${(props) => (props.isPicked ? "#EFF18B" : "#f5f5f5")};
+  background-color: ${(props: IPropsVeganType) =>
+    props.isPicked ? "#EFF18B" : "#f5f5f5"};
   border-radius: 2rem;
   display: flex;
   align-items: center;

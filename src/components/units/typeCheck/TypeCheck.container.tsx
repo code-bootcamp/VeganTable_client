@@ -71,7 +71,7 @@ export default function TypeCheck() {
 
   const [isPicked, setIsPicked] = useState("");
 
-  const onClickVeganType = (el) => () => {
+  const onClickVeganType = (el: any) => () => {
     setIsPicked(el.name);
   };
 

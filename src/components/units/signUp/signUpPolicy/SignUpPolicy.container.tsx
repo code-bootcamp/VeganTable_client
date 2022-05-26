@@ -1,14 +1,18 @@
 // 회원가입 약관동의
 import * as SignUp from "../SignUp.styles";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import SubmitButton from "../../../commons/buttons/submit";
 import CheckBox01 from "../../../commons/checkboxes/01";
 
-export default function SignUpPolicy(props) {
+interface IPropsSignUpPolicy {
+  setAgreePolicy: (prev: any) => void;
+}
+
+export default function SignUpPolicy(props: IPropsSignUpPolicy) {
   const [checked, setChecked] = useState([true, true]);
   const isActive = !checked.includes(false);
 
-  const handleCheck = (i) => (e) => {
+  const handleCheck = (i: number) => (e: ChangeEvent<HTMLInputElement>) => {
     const newChecked = [...checked];
     newChecked[i] = e.target.checked;
     setChecked(newChecked);
@@ -19,7 +23,7 @@ export default function SignUpPolicy(props) {
   }, []);
 
   const onClickAgree = () => {
-    props.setAgreePolicy((prev) => !prev);
+    props.setAgreePolicy((prev: any) => !prev);
   };
 
   return (

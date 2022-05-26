@@ -1,16 +1,44 @@
 // 회원가입 전체
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import SubmitButton from "../../commons/buttons/submit";
 import UserInput from "../../commons/inputs";
 import * as SignUp from "./SignUp.styles";
 import SignUpComplete from "./signUpComplete/SignUpComplete.container";
 import SignUpPolicy from "./signUpPolicy/SignUpPolicy.container";
 import CheckBox01 from "../../commons/checkboxes/01";
+import {
+  FieldValues,
+  FormState,
+  SubmitHandler,
+  UseFormHandleSubmit,
+  UseFormRegister,
+} from "react-hook-form";
 
-export default function SignUpUI(props) {
+interface IPropsSignUp {
+  isSubmit: Boolean;
+  register: UseFormRegister<FieldValues>;
+  formState: FormState<FieldValues>;
+  handleSubmit: UseFormHandleSubmit<FieldValues>;
+  onClickSubmit: SubmitHandler<FieldValues>;
+  onChangeUserInputs: (event: string) => any;
+  userInputsErrors: {
+    genderError: String;
+    tokenError: String;
+  };
+  userInputs: {
+    gender: String;
+    phone: String;
+    token: String;
+    isValid: Boolean;
+  };
+  onClickGetToken: () => void;
+  onClickCheckValid: () => void;
+}
+
+export default function SignUpUI(props: IPropsSignUp) {
   const [checked, setChecked] = useState(true);
 
-  const handleCheck = (e: any) => {
+  const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);
   };
 
@@ -187,7 +215,6 @@ export default function SignUpUI(props) {
                   checked &&
                   props.userInputs?.isValid
                 }
-                onClick={props.onClickSubmit}
               />
             </SignUp.BodyWrapper>
           </form>

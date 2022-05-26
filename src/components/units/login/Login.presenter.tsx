@@ -3,7 +3,13 @@ import OutlineSubmitButton from "../../commons/buttons/outlineSubmit";
 import SubmitButton from "../../commons/buttons/submit";
 import * as Login from "./Login.styles";
 
-export default function LoginUI(props) {
+interface IPropsLogin {
+  onChangeLoginInputs: (event: string) => any;
+  onClickLogin: () => void;
+  onClickSignUp: () => void;
+}
+
+export default function LoginUI(props: IPropsLogin) {
   const isActive = true;
 
   return (

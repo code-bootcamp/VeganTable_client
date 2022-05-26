@@ -8,6 +8,7 @@ import { gql, useMutation, useQuery } from "@apollo/client";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../commons/store";
 import OutlineSubmitButton from "../../commons/buttons/outlineSubmit";
+import { IDrawerUIProps } from "./Drawer.types";
 
 type Anchor = "right";
 
@@ -34,7 +35,7 @@ const FETCH_USER = gql`
   }
 `;
 
-export default function TemporaryDrawer(props) {
+export default function TemporaryDrawer(props: IDrawerUIProps) {
   const [accessToken] = useRecoilState(accessTokenState);
 
   const [state, setState] = useState({

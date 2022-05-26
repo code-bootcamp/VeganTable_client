@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { IDrawerStylesProps } from "./Drawer.types";
 
 export const Container = styled.div`
   background-image: url("/img/drawer/img-drawer-01.svg");
@@ -49,7 +50,8 @@ export const DrawerHead = styled.div`
     align-items: center;
     width: 4.6875rem;
     height: 1.5rem;
-    background-color: ${(props) => (props.isPro ? "#C2BFB9" : "#bfab87")};
+    background-color: ${(props: IDrawerStylesProps) =>
+      props.isPro ? "#C2BFB9" : "#bfab87"};
     border-radius: 1rem;
   }
 

@@ -8,7 +8,7 @@ import {
   CREATE_USER,
   SEND_TOKEN_TO_SMS,
 } from "./SignUp.queries";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useModal } from "../../commons/hooks/useModal";
 
 export default function SignUp() {
@@ -36,23 +36,26 @@ export default function SignUp() {
   // 가입완료로 넘어가는 state
   const [isSubmit, setIsSubmit] = useState(false);
 
-  const onChangeUserInputs = (id) => (e) => {
-    setUserInputs((prev) => ({
-      ...userInputs,
-      [id]: e.target.value,
-    }));
-    if (userInputs.gender !== "")
-      setUserInputsErrors({ ...userInputsErrors, genderError: "" });
-  };
+  const onChangeUserInputs =
+    (id: string) => (e: ChangeEvent<HTMLInputElement>) => {
+      setUserInputs((prev) => ({
+        ...userInputs,
+        [id]: e.target.value,
+      }));
+      if (userInputs.gender !== "")
+        setUserInputsErrors({ ...userInputsErrors, genderError: "" });
+    };
 
   // 모달 부분
-  const { Success01, Success02, Error, Warning } = useModal({
+  const { Success01, Success02, Error, Error02, Warning } = useModal({
     SuccessTitle01: "발송 완료",
     SuccessText01: "인증번호를 발송하였습니다",
     SuccessTitle02: "인증 완료",
     SuccessText02: "인증번호가 일치합니다.",
     ErrorTitle: "인증 실패",
     ErrorText: "인증번호가 일치하지 않습니다.",
+    ErrorTitle02: "회원가입 실패",
+    ErrorText02: "회원가입에 실패했습니다.",
     WarningTitle: "발송 실패",
     WarningText: "이미 등록된 번호이거나 유효한 번호가 아닙니다.",
   });
@@ -92,12 +95,12 @@ export default function SignUp() {
       }
       Success02();
     } catch (error) {
-      if (error instanceof Error) Error();
+      Error();
     }
   };
 
   // 회원가입 mutation
-  const onClickSubmit = async (data) => {
+  const onClickSubmit = async (data: any) => {
     if (userInputs.gender === "") {
       return setUserInputsErrors({
         ...userInputsErrors,
@@ -115,7 +118,7 @@ export default function SignUp() {
       });
       setIsSubmit(true);
     } catch (error) {
-      if (error instanceof Error) console.log(error.message);
+      Error02();
     }
   };
 
