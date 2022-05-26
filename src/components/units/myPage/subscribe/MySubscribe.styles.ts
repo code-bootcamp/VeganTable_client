@@ -48,6 +48,14 @@ export const MySubscribe = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 4.25rem 0;
+
+  & .expert {
+    background-color: #bfab87;
+  }
+
+  & .common {
+    background-color: #c2bfb9;
+  }
 `;
 
 export const UserGrade = styled.div`
@@ -130,52 +138,24 @@ export const Pass = styled.div`
   padding: 5.5rem 0;
 `;
 
-export const Basic = styled.div`
+export const Subs = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  width: 36.625rem;
-  height: 27.8125rem;
-  border-radius: 2rem;
-  background-image: url("/img/myPage/img-subscribe.png");
-
-  & h1 {
-    padding-bottom: 2.6875rem;
-  }
-  & .month {
-    color: #737373;
-    font-size: 2rem;
-    font-weight: 600;
-    padding-bottom: 0.8rem;
-  }
-
-  & .price {
-    color: #262626;
-    font-size: 3rem;
-    font-weight: 700;
-  }
-
-  & p {
-    color: #c4c4c4;
-    font-size: 1.5rem;
-    letter-spacing: -0.06rem;
-    font-weight: 500;
-    padding-bottom: 3.3125rem;
-  }
-`;
-
-export const Premium = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  width: 36.625rem;
-  height: 27.8125rem;
-  border-radius: 2rem;
   background-color: #f5f5f5;
+
+  width: 36.625rem;
+  height: 27.8125rem;
+  border-radius: 2rem;
+
+  &.basic {
+    background-image: url("/img/myPage/img-subscribe.png");
+  }
+
+  &.premium {
+    background-image: url("/img/myPage/img-subscribe.png");
+  }
 
   & h1 {
     padding-bottom: 2.6875rem;

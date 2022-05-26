@@ -1,11 +1,12 @@
 import { useState } from "react";
 import * as Nav from "./styles";
 
-export default function Navigation02() {
+export default function Navigation02(props) {
   const [isPicked, setIsPicked] = useState("");
 
   const onClickVeganType = (el) => () => {
     setIsPicked(el.name);
+    props.setUserInputs({ ...props.userInputs, type: el.En });
   };
 
   const VEGAN_TYPE = [
@@ -29,7 +30,7 @@ export default function Navigation02() {
     },
     {
       name: "락토오보",
-      En: "Lacto-Ovo",
+      En: "Lacto_Ovo",
       image: "/img/navigation/icon-vegan-lactoOvo.svg",
       hover: "/img/navigation/icon-vegan-lactoOvo-hover.svg",
     },
