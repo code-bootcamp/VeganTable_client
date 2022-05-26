@@ -74,8 +74,24 @@ export default function MyPageMainUI(props) {
                 )}
               </My.Info>
               <My.Info>
-                <My.Subscribe>3달째</My.Subscribe>
-                <My.Name>정기 구독 이용중</My.Name>
+                {props.data?.fetchUser.isSubs === "NON_SUB" && (
+                  <>
+                    <My.Subscribe>미구독</My.Subscribe>
+                    <My.Name>채식한상 어떠세요?</My.Name>
+                  </>
+                )}
+                {props.data?.fetchUser.isSubs === "BASIC" && (
+                  <>
+                    <My.Subscribe>베이직</My.Subscribe>
+                    <My.Name>정기 구독 이용중</My.Name>
+                  </>
+                )}
+                {props.data?.fetchUser.isSubs === "PREMIUM" && (
+                  <>
+                    <My.Subscribe>프리미엄</My.Subscribe>
+                    <My.Name>정기 구독 이용중</My.Name>
+                  </>
+                )}
               </My.Info>
             </My.UserInfo>
           </My.UserWrapper>

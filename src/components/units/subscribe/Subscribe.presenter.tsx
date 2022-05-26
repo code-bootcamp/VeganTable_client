@@ -21,9 +21,9 @@ export default function SubscribeUI() {
       <Subs.Wrapper>
         <Subs.IntroWrapper>
           <Subs.IntroTop1>
-            <Subs.TopText1 data-aos="fade-up">
+            <Subs.TopText1 data-aos="fade-up" ref={ref}>
               <Subs.Title>채식이 어렵다면</Subs.Title>
-              <Subs.SubTitle ref={ref}>
+              <Subs.SubTitle>
                 채식한상 정기 구독으로 시작해 보세요
               </Subs.SubTitle>
             </Subs.TopText1>

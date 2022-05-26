@@ -1,11 +1,16 @@
 import styled from "@emotion/styled";
+import { ChangeEvent } from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 
 interface IUserInputProps {
   placeholder?: string | undefined;
   inputSize?: string | undefined;
   disabled?: boolean;
-  onChange?: () => void;
   type?: string | undefined;
+  defaultValue?: string;
+  readOnly?: boolean;
+  register?: UseFormRegisterReturn;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input = styled.input`
@@ -25,7 +30,9 @@ export default function UserInput(props: IUserInputProps) {
       onChange={props?.onChange}
       disabled={props.disabled}
       type={props.type}
+      defaultValue={props.defaultValue}
       {...props.register}
+      readOnly={props.readOnly}
     />
   );
 }

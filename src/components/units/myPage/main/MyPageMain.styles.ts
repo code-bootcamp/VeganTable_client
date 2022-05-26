@@ -35,7 +35,7 @@ export const UserWrapper = styled.div`
 export const UserProfile = styled.div`
   display: flex;
   flex-direction: column;
-  width: 57%;
+  width: 50%;
 
   & .expert {
     background-color: #bfab87;
@@ -69,8 +69,9 @@ export const UserName = styled.span`
 
 export const UserInfo = styled.ul`
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  width: 30%;
+  width: 35%;
   height: 2.5rem;
 `;
 
@@ -80,9 +81,11 @@ export const Info = styled.li`
   align-items: center;
   border-right: 1px solid #c4c4c4;
   padding: 0 2rem;
+
   &:last-of-type {
-    width: 60%;
+    width: 50%;
     border: none;
+    padding-right: 0;
   }
 `;
 

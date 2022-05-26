@@ -65,7 +65,7 @@ export const Title = styled.span`
 export const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2.5rem 7rem;
+  padding: 2.5rem 4rem;
   width: 100%;
   border-bottom: 1px solid #c4c4c4;
 `;
