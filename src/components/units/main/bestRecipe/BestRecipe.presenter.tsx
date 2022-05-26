@@ -38,12 +38,30 @@ export default function BestRecipeUI(props) {
                     <h1>메뉴 01</h1>
                     <p>동해물과 백두산이 마르고 닳도록 하느님이 보우하사</p>
                     <BestRecipe.Tags>
-                      <BestRecipe.TagVegan>비건</BestRecipe.TagVegan>
-                      <BestRecipe.TagLacto>락토</BestRecipe.TagLacto>
-                      <BestRecipe.TagPesco>페스코</BestRecipe.TagPesco>
-                      <BestRecipe.TagPollo>폴로</BestRecipe.TagPollo>
-                      <BestRecipe.TagOvo>오보</BestRecipe.TagOvo>
-                      <BestRecipe.TagLactoOvo>락토오보</BestRecipe.TagLactoOvo>
+                      {(el === 1 && (
+                        <BestRecipe.TagVegan>비건</BestRecipe.TagVegan>
+                      )) ||
+                        (el === 2 && (
+                          <BestRecipe.TagLacto>락토</BestRecipe.TagLacto>
+                        )) ||
+                        (el === 3 && (
+                          <BestRecipe.TagPesco>페스코</BestRecipe.TagPesco>
+                        )) ||
+                        (el === 4 && (
+                          <BestRecipe.TagPollo>폴로</BestRecipe.TagPollo>
+                        )) ||
+                        (el === 5 && (
+                          <BestRecipe.TagOvo>오보</BestRecipe.TagOvo>
+                        )) ||
+                        (el === 6 && (
+                          <BestRecipe.TagLactoOvo>
+                            락토오보
+                          </BestRecipe.TagLactoOvo>
+                        )) || (
+                          <BestRecipe.TagLactoOvo>
+                            락토오보
+                          </BestRecipe.TagLactoOvo>
+                        )}
                     </BestRecipe.Tags>
                   </BestRecipe.RecipeItemTextWrapper>
                 </BestRecipe.RecipeItem>

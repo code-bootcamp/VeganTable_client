@@ -54,12 +54,12 @@ export const ImageWrapper = styled.div`
     min-width: 100px;
     opacity: 0;
     transition: all 2.5s ease;
-    transform: translateX(-30%);
+    transform: translate(-30%, 0%);
   }
 
   &.isActive > img:nth-of-type(1) {
     opacity: 1;
-    transform: translateX(10%);
+    transform: translate(10%, 0%);
   }
 
   & > img:nth-of-type(2) {
@@ -76,7 +76,24 @@ export const ImageWrapper = styled.div`
     opacity: 1;
     transform: translate(0%, 15%);
   }
+  @media ${breakPoints.tablet} {
+    & > img:nth-of-type(1) {
+      transform: translate(0%, 0%);
+    }
+    & > img:nth-of-type(2) {
+      transform: translate(0%, 0%);
+    }
+  }
+  @media ${breakPoints.mobile} {
+    & > img:nth-of-type(1) {
+      transform: translate(0%, 0%);
+    }
+    & > img:nth-of-type(2) {
+      transform: translate(0%, 0%);
+    }
+  }
 `;
+
 export const ContentsText = styled.div`
   display: flex;
   flex-direction: column;
