@@ -4,7 +4,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding-bottom: 10rem;
 `;
 
 export const Wrapper = styled.div`
@@ -12,6 +11,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  padding-bottom: 10rem;
   width: 100%;
 `;
 
@@ -19,6 +19,7 @@ export const TopWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  position: relative;
   padding-top: 2.18rem;
   width: 100%;
 `;
@@ -71,6 +72,7 @@ export const TextArea = styled.textarea`
   background: #ebebeb;
   border: none;
   border-radius: 2rem;
+  resize: none;
 
   :focus {
     outline: none;
@@ -142,7 +144,11 @@ export const BackButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
   padding-right: 3rem;
+  left: 0;
+  top: 0;
+  transform: translate(100%, 100%);
   font-size: 0.75rem;
   background: #ffffff;
   border: none;
@@ -171,6 +177,17 @@ export const IngredientsWrapper = styled.div`
   padding: 2rem 0;
   background: #ebebeb;
   border-radius: 2rem;
+`;
+
+export const InputGuideWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2rem;
+
+  & > span {
+    padding-left: 0.7rem;
+  }
 `;
 
 export const CookingOrderWrapper = styled.div`
@@ -249,7 +266,7 @@ export const IngredientInputs = styled.div`
     border: none;
     border-radius: 1rem;
     font-size: 1rem;
-    padding: 0.3rem 0.7rem;
+    padding: 0.3rem 1.5rem;
     color: #ffffff;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -261,7 +278,8 @@ export const IngredientInputs = styled.div`
   }
 
   p {
-    padding-top: 1rem;
+    padding-top: 0.5rem;
+    text-align: center;
     font-size: 0.8rem;
     color: #848484;
   }
@@ -272,6 +290,10 @@ export const InputAmount = styled.input`
 
 export const InputUnit = styled.input`
   width: 100px;
+`;
+
+export const InputTipWrapper = styled.div`
+  padding-top: 1.75rem;
 `;
 
 export const AddContentButton = styled.button`
@@ -288,7 +310,7 @@ export const AddStepWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
   border-radius: 2rem;
   padding: 0.3rem 1rem;
   transition: all 0.5s ease;

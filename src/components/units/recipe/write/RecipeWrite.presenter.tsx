@@ -13,7 +13,10 @@ export default function RecipeWriteUI(props) {
         <RecipeWrite.Container>
           <RecipeWrite.Wrapper>
             <RecipeWrite.TopWrapper>
-              <RecipeWrite.BackButton onClick={() => router.push("/recipe")}>
+              <RecipeWrite.BackButton
+                type="button"
+                onClick={() => router.push("/recipe")}
+              >
                 <img src="/img/recipeDetail/icon-arrow-left.svg" alt="" />
                 목록으로
               </RecipeWrite.BackButton>
@@ -47,6 +50,10 @@ export default function RecipeWriteUI(props) {
             <RecipeWrite.Contents>
               <h2>준비재료</h2>
               <RecipeWrite.IngredientsWrapper>
+                <RecipeWrite.InputGuideWrapper>
+                  <img src="/img/icon/Pencil.svg" alt="" />
+                  <span>필요한 재료를 입력하세요</span>
+                </RecipeWrite.InputGuideWrapper>
                 <RecipeWrite.IngredientArr>
                   {props.ingredientArr.map((el) => (
                     <div
@@ -66,13 +73,13 @@ export default function RecipeWriteUI(props) {
                     <input
                       type="text"
                       name="name"
-                      placeholder="재료 이름"
+                      placeholder="재료명"
                       onChange={props.onChangeIngredient}
                     />
                     <RecipeWrite.InputAmount
                       type="number"
                       name="amount"
-                      placeholder="재료 용량"
+                      placeholder="양"
                       min={1}
                       onChange={props.onChangeIngredient}
                     />
@@ -83,13 +90,12 @@ export default function RecipeWriteUI(props) {
                       onChange={props.onChangeIngredient}
                     />
                     <button type="button" onClick={props.onClickAddIngredient}>
-                      <span>재료추가</span>
+                      <span>추가</span>
                     </button>
-                    <p>
-                      재료를 입력하고 재료추가를 누르면 추가됩니다.
-                      <br />
-                      추가된 재료를 클릭하면 삭제할 수 있습니다.
-                    </p>
+                    <RecipeWrite.InputTipWrapper>
+                      <p>재료를 입력하고 재료추가를 누르면 추가됩니다.</p>
+                      <p>추가된 재료를 클릭하면 삭제할 수 있습니다.</p>
+                    </RecipeWrite.InputTipWrapper>
                   </RecipeWrite.IngredientInputs>
                 </div>
               </RecipeWrite.IngredientsWrapper>
