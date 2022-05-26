@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Container = styled.div`
   margin: 0 auto;
-  width: 100%;
+  width: 95%;
   max-width: 1440px;
   padding: 4.25rem 0;
 `;
@@ -44,6 +45,21 @@ export const SliderWrapper = styled.div`
   .slick-next:before {
     content: ">";
   }
+
+  @media ${breakPoints.tablet} {
+    button {
+      visibility: hidden;
+      position: fixed;
+      z-index: -99;
+    }
+  }
+  @media ${breakPoints.mobile} {
+    button {
+      visibility: hidden;
+      position: fixed;
+      z-index: -99;
+    }
+  }
 `;
 
 export const HeadText = styled.div`
@@ -67,12 +83,14 @@ export const HeadText = styled.div`
 
 export const TagsWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 2.625rem 0;
+  padding: 2.625rem 20px 2.625rem 0;
   width: 100%;
 
   & > button {
-    padding: 0.81rem 4.125rem;
+    padding: 0.81rem 1rem;
+    width: 25%;
     margin-right: 1.5rem;
     border-radius: 40px;
     font-weight: 500;
@@ -89,6 +107,16 @@ export const TagsWrapper = styled.div`
 
     &:last-of-type {
       margin-right: 0;
+    }
+  }
+
+  @media (max-width: 1120px) {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 2rem 0;
+    & > button {
+      width: 47%;
+      margin-bottom: 10px;
     }
   }
 `;
@@ -117,11 +145,11 @@ export const RecipeItem = styled.div`
 
 export const RecipeItemImageWrapper = styled.div`
   position: relative;
-  height: 342px;
 
   & > img {
     width: 100%;
     height: 100%;
+    max-height: 342px;
     object-fit: cover;
     border-radius: 24px;
   }

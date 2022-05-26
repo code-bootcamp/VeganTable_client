@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Container = styled.div`
   background: rgba(196, 196, 196, 0.1);
@@ -10,7 +11,7 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  width: 100%;
+  width: 95%;
   max-width: 1440px;
 
   & > div {
@@ -30,6 +31,7 @@ export const Contents = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   padding: 0 6.125rem;
   width: 50%;
   height: 13.3rem;
@@ -37,6 +39,11 @@ export const Contents = styled.div`
 
   &:first-of-type {
     margin-right: 1.31rem;
+  }
+  @media (max-width: 1275px) {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
   }
 `;
 
@@ -54,4 +61,14 @@ export const Text = styled.div`
   }
 `;
 
-export const ImageWrapper = styled.div``;
+export const ImageWrapper = styled.div`
+  @media (max-width: 1275px) {
+    width: 100px;
+    height: 100px;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+`;

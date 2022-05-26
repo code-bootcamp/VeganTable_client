@@ -1,12 +1,20 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 // 전체
 export const Wrapper = styled.ul`
-  width: 90rem;
+  max-width: 1197px;
+  width: 90%;
   height: 130px;
   margin: 50px auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  @media ${breakPoints.tablet} {
+    margin: 2rem auto;
+  }
+  @media ${breakPoints.mobile} {
+    margin: 1rem auto;
+  }
 `;
 
 // 각 타입
@@ -15,7 +23,7 @@ export const VeganType = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 100px;
+  min-width: 50px;
   cursor: pointer;
   &:last-of-type {
     margin-right: 0;
@@ -35,6 +43,7 @@ export const VeganTypeImg = styled.div`
   margin-bottom: 15px;
   background-image: url(${(props) =>
     props.isPicked ? props.hover : props.image});
+  background-repeat: no-repeat;
   :hover {
     background-image: url(${(props) => props.hover});
   }

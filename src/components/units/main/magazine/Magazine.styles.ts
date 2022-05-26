@@ -1,9 +1,10 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Container = styled.div`
   margin: 0 auto;
-  width: 100%;
+  width: 95%;
   max-width: 1440px;
   padding: 4.25rem 0;
 `;
@@ -37,6 +38,7 @@ export const Contents = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   width: 100%;
   color: #ffffff;
 `;
@@ -52,11 +54,12 @@ export const Item = styled.div`
   cursor: pointer;
   overflow: hidden;
   border-radius: 2rem;
+
   :hover {
     & > div {
       animation: ${ItemOpacity} 1s ease;
       animation-fill-mode: forwards;
-      height: calc(100% + 3px);
+      height: 100%;
     }
     & > img {
       transition: all 1s ease;
@@ -79,11 +82,12 @@ export const Item = styled.div`
     justify-content: center;
     align-items: center;
     position: absolute;
+    margin-top: -3px;
     text-align: center;
     left: 0;
     top: 0;
     width: 100%;
-    height: calc(100% - 3px);
+    height: 100%;
     border-radius: 2rem;
     letter-spacing: -0.05em;
     font-weight: 700;
@@ -107,5 +111,18 @@ export const Item = styled.div`
 
   &:nth-of-type(4) > div {
     background: rgba(65, 191, 237, 0.5);
+  }
+  @media (max-width: 1470px) {
+    width: calc(25% - 10px);
+  }
+  @media ${breakPoints.tablet} {
+    width: calc(50% - 10px);
+    height: 400px;
+    margin-bottom: 10px;
+  }
+  @media ${breakPoints.mobile} {
+    width: calc(50% - 10px);
+    height: 300px;
+    margin-bottom: 10px;
   }
 `;
