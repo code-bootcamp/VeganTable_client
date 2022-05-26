@@ -88,9 +88,14 @@ export const TagsWrapper = styled.div`
   padding: 2.625rem 20px 2.625rem 0;
   width: 100%;
 
-  & > button {
+  & > input {
+    display: none;
+  }
+
+  & > label {
     padding: 0.81rem 1rem;
     width: 25%;
+    text-align: center;
     margin-right: 1.5rem;
     border-radius: 40px;
     font-weight: 500;
@@ -99,7 +104,7 @@ export const TagsWrapper = styled.div`
     border: none;
     cursor: pointer;
 
-    &:first-of-type {
+    &.isActive {
       color: #0fbaa3;
       background: #ffffff;
       border: 1px solid #0fbaa3;
@@ -114,8 +119,8 @@ export const TagsWrapper = styled.div`
     flex-wrap: wrap;
     justify-content: flex-start;
     padding: 2rem 0;
-    & > button {
-      width: 47%;
+    & > label {
+      width: 46%;
       margin-bottom: 10px;
     }
   }

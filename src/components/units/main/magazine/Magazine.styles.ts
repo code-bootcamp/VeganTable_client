@@ -116,13 +116,19 @@ export const Item = styled.div`
     width: calc(25% - 10px);
   }
   @media ${breakPoints.tablet} {
+    margin-bottom: 10px;
     width: calc(50% - 10px);
     height: 400px;
-    margin-bottom: 10px;
+    & > div {
+      margin-top: 0;
+    }
   }
   @media ${breakPoints.mobile} {
+    margin-bottom: 10px;
     width: calc(50% - 10px);
     height: 300px;
-    margin-bottom: 10px;
+    & > div {
+      margin-top: 0;
+    }
   }
 `;

@@ -13,10 +13,86 @@ export default function MonthlyRecipeUI(props) {
           이달의 인기 레시피 <b>P!ck</b>
         </h1>
         <MonthlyRecipe.TagsWrapper>
-          <button>#채식이 처음인 사람들을 위한 쉬운 레시피</button>
-          <button>#집들이날 대접 할 만한 채식 차림상</button>
-          <button>#특별한 날 채식 생일상</button>
-          <button>#스트레스 날려 줄 매운맛 채식 야식</button>
+          <input
+            type="radio"
+            name="pickTag"
+            value="#채식이 처음인 사람들을 위한 쉬운 레시피"
+            id="tag1"
+            checked={
+              props.pickTag.pickTag ===
+              "#채식이 처음인 사람들을 위한 쉬운 레시피"
+            }
+            onChange={props.handleChange}
+          />
+          <input
+            type="radio"
+            name="pickTag"
+            value="#집들이날 대접 할 만한 채식 차림상"
+            id="tag2"
+            checked={
+              props.pickTag.pickTag === "#집들이날 대접 할 만한 채식 차림상"
+            }
+            onChange={props.handleChange}
+          />
+          <input
+            type="radio"
+            name="pickTag"
+            value="#특별한 날 채식 생일상"
+            id="tag3"
+            checked={props.pickTag.pickTag === "#특별한 날 채식 생일상"}
+            onChange={props.handleChange}
+          />
+          <input
+            type="radio"
+            name="pickTag"
+            value="#스트레스 날려 줄 매운맛 채식 야식"
+            id="tag4"
+            checked={
+              props.pickTag.pickTag === "#스트레스 날려 줄 매운맛 채식 야식"
+            }
+            onChange={props.handleChange}
+          />
+          <label
+            htmlFor="tag1"
+            className={
+              props.pickTag.pickTag ===
+              "#채식이 처음인 사람들을 위한 쉬운 레시피"
+                ? "isActive"
+                : ""
+            }
+          >
+            #채식이 처음인 사람들을 위한 쉬운 레시피
+          </label>
+          <label
+            htmlFor="tag2"
+            className={
+              props.pickTag.pickTag === "#집들이날 대접 할 만한 채식 차림상"
+                ? "isActive"
+                : ""
+            }
+          >
+            #집들이날 대접 할 만한 채식 차림상
+          </label>
+          <label
+            htmlFor="tag3"
+            className={
+              props.pickTag.pickTag === "#특별한 날 채식 생일상"
+                ? "isActive"
+                : ""
+            }
+          >
+            #특별한 날 채식 생일상
+          </label>
+          <label
+            htmlFor="tag4"
+            className={
+              props.pickTag.pickTag === "#스트레스 날려 줄 매운맛 채식 야식"
+                ? "isActive"
+                : ""
+            }
+          >
+            #스트레스 날려 줄 매운맛 채식 야식
+          </label>
         </MonthlyRecipe.TagsWrapper>
       </MonthlyRecipe.HeadText>
       <MonthlyRecipe.RecommendRecipeItems>
