@@ -54,7 +54,7 @@ export default function SignUp() {
     ErrorTitle: "인증 실패",
     ErrorText: "인증번호가 일치하지 않습니다.",
     WarningTitle: "발송 실패",
-    WarningText: "인증번호 발송에 실패하였습니다.",
+    WarningText: "이미 등록된 번호이거나 유효한 번호가 아닙니다.",
   });
 
   // 핸드폰 인증 부분
@@ -70,7 +70,7 @@ export default function SignUp() {
       });
       Success01();
     } catch (error) {
-      if (error instanceof Error) Warning();
+      Warning();
     }
   };
 
