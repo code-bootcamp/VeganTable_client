@@ -88,49 +88,50 @@ export const VeganTypeHead = styled.div`
   }
 `;
 
-export const VeganType = styled.ul`
+export const VeganTypeRadioWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-`;
-
-const VeganTypeTag = styled.li`
-  display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 0.3rem 0;
-  margin-bottom: 1rem;
-  margin-right: 2rem;
-  flex: 1 0 calc((100% / 3) - 2rem);
-  color: #ffffff;
-  border-radius: 1rem;
-
-  &:nth-of-type(3),
-  &:nth-of-type(6) {
-    margin-right: 0;
+  width: 100%;
+  & > input {
+    display: none;
   }
-  &:nth-of-type(n + 4) {
-    margin-bottom: 0;
-  }
-`;
+  & > label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.2rem 0;
+    margin-bottom: 0.5rem;
+    width: calc(100% / 3.5);
+    color: #848484;
+    border-radius: 2rem;
+    border: 1px solid #848484;
+    cursor: pointer;
 
-export const TagVegan = styled(VeganTypeTag)`
-  background: #0fbaa3;
-`;
-export const TagLacto = styled(VeganTypeTag)`
-  background: #cee135;
-`;
-export const TagOvo = styled(VeganTypeTag)`
-  background: #fcd921;
-`;
-export const TagLactoOvo = styled(VeganTypeTag)`
-  background: #b991fa;
-`;
-export const TagPesco = styled(VeganTypeTag)`
-  background: #ef7c90;
-`;
-export const TagPollo = styled(VeganTypeTag)`
-  background: #fe974d;
+    &.isActive {
+      border: 1px solid transparent;
+      color: #ffffff;
+    }
+  }
+  & > label:nth-of-type(1) {
+    background: ${(props) => (props.types === "VEGAN" ? "#0FBAA3" : "")};
+  }
+  & > label:nth-of-type(2) {
+    background: ${(props) => (props.types === "OVO" ? "#FCD921" : "")};
+  }
+  & > label:nth-of-type(3) {
+    background: ${(props) => (props.types === "LACTO" ? "#CEE135" : "")};
+  }
+  & > label:nth-of-type(4) {
+    background: ${(props) => (props.types === "LACTO_OVO" ? "#B991FA" : "")};
+  }
+  & > label:nth-of-type(5) {
+    background: ${(props) => (props.types === "PESCO" ? "#EF7C90" : "")};
+  }
+  & > label:nth-of-type(6) {
+    background: ${(props) => (props.types === "POLLO" ? "#FE974D" : "")};
+  }
 `;
 
 export const RecipeInfoWrapper = styled.div`
