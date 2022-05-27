@@ -8,6 +8,9 @@ export const Container = styled.div`
   width: 100%;
   justify-content: center;
   background-color: #e5e5e5;
+  @media (max-width: 767px) {
+    background-color: white;
+  }
 `;
 
 // 공통 내용 전체
@@ -16,27 +19,43 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 4.0625rem auto;
+  width: 100%;
+  max-width: 767px;
+  min-width: 550px;
 `;
 
 // 공통 제목 부분
 export const HeaderWrapper = styled.div`
   margin-bottom: 2.1875rem;
+  width: 100%;
+  max-width: 767px;
+  min-width: 550px;
+  display: flex;
+  justify-content: center;
 `;
 export const HeaderTitle = styled.h1`
   font-size: 3.125rem;
+  width: 100%;
+  max-width: 767px;
+  min-width: 550px;
+  display: flex;
+  justify-content: center;
 `;
 
 // 공통 제목 외 내용 부분
 export const BodyWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 45rem;
+  width: 100%;
+  max-width: 770px;
+  min-width: 550px;
+  padding: 20px 100px;
   height: 65rem;
   justify-content: center;
   align-items: center;
   background-color: white;
   border-radius: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2rem auto;
 `;
 
 // 공통 회원가입 단계 부분
@@ -46,29 +65,33 @@ export const BodyTitleWrapper = styled.div`
   align-items: center;
   font-size: 1.25rem;
   margin-bottom: 1rem;
-  width: 29rem;
+  width: 100%;
+  max-width: 770px;
+  min-width: 550px;
 `;
 export const BodyTitle = styled.ul`
   display: flex;
   justify-content: center;
   margin-bottom: 8px;
-  width: 29rem;
+  width: 36rem;
+  max-width: 770px;
+  min-width: 550px;
 `;
 
 export const SignUpTitle = styled.li`
-  width: 9.5rem;
+  width: 12rem;
   text-align: center;
   font-weight: 400;
 `;
 
 export const SignUpTitleOn = styled.li`
-  width: 9.5rem;
+  width: 12rem;
   text-align: center;
   font-weight: 600;
 `;
 
 export const SignUpTitleUnderBarWrapper = styled.ul`
-  width: 29rem;
+  width: 36rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,24 +99,26 @@ export const SignUpTitleUnderBarWrapper = styled.ul`
 
 export const SignUpTitleUnderBar = styled.li`
   border-bottom: 4px solid #c4c4c4;
-  width: 9.5rem;
+  width: 12rem;
 `;
 export const SignUpTitleUnderBarOn = styled.li`
   border-bottom: 6px solid #0fbaa3;
-  width: 9.5rem;
+  width: 12rem;
 `;
 
 // 약관 동의 부분
 export const BodyContents = styled.ul`
-  width: 29rem;
+  width: 36rem;
   display: flex;
   flex-direction: column;
-  margin-bottom: 2rem;
+  align-items: center;
+  margin-bottom: 3rem;
 `;
 
 export const PolicyTitleWrapper = styled.div`
   display: flex;
   align-items: center;
+  width: 36rem;
 `;
 
 export const PolicyTitleEssential = styled.span`
@@ -111,19 +136,21 @@ export const PolicyTitle = styled.span`
 export const PolicyContents = styled.div`
   background-color: #f9f9f9;
   border-radius: 0.5rem;
-  width: 29rem;
+  width: 36rem;
   height: 17rem;
+  margin-bottom: 10px;
 `;
 
 // 정보 입력 내용 전체 부분
-export const InputContentsWrapper = styled.ul`
+export const InputContentsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 1.5rem;
+  width: 36rem;
 `;
 
 // 정보 입력 row 하나
-export const InputContents = styled.div`
+export const InputContents = styled.ul`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
@@ -134,6 +161,7 @@ export const InputContents = styled.div`
 export const InputTitleWrapper = styled.li`
   display: flex;
   width: 8rem;
+  min-width: 8rem;
   font-weight: 600;
   font-size: 1.25rem;
   margin-bottom: 10px;
@@ -143,6 +171,7 @@ export const InputTitleWrapper = styled.li`
 // 정보 입력 인풋 부분
 export const InputWrapper = styled.li`
   display: flex;
+  width: 26rem;
 `;
 
 export const InputError = styled.div`
@@ -227,7 +256,8 @@ export const Cake = styled.img`
 `;
 export const FlowerShower = styled.img`
   position: absolute;
-  top: 20rem;
+  top: 18rem;
+  animation-duration: 3s;
 `;
 
 export const CompleteTitle = styled.h2`

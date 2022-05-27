@@ -10,6 +10,9 @@ import {
 } from "./SignUp.queries";
 import { ChangeEvent, useState } from "react";
 import { useModal } from "../../commons/hooks/useModal";
+import { LOG_IN } from "../login/Login.queries";
+import { useRecoilState } from "recoil";
+import { accessTokenState } from "../../../commons/store";
 
 export default function SignUp() {
   const [createUser] = useMutation(CREATE_USER);
@@ -52,6 +55,10 @@ export default function SignUp() {
   // 핸드폰 인증 부분
   const [getToken] = useMutation(SEND_TOKEN_TO_SMS);
   const [checkValidToken] = useMutation(CHECK_VALID_TOKEN);
+
+  // 로그인 mutation
+  const [login] = useMutation(LOG_IN);
+  const [, setAccessToken] = useRecoilState(accessTokenState);
 
   const onClickGetToken = async () => {
     try {
@@ -113,6 +120,14 @@ export default function SignUp() {
           phone: String(userInputs.phone),
         },
       });
+      const loginResult = await login({
+        variables: {
+          email: String(data.email),
+          password: String(data.password),
+        },
+      });
+      const myAccessToken = loginResult.data?.login;
+      setAccessToken(myAccessToken);
       setIsSubmit(true);
     } catch (error) {
       if (error instanceof Error) ModalError("회원가입 실패", error.message);
@@ -132,6 +147,8 @@ export default function SignUp() {
       // 폰 인증 부분
       onClickGetToken={onClickGetToken}
       onClickCheckValid={onClickCheckValid}
+      // 완료페이지로 가는 버튼
+      setIsSubmit={setIsSubmit}
     />
   );
 }

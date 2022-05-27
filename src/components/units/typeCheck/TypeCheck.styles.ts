@@ -12,6 +12,9 @@ export const Container = styled.div`
   width: 100%;
   justify-content: center;
   background-color: #e5e5e5;
+  @media (max-width: 767px) {
+    background-color: white;
+  }
 `;
 
 // 공통 내용 전체

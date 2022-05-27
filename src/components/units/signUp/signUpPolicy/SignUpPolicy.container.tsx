@@ -26,6 +26,11 @@ export default function SignUpPolicy(props: IPropsSignUpPolicy) {
     props.setAgreePolicy((prev: any) => !prev);
   };
 
+  const onClickMoveToComplete = () => {
+    props.setIsSubmit(true);
+    props.setAgreePolicy((prev: any) => !prev);
+  };
+
   return (
     <SignUp.Wrapper>
       <SignUp.HeaderWrapper>
@@ -67,6 +72,7 @@ export default function SignUpPolicy(props: IPropsSignUpPolicy) {
           title={"회원가입"}
           onClick={onClickAgree}
         />
+        <button onClick={onClickMoveToComplete}>완료로</button>
       </SignUp.BodyWrapper>
     </SignUp.Wrapper>
   );
