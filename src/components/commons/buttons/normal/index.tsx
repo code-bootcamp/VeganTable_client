@@ -2,8 +2,9 @@ import styled from "@emotion/styled";
 
 interface INormalButtonProps {
   title?: String;
-  color?: string | boolean;
+  color?: string;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 
   onClick?: () => void;
 }
@@ -26,7 +27,12 @@ export const Button = styled.button`
 
 export default function NormalButton(props: INormalButtonProps) {
   return (
-    <Button onClick={props.onClick} color={props.color} type={props.type}>
+    <Button
+      onClick={props.onClick}
+      color={props.color}
+      type={props.type}
+      disabled={props.disabled}
+    >
       {props.title}
     </Button>
   );

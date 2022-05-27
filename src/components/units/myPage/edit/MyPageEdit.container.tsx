@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useModal } from "../../../commons/hooks/useModal";
 import MyPageEditUI from "./MyPageEdit.presenter";
@@ -12,12 +12,13 @@ import {
 
 export default function MyPageEdit() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isActive, setIsActive] = useState(false);
   const [userInputs, setUserInputs] = useState({
     type: "",
     address: "",
     phone: "",
-    phoneCheck: "",
+    token: "",
+    valid: "false",
+    profilePic: "",
   });
 
   const { data: userData } = useQuery(FETCH_USER);
@@ -27,11 +28,22 @@ export default function MyPageEdit() {
 
   const { register, handleSubmit } = useForm({ mode: "onChange" });
 
+  // 이미지
+  useEffect(() => {
+    if (userData?.fetchUser.profilePic) {
+      setUserInputs({
+        ...userInputs,
+        profilePic: String(userData?.fetchUser.profilePic),
+      });
+    }
+  }, [userData]);
+
+  // 인풋값
   const onChangeUserInputs = (id) => (e) => {
-    setUserInputs((prev) => ({
+    setUserInputs({
       ...userInputs,
       [id]: e.target.value,
-    }));
+    });
   };
 
   // 모달
@@ -43,7 +55,7 @@ export default function MyPageEdit() {
     ErrorTitle: "인증 실패",
     ErrorText: "인증번호가 일치하지 않습니다.",
     WarningTitle: "발송 실패",
-    WarningText: "이미 인증받은 번호거나 유효하지 않은 번호입니다.",
+    WarningText: "이미 등록된 번호이거나 유효한 번호가 아닙니다.",
   });
 
   // 주소
@@ -61,12 +73,12 @@ export default function MyPageEdit() {
     // window.scrollTo({ top: 1200, behavior: "smooth" });
   };
 
-  // 인증번호
-  const onClickGetToken = async (data) => {
+  // 인증번호 전송
+  const onClickGetToken = async () => {
     try {
       await getToken({
         variables: {
-          phone: Number(data.phone),
+          phone: String(userInputs.phone),
         },
       });
       Success01();
@@ -75,21 +87,36 @@ export default function MyPageEdit() {
     }
   };
 
-  const onClickCheckValid = async (data) => {
+  // 인증번호 검증
+  const onClickCheckValid = async () => {
     try {
-      await checkValidToken({
+      const result = await checkValidToken({
         variables: {
-          phone: Number(data.phone),
-          token: Number(data.token),
+          phone: String(userInputs.phone),
+          token: String(userInputs.token),
         },
       });
+
+      const CheckValid = result.data.checkValidToken;
+      if (CheckValid === "false") {
+        Error();
+        setUserInputs({ ...userInputs, valid: "false" });
+        return;
+      }
       Success02();
+      setUserInputs({ ...userInputs, valid: "true" });
     } catch (error) {
-      if (error instanceof Error) Error();
+      Error();
     }
   };
 
+  // 회원정보 수정
   const onClickUpdateUser = async (data) => {
+    if (userInputs.phone && userInputs.valid === "false") {
+      alert("폰 인증해");
+      return;
+    }
+
     const updateUserInput = {};
     if (data.nickname) updateUserInput.nickname = data.nickname;
     if (userInputs.address) updateUserInput.address = userInputs.address;
@@ -104,8 +131,7 @@ export default function MyPageEdit() {
         },
       });
 
-      alert("업뎃");
-
+      alert("업데이트 성공");
       location.reload();
     } catch (error) {
       alert(error.message);

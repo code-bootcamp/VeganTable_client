@@ -1,4 +1,3 @@
-import "animate.css";
 import DaumPostcode from "react-daum-postcode";
 import NormalButton from "../../../commons/buttons/normal";
 import SubmitButton from "../../../commons/buttons/submit";
@@ -69,17 +68,7 @@ export default function MyPageEditUI(props) {
                     disabled={true}
                   />
                 </My.InputWrapper>
-                {/* <My.InputWrapper>
-                <My.Label>생년월일/성별</My.Label>
-                <UserInput placeholder={"생년월일"} inputSize={"medium"} />
-                <My.GenderSelect defaultValue={"none"}>
-                  <option value={"none"} disabled={true}>
-                    성별
-                  </option>
-                  <option value={"male"}>남자</option>
-                  <option value={"female"}>여자 </option>
-                </My.GenderSelect>
-              </My.InputWrapper> */}
+
                 <My.InputWrapper>
                   <My.Label>이메일</My.Label>
                   <UserInput
@@ -111,25 +100,31 @@ export default function MyPageEditUI(props) {
                 <My.InputWrapper>
                   <My.Label>휴대폰 번호</My.Label>
                   <UserInput
-                    type="number"
+                    type={"number"}
                     placeholder={"-제외"}
-                    defaultValue={props.userData?.fetchUser.phone}
                     onChange={props.onChangeUserInputs("phone")}
                   />
                   <NormalButton
-                    type="button"
+                    type={"button"}
                     title={"인증받기"}
                     onClick={props.onClickGetToken}
-                    color={props.userInputs?.phone ? "green" : ""}
+                    color={props.userInputs?.phone && "green"}
+                    disabled={!props.userInputs?.phone}
                   />
                 </My.InputWrapper>
                 <My.InputWrapper>
                   <My.Label />
-                  <UserInput placeholder={"인증번호"} />
+                  <UserInput
+                    type={"number"}
+                    placeholder={"인증번호"}
+                    onChange={props.onChangeUserInputs("token")}
+                  />
                   <NormalButton
-                    type="button"
+                    type={"button"}
                     title={"확인"}
                     onClick={props.onClickCheckValid}
+                    color={props.userInputs?.token && "green"}
+                    disabled={!props.userInputs?.token}
                   />
                 </My.InputWrapper>
 
@@ -138,12 +133,14 @@ export default function MyPageEditUI(props) {
                   <UserInput
                     placeholder={"주소"}
                     defaultValue={
-                      props.address || props.userData?.fetchUser.address
+                      props.userInputs?.address ||
+                      props.userData?.fetchUser.address
                     }
+                    onChange={props.onChangeUserInputs("address")}
                     readOnly
                   />
                   <NormalButton
-                    type="button"
+                    type={"button"}
                     title={"찾기"}
                     onClick={props.onClickAddressSearch}
                     color={"green"}
