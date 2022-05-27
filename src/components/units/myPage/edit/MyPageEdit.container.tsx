@@ -51,16 +51,7 @@ export default function MyPageEdit() {
 
   console.log(userInputs);
   // 모달
-  const { Success01, Success02, Error, Warning } = useModal({
-    SuccessTitle01: "발송 완료",
-    SuccessText01: "인증번호를 발송하였습니다",
-    SuccessTitle02: "인증 완료",
-    SuccessText02: "인증번호가 일치합니다.",
-    ErrorTitle: "인증 실패",
-    ErrorText: "인증번호가 일치하지 않습니다.",
-    WarningTitle: "발송 실패",
-    WarningText: "이미 등록된 번호이거나 유효한 번호가 아닙니다.",
-  });
+  const { Success, ModalError, Warning } = useModal();
 
   // 주소
   const onClickAddressSearch = () => {
@@ -85,9 +76,9 @@ export default function MyPageEdit() {
           phone: String(userInputs.phone),
         },
       });
-      Success01();
+      Success("발송 성공", "인증번호를 발송하였습니다.");
     } catch (error) {
-      Warning();
+      Warning("발송 실패", "이미 등록된 번호이거나 유효한 번호가 아닙니다.");
     }
   };
 
@@ -107,17 +98,17 @@ export default function MyPageEdit() {
         setUserInputs({ ...userInputs, valid: "false" });
         return;
       }
-      Success02();
+      Success("인증 완료", "인증번호가 일치합니다.");
       setUserInputs({ ...userInputs, valid: "true" });
     } catch (error) {
-      Error();
+      ModalError("인증 실패", "인증번호가 일치하지 않습니다.");
     }
   };
 
   // 회원정보 수정
   const onClickUpdateUser = async (data) => {
     if (userInputs.phone && userInputs.valid === "false") {
-      alert("폰 인증해");
+      ModalError("수정 실패", "인증받지 않은 휴대폰 번호입니다.");
       return;
     }
 
@@ -137,10 +128,10 @@ export default function MyPageEdit() {
         },
       });
 
-      alert("업데이트 성공");
+      Success("수정 성공", "회원정보가 수정되었습니다.");
       location.reload();
     } catch (error) {
-      alert(error.message);
+      if (error instanceof Error) ModalError("수정 실패", error.message);
     }
   };
 
@@ -163,10 +154,9 @@ export default function MyPageEdit() {
             },
           });
         } catch (error) {
-          alert("탈퇴 실패!");
+          if (error instanceof Error) ModalError("탈퇴 실패", error.message);
         }
       }
-      Swal.fire("Deleted!", "Your file has been deleted.", "success");
     });
   };
 

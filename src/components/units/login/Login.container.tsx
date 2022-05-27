@@ -43,7 +43,7 @@ export default function Login() {
       });
       const myAccessToken = result.data?.login;
       setAccessToken(myAccessToken);
-      Success("로그인 성공", "로그인에 성공하였습니다.");
+      Success("로그인 성공", "건강한 한 끼를 책임지는 채식한상🥗");
       router.push("/");
     } catch (error) {
       if (error instanceof Error)

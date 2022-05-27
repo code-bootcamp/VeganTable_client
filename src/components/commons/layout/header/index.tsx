@@ -38,12 +38,7 @@ export default function LayoutHeader() {
   const [accessToken] = useRecoilState(accessTokenState);
 
   // 모달
-  const { Success01, Error } = useModal({
-    SuccessTitle01: "로그아웃 성공",
-    SuccessText01: "로그아웃을 성공하였습니다.",
-    ErrorTitle: "로그아웃 실패",
-    ErrorText: "로그아웃을 실패하였습니다.",
-  });
+  const { Success, ModalError } = useModal();
 
   const HEADER_MENUS = [
     { name: "홈", page: "/" },
@@ -62,10 +57,10 @@ export default function LayoutHeader() {
   const onClickLogout = async () => {
     try {
       await logout();
-      Success01();
+      Success("로그아웃 성공", "다음에도 건강한 한 끼를 약속할게요🥗");
       router.push("/");
     } catch (error) {
-      Error();
+      ModalError("로그아웃 실패", "로그아웃에 실패했습니다.");
     }
   };
 
