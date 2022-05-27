@@ -6,7 +6,7 @@ interface IUserInputProps {
   placeholder?: string | undefined;
   inputSize?: string | undefined;
   disabled?: boolean;
-  type?: string | undefined;
+  type?: string;
   defaultValue?: string;
   readOnly?: boolean;
   register?: UseFormRegisterReturn;
