@@ -65,11 +65,11 @@ export default function TemporaryDrawer(props: IDrawerUIProps) {
   const onClickLogout = async () => {
     try {
       await logout();
-      Success("로그아웃 성공", "로그아웃 되었습니다.");
+      Success("로그아웃 성공", "다음에도 건강한 한 끼를 약속할게요🥗");
       router.push("/");
     } catch (error) {
       if (error instanceof Error)
-        ModalError("로그아웃 실패", "로그아웃에 실패하였습니다.");
+        ModalError("로그아웃 실패", "로그아웃에 실패했습니다.");
     }
   };
 
