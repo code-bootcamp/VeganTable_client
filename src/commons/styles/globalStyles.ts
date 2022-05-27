@@ -19,6 +19,10 @@ export const globalStyles = css`
     }
   }
 
+  body {
+    overflow-x: hidden;
+  }
+
   ul {
     list-style: none;
   }

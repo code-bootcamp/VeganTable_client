@@ -95,18 +95,18 @@ export default function LayoutHeader() {
           <Header.UserWrapper>
             {accessToken ? (
               <>
-                <Header.UserName>
+                <Header.WelcomeMent>
                   안녕하세요 <b>{data?.fetchUser.name}</b> 님
-                </Header.UserName>
+                </Header.WelcomeMent>
                 <Header.UserName
                   onClick={onClickLogout}
                   style={{ cursor: "pointer" }}
                 >
                   로그아웃
                 </Header.UserName>
-                <div onClick={onClickUserIcon}>
+                <Header.HeaderIconWrapper onClick={onClickUserIcon}>
                   <Header.HeaderIcon src="/img/header/icon-profile.svg" />
-                </div>
+                </Header.HeaderIconWrapper>
               </>
             ) : (
               <>
@@ -120,9 +120,9 @@ export default function LayoutHeader() {
                     <a>회원가입</a>
                   </Link>
                 </Header.UserName>
-                <div onClick={onClickUserIcon}>
+                <Header.HeaderIconWrapper onClick={onClickUserIcon}>
                   <Header.HeaderIcon src="/img/header/icon-profile.svg" />
-                </div>
+                </Header.HeaderIconWrapper>
               </>
             )}
           </Header.UserWrapper>

@@ -35,6 +35,10 @@ export default function LayoutFooter() {
               통신판매업신고 중구 제00000호 | 개인정보보호책임자:오창모
             </Foot.Info>
           </Foot.InfoWrapper>
+          <Foot.CSWrapperMobile>
+            <Foot.CSNumber>고객센터 1688-1688</Foot.CSNumber>
+            <Foot.CSChat>1:1문의</Foot.CSChat>
+          </Foot.CSWrapperMobile>
         </Foot.MenuInfoWrapper>
         <Foot.CSWrapper>
           <Foot.CSNumber>고객센터 1688-1688</Foot.CSNumber>
