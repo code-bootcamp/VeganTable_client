@@ -1,25 +1,10 @@
 import Swal from "sweetalert2";
 
-interface IUseModalProps {
-  SuccessTitle01?: string;
-  SuccessText01?: string;
-  SuccessTitle02?: string;
-  SuccessText02?: string;
-  WarningTitle?: string;
-  WarningText?: string;
-  ErrorTitle?: string;
-  ErrorText?: string;
-  ErrorTitle02?: string;
-  ErrorText02?: string;
-  WarningConfirmTitle?: string;
-  WarningConfirmText?: string;
-}
-
-export function useModal(data: IUseModalProps) {
-  const Success01 = () => {
+export function useModal() {
+  const Success = (title: string, text: string) => {
     Swal.fire({
-      title: data.SuccessTitle01,
-      text: data.SuccessText01,
+      title: title,
+      text: text,
       icon: "success",
       confirmButtonColor: "#0fbaa3",
       showConfirmButton: false,
@@ -27,21 +12,10 @@ export function useModal(data: IUseModalProps) {
     });
   };
 
-  const Success02 = () => {
+  const Warning = (title: string, text: string) => {
     Swal.fire({
-      title: data.SuccessTitle02,
-      text: data.SuccessText02,
-      icon: "success",
-      confirmButtonColor: "#0fbaa3",
-      showConfirmButton: false,
-      timer: 1700,
-    });
-  };
-
-  const Warning = () => {
-    Swal.fire({
-      title: data.WarningTitle,
-      text: data.WarningText,
+      title: title,
+      text: text,
       icon: "warning",
       confirmButtonColor: "#0fbaa3",
       showConfirmButton: false,
@@ -49,10 +23,10 @@ export function useModal(data: IUseModalProps) {
     });
   };
 
-  const Error = () => {
+  const ModalError = (title: string, text: string) => {
     Swal.fire({
-      title: data.ErrorTitle,
-      text: data.ErrorText,
+      title: title,
+      text: text,
       icon: "error",
       confirmButtonColor: "#0fbaa3",
       showConfirmButton: false,
@@ -60,21 +34,10 @@ export function useModal(data: IUseModalProps) {
     });
   };
 
-  const Error02 = () => {
+  const WarningConfirm = (title: string, text: string) => {
     Swal.fire({
-      title: data.ErrorTitle02,
-      text: data.ErrorText02,
-      icon: "error",
-      confirmButtonColor: "#0fbaa3",
-      showConfirmButton: false,
-      timer: 1700,
-    });
-  };
-
-  const WarningConfirm = () => {
-    Swal.fire({
-      title: data.WarningConfirmTitle,
-      text: data.WarningConfirmText,
+      title: title,
+      text: text,
       icon: "warning",
       confirmButtonColor: "#0fbaa3",
       showConfirmButton: true,
@@ -92,11 +55,9 @@ export function useModal(data: IUseModalProps) {
   };
 
   return {
-    Success01,
-    Success02,
+    Success,
     Warning,
-    Error,
-    Error02,
+    ModalError,
     WarningConfirm,
     PromotionModal,
   };
@@ -107,18 +68,13 @@ export function useModal(data: IUseModalProps) {
 // import { useModal } from "../../../commons/hooks/useModal";
 
 // export default function MyPage() {
-//   const { Success, Error } = useModal({
-//     SuccessTitle: "등록 완료",
-//     SuccessText: "레시피가 등록되었습니다.",
-//     ErrorTitle: "등록 실패",
-//     ErrorText: "레시피 등록에 실패했습니다.",
-//   });
+//   const { Success, Error } = useModal();
 
 //   const onClickModal = () => {
-//     Success();
+//     Success("제목","텍스트");
 //   };
 //   const onClickWarning = () => {
-//     Error();
+//     Error("제목","텍스트");
 //   };
 
 //   return (
