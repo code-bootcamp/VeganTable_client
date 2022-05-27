@@ -1,9 +1,9 @@
 import UserInput from "../../../commons/inputs";
 import Navigation03 from "../../../commons/navigation/03";
 import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container";
-import * as My from "./MyPageInfo.styles";
+import * as My from "./MyPageEditPW.styles";
 
-export default function MyPageInfoUI(props) {
+export default function MyPageEditPwUI(props) {
   return (
     <>
       <My.Container>

@@ -21,6 +21,7 @@ const HIDDEN_BANNER = [
   "/myPage",
   "/myPage/info",
   "/myPage/edit",
+  "/myPage/editPW",
   "/myPage/recent",
   "/myPage/wish",
   "/myPage/myRecipe",

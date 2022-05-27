@@ -1,20 +1,26 @@
-import * as S from "./ProfileUpload.styles";
+import * as My from "./ProfileUpload.styles";
 export default function ProfileUploadUI(props) {
   return (
     <>
-      {props.fileUrl ? (
-        <S.UploadImage
-          onClick={props.onClickUpload}
-          src={`https://storage.googleapis.com/${props.fileUrl}`}
-        />
+      {props.userInputs.profilePic !== " " ? (
+        <My.ImageWrapper>
+          <My.Image
+            src={`https://storage.googleapis.com/${props.userInputs.profilePic}`}
+          />
+          <My.ImageButton type="button" onClick={props.onClickUpload}>
+            프로필 사진 변경
+          </My.ImageButton>
+        </My.ImageWrapper>
       ) : (
-        <S.UploadButton type="button" onClick={props.onClickUpload}>
-          <></>
-          <>upload</>
-        </S.UploadButton>
+        <My.ImageWrapper>
+          <My.Image src="/img/myPage/icon-myProfile.svg" />
+          <My.ImageButton type="button" onClick={props.onClickUpload}>
+            프로필 사진 변경
+          </My.ImageButton>
+        </My.ImageWrapper>
       )}
 
-      <S.UploadFileHidden
+      <My.UploadFileHidden
         type="file"
         ref={props.fileRef}
         onChange={props.onChangeFile}

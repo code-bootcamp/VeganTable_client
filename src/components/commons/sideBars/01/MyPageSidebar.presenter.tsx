@@ -13,7 +13,7 @@ export default function MyPageSidebarUI() {
     { name: "등록 레시피 관리", page: "/myPage/myRecipe", list: true },
     { name: "회원정보", page: "/myPage/info" },
     { name: "회원정보 수정", page: "/myPage/edit", list: true },
-    { name: "비밀번호 변경", page: "/myPage/pwd", list: true },
+    { name: "비밀번호 변경", page: "/myPage/editPW", list: true },
     { name: "정기 구독 관리", page: "/myPage/subscribe" },
     { name: "문의 내역", page: "/myPage/qna" },
   ];

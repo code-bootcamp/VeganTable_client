@@ -8,37 +8,37 @@ export default function Navigation02(props) {
   const VEGAN_TYPE = [
     {
       name: "비건",
-      En: "VEGAN",
+      En: "Vegan",
       image: "/img/navigation/icon-vegan-vegan.svg",
       hover: "/img/navigation/icon-vegan-vegan-hover.svg",
     },
     {
       name: "락토",
-      En: "LACTO",
+      En: "Lacto",
       image: "/img/navigation/icon-vegan-lacto.svg",
       hover: "/img/navigation/icon-vegan-lacto-hover.svg",
     },
     {
       name: "오보",
-      En: "OVO",
+      En: "Ovo",
       image: "/img/navigation/icon-vegan-ovo.svg",
       hover: "/img/navigation/icon-vegan-ovo-hover.svg",
     },
     {
       name: "락토오보",
-      En: "LACTO_OVO",
+      En: "Lacto_Ovo",
       image: "/img/navigation/icon-vegan-lactoOvo.svg",
       hover: "/img/navigation/icon-vegan-lactoOvo-hover.svg",
     },
     {
       name: "페스코",
-      En: "PESCO",
+      En: "Pesco",
       image: "/img/navigation/icon-vegan-pesco.svg",
       hover: "/img/navigation/icon-vegan-pesco-hover.svg",
     },
     {
       name: "폴로",
-      En: "POLLO",
+      En: "Pollo",
       image: "/img/navigation/icon-vegan-pollo.svg",
       hover: "/img/navigation/icon-vegan-pollo-hover.svg",
     },

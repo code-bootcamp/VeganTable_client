@@ -5,6 +5,7 @@ import CheckBox01 from "../../../commons/checkboxes/01";
 import UserInput from "../../../commons/inputs";
 import Navigation02 from "../../../commons/navigation/02";
 import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container";
+import ProfileUpload from "../../../commons/uploads/01/ProfileUpload.container";
 import * as My from "./MyPageEdit.styles";
 
 export default function MyPageEditUI(props) {
@@ -25,19 +26,22 @@ export default function MyPageEditUI(props) {
         <My.Wrapper>
           <MyPageSidebar />
 
-          <form onSubmit={props.handleSubmit(props.onClickUpdateUser)}>
+          <My.Form onSubmit={props.handleSubmit(props.onClickUpdateUser)}>
             <My.EditWrapper>
               <My.TitleWrapper>
                 <My.Title>회원정보수정</My.Title>
-                <My.SignOut>회원탈퇴</My.SignOut>
+                <My.SignOut type={"button"} onClick={props.onClickSignOut}>
+                  회원탈퇴
+                </My.SignOut>
               </My.TitleWrapper>
 
               <My.ProfileWrapper>
                 <My.FlexRow>
-                  <My.ImageWrapper>
-                    <My.Image src="/img/myPage/icon-myProfile.svg" />
-                    <My.ImageButton>프로필 사진 변경</My.ImageButton>
-                  </My.ImageWrapper>
+                  <ProfileUpload
+                    setUserInputs={props.setUserInputs}
+                    userInputs={props.userInputs}
+                    onChangeUserInputs={props.onChangeUserInputs}
+                  />
 
                   <My.FlexColumn>
                     <My.InputWrapper>
@@ -178,7 +182,7 @@ export default function MyPageEditUI(props) {
                 <SubmitButton title={"회원정보수정"} isActive={isActive} />
               </My.ButtonWrapper>
             </My.EditWrapper>
-          </form>
+          </My.Form>
         </My.Wrapper>
       </My.Container>
     </>

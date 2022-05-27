@@ -11,14 +11,11 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   display: flex;
+  justify-content: center;
   width: 90rem;
 `;
 
-export const Form = styled.form`
-  width: 100%;
-`;
-
-export const EditWrapper = styled.div`
+export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,14 +29,6 @@ export const TitleWrapper = styled.div`
   border-bottom: 1px solid #c4c4c4;
   padding-bottom: 1.5rem;
   width: 100%;
-`;
-
-export const SignOut = styled.button`
-  border: none;
-  background-color: #ffffff;
-  font-weight: 700;
-  color: #848484;
-  cursor: pointer;
 `;
 
 export const ExpertTitleWrapper = styled.div`
@@ -96,24 +85,10 @@ export const Image = styled.img`
   margin: 2rem;
 `;
 
-export const ImageButton = styled.button`
-  border: 1px solid #c4c4c4;
-  border-radius: 2rem;
-  background-color: #ffffff;
-  width: 11.25rem;
-  height: 2.5rem;
-  color: #c4c4c4;
-  font-size: 1.25rem;
-  letter-spacing: -0.06rem;
-  font-weight: 500;
-  cursor: pointer;
-`;
-
 export const InputWrapper = styled.div`
   display: flex;
   align-items: center;
-  padding-top: 0.6rem;
-  padding-bottom: 1.5rem;
+  padding: 0.6rem 0;
 
   & > span {
     font-weight: 600;
@@ -144,36 +119,23 @@ export const Button = styled.button`
   cursor: pointer;
 `;
 
-export const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  padding-top: 4rem;
-  width: 59.5rem;
+export const UserProfile = styled.div`
+  & .expert {
+    background-color: #bfab87;
+  }
+
+  & .common {
+    background-color: #c2bfb9;
+  }
 `;
 
-export const Modal = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 1;
-  width: 100vw;
-  height: 100vh;
-
-  .modal-section {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 20px;
-    width: 35rem;
-  }
-
-  .modal-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1.25rem;
-  }
+export const UserGrade = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4.6875rem;
+  height: 1.5rem;
+  border: none;
+  color: #ffffff;
+  border-radius: 20px;
 `;

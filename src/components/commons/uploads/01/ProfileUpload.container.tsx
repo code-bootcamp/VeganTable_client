@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
 import { ChangeEvent, useRef } from "react";
-import Upload01UI from "./ProfileUpload.presenter";
+import ProfileUploadUI from "./ProfileUpload.presenter";
 import { UPLOAD_PROFILE_IMAGE } from "./ProfileUpload.queries";
 import { checkValidationImage } from "./ProfileUpload.validation";
 
@@ -18,7 +18,10 @@ export default function ProfileUpload(props) {
 
     try {
       const result = await uploadProfileImage({ variables: { file } });
-      props.onChangeFileUrls(result.data.uploadFile.url, props.index);
+      props.setUserInputs({
+        ...props.userInput,
+        profilePic: String(result.data.uploadProfileImage),
+      });
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -27,11 +30,11 @@ export default function ProfileUpload(props) {
   };
 
   return (
-    <Upload01UI
+    <ProfileUploadUI
       onClickUpload={onClickUpload}
       onChangeFile={onChangeFile}
       fileRef={fileRef}
-      fileUrl={props.fileUrl}
+      userInputs={props.userInputs}
     />
   );
 }

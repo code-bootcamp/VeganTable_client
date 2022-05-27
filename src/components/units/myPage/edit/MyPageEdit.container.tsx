@@ -1,10 +1,12 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 import { useModal } from "../../../commons/hooks/useModal";
 import MyPageEditUI from "./MyPageEdit.presenter";
 import {
   CHECK_VALID_TOKEN,
+  DELETE_USER,
   FETCH_USER,
   SEND_TOKEN_TO_SMS,
   UPDATE_USER,
@@ -23,6 +25,7 @@ export default function MyPageEdit() {
 
   const { data: userData } = useQuery(FETCH_USER);
   const [updateUser] = useMutation(UPDATE_USER);
+  const [deleteUser] = useMutation(DELETE_USER);
   const [getToken] = useMutation(SEND_TOKEN_TO_SMS);
   const [checkValidToken] = useMutation(CHECK_VALID_TOKEN);
 
@@ -46,6 +49,7 @@ export default function MyPageEdit() {
     });
   };
 
+  console.log(userInputs);
   // 모달
   const { Success01, Success02, Error, Warning } = useModal({
     SuccessTitle01: "발송 완료",
@@ -122,6 +126,8 @@ export default function MyPageEdit() {
     if (userInputs.address) updateUserInput.address = userInputs.address;
     if (data.addressDetail) updateUserInput.addressDetail = data.addressDetail;
     if (userInputs.type) updateUserInput.type = userInputs.type;
+    if (userInputs.profilePic)
+      updateUserInput.profilePic = userInputs.profilePic;
 
     try {
       await updateUser({
@@ -136,6 +142,32 @@ export default function MyPageEdit() {
     } catch (error) {
       alert(error.message);
     }
+  };
+
+  const onClickSignOut = () => {
+    Swal.fire({
+      title: "정말 탈퇴하시겠습니까?",
+      text: "탈퇴한 회원정보는 복구할 수 없습니다.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#C4C4C4",
+      cancelButtonColor: "#0FBAA3",
+      focusCancel: true,
+      confirmButtonText: "OK",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await deleteUser({
+            variables: {
+              user_id: String(userData?.fetchUser.user_id),
+            },
+          });
+        } catch (error) {
+          alert("탈퇴 실패!");
+        }
+      }
+      Swal.fire("Deleted!", "Your file has been deleted.", "success");
+    });
   };
 
   return (
@@ -153,6 +185,7 @@ export default function MyPageEdit() {
       register={register}
       onClickGetToken={onClickGetToken}
       onClickCheckValid={onClickCheckValid}
+      onClickSignOut={onClickSignOut}
     />
   );
 }
