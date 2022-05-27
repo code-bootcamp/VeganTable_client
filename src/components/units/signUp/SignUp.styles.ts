@@ -150,7 +150,7 @@ export const InputError = styled.div`
   height: 1rem;
   display: flex;
   margin-left: 11rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 10px;
   font-weight: 400;
   font-size: 0.8rem;
 `;
@@ -166,7 +166,6 @@ export const GenderSelect = styled.select`
   width: 7rem;
   height: 4rem;
   padding: 20px;
-  margin-bottom: 10px;
   margin-left: 0.8rem;
   border-radius: 2rem;
   border: 1px solid #bfbfbf;

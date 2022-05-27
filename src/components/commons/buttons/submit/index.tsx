@@ -4,6 +4,7 @@ interface ISubmitButtonProps {
   isActive?: Boolean;
   title?: String;
   onClick?: () => void;
+  type?: (String & ("button" | "submit" | "reset")) | undefined;
 }
 
 const Button = styled.button`
@@ -26,6 +27,7 @@ export default function SubmitButton(props: ISubmitButtonProps) {
       isActive={props.isActive}
       disabled={!props.isActive}
       onClick={props.onClick}
+      type={props.type}
     >
       {props.title}
     </Button>

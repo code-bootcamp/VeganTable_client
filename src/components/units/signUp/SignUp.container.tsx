@@ -47,18 +47,7 @@ export default function SignUp() {
     };
 
   // 모달 부분
-  const { Success01, Success02, Error, Error02, Warning } = useModal({
-    SuccessTitle01: "발송 완료",
-    SuccessText01: "인증번호를 발송하였습니다",
-    SuccessTitle02: "인증 완료",
-    SuccessText02: "인증번호가 일치합니다.",
-    ErrorTitle: "인증 실패",
-    ErrorText: "인증번호가 일치하지 않습니다.",
-    ErrorTitle02: "회원가입 실패",
-    ErrorText02: "회원가입에 실패했습니다.",
-    WarningTitle: "발송 실패",
-    WarningText: "이미 등록된 번호이거나 유효한 번호가 아닙니다.",
-  });
+  const { Success, Warning, ModalError } = useModal();
 
   // 핸드폰 인증 부분
   const [getToken] = useMutation(SEND_TOKEN_TO_SMS);
@@ -71,9 +60,9 @@ export default function SignUp() {
           phone: String(userInputs.phone),
         },
       });
-      Success01();
+      Success("발송 성공", "인증번호를 발송하였습니다.");
     } catch (error) {
-      Warning();
+      if (error instanceof Error) Warning("발송 실패", error.message);
     }
   };
 
@@ -86,16 +75,24 @@ export default function SignUp() {
           token: String(userInputs.token),
         },
       });
-      setUserInputs({ ...userInputs, isValid: result.data?.checkValidToken });
-      if (!result.data?.checkValidToken) {
+      const CheckValid = result.data?.checkValidToken;
+      if (CheckValid === "false") {
         setUserInputsErrors({
           ...userInputsErrors,
           tokenError: "인증번호가 일치하지 않습니다.",
         });
+        setUserInputs({ ...userInputs, isValid: false });
+        ModalError("인증 실패", "인증번호가 일치하지 않습니다.");
+      } else if (CheckValid === "true") {
+        setUserInputsErrors({
+          ...userInputsErrors,
+          tokenError: "",
+        });
+        setUserInputs({ ...userInputs, isValid: true });
+        Success("인증 성공", "인증번호가 일치합니다.");
       }
-      Success02();
     } catch (error) {
-      Error();
+      if (error instanceof Error) ModalError("인증 실패", error.message);
     }
   };
 
@@ -118,7 +115,7 @@ export default function SignUp() {
       });
       setIsSubmit(true);
     } catch (error) {
-      Error02();
+      if (error instanceof Error) ModalError("회원가입 실패", error.message);
     }
   };
 
