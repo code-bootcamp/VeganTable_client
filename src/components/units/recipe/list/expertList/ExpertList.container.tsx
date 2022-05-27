@@ -117,9 +117,7 @@ export default function ExpertRecipeList() {
           <Expert.TitleBar />
           <Expert.Title>전문가 레시피</Expert.Title>
           <Expert.SubTitle>
-            다양한 전문가들의 <br />
-            특별한 레시피를
-            <br /> 확인해보세요
+            다양한 전문가들의 특별한 레시피를 확인해보세요
           </Expert.SubTitle>
         </Expert.TitleWrapper>
         <Expert.SliderWrapper>
@@ -136,16 +134,18 @@ export default function ExpertRecipeList() {
                     )}
                     <span>{el.bookmarkCount}</span>
                   </Expert.IconBookmark>
-                  <Expert.RecipeRecommendSticker src="/img/icon/recommend.svg" />
-                  {el.level === "쉬움" && (
-                    <Expert.RecipeLevelSticker src="/img/icon/level1.svg" />
-                  )}
-                  {el.level === "중간" && (
-                    <Expert.RecipeLevelSticker src="/img/icon/level2.svg" />
-                  )}{" "}
-                  {el.level === "어려움" && (
-                    <Expert.RecipeLevelSticker src="/img/icon/level3.svg" />
-                  )}
+                  <Expert.StickerWrapper>
+                    <Expert.RecipeRecommendSticker src="/img/icon/recommend.svg" />
+                    {el.level === "쉬움" && (
+                      <Expert.RecipeLevelSticker src="/img/icon/level1.svg" />
+                    )}
+                    {el.level === "중간" && (
+                      <Expert.RecipeLevelSticker src="/img/icon/level2.svg" />
+                    )}{" "}
+                    {el.level === "어려움" && (
+                      <Expert.RecipeLevelSticker src="/img/icon/level3.svg" />
+                    )}
+                  </Expert.StickerWrapper>
                   <Expert.RecipeTitle>{el.title}</Expert.RecipeTitle>
                   <Expert.RecipeSubtitle>{el.subTitle}</Expert.RecipeSubtitle>
                 </Expert.RecipeBox>

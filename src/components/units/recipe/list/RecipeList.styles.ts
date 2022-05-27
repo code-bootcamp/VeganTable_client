@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Container = styled.div`
   width: 100%;
@@ -8,18 +9,58 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const Banner = styled.img`
+export const BannerWrapper = styled.div`
+  background-image: url("/img/banner/img-recipeList-banner.jpeg");
+  background-repeat: none;
+  background-position: center;
   width: 100%;
+  height: 538px;
+  position: relative;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    img {
+      width: 140px;
+      height: auto;
+      padding-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 3.125rem;
+      padding-bottom: 2rem;
+    }
+    span {
+      color: rgba(0, 0, 0, 0.6);
+      font-weight: 500;
+      font-size: 1.5rem;
+      word-break: keep-all;
+    }
+  }
+  @media ${breakPoints.tablet} {
+    height: 338px;
+  }
+  @media ${breakPoints.mobile} {
+    height: 250px;
+  }
 `;
 
 export const Wrapper = styled.div`
-  width: 90rem;
+  max-width: 1440px;
+  width: 90%;
   display: flex;
   flex-direction: column;
 `;
 
 export const NavigationWrapper = styled.div`
-  width: 90rem;
+  max-width: 1440px;
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
