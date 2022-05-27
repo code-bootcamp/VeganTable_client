@@ -13,6 +13,8 @@ export const BannerWrapper = styled.div`
   background-image: url("/img/banner/img-recipeList-banner.jpeg");
   background-repeat: none;
   background-position: center;
+  background-size: cover;
+
   width: 100%;
   height: 538px;
   position: relative;
@@ -124,15 +126,15 @@ export const ListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 3rem;
 `;
 
 export const RecipeBox = styled.div`
   height: auto;
   position: relative;
+  padding-right: 10px;
   margin-bottom: 3rem;
-  width: 25%;
 `;
 
 export const RecipeImg = styled.img`
@@ -158,17 +160,27 @@ export const IconBookmark = styled.div`
   }
 `;
 
-export const RecipeRecommendSticker = styled.img`
+export const StickerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  z-index: 2;
-  right: 1rem;
-  bottom: 200px;
+  right: 0;
+  transform: translateY(-90%);
+`;
+
+export const RecipeRecommendSticker = styled.img`
+  z-index: 3;
+  max-width: 5rem;
+  width: 90%;
+  height: auto;
 `;
 export const RecipeLevelSticker = styled.img`
-  position: absolute;
-  z-index: 1;
-  right: 1rem;
-  bottom: 135px;
+  max-width: 5rem;
+  width: 90%;
+  height: auto;
+  transform: translateY(-30%);
 `;
 
 export const RecipeTitle = styled.h3`
