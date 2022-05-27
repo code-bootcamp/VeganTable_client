@@ -14,14 +14,8 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 100%;
+  width: 95%;
   max-width: 1440px;
-  @media ${breakPoints.tablet} {
-    width: 50rem;
-  }
-  @media ${breakPoints.mobile} {
-    width: 40rem;
-  }
 `;
 
 export const LogoWrapper = styled.div``;
@@ -35,7 +29,7 @@ export const MenuWrapper = styled.ul`
   justify-content: space-between;
   padding-left: 5rem;
   @media ${breakPoints.mobile} {
-    width: 24rem;
+    padding-left: calc(5%);
   }
 `;
 
@@ -46,6 +40,9 @@ export const MenuItem = styled.li`
   list-style: none;
   cursor: pointer;
   :hover {
+  }
+  @media ${breakPoints.mobile} {
+    margin-right: 2rem;
   }
 `;
 
@@ -70,20 +67,29 @@ export const UserWrapper = styled.ul`
   align-items: center;
   margin-left: auto;
   list-style: none;
-  width: 18rem;
-  @media ${breakPoints.tablet} {
-    width: 12rem;
-  }
-  @media ${breakPoints.mobile} {
-    width: 12rem;
-  }
 `;
 
 export const HeaderIcon = styled.img`
-  height: 2rem;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   cursor: pointer;
+`;
+
+export const HeaderIconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.8rem;
 `;
 
 export const UserName = styled.li`
   margin-right: 1.5rem;
+`;
+
+export const WelcomeMent = styled.li`
+  margin-right: 1.5rem;
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;

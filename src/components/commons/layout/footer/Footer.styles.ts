@@ -11,18 +11,13 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   position: relative;
-  width: 90rem;
-  height: 180px;
+  width: 95%;
+  max-width: 1440px;
+  height: auto;
   padding: 2rem;
   margin: 2rem 0;
   display: flex;
   justify-content: space-between;
-  @media ${breakPoints.tablet} {
-    width: 55rem;
-  }
-  @media ${breakPoints.mobile} {
-    width: 45rem;
-  }
 `;
 
 // Top button
@@ -58,7 +53,6 @@ export const TopButton = styled.button`
   @media ${breakPoints.tablet} {
   }
   @media ${breakPoints.mobile} {
-    display: none;
   }
 `;
 
@@ -70,25 +64,16 @@ export const LogoWrapper = styled.div`
 `;
 export const Logo = styled.img`
   margin-bottom: 20px;
-  width: 8.75rem;
-  height: 4.125rem;
-  @media ${breakPoints.tablet} {
-    width: 6.75rem;
-    height: 3.125rem;
-  }
-  @media ${breakPoints.mobile} {
-    width: 6.75rem;
-    height: 3.125rem;
-  }
+  width: 8.5rem;
+  height: auto;
 `;
 export const LogoCopyWrite = styled.div`
   font-size: 0.7rem;
   color: rgba(196, 196, 196, 1);
-  @media ${breakPoints.tablet} {
-    width: 7rem;
+  @media (max-width: 1050px) {
+    padding-right: 10px;
   }
   @media ${breakPoints.mobile} {
-    width: 7rem;
   }
 `;
 
@@ -97,18 +82,12 @@ export const MenuInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   color: white;
-  @media ${breakPoints.tablet} {
-    width: 30rem;
-    word-break: word;
-  }
-  @media ${breakPoints.mobile} {
-    width: 24rem;
-    word-break: word;
-  }
+  word-break: word;
 `;
 
 export const MenuWrapper = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 20px;
 `;
 
@@ -122,38 +101,26 @@ export const Menu = styled.li`
   }
   font-weight: 600;
   font-size: 1.1rem;
-  @media ${breakPoints.tablet} {
-    font-size: 1rem;
-    padding-right: 10px;
-  }
-  @media ${breakPoints.mobile} {
-    font-size: 0.7rem;
-    padding-right: 15px;
+  @media (max-width: 991px) {
+    flex: 0 0 40%;
+    padding-right: 0;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    &:nth-of-type(2) {
+      border: none;
+    }
   }
 `;
 
 // 기업 정보
 export const InfoWrapper = styled.div`
-  @media ${breakPoints.tablet} {
-    width: 30rem;
-    word-break: word;
-  }
-  @media ${breakPoints.mobile} {
-    width: 20rem;
-    word-break: word;
-  }
+  word-break: word;
 `;
 export const Info = styled.div`
   margin-bottom: 10px;
   font-weight: 400;
   font-size: 0.9rem;
   color: rgba(196, 196, 196, 1);
-  @media ${breakPoints.tablet} {
-    font-size: 0.8rem;
-  }
-  @media ${breakPoints.mobile} {
-    font-size: 0.7rem;
-  }
 `;
 
 // Footer 고객센터
@@ -163,15 +130,28 @@ export const CSWrapper = styled.div`
   align-items: flex-end;
   color: white;
   font-weight: 600;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
-export const CSNumber = styled.div`
-  margin-bottom: 20px;
-  @media ${breakPoints.tablet} {
-    font-size: 1rem;
+
+export const CSWrapperMobile = styled.div`
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 600;
+  & > div {
+    margin: 0;
+    padding-right: 10px;
   }
   @media ${breakPoints.mobile} {
-    font-size: 0.7rem;
+    display: flex;
   }
+`;
+
+export const CSNumber = styled.div`
+  margin-bottom: 20px;
 `;
 export const CSChat = styled.button`
   width: 6rem;
@@ -182,11 +162,4 @@ export const CSChat = styled.button`
   background-color: black;
   border-radius: 2rem;
   color: white;
-  @media ${breakPoints.tablet} {
-    width: 5rem;
-  }
-  @media ${breakPoints.mobile} {
-    width: 5rem;
-    font-size: 0.7rem;
-  }
 `;
