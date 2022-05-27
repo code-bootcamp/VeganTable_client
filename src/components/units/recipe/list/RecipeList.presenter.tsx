@@ -190,16 +190,18 @@ export default function RecipeListUI() {
                 )}
                 <span>{el.bookmarkCount}</span>
               </List.IconBookmark>
-              <List.RecipeRecommendSticker src="/img/icon/recommend.svg" />
-              {el.level === "쉬움" && (
-                <List.RecipeLevelSticker src="/img/icon/level1.svg" />
-              )}
-              {el.level === "중간" && (
-                <List.RecipeLevelSticker src="/img/icon/level2.svg" />
-              )}{" "}
-              {el.level === "어려움" && (
-                <List.RecipeLevelSticker src="/img/icon/level3.svg" />
-              )}
+              <List.StickerWrapper>
+                <List.RecipeRecommendSticker src="/img/icon/recommend.svg" />
+                {el.level === "쉬움" && (
+                  <List.RecipeLevelSticker src="/img/icon/level1.svg" />
+                )}
+                {el.level === "중간" && (
+                  <List.RecipeLevelSticker src="/img/icon/level2.svg" />
+                )}{" "}
+                {el.level === "어려움" && (
+                  <List.RecipeLevelSticker src="/img/icon/level3.svg" />
+                )}
+              </List.StickerWrapper>
               <List.RecipeTitle>{el.title}</List.RecipeTitle>
               <List.RecipeSubtitle>{el.subTitle}</List.RecipeSubtitle>
               <List.RecipeCommentBox>
