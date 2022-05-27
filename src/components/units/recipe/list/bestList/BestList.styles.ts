@@ -1,24 +1,43 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../../commons/styles/media";
 
 export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 600px;
+  height: auto;
   padding: 5.5rem 0;
   background-color: rgba(177, 198, 134, 0.1);
   margin-bottom: 5.5rem;
 `;
 
 export const Wrapper = styled.div`
-  width: 88rem;
+  max-width: 1438px;
+  width: 95%;
   display: flex;
+  @media ${breakPoints.tablet} {
+    flex-direction: column;
+  }
+  @media ${breakPoints.mobile} {
+    flex-direction: column;
+  }
 `;
 
 // 리스트 설명
 export const TitleWrapper = styled.div`
   margin-right: 5rem;
+  @media (max-width: 1585px) {
+    margin-right: auto;
+  }
+  @media ${breakPoints.tablet} {
+    margin: 0 auto;
+    width: 90%;
+  }
+  @media ${breakPoints.mobile} {
+    margin: 0 auto;
+    width: 90%;
+  }
 `;
 
 export const TitleBar = styled.div`
@@ -31,7 +50,6 @@ export const Title = styled.h2`
   font-weight: 600;
   font-size: 2.25rem;
   margin-bottom: 2rem;
-  width: 14rem;
 `;
 
 export const SubTitle = styled.p`
@@ -39,6 +57,7 @@ export const SubTitle = styled.p`
   font-size: 1.5rem;
   color: #737373;
   margin-bottom: 5px;
+  word-break: keep-all;
   &:last-of-type {
     margin-bottom: 30px;
   }
@@ -82,6 +101,20 @@ export const SliderWrapper = styled.div`
   .slick-next:before {
     content: ">";
   }
+  @media (max-width: 1585px) {
+    .slick-arrow {
+      visibility: hidden;
+      left: -1000%;
+    }
+  }
+  @media ${breakPoints.tablet} {
+    width: 90%;
+    margin: 0 auto;
+  }
+  @media ${breakPoints.mobile} {
+    width: 90%;
+    margin: 0 auto;
+  }
 `;
 
 export const ListWrapper = styled.div`
@@ -118,18 +151,28 @@ export const IconBookmark = styled.div`
   }
 `;
 
-export const RecipeRecommendSticker = styled.img`
+export const StickerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  z-index: 2;
-  right: 0px;
-  bottom: 130px;
+  right: 0;
+  transform: translateY(-90%);
+`;
+
+export const RecipeRecommendSticker = styled.img`
+  z-index: 3;
+  max-width: 5rem;
+  width: 90%;
+  height: auto;
 `;
 
 export const RecipeLevelSticker = styled.img`
-  position: absolute;
-  z-index: 1;
-  right: 0px;
-  bottom: 70px;
+  max-width: 5rem;
+  width: 90%;
+  height: auto;
+  transform: translateY(-30%);
 `;
 
 export const RecipeTitle = styled.h3`

@@ -138,7 +138,13 @@ export default function RecipeListUI() {
 
   return (
     <List.Container>
-      <List.Banner src="/img/banner/banner-recipeList.png" />
+      <List.BannerWrapper>
+        <div>
+          <img src="/img/banner/recipeList-banner-icon.svg" alt="" />
+          <h1>레시피</h1>
+          <span>채식 레시피의 모든 것, 채식</span>
+        </div>
+      </List.BannerWrapper>
       <ExpertRecipeList />
       <BestRecipeList />
       <List.NavigationWrapper>

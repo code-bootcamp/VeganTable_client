@@ -101,9 +101,7 @@ export default function BestRecipeList() {
           <Best.TitleBar />
           <Best.Title>인기 레시피</Best.Title>
           <Best.SubTitle>
-            이달의 가장 많은 <br />
-            좋아요를 받은 레시피를 <br />
-            확인해보세요
+            이달의 가장 많은 좋아요를 받은 레시피를 확인해보세요
           </Best.SubTitle>
         </Best.TitleWrapper>
         <Best.SliderWrapper>
@@ -120,16 +118,18 @@ export default function BestRecipeList() {
                     )}
                     <span>{el.bookmarkCount}</span>
                   </Best.IconBookmark>
-                  <Best.RecipeRecommendSticker src="/img/icon/recommend.svg" />
-                  {el.level === "쉬움" && (
-                    <Best.RecipeLevelSticker src="/img/icon/level1.svg" />
-                  )}
-                  {el.level === "중간" && (
-                    <Best.RecipeLevelSticker src="/img/icon/level2.svg" />
-                  )}{" "}
-                  {el.level === "어려움" && (
-                    <Best.RecipeLevelSticker src="/img/icon/level3.svg" />
-                  )}
+                  <Best.StickerWrapper>
+                    <Best.RecipeRecommendSticker src="/img/icon/recommend.svg" />
+                    {el.level === "쉬움" && (
+                      <Best.RecipeLevelSticker src="/img/icon/level1.svg" />
+                    )}
+                    {el.level === "중간" && (
+                      <Best.RecipeLevelSticker src="/img/icon/level2.svg" />
+                    )}{" "}
+                    {el.level === "어려움" && (
+                      <Best.RecipeLevelSticker src="/img/icon/level3.svg" />
+                    )}
+                  </Best.StickerWrapper>
                   <Best.RecipeTitle>{el.title}</Best.RecipeTitle>
                   <Best.RecipeSubtitle>{el.subTitle}</Best.RecipeSubtitle>
                 </Best.RecipeBox>
