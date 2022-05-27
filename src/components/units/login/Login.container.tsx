@@ -23,9 +23,6 @@ export default function Login() {
       });
     };
 
-  // 로그인 회원 정보 가져오기
-  // const { data } = useQuery(FETCH_USER);
-
   // 로그인 mutation
   const [login] = useMutation(LOG_IN);
 
@@ -34,12 +31,7 @@ export default function Login() {
   };
 
   // 모달 부분
-  const { Success01, Error } = useModal({
-    SuccessTitle01: "로그인 성공",
-    SuccessText01: "로그인에 성공하였습니다.",
-    ErrorTitle: "로그인 실패",
-    ErrorText: "로그인에 실패하였습니다.",
-  });
+  const { Success, ModalError } = useModal();
 
   const onClickLogin = async () => {
     try {
@@ -51,10 +43,11 @@ export default function Login() {
       });
       const myAccessToken = result.data?.login;
       setAccessToken(myAccessToken);
-      Success01();
+      Success("로그인 성공", "로그인에 성공하였습니다.");
       router.push("/");
     } catch (error) {
-      Error();
+      if (error instanceof Error)
+        ModalError("로그인 실패", "로그인에 실패하였습니다.");
     }
   };
 

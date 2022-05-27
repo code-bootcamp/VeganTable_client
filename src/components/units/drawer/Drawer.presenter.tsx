@@ -58,22 +58,18 @@ export default function TemporaryDrawer(props: IDrawerUIProps) {
     };
 
   // 모달
-  const { Success01, Error } = useModal({
-    SuccessTitle01: "로그아웃 성공",
-    SuccessText01: "로그아웃을 성공하였습니다.",
-    ErrorTitle: "로그아웃 실패",
-    ErrorText: "로그아웃을 실패하였습니다.",
-  });
+  const { Success, ModalError } = useModal();
 
   const [logout] = useMutation(LOGOUT);
 
   const onClickLogout = async () => {
     try {
       await logout();
-      Success01();
+      Success("로그아웃 성공", "로그아웃 되었습니다.");
       router.push("/");
     } catch (error) {
-      Error();
+      if (error instanceof Error)
+        ModalError("로그아웃 실패", "로그아웃에 실패하였습니다.");
     }
   };
 

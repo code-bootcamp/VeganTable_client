@@ -54,6 +54,7 @@ export const Item = styled.div`
   cursor: pointer;
   overflow: hidden;
   border-radius: 2rem;
+  height: 530px;
 
   :hover {
     & > div {
@@ -82,7 +83,6 @@ export const Item = styled.div`
     justify-content: center;
     align-items: center;
     position: absolute;
-    margin-top: -3px;
     text-align: center;
     left: 0;
     top: 0;
@@ -91,8 +91,10 @@ export const Item = styled.div`
     border-radius: 2rem;
     letter-spacing: -0.05em;
     font-weight: 700;
+
     p {
       padding-top: 1.14rem;
+      word-break: keep-all;
       font-size: 1.5rem;
     }
   }

@@ -6,6 +6,9 @@ export const Container = styled.div`
   width: 100%;
   justify-content: center;
   background-color: #e5e5e5;
+  @media (max-width: 767px) {
+    background-color: white;
+  }
 `;
 
 // 내용 전체
@@ -14,21 +17,28 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 4.0625rem auto;
+  width: 100%;
+  max-width: 1440px;
 `;
 
 // 제목 부분
 export const HeaderWrapper = styled.div`
   margin-bottom: 2.1875rem;
+  width: 100%;
 `;
 export const HeaderTitle = styled.h1`
   font-size: 3.125rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 // 제목 외 내용 부분
 export const BodyWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40.75rem;
+  width: 100%;
+  max-width: 40.75rem;
   height: 40.75rem;
   justify-content: center;
   align-items: center;

@@ -50,7 +50,12 @@ export default function SignUpUI(props: IPropsSignUp) {
 
   return (
     <SignUp.Container>
-      {!agreePolicy && <SignUpPolicy setAgreePolicy={setAgreePolicy} />}
+      {!agreePolicy && (
+        <SignUpPolicy
+          setAgreePolicy={setAgreePolicy}
+          setIsSubmit={props.setIsSubmit}
+        />
+      )}
       {agreePolicy && !props.isSubmit && (
         <SignUp.Wrapper>
           <SignUp.HeaderWrapper>
