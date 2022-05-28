@@ -1,7 +1,18 @@
 import RecipeDetailUI from "./RecipeDetail.presenter";
 import { useRef, useState } from "react";
+import { useQuery } from "@apollo/client";
+import { FETCH_RECIPE } from "./RecipeDetail.queries";
+import { useRouter } from "next/router";
 
 export default function RecipeDetail() {
+  const router = useRouter();
+  const { data: recipeData } = useQuery(FETCH_RECIPE, {
+    variables: {
+      recipes_id: String(router.query.recipeId),
+    },
+  });
+  console.log(recipeData);
+  console.log(recipeData?.fetchRecipe?.recipesImages.map((el) => el.url));
   // 탭 Ref
   const ingredientTabRef = useRef<HTMLDivElement>(null);
   const cookOrderTabRef = useRef<HTMLDivElement>(null);
@@ -23,13 +34,14 @@ export default function RecipeDetail() {
 
   return (
     <RecipeDetailUI
+      recipeData={recipeData}
       ingredientTabRef={ingredientTabRef}
       cookOrderTabRef={cookOrderTabRef}
       reviewTabRef={reviewTabRef}
+      tabActive={tabActive}
       onClickIngredientTab={onClickIngredientTab}
       onClickCookOrderTab={onClickCookOrderTab}
       onClickReviewTab={onClickReviewTab}
-      tabActive={tabActive}
     />
   );
 }

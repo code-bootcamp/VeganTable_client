@@ -129,17 +129,25 @@ export const Order = styled.div`
 export const ImageWrapper = styled.div`
   display: flex;
   justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 2rem;
+  }
 `;
 
 export const Ingredient = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   text-align: center;
   width: 100%;
 
   & > span {
-    flex: 1 0 25%;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
   }
 `;
