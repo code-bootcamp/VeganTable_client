@@ -62,7 +62,7 @@ export const Title = styled.span`
 export const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2.5rem;
+  padding: 2.5rem 0;
   padding-left: 10rem;
   width: 100%;
   border-bottom: 1px solid #c4c4c4;
@@ -112,8 +112,7 @@ export const ImageButton = styled.button`
 export const InputWrapper = styled.div`
   display: flex;
   align-items: center;
-  padding-top: 0.6rem;
-  padding-bottom: 1.5rem;
+  padding: 0.6rem 0;
 
   & > span {
     font-weight: 600;

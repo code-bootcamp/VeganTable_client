@@ -1,6 +1,7 @@
 import UserInput from "../../../commons/inputs";
 import Navigation03 from "../../../commons/navigation/03";
 import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container";
+import MyPageTitleBar from "../../../commons/titleBars/01";
 import * as My from "./MyPageInfo.styles";
 
 export default function MyPageInfoUI(props) {
@@ -11,9 +12,7 @@ export default function MyPageInfoUI(props) {
           <MyPageSidebar />
 
           <My.InfoWrapper>
-            <My.TitleWrapper>
-              <My.Title>회원정보조회</My.Title>
-            </My.TitleWrapper>
+            <MyPageTitleBar title={"회원정보조회"} />
 
             <My.ProfileWrapper>
               <My.FlexRow>

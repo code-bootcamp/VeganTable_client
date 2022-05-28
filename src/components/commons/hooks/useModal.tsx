@@ -34,11 +34,11 @@ export function useModal() {
     });
   };
 
-  const WarningConfirm = (title: string, text: string) => {
+  const Info = (title: string, text: string) => {
     Swal.fire({
       title: title,
       text: text,
-      icon: "warning",
+      icon: "info",
       confirmButtonColor: "#0fbaa3",
       showConfirmButton: true,
       showCancelButton: true,
@@ -58,7 +58,7 @@ export function useModal() {
     Success,
     Warning,
     ModalError,
-    WarningConfirm,
+    Info,
     PromotionModal,
   };
 }

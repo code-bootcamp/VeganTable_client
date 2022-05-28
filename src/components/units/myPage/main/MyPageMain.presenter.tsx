@@ -10,7 +10,7 @@ export default function MyPageMainUI(props) {
         <MyPageSidebar />
         <My.MainWrapper>
           <My.UserWrapper>
-            {props.data?.fetchUser.profilePic ? (
+            {props.data?.fetchUser.profilePic !== " " ? (
               <My.UserIcon
                 src={`https://storage.googleapis.com/${props.data?.fetchUser.profilePic}`}
               />
@@ -30,43 +30,43 @@ export default function MyPageMainUI(props) {
             </My.UserProfile>
             <My.UserInfo>
               <My.Info>
-                {props.data?.fetchUser.type === "NON_VEGAN" && (
+                {props.data?.fetchUser.type === "NON_Vegan" && (
                   <>
                     <My.TypeIcon src="/img/navigation/icon-vegan-nonVegan.svg" />
                     <My.Name>채린이</My.Name>
                   </>
                 )}
-                {props.data?.fetchUser.type === "VEGAN" && (
+                {props.data?.fetchUser.type === "Vegan" && (
                   <>
                     <My.TypeIcon src="/img/navigation/icon-vegan-vegan.svg" />
                     <My.Name>비건</My.Name>
                   </>
                 )}
-                {props.data?.fetchUser.type === "LACTO" && (
+                {props.data?.fetchUser.type === "Lacto" && (
                   <>
                     <My.TypeIcon src="/img/navigation/icon-vegan-lacto.svg" />
                     <My.Name>락토</My.Name>
                   </>
                 )}
-                {props.data?.fetchUser.type === "OVO" && (
+                {props.data?.fetchUser.type === "Ovo" && (
                   <>
                     <My.TypeIcon src="/img/navigation/icon-vegan-ovo.svg" />
                     <My.Name>오보</My.Name>
                   </>
                 )}
-                {props.data?.fetchUser.type === "LACTO_OVO" && (
+                {props.data?.fetchUser.type === "Lacto_Ovo" && (
                   <>
                     <My.TypeIcon src="/img/navigation/icon-vegan-lactoOvo.svg" />
                     <My.Name>락토오보</My.Name>
                   </>
                 )}
-                {props.data?.fetchUser.type === "PESCO" && (
+                {props.data?.fetchUser.type === "Pesco" && (
                   <>
                     <My.TypeIcon src="/img/navigation/icon-vegan-pesco.svg" />
                     <My.Name>페스코</My.Name>
                   </>
                 )}
-                {props.data?.fetchUser.type === "POLLO" && (
+                {props.data?.fetchUser.type === "Pollo" && (
                   <>
                     <My.TypeIcon src="/img/navigation/icon-vegan-pollo.svg" />
                     <My.Name>폴로</My.Name>
