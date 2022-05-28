@@ -70,26 +70,10 @@ export const RepImage = styled.div`
   }
 `;
 
-export const RepImage2 = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 585px;
-  height: 259px;
-  background: #ebebeb;
-  border-radius: 2rem;
-
-  span {
-    padding-top: 1.25rem;
-    font-size: 1.25rem;
-    font-weight: 400;
-  }
-
-  @media (max-width: 991px) {
-    margin: 0 auto;
-    width: 100%;
-  }
+export const UploadedRepImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;
 
 export const TextArea = styled.textarea`
@@ -260,7 +244,7 @@ export const CookingOrder = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 2rem 0;
+  padding: 2rem;
   margin-bottom: 5rem;
   width: 585px;
   background: #ebebeb;
@@ -291,12 +275,16 @@ export const CookingOrder = styled.div`
     :hover {
       background: #0fbaa3;
     }
+  }
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  p {
+    padding-top: 1rem;
   }
 `;
 
@@ -332,6 +320,11 @@ export const IngredientArr = styled.div`
 `;
 
 export const IngredientInputs = styled.div`
+  div {
+    display: flex;
+    justify-content: center;
+  }
+
   input {
     margin-right: 1rem;
     padding: 0.3rem 0.7rem;
@@ -344,6 +337,13 @@ export const IngredientInputs = styled.div`
     }
   }
 
+  p {
+    padding-top: 0.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #848484;
+  }
+
   button {
     background: #0fbaa3;
     border: none;
@@ -351,6 +351,7 @@ export const IngredientInputs = styled.div`
     font-size: 1rem;
     padding: 0.3rem 1.5rem;
     color: #ffffff;
+    word-break: keep-all;
     cursor: pointer;
     transition: all 0.3s ease;
 
@@ -358,13 +359,6 @@ export const IngredientInputs = styled.div`
       background: #ffffff;
       color: #0fbaa3;
     }
-  }
-
-  p {
-    padding-top: 0.5rem;
-    text-align: center;
-    font-size: 0.8rem;
-    color: #848484;
   }
 `;
 export const InputAmount = styled.input`
@@ -376,6 +370,8 @@ export const InputUnit = styled.input`
 `;
 
 export const InputTipWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   padding-top: 1.75rem;
 `;
 
@@ -407,5 +403,25 @@ export const AddStepWrapper = styled.div`
 
   span {
     padding-left: 0.5rem;
+  }
+`;
+
+export const RegisterButtonWrapper = styled.div`
+  padding-top: 200px;
+  button {
+    padding: 1.7rem 7rem;
+    background: #0fbaa3;
+    border: none;
+    border-radius: 4rem;
+    font-size: 1rem;
+    color: #ffffff;
+    border: 1px solid transparent;
+    cursor: pointer;
+
+    :hover {
+      background: #ffffff;
+      color: #0fbaa3;
+      border: 1px solid #0fbaa3;
+    }
   }
 `;

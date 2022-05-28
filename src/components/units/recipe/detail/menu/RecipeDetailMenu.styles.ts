@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  background: #ffffff;
+`;
 
 export const Wrapper = styled.div``;
 
@@ -79,7 +81,6 @@ export const RecipeInfoWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding-top: 3.125rem;
-  width: 369px;
 `;
 
 export const RecipeTags = styled.div`
@@ -88,7 +89,6 @@ export const RecipeTags = styled.div`
   align-items: center;
   padding-top: 3.25rem;
   flex-wrap: wrap;
-  width: 322px;
 
   & > span {
     padding: 0.375rem 0.88rem;
@@ -138,38 +138,5 @@ export const ShareButton = styled.button`
     width: 100%;
     height: 100%;
     object-fit: contain;
-  }
-`;
-
-export const CommentContainer = styled.div`
-  padding-top: 5.06rem;
-`;
-
-export const CommentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  width: 422px;
-  padding: 1rem 2rem;
-  background: #f2f2f2;
-  border-radius: 2rem;
-  font-weight: 400;
-  letter-spacing: -0.05em;
-  color: rgba(38, 38, 38, 0.6);
-`;
-
-export const CommentUserInfo = styled.div`
-  padding-top: 0.81rem;
-  margin-left: auto;
-
-  & > span:first-of-type {
-    padding-right: 0.5rem;
-    border-right: 1px solid rgba(38, 38, 38, 0.6);
-  }
-
-  & > span:nth-of-type(2) {
-    padding-left: 0.5rem;
   }
 `;

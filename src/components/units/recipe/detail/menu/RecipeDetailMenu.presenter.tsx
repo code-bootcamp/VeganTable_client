@@ -57,21 +57,6 @@ export default function RecipeDetailMenuUI() {
             <img src="/img/recipeDetail/icon-share.svg" alt="공유하기" />
           </DetailMenu.ShareButton>
         </DetailMenu.RecipeInfoButtons>
-
-        <DetailMenu.CommentContainer>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((el) => (
-            <DetailMenu.CommentWrapper key={`c${el}`}>
-              <p>
-                동해물과 백두산이 마르고 닳도록 하느님이 보우하사 동해물과
-                백두산이 마르고 닳도록 하느님이 보우하사
-              </p>
-              <DetailMenu.CommentUserInfo>
-                <span>iamye****</span>
-                <span>2일전</span>
-              </DetailMenu.CommentUserInfo>
-            </DetailMenu.CommentWrapper>
-          ))}
-        </DetailMenu.CommentContainer>
       </DetailMenu.Wrapper>
     </DetailMenu.Container>
   );

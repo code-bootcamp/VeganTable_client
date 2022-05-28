@@ -1,9 +1,14 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-direction: row-reverse;
+  @media (max-width: 991px) {
+    flex-direction: column;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -11,6 +16,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  padding-bottom: 10rem;
   width: 100%;
 `;
 
@@ -18,22 +24,37 @@ export const TopWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  position: relative;
   padding-top: 2.18rem;
   width: 100%;
+  @media (max-width: 1580px) {
+    padding-top: 4rem;
+  }
 `;
 
 export const BackButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 5rem;
-  font-size: 0.75rem;
-  background: #ffffff;
+  position: absolute;
+  padding-left: 3rem;
+  left: 0;
+  top: 0;
+  transform: translate(100%, 150%);
+  font-size: 0.9rem;
+  background: transparent;
   border: none;
   cursor: pointer;
 
   & > img {
     padding-right: 0.5rem;
+  }
+  @media (max-width: 1580px) {
+    padding-right: 0;
+    transform: translate(50%, 70%);
+  }
+  @media ${breakPoints.mobile} {
+    transform: translate(50%, 50%);
   }
 `;
 export const SliderWrapper = styled.div`
@@ -45,7 +66,8 @@ export const MenuWrapper = styled.div`
   overflow-y: auto;
   top: 0;
   padding: 3rem 1.5rem;
-  width: 40%;
+  background: #ffffff;
+  z-index: 999;
   height: 100vh;
   box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.25);
 `;
@@ -67,9 +89,10 @@ export const Navigation = styled.ul`
     margin: 0 1rem;
     font-weight: 400;
     color: #262626;
+    cursor: pointer;
   }
 
-  .active {
+  .isActive {
     border-bottom: 3px solid #0fbaa3;
   }
 `;

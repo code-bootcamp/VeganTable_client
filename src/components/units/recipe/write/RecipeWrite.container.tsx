@@ -1,12 +1,17 @@
 import RecipeWriteUI from "./RecipeWrite.presenter";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useRef, useState } from "react";
+import { useMutation } from "@apollo/client";
+import { CREATE_RECIPE } from "./RecipeWrite.queries";
 
 const nonSchema = yup.object({});
 
 export default function RecipeWrite() {
+  const router = useRouter();
+  const [createRecipe] = useMutation(CREATE_RECIPE);
   // 탭 Ref
   const ingredientTabRef = useRef<HTMLDivElement>(null);
   const cookOrderTabRef = useRef<HTMLDivElement>(null);
@@ -29,6 +34,11 @@ export default function RecipeWrite() {
     image: "",
     desc: "",
   });
+  const [selectType, setSelectType] = useState({ types: "VEGAN" });
+  // 대표 이미지업로드
+  const [imageUrls, setImageUrls] = useState(["", "", "", ""]);
+  // 요리순서 이미지 업로드
+  const [descImage, setDescImage] = useState("");
   // useForm
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(nonSchema),
@@ -47,6 +57,7 @@ export default function RecipeWrite() {
   const onChangeTextArea = (event) => {
     setDesc((prev) => ({
       ...desc,
+      image: descImage,
       desc: event.target.value,
     }));
   };
@@ -63,6 +74,7 @@ export default function RecipeWrite() {
         desc: newDesc,
       },
     ]);
+    setDescImage("");
   };
 
   // step 삭제
@@ -84,10 +96,11 @@ export default function RecipeWrite() {
   // 해쉬태그
   const onKeyUpHash = (event) => {
     if (event.keyCode === 32 && event.target.value !== " ") {
-      setHashArr([...hashArr, "#" + event.target.value]);
+      setHashArr([...hashArr, "#" + event.target.value.trim()]);
       event.target.value = "";
     }
   };
+  console.log(hashArr);
 
   // 해쉬태그 삭제
   const onClickDeleteTag = (tag) => () => {
@@ -104,6 +117,56 @@ export default function RecipeWrite() {
     setTabActive(["", "isActive"]);
   };
 
+  // 채식유형선택
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setSelectType({
+      [name]: value,
+    });
+  };
+
+  // 레시피 등록하기
+  const onClickSubmit = async (data) => {
+    try {
+      const result = await createRecipe({
+        variables: {
+          createRecipesInput: {
+            title: data.title,
+            summary: data.summary,
+            types: String(selectType.types),
+            url: descArr.map((el) => el.image),
+            description: descArr.map((el) => `${el.desc}`),
+            cookTime: Number(data.cookTime),
+            level: data.level,
+            // recipesImages: imageUrls,
+            ingredients: ingredientArr.map(
+              (el) => `${el.name} ${el.amount}${el.unit}`
+            ),
+            recipesTags: hashArr,
+            scrapCount: 0,
+          },
+        },
+      });
+      alert("레시피 등록에 성공하였습니다.");
+      console.log(result);
+      router.push(`/recipe/${result.data.createRecipe.id}`);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  // 대표 이미지 업로드
+  const onChangeFileUrls = (fileUrl: string, index: number) => {
+    const newFileUrls = [...imageUrls];
+    newFileUrls[index] = fileUrl;
+    setImageUrls(newFileUrls);
+  };
+
+  // 요리순서 이미지 업로드
+  const onChangeDescImage = (fileUrl: string) => {
+    setDescImage(fileUrl);
+  };
+
   return (
     <RecipeWriteUI
       formState={formState}
@@ -113,8 +176,13 @@ export default function RecipeWrite() {
       ingredientTabRef={ingredientTabRef}
       cookOrderTabRef={cookOrderTabRef}
       tabActive={tabActive}
+      selectType={selectType}
+      router={router}
+      imageUrls={imageUrls}
+      descImage={descImage}
       register={register}
       handleSubmit={handleSubmit}
+      onClickSubmit={onClickSubmit}
       onClickDeleteTag={onClickDeleteTag}
       onClickAddIngredient={onClickAddIngredient}
       onChangeIngredient={onChangeIngredient}
@@ -125,6 +193,9 @@ export default function RecipeWrite() {
       onClickIngredientTab={onClickIngredientTab}
       onClickCookOrderTab={onClickCookOrderTab}
       onClickDeleteDesc={onClickDeleteDesc}
+      handleChange={handleChange}
+      onChangeFileUrls={onChangeFileUrls}
+      onChangeDescImage={onChangeDescImage}
     />
   );
 }

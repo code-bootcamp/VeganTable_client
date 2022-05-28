@@ -1,5 +1,5 @@
 import RecipeReviewUI from "./RecipeReview.presenter";
 
-export default function RecipeReview() {
+export default function RecipeReview(props) {
   return <RecipeReviewUI />;
 }
