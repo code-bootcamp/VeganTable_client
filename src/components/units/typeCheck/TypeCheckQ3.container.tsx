@@ -35,7 +35,11 @@ export default function TypeCheckQ3() {
         <Type.StepBarOn />
         <Type.StepCircleOn>03</Type.StepCircleOn>
       </Type.StepWrapper>
-      <Type.StepQuestion>Q3. 알레르기가 있나요?</Type.StepQuestion>
+      <Type.StepQuestion>
+        Q3. 알레르기가 있나요?
+        <span>해당사항이 없다면 바로 완료를 눌러주세요.</span>
+      </Type.StepQuestion>
+
       <Type.AllergyWrapper>
         {ALLERGY_KEYWORD.map((el, i) => (
           <Type.AllergyKeywordRow key={i}>

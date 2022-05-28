@@ -95,6 +95,15 @@ export const StepQuestion = styled.div`
   font-weight: 500;
   font-size: 1.5rem;
   margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & > span {
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: #848484;
+  }
 `;
 
 // 각 타입

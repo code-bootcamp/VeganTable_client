@@ -51,7 +51,7 @@ export const DrawerHead = styled.div`
     width: 4.6875rem;
     height: 1.5rem;
     background-color: ${(props: IDrawerStylesProps) =>
-      props.isPro ? "#C2BFB9" : "#bfab87"};
+      props.isPro ? "#bfab87" : "#C2BFB9"};
     border-radius: 1rem;
   }
 
@@ -92,6 +92,7 @@ export const VeganType = styled.div`
     font-size: 1rem;
   }
 `;
+
 export const SubsInfo = styled.div`
   display: flex;
   flex-direction: column;

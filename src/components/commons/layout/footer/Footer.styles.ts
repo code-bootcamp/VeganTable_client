@@ -53,6 +53,9 @@ export const TopButton = styled.button`
   @media ${breakPoints.tablet} {
   }
   @media ${breakPoints.mobile} {
+    display: none;
+    width: 0;
+    height: 0;
   }
 `;
 
