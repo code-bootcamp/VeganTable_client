@@ -1,120 +1,13 @@
+import { useQuery } from "@apollo/client";
 import { useState } from "react";
 import Navigation01 from "../../../commons/navigation/01";
 import Pagination02 from "../../../commons/pagination/02/Pagination02";
 import BestRecipeList from "./bestList/BestList.container";
 import ExpertRecipeList from "./expertList/ExpertList.container";
+import { FETCH_RECIPES, FETCH_USER } from "./RecipeList.queries";
 import * as List from "./RecipeList.styles";
 
 export default function RecipeListUI() {
-  const RECIPE_EXAMPLE = [
-    {
-      title: "메뉴 01",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "쉬움",
-      commentsCount: 52,
-      bookmarkCount: 25,
-      bookmark: true,
-    },
-    {
-      title: "메뉴 02",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "중간",
-      commentsCount: 52,
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "어려움",
-      commentsCount: 52,
-      bookmarkCount: 25,
-      bookmark: true,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "쉬움",
-      commentsCount: 52,
-      bookmarkCount: 25,
-      bookmark: true,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "중간",
-      commentsCount: 52,
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "쉬움",
-      commentsCount: 52,
-      bookmarkCount: 25,
-      bookmark: true,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "중간",
-      commentsCount: 52,
-      bookmarkCount: 25,
-      bookmark: true,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "쉬움",
-      commentsCount: 52,
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "어려움",
-      commentsCount: 52,
-      bookmarkCount: 25,
-      bookmark: true,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "중간",
-      commentsCount: 52,
-      bookmarkCount: 25,
-      bookmark: true,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "어려움",
-      commentsCount: 52,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "중간",
-      commentsCount: 52,
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-  ];
-
   const WHOLE_MENU_LIST = [{ name: "전체 메뉴" }, { name: "전문가 메뉴" }];
 
   const MENU_LIST = [
@@ -128,6 +21,9 @@ export default function RecipeListUI() {
     selectList: "최신순",
   });
 
+  const { data } = useQuery(FETCH_RECIPES);
+  const { data: userData } = useQuery(FETCH_USER);
+
   const onClickWholeMenu = (el) => () => {
     setIsPicked({ ...isPicked, wholeMenu: el.name });
   };
@@ -135,6 +31,8 @@ export default function RecipeListUI() {
   const onClickSelectList = (el) => () => {
     setIsPicked({ ...isPicked, selectList: el.name });
   };
+
+  console.log(userData?.fetchUser);
 
   return (
     <List.Container>
@@ -179,35 +77,45 @@ export default function RecipeListUI() {
           </List.ListSelectBox>
         </List.MenuWrapper>
         <List.ListWrapper>
-          {RECIPE_EXAMPLE.map((el, i) => (
+          {data?.fetchRecipes.map((el, i) => (
             <List.RecipeBox key={i}>
-              <List.RecipeImg src={el.image} />
+              <List.RecipeImg
+                src={
+                  el.recipesImages
+                    ? "/img/bestRecipe/img-recipe-01.png"
+                    : el.recipesImages.filter((e) => e !== "").length === 0
+                    ? "/img/bestRecipe/img-recipe-01.png"
+                    : `https://storage.googleapis.com/${el.recipesImages[0]}`
+                }
+              />
               <List.IconBookmark>
-                {el.bookmark ? (
+                {el.id === userData?.fetchUser.scrapCount.recipes.id ? (
                   <img src="/img/bestRecipe/icon-bookmark-on.svg" />
                 ) : (
                   <img src="/img/bestRecipe/icon-bookmark-off.svg" />
                 )}
-                <span>{el.bookmarkCount}</span>
+                <span>{el.scrapCount}</span>
               </List.IconBookmark>
               <List.StickerWrapper>
-                <List.RecipeRecommendSticker src="/img/icon/recommend.svg" />
-                {el.level === "쉬움" && (
+                {el.scrapCount >= 1 && (
+                  <List.RecipeRecommendSticker src="/img/icon/recommend.svg" />
+                )}
+                {el.level === "SIMPLE" && (
                   <List.RecipeLevelSticker src="/img/icon/level1.svg" />
                 )}
-                {el.level === "중간" && (
+                {el.level === "NORMAL" && (
                   <List.RecipeLevelSticker src="/img/icon/level2.svg" />
-                )}{" "}
-                {el.level === "어려움" && (
+                )}
+                {el.level === "DIFFICULT" && (
                   <List.RecipeLevelSticker src="/img/icon/level3.svg" />
                 )}
               </List.StickerWrapper>
               <List.RecipeTitle>{el.title}</List.RecipeTitle>
-              <List.RecipeSubtitle>{el.subTitle}</List.RecipeSubtitle>
+              <List.RecipeSummary>{el.summary}</List.RecipeSummary>
               <List.RecipeCommentBox>
                 <List.RecipeCommentIcon src="/img/icon/comment.svg" />
                 <List.RecipeCommentsCount>
-                  {el.commentsCount}
+                  댓글 수 데이터도 받아야겠는뎅..
                 </List.RecipeCommentsCount>
               </List.RecipeCommentBox>
             </List.RecipeBox>

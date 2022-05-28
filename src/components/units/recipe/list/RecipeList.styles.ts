@@ -135,6 +135,7 @@ export const RecipeBox = styled.div`
   position: relative;
   padding-right: 10px;
   margin-bottom: 3rem;
+  cursor: pointer;
 `;
 
 export const RecipeImg = styled.img`
@@ -142,7 +143,6 @@ export const RecipeImg = styled.img`
   width: 21.375rem;
   height: 21.375rem;
   margin-bottom: 1.5rem;
-  cursor: pointer;
 `;
 
 export const IconBookmark = styled.div`
@@ -152,8 +152,8 @@ export const IconBookmark = styled.div`
   align-items: center;
   position: absolute;
   z-index: 3;
-  right: 2.2rem;
-  top: 20px;
+  right: 2rem;
+  top: 18px;
   & > span {
     color: #ffffff;
     font-size: 0.75rem;
@@ -167,7 +167,7 @@ export const StickerWrapper = styled.div`
   align-items: center;
   position: absolute;
   right: 0;
-  transform: translateY(-90%);
+  transform: translateY(-90%) translateX(-10%);
 `;
 
 export const RecipeRecommendSticker = styled.img`
@@ -188,9 +188,13 @@ export const RecipeTitle = styled.h3`
   font-size: 2rem;
   margin-bottom: 0.5rem;
   cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 21.375rem;
 `;
 
-export const RecipeSubtitle = styled.p`
+export const RecipeSummary = styled.p`
   font-weight: 400;
   font-size: 1rem;
   color: rgba(38, 38, 38, 0.6);
