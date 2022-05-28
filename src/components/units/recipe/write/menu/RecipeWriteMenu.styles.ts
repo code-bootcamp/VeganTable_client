@@ -141,6 +141,7 @@ export const RecipeInfoWrapper = styled.div`
 `;
 export const RecipeInfoItem = styled.div`
   flex: 0 0 30%;
+  word-break: keep-all;
 `;
 export const RecipeInfoTop = styled.div`
   display: flex;

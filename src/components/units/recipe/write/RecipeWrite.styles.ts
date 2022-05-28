@@ -1,9 +1,14 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-direction: row-reverse;
+  @media (max-width: 991px) {
+    flex-direction: column;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -22,11 +27,20 @@ export const TopWrapper = styled.div`
   position: relative;
   padding-top: 2.18rem;
   width: 100%;
+  @media (max-width: 1580px) {
+    padding-top: 4rem;
+  }
 `;
 
 export const RepImagesWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  @media ${breakPoints.tablet} {
+    width: 90%;
+  }
+  @media ${breakPoints.mobile} {
+    width: 90%;
+  }
 `;
 
 export const RepImage = styled.div`
@@ -43,6 +57,16 @@ export const RepImage = styled.div`
     padding-top: 1.25rem;
     font-size: 1.25rem;
     font-weight: 400;
+  }
+  @media ${breakPoints.tablet} {
+    margin: 0 auto;
+    width: 400px;
+    height: 400px;
+  }
+  @media ${breakPoints.mobile} {
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
   }
 `;
 
@@ -61,6 +85,11 @@ export const RepImage2 = styled.div`
     font-size: 1.25rem;
     font-weight: 400;
   }
+
+  @media (max-width: 991px) {
+    margin: 0 auto;
+    width: 100%;
+  }
 `;
 
 export const TextArea = styled.textarea`
@@ -76,6 +105,10 @@ export const TextArea = styled.textarea`
 
   :focus {
     outline: none;
+  }
+
+  @media (max-width: 991px) {
+    width: 100%;
   }
 `;
 
@@ -111,6 +144,7 @@ export const Navigation = styled.ul`
   z-index: 9;
   background: #ffffff;
   border: 1px solid #c4c4c4;
+  cursor: pointer;
 
   & > li {
     padding: 1rem 1.5rem;
@@ -119,7 +153,7 @@ export const Navigation = styled.ul`
     color: #262626;
   }
 
-  .active {
+  .isActive {
     border-bottom: 3px solid #0fbaa3;
   }
 `;
@@ -129,6 +163,9 @@ export const Contents = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  max-width: 585px;
+  padding: 0 10px;
 
   & > h2 {
     padding-top: 4.625rem;
@@ -148,14 +185,21 @@ export const BackButton = styled.button`
   padding-right: 3rem;
   left: 0;
   top: 0;
-  transform: translate(100%, 100%);
-  font-size: 0.75rem;
-  background: #ffffff;
+  transform: translate(100%, 150%);
+  font-size: 0.9rem;
+  background: transparent;
   border: none;
   cursor: pointer;
 
   & > img {
     padding-right: 0.5rem;
+  }
+  @media (max-width: 1580px) {
+    padding-right: 0;
+    transform: translate(50%, 70%);
+  }
+  @media ${breakPoints.mobile} {
+    transform: translate(50%, 50%);
   }
 `;
 
@@ -167,6 +211,13 @@ export const MenuWrapper = styled.div`
   width: 40%;
   height: 100vh;
   box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.25);
+  @media (max-width: 991px) {
+    position: relative;
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+    border: 1px solid #c4c4c4;
+  }
 `;
 
 export const IngredientsWrapper = styled.div`
@@ -174,9 +225,15 @@ export const IngredientsWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem 0;
+  padding: 2rem;
   background: #ebebeb;
   border-radius: 2rem;
+  width: 100%;
+  @media (max-width: 670px) {
+    input {
+      width: calc(100% / 5);
+    }
+  }
 `;
 
 export const InputGuideWrapper = styled.div`
@@ -209,12 +266,6 @@ export const CookingOrder = styled.div`
   background: #ebebeb;
   border-radius: 2rem;
 
-  & > div:first-of-type {
-  }
-
-  & > div:last-of-type {
-  }
-
   & > span {
     position: absolute;
     top: 0;
@@ -223,13 +274,37 @@ export const CookingOrder = styled.div`
     border-radius: 50%;
     padding: 1.31rem 1rem;
   }
+
+  & > button {
+    position: absolute;
+    padding: 0.3rem;
+    top: 0;
+    right: 0;
+    border: none;
+    border-radius: 50%;
+    width: 2.2rem;
+    height: 2.2rem;
+    background: #464646;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+
+    :hover {
+      background: #0fbaa3;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
 `;
 
 export const IngredientArr = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  width: 585px;
+  width: 100%;
 
   & > div {
     display: flex;
@@ -245,6 +320,14 @@ export const IngredientArr = styled.div`
     background: #0fbaa3;
     color: #ffffff;
     border-radius: 1rem;
+  }
+
+  @media (max-width: 670px) {
+    width: 100%;
+  }
+
+  @media ${breakPoints.mobile} {
+    width: 90%;
   }
 `;
 
@@ -304,6 +387,7 @@ export const AddContentButton = styled.button`
   padding: 0.2rem;
   border: none;
   border-radius: 50%;
+  cursor: pointer;
 `;
 
 export const AddStepWrapper = styled.div`
