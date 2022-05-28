@@ -6,6 +6,7 @@ import CheckBox01 from "../../../commons/checkboxes/01";
 
 interface IPropsSignUpPolicy {
   setAgreePolicy: (prev: any) => void;
+  setIsSubmit: (a: boolean) => void;
 }
 
 export default function SignUpPolicy(props: IPropsSignUpPolicy) {
@@ -23,11 +24,6 @@ export default function SignUpPolicy(props: IPropsSignUpPolicy) {
   }, []);
 
   const onClickAgree = () => {
-    props.setAgreePolicy((prev: any) => !prev);
-  };
-
-  const onClickMoveToComplete = () => {
-    props.setIsSubmit(true);
     props.setAgreePolicy((prev: any) => !prev);
   };
 
@@ -72,7 +68,6 @@ export default function SignUpPolicy(props: IPropsSignUpPolicy) {
           title={"회원가입"}
           onClick={onClickAgree}
         />
-        <button onClick={onClickMoveToComplete}>완료로</button>
       </SignUp.BodyWrapper>
     </SignUp.Wrapper>
   );

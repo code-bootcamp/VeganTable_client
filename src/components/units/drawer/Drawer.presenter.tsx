@@ -100,10 +100,48 @@ export default function TemporaryDrawer(props: IDrawerUIProps) {
               </div>
             </S.DrawerHead>
             <S.DrawerBody>
-              <S.VeganType>
-                <img src="/img/navigation/icon-vegan-nonVegan.svg" alt="" />
-                <span>채린이</span>
-              </S.VeganType>
+              {data?.fetchUser.type === "NON_Vegan" && (
+                <S.VeganType>
+                  <img src="/img/navigation/icon-vegan-nonVegan.svg" alt="" />
+                  <span>채린이</span>
+                </S.VeganType>
+              )}
+              {data?.fetchUser.type === "Vegan" && (
+                <S.VeganType>
+                  <img src="/img/navigation/icon-vegan-vegan.svg" alt="" />
+                  <span>비건</span>
+                </S.VeganType>
+              )}
+              {data?.fetchUser.type === "Lacto" && (
+                <S.VeganType>
+                  <img src="/img/navigation/icon-vegan-lacto.svg" alt="" />
+                  <span>락토</span>
+                </S.VeganType>
+              )}
+              {data?.fetchUser.type === "Ovo" && (
+                <S.VeganType>
+                  <img src="/img/navigation/icon-vegan-ovo.svg" alt="" />
+                  <span>오보</span>
+                </S.VeganType>
+              )}
+              {data?.fetchUser.type === "Lacto_Ovo" && (
+                <S.VeganType>
+                  <img src="/img/navigation/icon-vegan-lactoOvo.svg" alt="" />
+                  <span>락토오보</span>
+                </S.VeganType>
+              )}
+              {data?.fetchUser.type === "Pesco" && (
+                <S.VeganType>
+                  <img src="/img/navigation/icon-vegan-pesco.svg" alt="" />
+                  <span>페스코</span>
+                </S.VeganType>
+              )}
+              {data?.fetchUser.type === "Pollo" && (
+                <S.VeganType>
+                  <img src="/img/navigation/icon-vegan-pollo.svg" alt="" />
+                  <span>폴로</span>
+                </S.VeganType>
+              )}
               <S.SubsInfo>
                 <span>3달째</span>
                 <span>정기 구독 이용중</span>

@@ -33,6 +33,7 @@ interface IPropsSignUp {
   };
   onClickGetToken: () => void;
   onClickCheckValid: () => void;
+  setIsSubmit: () => void;
 }
 
 export default function SignUpUI(props: IPropsSignUp) {
@@ -61,7 +62,9 @@ export default function SignUpUI(props: IPropsSignUp) {
           <SignUp.HeaderWrapper>
             <SignUp.HeaderTitle>회원가입</SignUp.HeaderTitle>
           </SignUp.HeaderWrapper>
-          <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
+          <SignUp.FormWrapper
+            onSubmit={props.handleSubmit(props.onClickSubmit)}
+          >
             <SignUp.BodyWrapper>
               <SignUp.BodyTitleWrapper>
                 <SignUp.BodyTitle>
@@ -222,7 +225,7 @@ export default function SignUpUI(props: IPropsSignUp) {
                 }
               />
             </SignUp.BodyWrapper>
-          </form>
+          </SignUp.FormWrapper>
         </SignUp.Wrapper>
       )}
       {props.isSubmit && <SignUpComplete />}

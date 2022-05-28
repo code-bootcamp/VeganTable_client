@@ -21,7 +21,6 @@ export const Wrapper = styled.div`
   margin: 4.0625rem auto;
   width: 100%;
   max-width: 767px;
-  min-width: 550px;
 `;
 
 // 공통 제목 부분
@@ -29,7 +28,6 @@ export const HeaderWrapper = styled.div`
   margin-bottom: 2.1875rem;
   width: 100%;
   max-width: 767px;
-  min-width: 550px;
   display: flex;
   justify-content: center;
 `;
@@ -37,7 +35,6 @@ export const HeaderTitle = styled.h1`
   font-size: 3.125rem;
   width: 100%;
   max-width: 767px;
-  min-width: 550px;
   display: flex;
   justify-content: center;
 `;
@@ -48,7 +45,6 @@ export const BodyWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   max-width: 770px;
-  min-width: 550px;
   padding: 20px 100px;
   height: 65rem;
   justify-content: center;
@@ -56,6 +52,12 @@ export const BodyWrapper = styled.div`
   background-color: white;
   border-radius: 2rem;
   margin-bottom: 2rem auto;
+`;
+
+// form
+export const FormWrapper = styled.form`
+  width: 100%;
+  max-width: 770px;
 `;
 
 // 공통 회원가입 단계 부분
@@ -67,7 +69,6 @@ export const BodyTitleWrapper = styled.div`
   margin-bottom: 1rem;
   width: 100%;
   max-width: 770px;
-  min-width: 550px;
 `;
 export const BodyTitle = styled.ul`
   display: flex;
@@ -75,7 +76,6 @@ export const BodyTitle = styled.ul`
   margin-bottom: 8px;
   width: 36rem;
   max-width: 770px;
-  min-width: 550px;
 `;
 
 export const SignUpTitle = styled.li`
@@ -91,7 +91,8 @@ export const SignUpTitleOn = styled.li`
 `;
 
 export const SignUpTitleUnderBarWrapper = styled.ul`
-  width: 36rem;
+  max-width: 36rem;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,11 +100,11 @@ export const SignUpTitleUnderBarWrapper = styled.ul`
 
 export const SignUpTitleUnderBar = styled.li`
   border-bottom: 4px solid #c4c4c4;
-  width: 12rem;
+  min-width: 12rem;
 `;
 export const SignUpTitleUnderBarOn = styled.li`
   border-bottom: 6px solid #0fbaa3;
-  width: 12rem;
+  min-width: 12rem;
 `;
 
 // 약관 동의 부분

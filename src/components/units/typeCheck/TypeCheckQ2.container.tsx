@@ -22,9 +22,9 @@ export default function TypeCheckQ2(props: ITypeCheckQ2) {
     { word: "당뇨" },
     { word: "고혈압" },
     { word: "도전" },
-    { word: "123" },
-    { word: "456" },
-    { word: "789" },
+    { word: "채린이" },
+    { word: "소화불량" },
+    { word: "종교" },
   ];
 
   return (
@@ -38,6 +38,7 @@ export default function TypeCheckQ2(props: ITypeCheckQ2) {
       </Type.StepWrapper>
       <Type.StepQuestion>
         Q2. 관리하고 싶은 채식 키워드는 무엇인가요?
+        <span>해당사항이 없다면 바로 다음을 눌러주세요.</span>
       </Type.StepQuestion>
       <Type.VeganKeywordWrapper>
         {VEGAN_KEYWORD.map((el, i) => (
