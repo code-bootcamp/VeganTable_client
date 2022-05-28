@@ -1,19 +1,22 @@
 import { gql } from "@apollo/client";
 
-export const CREATE_RECIPE = gql`
-  mutation createRecipe($createRecipesInput: CreateRecipesInput!) {
-    createRecipe(createRecipesInput: $createRecipesInput) {
+export const FETCH_RECIPE = gql`
+  query fetchRecipe($recipes_id: String!) {
+    fetchRecipe(recipes_id: $recipes_id) {
       id
       title
       summary
       types
       cookTime
       level
-      scrapCount
+      recipesImages {
+        url
+      }
       user {
         user_id
         email
         name
+        isPro
       }
       ingredients {
         name
@@ -21,6 +24,7 @@ export const CREATE_RECIPE = gql`
       recipesTags {
         name
       }
+      scrapCount
     }
   }
 `;

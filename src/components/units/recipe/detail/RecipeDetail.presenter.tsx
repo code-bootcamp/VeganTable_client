@@ -4,15 +4,21 @@ import Slider01 from "../../../../components/commons/sliders/01";
 import RecipeReview from "../detail/review/RecipeReview.container";
 import { useRouter } from "next/router";
 
-export default function RecipeDetailUI() {
+export default function RecipeDetailUI(props) {
   const router = useRouter();
 
   return (
     <>
       <RecipeDetail.Container>
+        <RecipeDetail.MenuWrapper>
+          <RecipeDetailMenu />
+        </RecipeDetail.MenuWrapper>
         <RecipeDetail.Wrapper>
           <RecipeDetail.TopWrapper>
-            <RecipeDetail.BackButton onClick={() => router.push("/recipe")}>
+            <RecipeDetail.BackButton
+              type="button"
+              onClick={() => router.push("/recipe")}
+            >
               <img src="/img/recipeDetail/icon-arrow-left.svg" alt="" />
               목록으로
             </RecipeDetail.BackButton>
@@ -22,20 +28,36 @@ export default function RecipeDetailUI() {
           </RecipeDetail.TopWrapper>
 
           <RecipeDetail.Navigation>
-            <li className="active">준비재료</li>
-            <li>요리순서</li>
-            <li>리뷰(10)</li>
-            <li>추천</li>
+            <li
+              className={`${props.tabActive[0]}`}
+              onClick={props.onClickIngredientTab}
+            >
+              준비재료
+            </li>
+            <li
+              className={`${props.tabActive[1]}`}
+              onClick={props.onClickCookOrderTab}
+            >
+              요리순서
+            </li>
+            <li
+              className={`${props.tabActive[2]}`}
+              onClick={props.onClickReviewTab}
+            >
+              댓글(10)
+            </li>
           </RecipeDetail.Navigation>
 
           <RecipeDetail.Contents>
-            <h2>준비재료</h2>
+            <h2 ref={props.ingredientTabRef}>준비재료</h2>
             <RecipeDetail.Ingredient>
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((el) => (
                 <span key={el}>멸치 1컵(30g)</span>
               ))}
             </RecipeDetail.Ingredient>
-            <h2>요리순서</h2>
+            <h2 ref={props.cookOrderTabRef} onClick={props.onClickCookOrderTab}>
+              요리순서
+            </h2>
             {[1, 2, 3, 4].map((el) => (
               <RecipeDetail.Order key={el}>
                 <span>Step {el}</span>
@@ -56,12 +78,10 @@ export default function RecipeDetailUI() {
               </RecipeDetail.Order>
             ))}
           </RecipeDetail.Contents>
-          <RecipeReview />
+          <div ref={props.reviewTabRef}>
+            <RecipeReview />
+          </div>
         </RecipeDetail.Wrapper>
-
-        <RecipeDetail.MenuWrapper>
-          <RecipeDetailMenu />
-        </RecipeDetail.MenuWrapper>
       </RecipeDetail.Container>
     </>
   );

@@ -123,6 +123,7 @@ export default function RecipeWriteMenuUI(props) {
                 type="number"
                 placeholder="2"
                 min={1}
+                {...props.register("cookTime")}
               />
               <span>분</span>
             </Menu.RecipeInfoInput>
@@ -163,7 +164,6 @@ export default function RecipeWriteMenuUI(props) {
           <img src="/img/recipeWrite/icon-recipeWrite-pencil.svg" alt="" />
           <input
             type="text"
-            {...props.register("tags")}
             placeholder="태그를 입력하고 스페이스바를 눌러주세요."
             onKeyUp={props.onKeyUpHash}
           />
