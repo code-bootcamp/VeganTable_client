@@ -2,11 +2,15 @@ import RecipeWriteUI from "./RecipeWrite.presenter";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const nonSchema = yup.object({});
 
 export default function RecipeWrite() {
+  // 탭 Ref
+  const ingredientTabRef = useRef<HTMLDivElement>(null);
+  const cookOrderTabRef = useRef<HTMLDivElement>(null);
+  const [tabActive, setTabActive] = useState(["isActive", ""]);
   // 태그
   const [hashArr, setHashArr] = useState([]);
   // 재료Array
@@ -39,7 +43,7 @@ export default function RecipeWrite() {
     }));
   };
 
-  // decription 입력
+  // step 입력(description)
   const onChangeTextArea = (event) => {
     setDesc((prev) => ({
       ...desc,
@@ -47,7 +51,7 @@ export default function RecipeWrite() {
     }));
   };
 
-  // desc추가
+  // step 추가
   const onClickAddDesc = () => {
     const newDesc = desc.desc.replaceAll(/\n/gi, "<br />");
     if (!desc.desc) return;
@@ -60,7 +64,11 @@ export default function RecipeWrite() {
       },
     ]);
   };
-  console.log(descArr);
+
+  // step 삭제
+  const onClickDeleteDesc = (arg) => () => {
+    setDescArr(descArr.filter((el) => el.step !== arg));
+  };
 
   // 재료추가
   const onClickAddIngredient = () => {
@@ -86,21 +94,37 @@ export default function RecipeWrite() {
     setHashArr(hashArr.filter((el) => el !== `${tag}`));
   };
 
+  // 탭 Ref
+  const onClickIngredientTab = () => {
+    ingredientTabRef.current?.scrollIntoView({ behavior: "smooth" });
+    setTabActive(["isActive", ""]);
+  };
+  const onClickCookOrderTab = () => {
+    cookOrderTabRef.current?.scrollIntoView({ behavior: "smooth" });
+    setTabActive(["", "isActive"]);
+  };
+
   return (
     <RecipeWriteUI
+      formState={formState}
+      hashArr={hashArr}
+      ingredientArr={ingredientArr}
+      descArr={descArr}
+      ingredientTabRef={ingredientTabRef}
+      cookOrderTabRef={cookOrderTabRef}
+      tabActive={tabActive}
       register={register}
       handleSubmit={handleSubmit}
-      formState={formState}
-      onKeyUpHash={onKeyUpHash}
       onClickDeleteTag={onClickDeleteTag}
-      hashArr={hashArr}
       onClickAddIngredient={onClickAddIngredient}
       onChangeIngredient={onChangeIngredient}
+      onKeyUpHash={onKeyUpHash}
       onClickDeleteIngredient={onClickDeleteIngredient}
       onChangeTextArea={onChangeTextArea}
       onClickAddDesc={onClickAddDesc}
-      ingredientArr={ingredientArr}
-      descArr={descArr}
+      onClickIngredientTab={onClickIngredientTab}
+      onClickCookOrderTab={onClickCookOrderTab}
+      onClickDeleteDesc={onClickDeleteDesc}
     />
   );
 }

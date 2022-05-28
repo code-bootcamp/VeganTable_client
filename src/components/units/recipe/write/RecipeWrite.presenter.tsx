@@ -11,6 +11,14 @@ export default function RecipeWriteUI(props) {
     <>
       <form>
         <RecipeWrite.Container>
+          <RecipeWrite.MenuWrapper>
+            <RecipeWriteMenu
+              register={props.register}
+              onKeyUpHash={props.onKeyUpHash}
+              onClickDeleteTag={props.onClickDeleteTag}
+              hashArr={props.hashArr}
+            />
+          </RecipeWrite.MenuWrapper>
           <RecipeWrite.Wrapper>
             <RecipeWrite.TopWrapper>
               <RecipeWrite.BackButton
@@ -43,12 +51,22 @@ export default function RecipeWriteUI(props) {
             </RecipeWrite.TopWrapper>
 
             <RecipeWrite.Navigation>
-              <li className="active">준비재료</li>
-              <li>요리순서</li>
+              <li
+                className={`${props.tabActive[0]}`}
+                onClick={props.onClickIngredientTab}
+              >
+                준비재료
+              </li>
+              <li
+                className={`${props.tabActive[1]}`}
+                onClick={props.onClickCookOrderTab}
+              >
+                요리순서
+              </li>
             </RecipeWrite.Navigation>
 
             <RecipeWrite.Contents>
-              <h2>준비재료</h2>
+              <h2 ref={props.ingredientTabRef}>준비재료</h2>
               <RecipeWrite.IngredientsWrapper>
                 <RecipeWrite.InputGuideWrapper>
                   <img src="/img/icon/Pencil.svg" alt="" />
@@ -99,11 +117,20 @@ export default function RecipeWriteUI(props) {
                   </RecipeWrite.IngredientInputs>
                 </div>
               </RecipeWrite.IngredientsWrapper>
-              <h2>요리순서</h2>
+              <h2 ref={props.cookOrderTabRef}>요리순서</h2>
               <RecipeWrite.CookingOrderWrapper>
                 {props.descArr.map((el) => (
                   <RecipeWrite.CookingOrder key={uuidv4()}>
                     <span>STEP {el.step}</span>
+                    {el.step ===
+                      props.descArr[props.descArr.length - 1].step && (
+                      <button
+                        type="button"
+                        onClick={props.onClickDeleteDesc(el.step)}
+                      >
+                        <img src="/img/icon/WhiteClose.svg" alt="" />
+                      </button>
+                    )}
                     <div>
                       <img src="" alt="아직이미지가없네용" />
                     </div>
@@ -137,15 +164,6 @@ export default function RecipeWriteUI(props) {
               </RecipeWrite.AddStepWrapper>
             </RecipeWrite.Contents>
           </RecipeWrite.Wrapper>
-
-          <RecipeWrite.MenuWrapper>
-            <RecipeWriteMenu
-              register={props.register}
-              onKeyUpHash={props.onKeyUpHash}
-              onClickDeleteTag={props.onClickDeleteTag}
-              hashArr={props.hashArr}
-            />
-          </RecipeWrite.MenuWrapper>
         </RecipeWrite.Container>
       </form>
     </>
