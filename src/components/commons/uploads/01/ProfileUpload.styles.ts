@@ -9,7 +9,8 @@ export const ImageWrapper = styled.div`
 export const Image = styled.img`
   width: 17.125rem;
   height: 17.125rem;
-  background-color: #c4c4c4;
+  background-color: transparent;
+  border: 1px solid #c4c4c4;
   border-radius: 50%;
   margin: 2rem;
 `;

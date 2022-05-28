@@ -35,7 +35,7 @@ export const UserWrapper = styled.div`
 export const UserProfile = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 45%;
 
   & .expert {
     background-color: #bfab87;
@@ -46,7 +46,12 @@ export const UserProfile = styled.div`
   }
 `;
 
-export const UserIcon = styled.img``;
+export const UserIcon = styled.img`
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: 50%;
+  border: 1px solid #c4c4c4;
+`;
 
 export const UserGrade = styled.div`
   display: flex;
@@ -69,9 +74,9 @@ export const UserName = styled.span`
 
 export const UserInfo = styled.ul`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  width: 35%;
+  width: 40%;
   height: 2.5rem;
 `;
 
@@ -80,10 +85,10 @@ export const Info = styled.li`
   flex-direction: column;
   align-items: center;
   border-right: 1px solid #c4c4c4;
-  padding: 0 2rem;
+  padding: 0 2.5rem;
 
   &:last-of-type {
-    width: 50%;
+    width: 65%;
     border: none;
     padding-right: 0;
   }

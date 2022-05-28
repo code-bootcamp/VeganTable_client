@@ -6,6 +6,7 @@ import UserInput from "../../../commons/inputs";
 import Navigation02 from "../../../commons/navigation/02";
 import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container";
 import ProfileUpload from "../../../commons/uploads/01/ProfileUpload.container";
+import CertificationUpload from "../../../commons/uploads/02/CertificationUpload.container";
 import * as My from "./MyPageEdit.styles";
 
 export default function MyPageEditUI(props) {
@@ -13,16 +14,16 @@ export default function MyPageEditUI(props) {
 
   return (
     <>
-      <My.Container>
-        {props.isOpen && (
-          <My.Modal onClick={props.onClickClose}>
-            <div className="modal-section">
-              <div className="modal-content">
-                <DaumPostcode onComplete={props.onCompleteAddressSearch} />
-              </div>
+      {props.isOpen && (
+        <My.Modal onClick={props.onClickClose}>
+          <div className="modal-section">
+            <div className="modal-content">
+              <DaumPostcode onComplete={props.onCompleteAddressSearch} />
             </div>
-          </My.Modal>
-        )}
+          </div>
+        </My.Modal>
+      )}
+      <My.Container>
         <My.Wrapper>
           <MyPageSidebar />
 
@@ -106,6 +107,7 @@ export default function MyPageEditUI(props) {
                   <UserInput
                     type={"number"}
                     placeholder={"-제외"}
+                    defaultValue={props.userData?.fetchUser.phone}
                     onChange={props.onChangeUserInputs("phone")}
                   />
                   <NormalButton
@@ -169,13 +171,20 @@ export default function MyPageEditUI(props) {
                 </My.ExpertTitleWrapper>
                 <My.InputWrapper>
                   <My.Label>자격증 등록</My.Label>
-                  <UserInput placeholder={"이미지 업로드"} />
-                  <NormalButton type="button" title={"등록하기"} />
+                  <UserInput
+                    placeholder={"이미지 업로드"}
+                    defaultValue={props.userInputs.certImage}
+                    readOnly
+                  />
+                  <CertificationUpload
+                    setUserInputs={props.setUserInputs}
+                    userInputs={props.userInputs}
+                  />
                 </My.InputWrapper>
                 <My.InputWrapper>
                   <My.Label>인증 링크 등록</My.Label>
                   <UserInput placeholder={"URL"} />
-                  <NormalButton type="button" title={"등록하기"} />
+                  <NormalButton type={"button"} title={"등록하기"} />
                 </My.InputWrapper>
               </My.ProfileWrapper>
               <My.ButtonWrapper>

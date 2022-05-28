@@ -51,7 +51,7 @@ export const Title = styled.span`
 export const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2.5rem;
+  padding: 2.5rem 0;
   padding-left: 10rem;
   width: 100%;
   border-bottom: 1px solid #c4c4c4;
@@ -80,7 +80,8 @@ export const ImageWrapper = styled.div`
 export const Image = styled.img`
   width: 17.125rem;
   height: 17.125rem;
-  background-color: #c4c4c4;
+  background-color: transparent;
+  border: 1px solid #c4c4c4;
   border-radius: 50%;
   margin: 2rem;
 `;

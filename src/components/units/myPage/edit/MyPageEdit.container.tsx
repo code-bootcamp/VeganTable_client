@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -13,14 +14,17 @@ import {
 } from "./MyPageEdit.queries";
 
 export default function MyPageEdit() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [userInputs, setUserInputs] = useState({
-    type: "",
+    type: "NON_Vegan",
     address: "",
     phone: "",
     token: "",
     valid: "false",
     profilePic: "",
+    certImage: "",
+    certUrl: "",
   });
 
   const { data: userData } = useQuery(FETCH_USER);
@@ -30,6 +34,9 @@ export default function MyPageEdit() {
   const [checkValidToken] = useMutation(CHECK_VALID_TOKEN);
 
   const { register, handleSubmit } = useForm({ mode: "onChange" });
+
+  // 모달
+  const { Success, ModalError, Warning } = useModal();
 
   // 이미지
   useEffect(() => {
@@ -48,10 +55,6 @@ export default function MyPageEdit() {
       [id]: e.target.value,
     });
   };
-
-  console.log(userInputs);
-  // 모달
-  const { Success, ModalError, Warning } = useModal();
 
   // 주소
   const onClickAddressSearch = () => {
@@ -78,7 +81,7 @@ export default function MyPageEdit() {
       });
       Success("발송 성공", "인증번호를 발송하였습니다.");
     } catch (error) {
-      Warning("발송 실패", "이미 등록된 번호이거나 유효한 번호가 아닙니다.");
+      if (error instanceof Error) Warning("발송 실패", error.message);
     }
   };
 
@@ -94,14 +97,14 @@ export default function MyPageEdit() {
 
       const CheckValid = result.data.checkValidToken;
       if (CheckValid === "false") {
-        Error();
+        ModalError("인증 실패", "인증번호가 일치하지 않습니다.");
         setUserInputs({ ...userInputs, valid: "false" });
         return;
       }
       Success("인증 완료", "인증번호가 일치합니다.");
       setUserInputs({ ...userInputs, valid: "true" });
     } catch (error) {
-      ModalError("인증 실패", "인증번호가 일치하지 않습니다.");
+      if (error instanceof Error) ModalError("인증 실패", error.message);
     }
   };
 
@@ -135,6 +138,7 @@ export default function MyPageEdit() {
     }
   };
 
+  // 회원탈퇴
   const onClickSignOut = () => {
     Swal.fire({
       title: "정말 탈퇴하시겠습니까?",
@@ -153,6 +157,8 @@ export default function MyPageEdit() {
               user_id: String(userData?.fetchUser.user_id),
             },
           });
+          Success("탈퇴 완료", "또 만나요🥗");
+          router.push("/");
         } catch (error) {
           if (error instanceof Error) ModalError("탈퇴 실패", error.message);
         }
