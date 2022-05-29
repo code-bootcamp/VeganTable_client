@@ -62,14 +62,27 @@ export const SliderWrapper = styled.div`
 `;
 
 export const MenuWrapper = styled.div`
+  display: flex;
   position: sticky;
+  overflow-x: hidden;
   overflow-y: auto;
   top: 0;
   padding: 3rem 1.5rem;
   background: #ffffff;
   z-index: 999;
+  width: 600px;
   height: 100vh;
   box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.25);
+  @media ${breakPoints.tablet} {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  @media ${breakPoints.mobile} {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const Navigation = styled.ul`
@@ -98,6 +111,9 @@ export const Navigation = styled.ul`
 `;
 
 export const Contents = styled.div`
+  width: 90%;
+  max-width: 585px;
+
   & > h2 {
     padding-top: 4.625rem;
     padding-bottom: 4rem;
@@ -121,7 +137,7 @@ export const Order = styled.div`
     border-radius: 50%;
   }
   & > p {
-    padding: 88px 40px;
+    padding: 4rem 3rem 7rem 3rem;
     text-align: center;
   }
 `;

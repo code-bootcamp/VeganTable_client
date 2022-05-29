@@ -1,5 +1,5 @@
 import RecipeDetailMenuUI from "./RecipeDetailMenu.presenter";
 
-export default function RecipeDetailMenu() {
-  return <RecipeDetailMenuUI />;
+export default function RecipeDetailMenu(props) {
+  return <RecipeDetailMenuUI recipeData={props.recipeData} />;
 }

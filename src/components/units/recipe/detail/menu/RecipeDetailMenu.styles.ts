@@ -11,6 +11,7 @@ export const MenuTitle = styled.h1`
   font-weight: 700;
   font-size: 3.125rem;
   letter-spacing: -0.05em;
+  word-break: keep-all;
 `;
 
 export const MenuRemarks = styled.p`
@@ -75,23 +76,24 @@ export const RecipeInfoItem = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-right: 2rem;
 `;
 
 export const RecipeInfoWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+
   padding-top: 3.125rem;
 `;
 
 export const RecipeTags = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding-top: 3.25rem;
   flex-wrap: wrap;
 
   & > span {
     padding: 0.375rem 0.88rem;
+    margin-right: 1rem;
     margin-bottom: 0.5rem;
     font-size: 0.875rem;
     font-weight: 400;
@@ -109,10 +111,10 @@ export const RecipeInfoButtons = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-top: 3.25rem;
-  width: 385px;
 `;
 
 export const PickedButton = styled.button`
+  margin-right: 2rem;
   width: 289px;
   height: 77px;
   font-weight: 600;
@@ -121,18 +123,18 @@ export const PickedButton = styled.button`
   color: #ffffff;
   border: none;
   border-radius: 64px;
+  cursor: pointer;
 `;
 
 export const ShareButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: auto;
   border-radius: 50%;
   background: #434343;
   padding: 1.5rem;
   border: none;
+  cursor: pointer;
 
   & > img {
     width: 100%;

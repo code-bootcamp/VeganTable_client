@@ -142,7 +142,11 @@ export default function RecipeWriteUI(props) {
                       </button>
                     )}
                     <div>
-                      <img src={`https://storage.googleapis.com/${el.image}`} />
+                      {el.image && (
+                        <img
+                          src={`https://storage.googleapis.com/${el.image}`}
+                        />
+                      )}
                     </div>
                     <div>
                       {typeof window !== "undefined" ? (

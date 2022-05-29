@@ -1,6 +1,8 @@
+import { useRouter } from "next/router";
 import * as Recommend from "./RecommendRecipe.styles";
 
 export default function RecommendRecipeUI() {
+  const router = useRouter();
   return (
     <Recommend.Container>
       <Recommend.Wrapper>
@@ -15,7 +17,7 @@ export default function RecommendRecipeUI() {
             </div>
           ))}
         </Recommend.Contents>
-        <button>목록으로</button>
+        <button onClick={() => router.push("/recipe")}>목록으로</button>
       </Recommend.Wrapper>
     </Recommend.Container>
   );

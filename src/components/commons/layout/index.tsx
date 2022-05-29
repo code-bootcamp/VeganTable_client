@@ -29,22 +29,25 @@ const HIDDEN_BANNER = [
   "/myPage/qna",
   "/typeCheck",
   "/recipe",
-  "/recipe/detail", // 디테일 페이지 임시
-  "/recipe/new", // 디테일 등록 페이지
+  "/recipe/new",
   "/subscribe",
   "/subscribe/complete",
 ];
 
+// 디테일 페이지 hidden
+const HIDDEN_PATHNAME = [`/recipe/[recipeId]`];
+
 export default function Layout(props: LayoutProps) {
   const router = useRouter();
   const isHiddenBanner = HIDDEN_BANNER.includes(router.asPath);
+  const isHiddenPathname = HIDDEN_PATHNAME.includes(router.pathname);
 
   return (
     <>
-      <LayoutHeader></LayoutHeader>
-      {!isHiddenBanner && <LayoutBanner></LayoutBanner>}
+      <LayoutHeader />
+      {!isHiddenPathname ? !isHiddenBanner && <LayoutBanner /> : <></>}
       <Body>{props.children}</Body>
-      <LayoutFooter></LayoutFooter>
+      <LayoutFooter />
     </>
   );
 }

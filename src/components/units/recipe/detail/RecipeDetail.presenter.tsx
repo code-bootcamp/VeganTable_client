@@ -1,9 +1,11 @@
 import RecipeDetailMenu from "./menu/RecipeDetailMenu.container";
 import * as RecipeDetail from "./RecipeDetail.styles";
 import Slider01 from "../../../../components/commons/sliders/01";
-import RecipeReview from "../detail/review/RecipeReview.container";
+
 import { useRouter } from "next/router";
 import { v4 as uuidv4 } from "uuid";
+import DOMPurify from "dompurify";
+import RecipeCommentList from "../../recipeComment/list/RecipeCommentList.container";
 
 export default function RecipeDetailUI(props) {
   const router = useRouter();
@@ -12,7 +14,7 @@ export default function RecipeDetailUI(props) {
     <>
       <RecipeDetail.Container>
         <RecipeDetail.MenuWrapper>
-          <RecipeDetailMenu />
+          <RecipeDetailMenu recipeData={props.recipeData} />
         </RecipeDetail.MenuWrapper>
         <RecipeDetail.Wrapper>
           <RecipeDetail.TopWrapper>
@@ -61,31 +63,30 @@ export default function RecipeDetailUI(props) {
             <h2 ref={props.cookOrderTabRef} onClick={props.onClickCookOrderTab}>
               요리순서
             </h2>
-            {props.recipeData?.fetchRecipe?.recipesImages
-              .map((el) => el.url)
-              .map((el, index) => (
-                <RecipeDetail.Order key={uuidv4()}>
-                  <span>Step {index + 1}</span>
-                  <RecipeDetail.ImageWrapper>
-                    {el !== "" ? (
-                      <img src={`https://storage.googleapis.com/${el}`} />
-                    ) : (
-                      <div></div>
-                    )}
-                  </RecipeDetail.ImageWrapper>
-
-                  <p>
-                    멸치를 넣고 공간이 넉넉한 접시 준비 잔멸치와 견과류,
-                    <br />
-                    포도씨유를 넣고 잘 섞어주세요. 전자레인지에 1분간
-                    <br />
-                    조리해주세요.
-                  </p>
-                </RecipeDetail.Order>
-              ))}
+            {props.recipeData?.fetchRecipe?.recipesImages.map((el, index) => (
+              <RecipeDetail.Order key={uuidv4()}>
+                <span>Step {index + 1}</span>
+                <RecipeDetail.ImageWrapper>
+                  {el.url !== "" ? (
+                    <img src={`https://storage.googleapis.com/${el.url}`} />
+                  ) : (
+                    <div></div>
+                  )}
+                </RecipeDetail.ImageWrapper>
+                {typeof window !== "undefined" ? (
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(el.description),
+                    }}
+                  ></p>
+                ) : (
+                  <p></p>
+                )}
+              </RecipeDetail.Order>
+            ))}
           </RecipeDetail.Contents>
           <div ref={props.reviewTabRef}>
-            <RecipeReview />
+            <RecipeCommentList fetchUser={props.fetchUser} />
           </div>
         </RecipeDetail.Wrapper>
       </RecipeDetail.Container>
