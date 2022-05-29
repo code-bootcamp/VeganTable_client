@@ -1,4 +1,5 @@
 import RecipeCommentListUIItem from "./RecipeCommentList.presenterItem";
+import RecipeCommentWrite from "../write/RecipeCommentWrite.container";
 import * as Comment from "./RecipeCommentList.styles";
 import { v4 as uuidv4 } from "uuid";
 
@@ -12,6 +13,7 @@ export default function RecipeCommentListUI(props) {
             <span>댓글</span>
             <span>{props.fetchComment?.fetchReplies.length}</span>
           </Comment.HeadText>
+          <RecipeCommentWrite fetchUser={props.fetchUser} />
         </Comment.Wrapper>
         {props.fetchComment?.fetchReplies.map((el) => (
           <Comment.CommentWrapper key={uuidv4()}>
