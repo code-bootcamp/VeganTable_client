@@ -1,5 +1,5 @@
-import Main from "../src/components/units/main";
+import Landing from "../src/components/units/landing/Landing.container";
 
 export default function Home() {
-  return <Main />;
+  return <Landing />;
 }

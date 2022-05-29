@@ -16,6 +16,7 @@ interface LayoutProps {
 
 // 컴포넌트 hidden
 const HIDDEN_BANNER = [
+  "/",
   "/login",
   "/signUp",
   "/myPage",
@@ -36,18 +37,20 @@ const HIDDEN_BANNER = [
 
 // 디테일 페이지 hidden
 const HIDDEN_PATHNAME = [`/recipe/[recipeId]`];
+const HIIDEN_LANDINGPAGE = ["/"];
 
 export default function Layout(props: LayoutProps) {
   const router = useRouter();
   const isHiddenBanner = HIDDEN_BANNER.includes(router.asPath);
   const isHiddenPathname = HIDDEN_PATHNAME.includes(router.pathname);
-
+  const isHiddenLandingPage = HIIDEN_LANDINGPAGE.includes(router.asPath);
+  console.log(router.asPath);
   return (
     <>
-      <LayoutHeader />
+      {!isHiddenLandingPage && <LayoutHeader />}
       {!isHiddenPathname ? !isHiddenBanner && <LayoutBanner /> : <></>}
       <Body>{props.children}</Body>
-      <LayoutFooter />
+      {!isHiddenLandingPage && <LayoutFooter />}
     </>
   );
 }

@@ -13,7 +13,6 @@
     "@apollo/client": "^3.5.10",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
-    "@fullpage/react-fullpage": "^0.1.25",
     "@graphql-codegen/cli": "^2.6.2",
     "@graphql-codegen/typescript": "^2.4.8",
     "@hookform/resolvers": "^2.8.8",
