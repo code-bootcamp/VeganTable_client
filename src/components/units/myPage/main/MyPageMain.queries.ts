@@ -8,14 +8,14 @@ export const FETCH_USER = gql`
       name
       phone
       address
+      addressDetail
       type
       nickname
       isPro
       isSubs
-      SubsHistory
-      startDate
-      endDate
       profilePic
+      certImage
+      certUrl
     }
   }
 `;

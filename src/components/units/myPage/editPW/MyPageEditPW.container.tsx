@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useForm } from "react-hook-form";
 import { useModal } from "../../../commons/hooks/useModal";
-import { FETCH_USER } from "../edit/MyPageEdit.queries";
+import { FETCH_USER } from "../main/MyPageMain.queries";
 import MyPageInfoUI from "./MyPageEditPW.presenter";
 import { UPDATE_PASSWORD } from "./MyPageEditPW.queries";
 

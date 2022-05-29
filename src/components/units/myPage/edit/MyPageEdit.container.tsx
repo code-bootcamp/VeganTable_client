@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { useModal } from "../../../commons/hooks/useModal";
+import { FETCH_USER } from "../main/MyPageMain.queries";
 import MyPageEditUI from "./MyPageEdit.presenter";
 import {
   CHECK_VALID_TOKEN,
   DELETE_USER,
-  FETCH_USER,
   SEND_TOKEN_TO_SMS,
   UPDATE_USER,
 } from "./MyPageEdit.queries";
