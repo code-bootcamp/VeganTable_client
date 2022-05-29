@@ -152,7 +152,12 @@ export default function RecipeWriteMenuUI(props) {
           </Menu.RecipeInfoTop>
           <Menu.RecipeInfoBottom>
             <Menu.RecipeInfoInput>
-              <input type="number" placeholder="2" min={1} />
+              <input
+                type="number"
+                placeholder="2"
+                min={1}
+                {...props.register("serve")}
+              />
               <span>인분</span>
             </Menu.RecipeInfoInput>
           </Menu.RecipeInfoBottom>

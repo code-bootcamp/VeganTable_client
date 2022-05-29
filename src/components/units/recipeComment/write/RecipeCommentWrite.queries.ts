@@ -1,14 +1,14 @@
 import { gql } from "@apollo/client";
 
 export const CREATE_REPLY = gql`
-  mutation createReply($user_id: String!, $contents: String!, $id: String!) {
-    createReply(user_id: $user_id, contents: $contents, id: $id)
+  mutation createReply($contents: String!, $id: String!) {
+    createReply(contents: $contents, id: $id)
   }
 `;
 
 export const FETCH_REPLIES = gql`
-  query fetchReplies($id: String!) {
-    fetchReplies(id: $id) {
+  query fetchReplies($id: String!, $page: Int) {
+    fetchReplies(id: $id, page: $page) {
       reply_id
       contents
       user {
@@ -17,6 +17,16 @@ export const FETCH_REPLIES = gql`
         name
         type
       }
+      page
+      createdAt
+    }
+  }
+`;
+
+export const FETCH_RECIPE = gql`
+  query fetchRecipe($recipes_id: String!) {
+    fetchRecipe(recipes_id: $recipes_id) {
+      replyCount
     }
   }
 `;

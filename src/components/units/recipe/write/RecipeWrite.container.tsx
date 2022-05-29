@@ -138,7 +138,8 @@ export default function RecipeWrite() {
             description: descArr.map((el) => `${el.desc}`),
             cookTime: Number(data.cookTime),
             level: data.level,
-            // recipesImages: imageUrls,
+            serve: data.serve,
+            mainImage: imageUrls,
             ingredients: ingredientArr.map(
               (el) => `${el.name} ${el.amount}${el.unit}`
             ),

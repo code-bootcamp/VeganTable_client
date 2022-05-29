@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 
+export const Form = styled.form``;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,6 +13,7 @@ export const TextArea = styled.textarea`
   padding: 1rem;
   margin-bottom: 1rem;
   width: 100%;
+  min-height: 150px;
   font-size: 1rem;
   border: none;
   border-radius: 1rem;
@@ -18,7 +21,8 @@ export const TextArea = styled.textarea`
   resize: none;
 
   ::placeholder {
-    font-size: 0.8rem;
+    font-size: 1rem;
+    word-break: keep-all;
   }
 `;
 

@@ -142,6 +142,10 @@ export const Order = styled.div`
   }
 `;
 
+export const RecipeCommentListWrapper = styled.div`
+  width: 100%;
+`;
+
 export const ImageWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -156,14 +160,13 @@ export const ImageWrapper = styled.div`
 
 export const Ingredient = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   text-align: center;
   width: 100%;
 
   & > span {
-    padding-right: 2rem;
-    padding-bottom: 1rem;
+    padding: 0 2rem 1rem 2rem;
   }
 `;

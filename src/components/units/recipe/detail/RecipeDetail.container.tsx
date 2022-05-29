@@ -12,7 +12,7 @@ export default function RecipeDetail() {
     },
   });
   const { data: fetchUser } = useQuery(FETCH_USER);
-
+  console.log();
   // 탭 Ref
   const ingredientTabRef = useRef<HTMLDivElement>(null);
   const cookOrderTabRef = useRef<HTMLDivElement>(null);

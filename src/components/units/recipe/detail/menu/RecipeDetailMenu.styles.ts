@@ -121,9 +121,16 @@ export const PickedButton = styled.button`
   font-weight: 600;
   background: #0fbaa3;
   color: #ffffff;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 64px;
+  transition: all 0.3s ease;
   cursor: pointer;
+
+  :hover {
+    background: #ffffff;
+    border: 1px solid #0fbaa3;
+    color: #0fbaa3;
+  }
 `;
 
 export const ShareButton = styled.button`

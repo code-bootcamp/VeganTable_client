@@ -78,7 +78,7 @@ export const UploadedRepImage = styled.img`
 
 export const TextArea = styled.textarea`
   margin-top: 1.375rem;
-  padding: 1rem;
+  padding: 2rem;
   width: 585px;
   min-height: 114px;
   height: auto;

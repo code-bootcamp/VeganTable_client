@@ -1,5 +1,9 @@
 import RecipeCommentWriteUI from "./RecipeCommentWrite.presenter";
-import { CREATE_REPLY, FETCH_REPLIES } from "./RecipeCommentWrite.queries";
+import {
+  CREATE_REPLY,
+  FETCH_REPLIES,
+  FETCH_RECIPE,
+} from "./RecipeCommentWrite.queries";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -17,7 +21,6 @@ export default function RecipeCommentWrite(props) {
     try {
       await createReply({
         variables: {
-          user_id: String(props.fetchUser?.fetchUser?.user_id),
           contents: data.contents,
           id: String(router.query.recipeId),
         },
@@ -25,6 +28,10 @@ export default function RecipeCommentWrite(props) {
           {
             query: FETCH_REPLIES,
             variables: { id: String(router.query.recipeId) },
+          },
+          {
+            query: FETCH_RECIPE,
+            variables: { recipes_id: String(router.query.recipeId) },
           },
         ],
       });
