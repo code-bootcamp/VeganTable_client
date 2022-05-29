@@ -2,14 +2,15 @@ import * as List from "./RecipeList.styles";
 
 export default function RecipeListItem(props) {
   const el = props.el;
+
   return (
     <List.RecipeBox id={el.id} onClick={props?.onClickMoveToDetail}>
       <List.RecipeImg
         src={
           el.recipesImages
-            ? el.recipesImages.filter((e) => e.url !== "").length === 0
+            ? el.recipesImages.filter((e) => e.mainImage !== " ").length === 0
               ? "/img/bestRecipe/img-recipe-01.png"
-              : `https://storage.googleapis.com/${el.recipesImages[0].url}`
+              : `https://storage.googleapis.com/${el.recipesImages[0].mainImage}`
             : "/img/bestRecipe/img-recipe-01.png"
         }
       />
@@ -39,9 +40,7 @@ export default function RecipeListItem(props) {
       <List.RecipeSummary>{el.summary}</List.RecipeSummary>
       <List.RecipeCommentBox>
         <List.RecipeCommentIcon src="/img/icon/comment.svg" />
-        <List.RecipeCommentsCount>
-          댓글 수 데이터도 받아야겠는뎅..
-        </List.RecipeCommentsCount>
+        <List.RecipeCommentsCount>{el.replyCount}</List.RecipeCommentsCount>
       </List.RecipeCommentBox>
     </List.RecipeBox>
   );
