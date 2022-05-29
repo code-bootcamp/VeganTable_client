@@ -117,8 +117,8 @@ export const PickedButton = styled.button`
   margin-right: 2rem;
   width: 289px;
   height: 77px;
+  font-size: 1.25rem;
   font-weight: 600;
-  letter-spacing: -0.05em;
   background: #0fbaa3;
   color: #ffffff;
   border: none;
