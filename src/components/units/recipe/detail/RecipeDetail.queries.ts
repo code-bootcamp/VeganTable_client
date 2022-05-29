@@ -26,6 +26,7 @@ export const FETCH_RECIPE = gql`
         name
       }
       scrapCount
+      replyCount
     }
   }
 `;

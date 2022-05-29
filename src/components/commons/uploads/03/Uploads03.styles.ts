@@ -10,12 +10,25 @@ export const RepImage2 = styled.div`
   height: 259px;
   background: #ebebeb;
   border-radius: 2rem;
+  transition: all 0.5s ease;
   cursor: pointer;
 
   span {
     padding-top: 1.25rem;
     font-size: 1.25rem;
     font-weight: 400;
+  }
+
+  img {
+    transition: all 0.5s ease;
+  }
+
+  :hover {
+    background: #0fbaa3;
+    color: #ffffff;
+    img {
+      filter: brightness(0) invert(1);
+    }
   }
 
   @media (max-width: 991px) {

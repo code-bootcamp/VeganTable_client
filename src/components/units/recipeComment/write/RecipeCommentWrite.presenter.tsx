@@ -2,7 +2,7 @@ import * as CommentWrite from "./RecipeCommentWrite.styles";
 
 export default function RecipeCommentWriteUI(props) {
   return (
-    <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
+    <CommentWrite.Form onSubmit={props.handleSubmit(props.onClickSubmit)}>
       <CommentWrite.Container>
         <CommentWrite.TextArea
           {...props.register("contents")}
@@ -13,6 +13,6 @@ export default function RecipeCommentWriteUI(props) {
           댓글작성
         </CommentWrite.SubmitButton>
       </CommentWrite.Container>
-    </form>
+    </CommentWrite.Form>
   );
 }

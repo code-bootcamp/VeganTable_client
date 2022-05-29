@@ -47,7 +47,7 @@ export default function RecipeDetailUI(props) {
               className={`${props.tabActive[2]}`}
               onClick={props.onClickReviewTab}
             >
-              댓글(10)
+              댓글({props.recipeData?.fetchRecipe?.replyCount})
             </li>
           </RecipeDetail.Navigation>
 
@@ -85,9 +85,12 @@ export default function RecipeDetailUI(props) {
               </RecipeDetail.Order>
             ))}
           </RecipeDetail.Contents>
-          <div ref={props.reviewTabRef}>
-            <RecipeCommentList fetchUser={props.fetchUser} />
-          </div>
+          <RecipeDetail.RecipeCommentListWrapper ref={props.reviewTabRef}>
+            <RecipeCommentList
+              fetchUser={props.fetchUser}
+              replyCount={props.recipeData?.fetchRecipe?.replyCount}
+            />
+          </RecipeDetail.RecipeCommentListWrapper>
         </RecipeDetail.Wrapper>
       </RecipeDetail.Container>
     </>
