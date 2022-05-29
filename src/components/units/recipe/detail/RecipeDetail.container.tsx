@@ -1,7 +1,7 @@
 import RecipeDetailUI from "./RecipeDetail.presenter";
 import { useRef, useState } from "react";
 import { useQuery } from "@apollo/client";
-import { FETCH_RECIPE } from "./RecipeDetail.queries";
+import { FETCH_RECIPE, FETCH_USER } from "./RecipeDetail.queries";
 import { useRouter } from "next/router";
 
 export default function RecipeDetail() {
@@ -11,8 +11,8 @@ export default function RecipeDetail() {
       recipes_id: String(router.query.recipeId),
     },
   });
-  console.log(recipeData);
-  console.log(recipeData?.fetchRecipe?.recipesImages.map((el) => el.url));
+  const { data: fetchUser } = useQuery(FETCH_USER);
+
   // 탭 Ref
   const ingredientTabRef = useRef<HTMLDivElement>(null);
   const cookOrderTabRef = useRef<HTMLDivElement>(null);
@@ -35,6 +35,7 @@ export default function RecipeDetail() {
   return (
     <RecipeDetailUI
       recipeData={recipeData}
+      fetchUser={fetchUser}
       ingredientTabRef={ingredientTabRef}
       cookOrderTabRef={cookOrderTabRef}
       reviewTabRef={reviewTabRef}

@@ -1,19 +1,36 @@
 import * as DetailMenu from "./RecipeDetailMenu.styles";
+import { v4 as uuidv4 } from "uuid";
 
-export default function RecipeDetailMenuUI() {
+export default function RecipeDetailMenuUI(props) {
   return (
     <DetailMenu.Container>
       <DetailMenu.Wrapper>
-        <DetailMenu.MenuTitle>메뉴 01</DetailMenu.MenuTitle>
+        <DetailMenu.MenuTitle>
+          {props.recipeData?.fetchRecipe?.title}
+        </DetailMenu.MenuTitle>
         <DetailMenu.MenuRemarks>
-          동해물과 백두산이 마르고 닳도록 하느님이 보우하사 <br />
-          동해물과 백두산이 마르고 닳도록 하느님이 보우하사
+          {props.recipeData?.fetchRecipe?.summary}
         </DetailMenu.MenuRemarks>
 
         <DetailMenu.Tags>
-          <DetailMenu.TagVegan>비건</DetailMenu.TagVegan>
-          <DetailMenu.TagLacto>락토</DetailMenu.TagLacto>
-          <DetailMenu.TagPesco>페스코</DetailMenu.TagPesco>
+          {props.recipeData?.fetchRecipe?.types === "VEGAN" && (
+            <DetailMenu.TagVegan>비건</DetailMenu.TagVegan>
+          )}
+          {props.recipeData?.fetchRecipe?.types === "LACTO" && (
+            <DetailMenu.TagLacto>락토</DetailMenu.TagLacto>
+          )}
+          {props.recipeData?.fetchRecipe?.types === "OVO" && (
+            <DetailMenu.TagOvo>오보</DetailMenu.TagOvo>
+          )}
+          {props.recipeData?.fetchRecipe?.types === "LACTO_OVO" && (
+            <DetailMenu.TagLactoOvo>락토오보</DetailMenu.TagLactoOvo>
+          )}
+          {props.recipeData?.fetchRecipe?.types === "PESCO" && (
+            <DetailMenu.TagPesco>페스코</DetailMenu.TagPesco>
+          )}
+          {props.recipeData?.fetchRecipe?.types === "POLLO" && (
+            <DetailMenu.TagPollo>폴로</DetailMenu.TagPollo>
+          )}
         </DetailMenu.Tags>
 
         <DetailMenu.RecipeInfoWrapper>
@@ -22,7 +39,9 @@ export default function RecipeDetailMenuUI() {
               <img src="/img/recipeDetail/icon-stopwatch.svg" alt="" />
               <span>조리시간</span>
             </DetailMenu.RecipeInfoTop>
-            <DetailMenu.RecipeInfoBottom>20분</DetailMenu.RecipeInfoBottom>
+            <DetailMenu.RecipeInfoBottom>
+              {props.recipeData?.fetchRecipe?.cookTime}분
+            </DetailMenu.RecipeInfoBottom>
           </DetailMenu.RecipeInfoItem>
 
           <DetailMenu.RecipeInfoItem>
@@ -30,7 +49,11 @@ export default function RecipeDetailMenuUI() {
               <img src="/img/recipeDetail/icon-star.svg" alt="" />
               <span>난이도</span>
             </DetailMenu.RecipeInfoTop>
-            <DetailMenu.RecipeInfoBottom>쉬움</DetailMenu.RecipeInfoBottom>
+            <DetailMenu.RecipeInfoBottom>
+              {props.recipeData?.fetchRecipe?.level === "SIMPLE" && "쉬움"}
+              {props.recipeData?.fetchRecipe?.level === "NORMAL" && "보통"}
+              {props.recipeData?.fetchRecipe?.level === "DIFFICULT" && "어려움"}
+            </DetailMenu.RecipeInfoBottom>
           </DetailMenu.RecipeInfoItem>
 
           <DetailMenu.RecipeInfoItem>
@@ -43,12 +66,9 @@ export default function RecipeDetailMenuUI() {
         </DetailMenu.RecipeInfoWrapper>
 
         <DetailMenu.RecipeTags>
-          <span>#쉬운레시피</span>
-          <span>#쉬운레시피</span>
-          <span>#쉬운레시피</span>
-          <span>#쉬운레시피</span>
-          <span>#쉬운레시피</span>
-          <span>#쉬운레시피</span>
+          {props.recipeData?.fetchRecipe?.recipesTags.map((el) => (
+            <span key={uuidv4()}>#{el.name}</span>
+          ))}
         </DetailMenu.RecipeTags>
 
         <DetailMenu.RecipeInfoButtons>

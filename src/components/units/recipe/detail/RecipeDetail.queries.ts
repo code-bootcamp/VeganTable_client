@@ -11,6 +11,7 @@ export const FETCH_RECIPE = gql`
       level
       recipesImages {
         url
+        description
       }
       user {
         user_id
@@ -25,6 +26,18 @@ export const FETCH_RECIPE = gql`
         name
       }
       scrapCount
+    }
+  }
+`;
+
+export const FETCH_USER = gql`
+  query fetchUser {
+    fetchUser {
+      user_id
+      email
+      name
+      isPro
+      type
     }
   }
 `;
