@@ -145,12 +145,13 @@ export const Subs = styled.div`
   align-items: center;
   background-color: #f5f5f5;
 
-  width: 36.625rem;
+  width: 48.7%;
   height: 27.8125rem;
   border-radius: 2rem;
 
   &.basic {
     background-image: url("/img/myPage/img-subscribe.png");
+    background-repeat: no-repeat;
   }
 
   &.premium {

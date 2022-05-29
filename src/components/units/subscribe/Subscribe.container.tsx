@@ -40,7 +40,7 @@ export default function Subscribe() {
         if (rsp.success) {
           try {
             createBasicPayment({
-              variables: { impUid: rsp.imp_uid, amount: 100 },
+              variables: { impUid: String(rsp.imp_uid), amount: 100 },
             });
             router.push("/subscribe/complete");
           } catch (error) {
@@ -53,7 +53,7 @@ export default function Subscribe() {
     );
   };
 
-  const onClickPayPremium = async () => {
+  const onClickPayPremium = () => {
     const IMP = window.IMP;
     IMP.init("imp82070269");
     IMP.request_pay(
@@ -70,10 +70,10 @@ export default function Subscribe() {
         // buyer_postcode: "01181",
         m_redirect_url: "http://localhost:3000/",
       },
-      (rsp) => {
+      async (rsp) => {
         if (rsp.success) {
           try {
-            createPremiumPayment({
+            await createPremiumPayment({
               variables: { impUid: rsp.imp_uid, amount: 200 },
             });
 

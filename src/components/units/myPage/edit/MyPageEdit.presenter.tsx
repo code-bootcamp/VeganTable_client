@@ -196,7 +196,8 @@ export default function MyPageEditUI(props) {
                   props.userInputs.address ||
                   props.userInputs.addressDetail ||
                   props.userInputs.certImage ||
-                  props.userInputs.certUrl
+                  props.userInputs.certUrl ||
+                  props.userInputs.profilePic
                 }
                 onClick={props.onClickUpdateUser}
               />
