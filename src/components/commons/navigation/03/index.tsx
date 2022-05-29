@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { FETCH_USER } from "../../../units/myPage/info/MyPageInfo.queries";
+import { FETCH_USER } from "../../../units/myPage/main/MyPageMain.queries";
 import * as Nav from "./styles";
 
 export default function Navigation02(props) {

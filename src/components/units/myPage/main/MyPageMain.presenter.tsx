@@ -3,7 +3,6 @@ import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container"
 import * as My from "./MyPageMain.styles";
 
 export default function MyPageMainUI(props) {
-  console.log(props.data?.fetchUser);
   return (
     <My.Container>
       <My.Wrapper>
