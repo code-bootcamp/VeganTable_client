@@ -1,7 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useModal } from "../../../commons/hooks/useModal";
 import MyPageEditUI from "./MyPageEdit.presenter";
@@ -17,8 +16,10 @@ export default function MyPageEdit() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [userInputs, setUserInputs] = useState({
+    nickname: "",
     type: "NON_Vegan",
     address: "",
+    addressDetail: "",
     phone: "",
     token: "",
     valid: "false",
@@ -26,17 +27,13 @@ export default function MyPageEdit() {
     certImage: "",
     certUrl: "",
   });
+  const { Success, ModalError, Warning, Info } = useModal();
 
   const { data: userData } = useQuery(FETCH_USER);
   const [updateUser] = useMutation(UPDATE_USER);
   const [deleteUser] = useMutation(DELETE_USER);
   const [getToken] = useMutation(SEND_TOKEN_TO_SMS);
   const [checkValidToken] = useMutation(CHECK_VALID_TOKEN);
-
-  const { register, handleSubmit } = useForm({ mode: "onChange" });
-
-  // 모달
-  const { Success, ModalError, Warning } = useModal();
 
   // 이미지
   useEffect(() => {
@@ -68,7 +65,6 @@ export default function MyPageEdit() {
 
   const onClickClose = (event) => {
     if (event.target) setIsOpen(false);
-    // window.scrollTo({ top: 1200, behavior: "smooth" });
   };
 
   // 인증번호 전송
@@ -108,20 +104,37 @@ export default function MyPageEdit() {
     }
   };
 
+  // Url 검증
+  const onClickUrlValid = () => {
+    const regex =
+      /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
+
+    if (!regex.test(userInputs.certUrl)) {
+      Warning("등록 실패", "유효하지 않은 URL입니다.");
+      setUserInputs({ ...userInputs, certUrl: "" });
+      return;
+    }
+
+    Info("URL 등록", "회원정보 수정을 완료해야 성공적으로 등록됩니다.");
+  };
+
   // 회원정보 수정
-  const onClickUpdateUser = async (data) => {
+  const onClickUpdateUser = async () => {
     if (userInputs.phone && userInputs.valid === "false") {
       ModalError("수정 실패", "인증받지 않은 휴대폰 번호입니다.");
       return;
     }
 
     const updateUserInput = {};
-    if (data.nickname) updateUserInput.nickname = data.nickname;
+    if (userInputs.nickname) updateUserInput.nickname = userInputs.nickname;
     if (userInputs.address) updateUserInput.address = userInputs.address;
-    if (data.addressDetail) updateUserInput.addressDetail = data.addressDetail;
+    if (userInputs.addressDetail)
+      updateUserInput.addressDetail = userInputs.addressDetail;
     if (userInputs.type) updateUserInput.type = userInputs.type;
     if (userInputs.profilePic)
       updateUserInput.profilePic = userInputs.profilePic;
+    if (userInputs.certImage) updateUserInput.certImage = userInputs.certImage;
+    if (userInputs.certUrl) updateUserInput.certUrl = userInputs.certUrl;
 
     try {
       await updateUser({
@@ -131,7 +144,11 @@ export default function MyPageEdit() {
         },
       });
 
-      Success("수정 성공", "회원정보가 수정되었습니다.");
+      if (userInputs.certImage || userInputs.certUrl) {
+        Success("수정 성공", "전문가 등록은 1~2일 정도의 시간이 소요됩니다.");
+      } else {
+        Success("수정 성공", "회원정보가 수정되었습니다.");
+      }
       location.reload();
     } catch (error) {
       if (error instanceof Error) ModalError("수정 실패", error.message);
@@ -177,11 +194,10 @@ export default function MyPageEdit() {
       onClickClose={onClickClose}
       onCompleteAddressSearch={onCompleteAddressSearch}
       onClickUpdateUser={onClickUpdateUser}
-      handleSubmit={handleSubmit}
-      register={register}
       onClickGetToken={onClickGetToken}
       onClickCheckValid={onClickCheckValid}
       onClickSignOut={onClickSignOut}
+      onClickUrlValid={onClickUrlValid}
     />
   );
 }

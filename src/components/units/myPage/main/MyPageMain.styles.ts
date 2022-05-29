@@ -77,7 +77,6 @@ export const UserInfo = styled.ul`
   justify-content: center;
   align-items: center;
   width: 40%;
-  height: 2.5rem;
 `;
 
 export const Info = styled.li`

@@ -41,7 +41,6 @@ export function useModal() {
       icon: "info",
       confirmButtonColor: "#0fbaa3",
       showConfirmButton: true,
-      showCancelButton: true,
     });
   };
 

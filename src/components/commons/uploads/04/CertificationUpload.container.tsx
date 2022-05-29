@@ -8,7 +8,7 @@ import { checkValidationImage } from "./CertificationUpload.validation";
 export default function CertificationUpload(props) {
   const fileRef = useRef<HTMLInputElement>(null);
   const [uploadCertificationImage] = useMutation(UPLOAD_CERTIFICATION_IMAGE);
-  const { Success, ModalError } = useModal();
+  const { Info, ModalError } = useModal();
 
   const onClickUpload = () => {
     fileRef.current?.click();
@@ -20,12 +20,19 @@ export default function CertificationUpload(props) {
 
     try {
       const result = await uploadCertificationImage({ variables: { file } });
+      const url = result.data.uploadCertificationImage.substr(
+        38,
+        result.data.uploadCertificationImage.length
+      );
       props.setUserInputs({
         ...props.userInput,
-        certImage: String(result.data.uploadCertificationImage),
+        certImage: String(url),
       });
 
-      Success("업로드 완료", "회원정보 수정을 완료해야 성공적으로 등록됩니다.");
+      Info(
+        "자격증 이미지 등록",
+        "회원정보 수정을 완료해야 성공적으로 등록됩니다."
+      );
     } catch (error) {
       if (error instanceof Error) {
         ModalError("업로드 실패", error.message);

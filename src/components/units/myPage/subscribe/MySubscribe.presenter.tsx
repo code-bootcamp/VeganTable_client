@@ -39,7 +39,7 @@ export default function MySubscribeUI(props) {
 
           <My.PayHistory>
             <My.Title>결제 내역</My.Title>
-            <Slider02 />
+            {/* <Slider02 /> */}
           </My.PayHistory>
 
           <My.Pay>
@@ -60,7 +60,7 @@ export default function MySubscribeUI(props) {
             </My.Contents>
           </My.Pay>
 
-          <My.Pass>
+          {/* <My.Pass>
             <My.Title>이용권 변경</My.Title>
             <My.FlexRow>
               {props.data?.fetchUser.isSubs === "BASIC" ? (
@@ -106,7 +106,7 @@ export default function MySubscribeUI(props) {
                 </My.Subs>
               )}
             </My.FlexRow>
-          </My.Pass>
+          </My.Pass> */}
         </My.SubscribeWrapper>
       </My.Wrapper>
     </My.Container>

@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 6.125rem 6.125rem 6.125rem;
-  gap: 3rem;
+  grid-template-columns: auto auto auto;
+  gap: 2.5rem;
   padding-top: 1.5rem;
 `;
 

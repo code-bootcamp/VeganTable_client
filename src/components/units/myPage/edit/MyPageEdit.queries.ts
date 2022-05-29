@@ -14,6 +14,8 @@ export const FETCH_USER = gql`
       isPro
       isSubs
       profilePic
+      certImage
+      certUrl
     }
   }
 `;
