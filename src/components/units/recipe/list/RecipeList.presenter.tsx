@@ -30,11 +30,16 @@ export default function RecipeListUI() {
 
   const [selectedTypes, setSelectedTypes] = useState("NON_CHECKED");
 
-  const { data } = useQuery(FETCH_RECIPES);
   const { data: userData } = useQuery(FETCH_USER);
+  const { data } = useQuery(FETCH_RECIPES, {
+    variables: {
+      page: 1,
+    },
+  });
   const { data: typesData } = useQuery(FETCH_RECIPE_TYPES, {
     variables: {
       vegan_types: selectedTypes,
+      page: 1,
     },
   });
 
@@ -49,6 +54,14 @@ export default function RecipeListUI() {
   const onClickMoveToDetail = (e: MouseEvent<HTMLDivElement>) => {
     router.push(`/recipe/${e.currentTarget.id}`);
   };
+
+  // 전체 | 전문가 필터
+  const isProRecipes = data?.fetchRecipes.filter((e) => e.user.isPro === "PRO");
+  const isProRecipesType = typesData?.fetchRecipeTypes.filter(
+    (e) => e.user.isPro === "PRO"
+  );
+
+  // 최신순, 인기순 난이도순 필터
 
   return (
     <List.Container>
@@ -92,10 +105,28 @@ export default function RecipeListUI() {
             ))}
           </List.ListSelectBox>
         </List.MenuWrapper>
-        {/* 리스트 부분 */}
+        {/* %%%%%%%%%%%%%%% 리스트 부분 %%%%%%%%%%%%%%% */}
         <List.ListWrapper>
           {selectedTypes === "NON_CHECKED"
-            ? data?.fetchRecipes.map((el, i) => (
+            ? isPicked.wholeMenu === "전문가 메뉴"
+              ? isProRecipes?.map((el, i) => (
+                  <RecipeListItem
+                    key={i}
+                    userData={userData}
+                    el={el}
+                    onClickMoveToDetail={onClickMoveToDetail}
+                  />
+                ))
+              : data?.fetchRecipes.map((el, i) => (
+                  <RecipeListItem
+                    key={i}
+                    userData={userData}
+                    el={el}
+                    onClickMoveToDetail={onClickMoveToDetail}
+                  />
+                ))
+            : isPicked.wholeMenu === "전문가 메뉴"
+            ? isProRecipesType?.map((el, i) => (
                 <RecipeListItem
                   key={i}
                   userData={userData}

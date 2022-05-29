@@ -33,10 +33,10 @@ export default function ExpertRecipeList(props) {
                   <Expert.RecipeImg
                     src={
                       el.recipesImages
-                        ? el.recipesImages.filter((e) => e.url !== "")
+                        ? el.recipesImages.filter((e) => e.mainImage !== " ")
                             .length === 0
                           ? "/img/bestRecipe/img-recipe-01.png"
-                          : `https://storage.googleapis.com/${el.recipesImages[0].url}`
+                          : `https://storage.googleapis.com/${el.recipesImages[0].mainImage}`
                         : "/img/bestRecipe/img-recipe-01.png"
                     }
                   />
