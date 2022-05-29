@@ -9,8 +9,12 @@ export const FETCH_RECIPES = gql`
       types
       level
       scrapCount
+      replyCount
       recipesImages {
         url
+      }
+      user {
+        isPro
       }
     }
   }
@@ -22,11 +26,29 @@ export const FETCH_USER = gql`
     name
     type
     scrapCount {
-      scrap_id
       recipes {
         id
       }
-      scraped
+    }
+  }
+`;
+
+export const FETCH_RECIPE_TYPES = gql`
+  query fetchRecipeTypes($vegan_types: String!) {
+    fetchRecipeTypes(vegan_types: $vegan_types) {
+      id
+      title
+      summary
+      types
+      level
+      recipesImages {
+        url
+      }
+      user {
+        user_id
+      }
+      scrapCount
+      replyCount
     }
   }
 `;

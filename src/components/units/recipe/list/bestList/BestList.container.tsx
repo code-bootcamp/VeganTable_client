@@ -101,7 +101,7 @@ export default function BestRecipeList() {
           <Best.TitleBar />
           <Best.Title>인기 레시피</Best.Title>
           <Best.SubTitle>
-            이달의 가장 많은 좋아요를 받은 레시피를 확인해보세요
+            많은 찜하기를 받은 이달의 레시피를 확인해보세요
           </Best.SubTitle>
         </Best.TitleWrapper>
         <Best.SliderWrapper>
@@ -132,6 +132,12 @@ export default function BestRecipeList() {
                   </Best.StickerWrapper>
                   <Best.RecipeTitle>{el.title}</Best.RecipeTitle>
                   <Best.RecipeSubtitle>{el.subTitle}</Best.RecipeSubtitle>
+                  <Best.RecipeCommentBox>
+                    <Best.RecipeCommentIcon src="/img/icon/comment.svg" />
+                    <Best.RecipeCommentsCount>
+                      댓글 수 데이터도 받아야겠는뎅..
+                    </Best.RecipeCommentsCount>
+                  </Best.RecipeCommentBox>
                 </Best.RecipeBox>
               </Best.ListWrapper>
             ))}

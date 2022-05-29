@@ -80,7 +80,7 @@ export default function TemporaryDrawer(props: IDrawerUIProps) {
       <S.Wrapper>
         {accessToken ? (
           <>
-            <S.DrawerHead>
+            <S.DrawerHead isPro={data?.fetchUser.isPro === "PRO"}>
               <div>
                 <button onClick={toggleDrawer("right", false)}>
                   <img src="/img/icon/Close.svg" alt="" />

@@ -5,12 +5,15 @@ import MonthlyRecipe from "./monthlyRecipe/MonthlyRecipe.container";
 import DeliveryService from "./deliveryService/DeliveryService.container";
 import Magazine from "./magazine/Magazine.container";
 import Promotion from "./promotion/Promotion.container";
+import { useState } from "react";
 
 export default function Main() {
+  const [, setSelectedTypes] = useState("NON_CHECKED");
+
   return (
     <>
       <SearchBar01 />
-      <Navigation01 />
+      <Navigation01 setSelectedTypes={setSelectedTypes} />
       <BestRecipe />
       <MonthlyRecipe />
       <DeliveryService />

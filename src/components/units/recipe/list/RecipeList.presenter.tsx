@@ -1,13 +1,20 @@
 import { useQuery } from "@apollo/client";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { MouseEvent, useState } from "react";
 import Navigation01 from "../../../commons/navigation/01";
 import Pagination02 from "../../../commons/pagination/02/Pagination02";
 import BestRecipeList from "./bestList/BestList.container";
 import ExpertRecipeList from "./expertList/ExpertList.container";
-import { FETCH_RECIPES, FETCH_USER } from "./RecipeList.queries";
+import RecipeListItem from "./RecipeList.presenterItem";
+import {
+  FETCH_RECIPES,
+  FETCH_RECIPE_TYPES,
+  FETCH_USER,
+} from "./RecipeList.queries";
 import * as List from "./RecipeList.styles";
 
 export default function RecipeListUI() {
+  const router = useRouter();
   const WHOLE_MENU_LIST = [{ name: "전체 메뉴" }, { name: "전문가 메뉴" }];
 
   const MENU_LIST = [
@@ -21,8 +28,15 @@ export default function RecipeListUI() {
     selectList: "최신순",
   });
 
+  const [selectedTypes, setSelectedTypes] = useState("NON_CHECKED");
+
   const { data } = useQuery(FETCH_RECIPES);
   const { data: userData } = useQuery(FETCH_USER);
+  const { data: typesData } = useQuery(FETCH_RECIPE_TYPES, {
+    variables: {
+      vegan_types: selectedTypes,
+    },
+  });
 
   const onClickWholeMenu = (el) => () => {
     setIsPicked({ ...isPicked, wholeMenu: el.name });
@@ -32,7 +46,9 @@ export default function RecipeListUI() {
     setIsPicked({ ...isPicked, selectList: el.name });
   };
 
-  console.log(userData?.fetchUser);
+  const onClickMoveToDetail = (e: MouseEvent<HTMLDivElement>) => {
+    router.push(`/recipe/${e.currentTarget.id}`);
+  };
 
   return (
     <List.Container>
@@ -43,12 +59,12 @@ export default function RecipeListUI() {
           <span>채식 레시피의 모든 것, 채식</span>
         </div>
       </List.BannerWrapper>
-      <ExpertRecipeList />
+      <ExpertRecipeList userData={userData} data={data} />
       <BestRecipeList />
       <List.NavigationWrapper>
         <List.NavigationTitle>고객님 맞춤 레시피</List.NavigationTitle>
       </List.NavigationWrapper>
-      <Navigation01 />
+      <Navigation01 setSelectedTypes={setSelectedTypes} />
       <List.Wrapper>
         <List.MenuWrapper>
           <List.WholeListBox>
@@ -76,50 +92,25 @@ export default function RecipeListUI() {
             ))}
           </List.ListSelectBox>
         </List.MenuWrapper>
+        {/* 리스트 부분 */}
         <List.ListWrapper>
-          {data?.fetchRecipes.map((el, i) => (
-            <List.RecipeBox key={i}>
-              <List.RecipeImg
-                src={
-                  el.recipesImages
-                    ? "/img/bestRecipe/img-recipe-01.png"
-                    : el.recipesImages.filter((e) => e !== "").length === 0
-                    ? "/img/bestRecipe/img-recipe-01.png"
-                    : `https://storage.googleapis.com/${el.recipesImages[0]}`
-                }
-              />
-              <List.IconBookmark>
-                {el.id === userData?.fetchUser.scrapCount.recipes.id ? (
-                  <img src="/img/bestRecipe/icon-bookmark-on.svg" />
-                ) : (
-                  <img src="/img/bestRecipe/icon-bookmark-off.svg" />
-                )}
-                <span>{el.scrapCount}</span>
-              </List.IconBookmark>
-              <List.StickerWrapper>
-                {el.scrapCount >= 1 && (
-                  <List.RecipeRecommendSticker src="/img/icon/recommend.svg" />
-                )}
-                {el.level === "SIMPLE" && (
-                  <List.RecipeLevelSticker src="/img/icon/level1.svg" />
-                )}
-                {el.level === "NORMAL" && (
-                  <List.RecipeLevelSticker src="/img/icon/level2.svg" />
-                )}
-                {el.level === "DIFFICULT" && (
-                  <List.RecipeLevelSticker src="/img/icon/level3.svg" />
-                )}
-              </List.StickerWrapper>
-              <List.RecipeTitle>{el.title}</List.RecipeTitle>
-              <List.RecipeSummary>{el.summary}</List.RecipeSummary>
-              <List.RecipeCommentBox>
-                <List.RecipeCommentIcon src="/img/icon/comment.svg" />
-                <List.RecipeCommentsCount>
-                  댓글 수 데이터도 받아야겠는뎅..
-                </List.RecipeCommentsCount>
-              </List.RecipeCommentBox>
-            </List.RecipeBox>
-          ))}
+          {selectedTypes === "NON_CHECKED"
+            ? data?.fetchRecipes.map((el, i) => (
+                <RecipeListItem
+                  key={i}
+                  userData={userData}
+                  el={el}
+                  onClickMoveToDetail={onClickMoveToDetail}
+                />
+              ))
+            : typesData?.fetchRecipeTypes.map((el, i) => (
+                <RecipeListItem
+                  key={i}
+                  userData={userData}
+                  el={el}
+                  onClickMoveToDetail={onClickMoveToDetail}
+                />
+              ))}
         </List.ListWrapper>
         <Pagination02 />
       </List.Wrapper>

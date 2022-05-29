@@ -67,6 +67,7 @@ export const DrawerHead = styled.div`
     letter-spacing: -0.05em;
   }
 `;
+
 export const DrawerBody = styled.div`
   display: flex;
   justify-content: space-around;
