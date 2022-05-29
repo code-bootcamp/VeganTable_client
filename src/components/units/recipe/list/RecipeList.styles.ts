@@ -143,6 +143,7 @@ export const RecipeImg = styled.img`
   width: 21.375rem;
   height: 21.375rem;
   margin-bottom: 1.5rem;
+  object-fit: cover;
 `;
 
 export const IconBookmark = styled.div`
@@ -187,7 +188,6 @@ export const RecipeTitle = styled.h3`
   font-weight: 600;
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  cursor: pointer;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -198,8 +198,7 @@ export const RecipeSummary = styled.p`
   font-weight: 400;
   font-size: 1rem;
   color: rgba(38, 38, 38, 0.6);
-  margin-bottom: 1.5rem;
-  cursor: pointer;
+  margin-bottom: 1rem;
 `;
 
 export const RecipeCommentBox = styled.ul`

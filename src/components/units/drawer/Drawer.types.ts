@@ -5,5 +5,5 @@ export interface IDrawerUIProps {
 }
 
 export interface IDrawerStylesProps {
-  isPro?: boolean;
+  isPro?: Boolean;
 }

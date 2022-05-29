@@ -128,11 +128,15 @@ export const RecipeBox = styled.div`
   position: relative;
   cursor: pointer;
   width: 100%;
+  max-width: 370px;
+  height: 370px;
 `;
 
 export const RecipeImg = styled.img`
   border-radius: 2rem;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   margin-bottom: 1.5rem;
 `;
 
@@ -179,10 +183,31 @@ export const RecipeTitle = styled.h3`
   font-weight: 600;
   font-size: 2rem;
   margin-bottom: 0.5rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 21.375rem;
 `;
 
 export const RecipeSubtitle = styled.p`
   font-weight: 400;
   font-size: 1rem;
   color: rgba(38, 38, 38, 0.6);
+  margin-bottom: 1rem;
+`;
+
+export const RecipeCommentBox = styled.ul`
+  display: flex;
+  align-items: center;
+`;
+
+export const RecipeCommentIcon = styled.img`
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
+`;
+
+export const RecipeCommentsCount = styled.li`
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.5);
 `;

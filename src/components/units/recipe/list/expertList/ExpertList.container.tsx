@@ -1,106 +1,7 @@
 import Slider from "react-slick";
 import * as Expert from "./ExpertList.styles";
 
-export default function ExpertRecipeList() {
-  const RECIPE_EXAMPLE = [
-    {
-      title: "메뉴 01",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "쉬움",
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-    {
-      title: "메뉴 02",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "중간",
-      bookmarkCount: 25,
-      bookmark: true,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "어려움",
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-    {
-      title: "메뉴 04",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "쉬움",
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-    {
-      title: "메뉴 05",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "중간",
-      bookmarkCount: 25,
-      bookmark: true,
-    },
-    {
-      title: "메뉴 06",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "어려움",
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-    {
-      title: "메뉴 01",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "쉬움",
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-    {
-      title: "메뉴 02",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "중간",
-      bookmarkCount: 25,
-      bookmark: true,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "어려움",
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-    {
-      title: "메뉴 01",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "쉬움",
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-    {
-      title: "메뉴 02",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "중간",
-      bookmarkCount: 25,
-      bookmark: true,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "어려움",
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-  ];
-
+export default function ExpertRecipeList(props) {
   const settings = {
     dots: false,
     arrows: true,
@@ -109,6 +10,10 @@ export default function ExpertRecipeList() {
     slidesToShow: 3,
     slidesToScroll: 3,
   };
+
+  const isProRecipes = props.data?.fetchRecipes.filter(
+    (e) => e.user.isPro === "PRO"
+  );
 
   return (
     <Expert.Container>
@@ -122,32 +27,53 @@ export default function ExpertRecipeList() {
         </Expert.TitleWrapper>
         <Expert.SliderWrapper>
           <Slider {...settings}>
-            {RECIPE_EXAMPLE.map((el, i) => (
-              <Expert.ListWrapper key={el.title}>
+            {isProRecipes?.map((el, i) => (
+              <Expert.ListWrapper key={i}>
                 <Expert.RecipeBox>
-                  <Expert.RecipeImg src={el.image} />
+                  <Expert.RecipeImg
+                    src={
+                      el.recipesImages
+                        ? el.recipesImages.filter((e) => e.url !== "")
+                            .length === 0
+                          ? "/img/bestRecipe/img-recipe-01.png"
+                          : `https://storage.googleapis.com/${el.recipesImages[0].url}`
+                        : "/img/bestRecipe/img-recipe-01.png"
+                    }
+                  />
                   <Expert.IconBookmark>
-                    {el.bookmark ? (
+                    {el.id ===
+                    props.userData?.fetchUser.scrapCount.recipes.id ? (
                       <img src="/img/bestRecipe/icon-bookmark-on.svg" />
                     ) : (
                       <img src="/img/bestRecipe/icon-bookmark-off.svg" />
                     )}
-                    <span>{el.bookmarkCount}</span>
+                    <span>{el.scrapCount}</span>
                   </Expert.IconBookmark>
                   <Expert.StickerWrapper>
-                    <Expert.RecipeRecommendSticker src="/img/icon/recommend.svg" />
-                    {el.level === "쉬움" && (
+                    {el.scrapCount >= 1 && (
+                      <Expert.RecipeRecommendSticker src="/img/icon/recommend.svg" />
+                    )}
+                    {el.scrapCount === 0 && (
+                      <Expert.RecipeRecommendStickerHidden src="/img/icon/recommend.svg" />
+                    )}
+                    {el.level === "SIMPLE" && (
                       <Expert.RecipeLevelSticker src="/img/icon/level1.svg" />
                     )}
-                    {el.level === "중간" && (
+                    {el.level === "NORMAL" && (
                       <Expert.RecipeLevelSticker src="/img/icon/level2.svg" />
-                    )}{" "}
-                    {el.level === "어려움" && (
+                    )}
+                    {el.level === "DIFFICULT" && (
                       <Expert.RecipeLevelSticker src="/img/icon/level3.svg" />
                     )}
                   </Expert.StickerWrapper>
                   <Expert.RecipeTitle>{el.title}</Expert.RecipeTitle>
-                  <Expert.RecipeSubtitle>{el.subTitle}</Expert.RecipeSubtitle>
+                  <Expert.RecipeSubtitle>{el.summary}</Expert.RecipeSubtitle>
+                  <Expert.RecipeCommentBox>
+                    <Expert.RecipeCommentIcon src="/img/icon/comment.svg" />
+                    <Expert.RecipeCommentsCount>
+                      댓글 수 데이터도 받아야겠는뎅..
+                    </Expert.RecipeCommentsCount>
+                  </Expert.RecipeCommentBox>
                 </Expert.RecipeBox>
               </Expert.ListWrapper>
             ))}
