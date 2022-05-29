@@ -9,7 +9,9 @@ export const FETCH_RECIPE = gql`
       types
       cookTime
       level
+      serve
       recipesImages {
+        mainImage
         url
         description
       }
@@ -27,6 +29,7 @@ export const FETCH_RECIPE = gql`
       }
       scrapCount
       replyCount
+      createdAt
     }
   }
 `;
@@ -39,6 +42,14 @@ export const FETCH_USER = gql`
       name
       isPro
       type
+    }
+  }
+`;
+
+export const CLICK_SCRAP = gql`
+  mutation clickScrap($id: String!) {
+    clickScrap(id: $id) {
+      scraped
     }
   }
 `;

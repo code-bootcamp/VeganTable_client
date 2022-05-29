@@ -160,11 +160,9 @@ export const ImageWrapper = styled.div`
 
 export const Ingredient = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   text-align: center;
-  width: 100%;
 
   & > span {
     padding: 0 2rem 1rem 2rem;

@@ -134,12 +134,12 @@ export default function RecipeWrite() {
             title: data.title,
             summary: data.summary,
             types: String(selectType.types),
+            mainImage: imageUrls,
             url: descArr.map((el) => el.image),
             description: descArr.map((el) => `${el.desc}`),
             cookTime: Number(data.cookTime),
             level: data.level,
-            serve: data.serve,
-            mainImage: imageUrls,
+            serve: Number(data.serve),
             ingredients: ingredientArr.map(
               (el) => `${el.name} ${el.amount}${el.unit}`
             ),

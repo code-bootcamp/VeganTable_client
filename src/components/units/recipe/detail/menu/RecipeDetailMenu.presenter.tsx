@@ -61,7 +61,9 @@ export default function RecipeDetailMenuUI(props) {
               <img src="/img/recipeDetail/icon-smile.svg" alt="" />
               <span>분량</span>
             </DetailMenu.RecipeInfoTop>
-            <DetailMenu.RecipeInfoBottom>2인분</DetailMenu.RecipeInfoBottom>
+            <DetailMenu.RecipeInfoBottom>
+              {props.recipeData?.fetchRecipe?.serve}인분
+            </DetailMenu.RecipeInfoBottom>
           </DetailMenu.RecipeInfoItem>
         </DetailMenu.RecipeInfoWrapper>
 
@@ -72,7 +74,9 @@ export default function RecipeDetailMenuUI(props) {
         </DetailMenu.RecipeTags>
 
         <DetailMenu.RecipeInfoButtons>
-          <DetailMenu.PickedButton>찜하기</DetailMenu.PickedButton>
+          <DetailMenu.PickedButton type="button" onClick={props.onClickScrap}>
+            찜하기
+          </DetailMenu.PickedButton>
           <DetailMenu.ShareButton>
             <img src="/img/recipeDetail/icon-share.svg" alt="공유하기" />
           </DetailMenu.ShareButton>
