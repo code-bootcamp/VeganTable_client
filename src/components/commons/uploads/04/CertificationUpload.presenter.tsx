@@ -14,6 +14,7 @@ export default function CertificationUploadUI(props) {
         <NormalButton
           type={"button"}
           title={"등록하기"}
+          color={"green"}
           onClick={props.onClickUpload}
         />
       )}

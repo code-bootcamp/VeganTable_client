@@ -18,7 +18,7 @@ export default function MyPageMainUI(props) {
               <My.UserIcon src="/img/myPage/icon-profile.svg" />
             )}
             <My.UserProfile>
-              {props.data?.fetchUser.isPro.PRO ? (
+              {props.data?.fetchUser.isPro === "PRO" ? (
                 <My.UserGrade className="expert">전문가</My.UserGrade>
               ) : (
                 <My.UserGrade className="common">회원</My.UserGrade>
@@ -104,14 +104,14 @@ export default function MyPageMainUI(props) {
                 </My.Title>
                 <ViewAllButton href={"/myPage/recent"} title={"전체보기"} />
               </My.Head>
-              <My.Body>
+              {/* <My.Body>
                 {[1, 2, 3, 4, 5].map((el) => (
                   <My.Menu key={el}>
                     <img src="/img/myPage/img-ex.png" />
                     <h2>맛있는 채소 레시피</h2>
                   </My.Menu>
                 ))}
-              </My.Body>
+              </My.Body> */}
             </My.Recipe>
 
             <My.Recipe>
@@ -121,14 +121,14 @@ export default function MyPageMainUI(props) {
                 </My.Title>
                 <ViewAllButton href={"/myPage/myRecipe"} title={"전체보기"} />
               </My.Head>
-              <My.Body>
+              {/* <My.Body>
                 {[1, 2, 3, 4, 5].map((el) => (
                   <My.Menu key={el}>
                     <img src="/img/myPage/img-ex.png" />
                     <h2>메뉴 02</h2>
                   </My.Menu>
                 ))}
-              </My.Body>
+              </My.Body> */}
             </My.Recipe>
 
             <My.Recipe>
@@ -138,14 +138,14 @@ export default function MyPageMainUI(props) {
                 </My.Title>
                 <ViewAllButton href={"/myPage/wish"} title={"전체보기"} />
               </My.Head>
-              <My.Body>
+              {/* <My.Body>
                 {[1, 2, 3, 4, 5].map((el) => (
                   <My.Menu key={el}>
                     <img src="/img/myPage/img-ex.png" />
                     <h2>레시피03 레시피03 03</h2>
                   </My.Menu>
                 ))}
-              </My.Body>
+              </My.Body> */}
             </My.Recipe>
           </My.RecipeWrapper>
         </My.MainWrapper>

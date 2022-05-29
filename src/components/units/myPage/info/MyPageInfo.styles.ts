@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import "animate.css";
 
 export const Container = styled.div`
   display: flex;
@@ -51,8 +50,8 @@ export const Title = styled.span`
 export const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 2.5rem 0;
-  padding-left: 10rem;
   width: 100%;
   border-bottom: 1px solid #c4c4c4;
 `;
@@ -89,6 +88,7 @@ export const Image = styled.img`
 export const InputWrapper = styled.div`
   display: flex;
   align-items: center;
+  width: 100%;
   padding: 0.6rem 0;
 
   & > span {
@@ -100,7 +100,7 @@ export const InputWrapper = styled.div`
 export const Label = styled.label`
   font-size: 1.25rem;
   font-weight: 600;
-  width: 20%;
+  width: 25%;
   color: #464646;
 `;
 

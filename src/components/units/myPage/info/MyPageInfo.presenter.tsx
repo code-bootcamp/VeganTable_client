@@ -25,7 +25,7 @@ export default function MyPageInfoUI(props) {
                     <My.Image src="/img/myPage/icon-myProfile.svg" />
                   )}
                   <My.UserProfile>
-                    {props.userData?.fetchUser.isPro.PRO ? (
+                    {props.userData?.fetchUser.isPro === "PRO" ? (
                       <My.UserGrade className="expert">전문가</My.UserGrade>
                     ) : (
                       <My.UserGrade className="common">회원</My.UserGrade>
@@ -53,47 +53,49 @@ export default function MyPageInfoUI(props) {
             </My.ProfileWrapper>
 
             <My.ProfileWrapper>
-              <My.InputWrapper>
-                <My.Label>이름</My.Label>
-                <UserInput
-                  defaultValue={props.userData?.fetchUser.name}
-                  disabled={true}
-                />
-              </My.InputWrapper>
+              <div>
+                <My.InputWrapper>
+                  <My.Label>이름</My.Label>
+                  <UserInput
+                    defaultValue={props.userData?.fetchUser.name}
+                    disabled={true}
+                  />
+                </My.InputWrapper>
 
-              <My.InputWrapper>
-                <My.Label>이메일</My.Label>
-                <UserInput
-                  defaultValue={props.userData?.fetchUser.email}
-                  disabled={true}
-                />
-              </My.InputWrapper>
+                <My.InputWrapper>
+                  <My.Label>이메일</My.Label>
+                  <UserInput
+                    defaultValue={props.userData?.fetchUser.email}
+                    disabled={true}
+                  />
+                </My.InputWrapper>
 
-              <My.InputWrapper>
-                <My.Label>휴대폰 번호</My.Label>
-                <UserInput
-                  placeholder={"-제외"}
-                  defaultValue={props.userData?.fetchUser.phone}
-                  disabled={true}
-                />
-              </My.InputWrapper>
+                <My.InputWrapper>
+                  <My.Label>휴대폰 번호</My.Label>
+                  <UserInput
+                    placeholder={"-제외"}
+                    defaultValue={props.userData?.fetchUser.phone}
+                    disabled={true}
+                  />
+                </My.InputWrapper>
 
-              <My.InputWrapper>
-                <My.Label>주소</My.Label>
-                <UserInput
-                  placeholder={"주소"}
-                  defaultValue={props.userData?.fetchUser.address}
-                  disabled={true}
-                />
-              </My.InputWrapper>
-              <My.InputWrapper>
-                <My.Label />
-                <UserInput
-                  placeholder={"상세주소"}
-                  defaultValue={props.userData?.fetchUser.addressDetail}
-                  disabled={true}
-                />
-              </My.InputWrapper>
+                <My.InputWrapper>
+                  <My.Label>주소</My.Label>
+                  <UserInput
+                    placeholder={"주소"}
+                    defaultValue={props.userData?.fetchUser.address}
+                    disabled={true}
+                  />
+                </My.InputWrapper>
+                <My.InputWrapper>
+                  <My.Label />
+                  <UserInput
+                    placeholder={"상세주소"}
+                    defaultValue={props.userData?.fetchUser.addressDetail}
+                    disabled={true}
+                  />
+                </My.InputWrapper>
+              </div>
             </My.ProfileWrapper>
           </My.InfoWrapper>
         </My.Wrapper>

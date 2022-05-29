@@ -8,7 +8,7 @@ export default function MyRecentUI() {
         <MyPageSidebar />
         <My.RecentWrapper>
           <MyPageTitleBar title={"최근 본 레시피"} />
-          <My.RecipeWrapper>
+          {/* <My.RecipeWrapper>
             {[1, 2, 3, 4, 5, 6, 7, 8].map((el) => (
               <My.Menu key={el}>
                 <img src="/img/myPage/img-ex.png" />
@@ -17,7 +17,7 @@ export default function MyRecentUI() {
                 <p className="date">2022-05-19</p>
               </My.Menu>
             ))}
-          </My.RecipeWrapper>
+          </My.RecipeWrapper> */}
         </My.RecentWrapper>
       </My.Wrapper>
     </My.Container>

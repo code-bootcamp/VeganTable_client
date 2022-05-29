@@ -1,17 +1,14 @@
 import DaumPostcode from "react-daum-postcode";
 import NormalButton from "../../../commons/buttons/normal";
 import SubmitButton from "../../../commons/buttons/submit";
-import CheckBox01 from "../../../commons/checkboxes/01";
 import UserInput from "../../../commons/inputs";
 import Navigation02 from "../../../commons/navigation/02";
 import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container";
 import ProfileUpload from "../../../commons/uploads/01/ProfileUpload.container";
-import CertificationUpload from "../../../commons/uploads/02/CertificationUpload.container";
+import CertificationUpload from "../../../commons/uploads/04/CertificationUpload.container";
 import * as My from "./MyPageEdit.styles";
 
 export default function MyPageEditUI(props) {
-  const isActive = true;
-
   return (
     <>
       {props.isOpen && (
@@ -27,51 +24,53 @@ export default function MyPageEditUI(props) {
         <My.Wrapper>
           <MyPageSidebar />
 
-          <My.Form onSubmit={props.handleSubmit(props.onClickUpdateUser)}>
-            <My.EditWrapper>
-              <My.TitleWrapper>
-                <My.Title>회원정보수정</My.Title>
-                <My.SignOut type={"button"} onClick={props.onClickSignOut}>
-                  회원탈퇴
-                </My.SignOut>
-              </My.TitleWrapper>
+          <My.EditWrapper>
+            <My.TitleWrapper>
+              <My.Title>회원정보수정</My.Title>
+              <My.SignOut type={"button"} onClick={props.onClickSignOut}>
+                회원탈퇴
+              </My.SignOut>
+            </My.TitleWrapper>
 
-              <My.ProfileWrapper>
-                <My.FlexRow>
-                  <ProfileUpload
-                    setUserInputs={props.setUserInputs}
-                    userInputs={props.userInputs}
-                    onChangeUserInputs={props.onChangeUserInputs}
-                  />
+            <My.ProfileWrapper>
+              <My.FlexRow>
+                <ProfileUpload
+                  setUserInputs={props.setUserInputs}
+                  userInputs={props.userInputs}
+                  onChangeUserInputs={props.onChangeUserInputs}
+                />
 
-                  <My.FlexColumn>
-                    <My.InputWrapper>
-                      <My.Label>닉네임</My.Label>
-                      <UserInput
-                        placeholder={"닉네임"}
-                        inputSize={"medium"}
-                        defaultValue={props.userData?.fetchUser.nickname}
-                        register={{ ...props.register("nickname") }}
-                      />
-                    </My.InputWrapper>
+                <My.FlexColumn>
+                  <My.InputWrapper>
+                    <My.Label>닉네임</My.Label>
+                    <UserInput
+                      placeholder={"닉네임"}
+                      inputSize={"medium"}
+                      defaultValue={props.userData?.fetchUser.nickname}
+                      onChange={props.onChangeUserInputs("nickname")}
+                    />
+                  </My.InputWrapper>
 
-                    <My.VeganTypeWrapper>
-                      <My.Label>채식타입</My.Label>
-                      <Navigation02
-                        setUserInputs={props.setUserInputs}
-                        userInputs={props.userInputs}
-                      />
-                    </My.VeganTypeWrapper>
-                  </My.FlexColumn>
-                </My.FlexRow>
-              </My.ProfileWrapper>
-              <My.ProfileWrapper>
+                  <My.VeganTypeWrapper>
+                    <My.Label>채식타입</My.Label>
+                    <Navigation02
+                      setUserInputs={props.setUserInputs}
+                      userInputs={props.userInputs}
+                    />
+                  </My.VeganTypeWrapper>
+                </My.FlexColumn>
+              </My.FlexRow>
+            </My.ProfileWrapper>
+
+            <My.ProfileWrapper>
+              <div>
                 <My.InputWrapper>
                   <My.Label>이름</My.Label>
                   <UserInput
                     defaultValue={props.userData?.fetchUser.name}
                     disabled={true}
                   />
+                  <My.Div />
                 </My.InputWrapper>
 
                 <My.InputWrapper>
@@ -80,28 +79,9 @@ export default function MyPageEditUI(props) {
                     defaultValue={props.userData?.fetchUser.email}
                     disabled={true}
                   />
+                  <My.Div />
                 </My.InputWrapper>
-                {/* <My.InputWrapper>
-                <My.Label />
-                <CheckBox01 />
-                <span>정보성 메일 수신에 동의합니다.</span>
-              </My.InputWrapper> */}
-                {/* <My.InputWrapper>
-                  <My.Label>새 비밀번호</My.Label>
-                  <UserInput
-                    type={"password"}
-                    placeholder={"비밀번호"}
-                    register={{ ...props.register("password") }}
-                  />
-                </My.InputWrapper>
-                <My.InputWrapper>
-                  <My.Label>새 비밀번호 확인</My.Label>
-                  <UserInput
-                    type={"password"}
-                    placeholder={"비밀번호 확인"}
-                    register={{ ...props.register("passwordCheck") }}
-                  />
-                </My.InputWrapper> */}
+
                 <My.InputWrapper>
                   <My.Label>휴대폰 번호</My.Label>
                   <UserInput
@@ -133,7 +113,6 @@ export default function MyPageEditUI(props) {
                     disabled={!props.userInputs?.token}
                   />
                 </My.InputWrapper>
-
                 <My.InputWrapper>
                   <My.Label>주소</My.Label>
                   <UserInput
@@ -157,11 +136,15 @@ export default function MyPageEditUI(props) {
                   <UserInput
                     placeholder={"상세주소"}
                     defaultValue={props.userData?.fetchUser.addressDetail}
-                    register={{ ...props.register("addressDetail") }}
+                    onChange={props.onChangeUserInputs("addressDetail")}
                   />
+                  <My.Div />
                 </My.InputWrapper>
-              </My.ProfileWrapper>
-              <My.ProfileWrapper>
+              </div>
+            </My.ProfileWrapper>
+
+            <My.ProfileWrapper>
+              <div>
                 <My.ExpertTitleWrapper>
                   <My.Title>전문가 등록하기</My.Title>
                   <p>
@@ -173,7 +156,10 @@ export default function MyPageEditUI(props) {
                   <My.Label>자격증 등록</My.Label>
                   <UserInput
                     placeholder={"이미지 업로드"}
-                    defaultValue={props.userInputs.certImage}
+                    defaultValue={
+                      props.userInputs.certImage ||
+                      props.userData?.fetchUser.certImage
+                    }
                     readOnly
                   />
                   <CertificationUpload
@@ -183,15 +169,39 @@ export default function MyPageEditUI(props) {
                 </My.InputWrapper>
                 <My.InputWrapper>
                   <My.Label>인증 링크 등록</My.Label>
-                  <UserInput placeholder={"URL"} />
-                  <NormalButton type={"button"} title={"등록하기"} />
+                  <UserInput
+                    placeholder={"URL"}
+                    defaultValue={
+                      props.userInputs.certUrl ||
+                      props.userData?.fetchUser.certUrl
+                    }
+                    onChange={props.onChangeUserInputs("certUrl")}
+                  />
+                  <NormalButton
+                    type={"button"}
+                    title={"등록하기"}
+                    color={props.userInputs?.certUrl && "green"}
+                    disabled={!props.userInputs?.certUrl}
+                    onClick={props.onClickUrlValid}
+                  />
                 </My.InputWrapper>
-              </My.ProfileWrapper>
-              <My.ButtonWrapper>
-                <SubmitButton title={"회원정보수정"} isActive={isActive} />
-              </My.ButtonWrapper>
-            </My.EditWrapper>
-          </My.Form>
+              </div>
+            </My.ProfileWrapper>
+            <My.ButtonWrapper>
+              <SubmitButton
+                title={"회원정보수정"}
+                isActive={
+                  props.userInputs.nickname ||
+                  props.userInputs.valid === "true" ||
+                  props.userInputs.address ||
+                  props.userInputs.addressDetail ||
+                  props.userInputs.certImage ||
+                  props.userInputs.certUrl
+                }
+                onClick={props.onClickUpdateUser}
+              />
+            </My.ButtonWrapper>
+          </My.EditWrapper>
         </My.Wrapper>
       </My.Container>
     </>

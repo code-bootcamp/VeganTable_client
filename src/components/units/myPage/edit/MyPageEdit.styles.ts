@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import "animate.css";
 
 export const Container = styled.div`
   display: flex;
@@ -21,7 +20,6 @@ export const Form = styled.form`
 export const EditWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
 `;
 
@@ -62,8 +60,8 @@ export const Title = styled.span`
 export const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2.5rem 0;
-  padding-left: 10rem;
+  align-items: center;
+  padding: 2.5rem;
   width: 100%;
   border-bottom: 1px solid #c4c4c4;
 `;
@@ -113,6 +111,7 @@ export const InputWrapper = styled.div`
   display: flex;
   align-items: center;
   padding: 0.6rem 0;
+  width: 100%;
 
   & > span {
     font-weight: 600;
@@ -123,7 +122,7 @@ export const InputWrapper = styled.div`
 export const Label = styled.label`
   font-size: 1.25rem;
   font-weight: 600;
-  width: 20%;
+  width: 25%;
   color: #464646;
 `;
 
@@ -147,7 +146,6 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 4rem;
-  width: 59.5rem;
 `;
 
 export const Modal = styled.div`
@@ -175,4 +173,11 @@ export const Modal = styled.div`
     align-items: center;
     padding: 1.25rem;
   }
+`;
+
+export const Div = styled.div`
+  width: 13.75rem;
+  padding: 20px;
+  margin: 0 20px;
+  visibility: hidden;
 `;
