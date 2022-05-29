@@ -1,7 +1,7 @@
 import RecipeDetailUI from "./RecipeDetail.presenter";
 import { useRef, useState } from "react";
-import { useQuery } from "@apollo/client";
-import { FETCH_RECIPE, FETCH_USER } from "./RecipeDetail.queries";
+import { useMutation, useQuery } from "@apollo/client";
+import { FETCH_RECIPE, FETCH_USER, CLICK_SCRAP } from "./RecipeDetail.queries";
 import { useRouter } from "next/router";
 
 export default function RecipeDetail() {
@@ -12,7 +12,8 @@ export default function RecipeDetail() {
     },
   });
   const { data: fetchUser } = useQuery(FETCH_USER);
-  console.log();
+  const [clickScrap] = useMutation(CLICK_SCRAP);
+
   // 탭 Ref
   const ingredientTabRef = useRef<HTMLDivElement>(null);
   const cookOrderTabRef = useRef<HTMLDivElement>(null);
@@ -31,6 +32,17 @@ export default function RecipeDetail() {
     reviewTabRef.current?.scrollIntoView({ behavior: "smooth" });
     setTabActive(["", "", "isActive"]);
   };
+  // onClick Scrap
+  const onClickScrap = async () => {
+    try {
+      await clickScrap({
+        variables: { id: String(router.query.recipeId) },
+      });
+      alert("이 레시피를 스크랩했어요!");
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   return (
     <RecipeDetailUI
@@ -43,6 +55,7 @@ export default function RecipeDetail() {
       onClickIngredientTab={onClickIngredientTab}
       onClickCookOrderTab={onClickCookOrderTab}
       onClickReviewTab={onClickReviewTab}
+      onClickScrap={onClickScrap}
     />
   );
 }

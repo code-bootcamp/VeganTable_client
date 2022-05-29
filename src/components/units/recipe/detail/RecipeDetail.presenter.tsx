@@ -14,7 +14,10 @@ export default function RecipeDetailUI(props) {
     <>
       <RecipeDetail.Container>
         <RecipeDetail.MenuWrapper>
-          <RecipeDetailMenu recipeData={props.recipeData} />
+          <RecipeDetailMenu
+            recipeData={props.recipeData}
+            onClickScrap={props.onClickScrap}
+          />
         </RecipeDetail.MenuWrapper>
         <RecipeDetail.Wrapper>
           <RecipeDetail.TopWrapper>
@@ -26,7 +29,11 @@ export default function RecipeDetailUI(props) {
               목록으로
             </RecipeDetail.BackButton>
             <RecipeDetail.SliderWrapper>
-              <Slider01 />
+              <Slider01
+                mainImages={props.recipeData?.fetchRecipe?.recipesImages
+                  .map((el) => el.mainImage)
+                  .filter((el) => el !== "")}
+              />
             </RecipeDetail.SliderWrapper>
           </RecipeDetail.TopWrapper>
 
@@ -60,9 +67,7 @@ export default function RecipeDetailUI(props) {
                   <span key={uuidv4()}>{el}</span>
                 ))}
             </RecipeDetail.Ingredient>
-            <h2 ref={props.cookOrderTabRef} onClick={props.onClickCookOrderTab}>
-              요리순서
-            </h2>
+            <h2 ref={props.cookOrderTabRef}>요리순서</h2>
             {props.recipeData?.fetchRecipe?.recipesImages.map((el, index) => (
               <RecipeDetail.Order key={uuidv4()}>
                 <span>Step {index + 1}</span>

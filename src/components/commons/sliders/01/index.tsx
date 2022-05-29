@@ -37,7 +37,7 @@ const SliderItem = styled.div`
   }
 `;
 
-export default function Slider01() {
+export default function Slider01(props) {
   const settings = {
     dots: true,
     arrows: false,
@@ -45,11 +45,15 @@ export default function Slider01() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    customPaging: function () {
+    customPaging: function (i) {
       return (
-        <a>
-          <img src="/img/bestRecipe/img-recipe-01.png" />
-        </a>
+        props.mainImages[i] && (
+          <a>
+            <img
+              src={`https://storage.googleapis.com/${props.mainImages[i]}`}
+            />
+          </a>
+        )
       );
     },
   };
@@ -57,9 +61,9 @@ export default function Slider01() {
   return (
     <Wrapper>
       <Slider {...settings}>
-        {[1, 2, 3].map((el) => (
+        {props.mainImages?.map((el) => (
           <SliderItem key={uuidv4()}>
-            <img src="/img/bestRecipe/img-recipe-01.png" />
+            <img src={`https://storage.googleapis.com/${el}`} />
           </SliderItem>
         ))}
       </Slider>

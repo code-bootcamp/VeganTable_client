@@ -127,6 +127,13 @@ export const RegisterButton = styled.button`
   font-size: 1rem;
   letter-spacing: -0.05em;
   cursor: pointer;
+  transition: all 0.3s ease;
+
+  :hover {
+    background: #0fbaa3;
+    color: #ffffff;
+    border: 1px solid transparent;
+  }
 `;
 
 export const DrawerNav = styled.ul`
