@@ -9,7 +9,6 @@ export const CREATE_RECIPE = gql`
       types
       cookTime
       level
-      scrapCount
       user {
         user_id
         email
