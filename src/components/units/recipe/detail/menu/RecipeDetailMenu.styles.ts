@@ -101,7 +101,6 @@ export const RecipeTags = styled.div`
     color: #848484;
     border: 1px solid #848484;
     border-radius: 2rem;
-    flex: 0 0 102px;
     text-align: center;
   }
 `;
