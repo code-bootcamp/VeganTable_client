@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import Navigation01 from "../../../commons/navigation/01";
 import Pagination02 from "../../../commons/pagination/02/Pagination02";
 import BestRecipeList from "./bestList/BestList.container";
@@ -30,16 +30,14 @@ export default function RecipeListUI() {
 
   const [selectedTypes, setSelectedTypes] = useState("NON_CHECKED");
 
+  useEffect(() => {}, []);
+  console.log(selectedTypes);
+
   const { data: userData } = useQuery(FETCH_USER);
-  const { data } = useQuery(FETCH_RECIPES, {
-    variables: {
-      page: 1,
-    },
-  });
+  const { data } = useQuery(FETCH_RECIPES);
   const { data: typesData } = useQuery(FETCH_RECIPE_TYPES, {
     variables: {
       vegan_types: selectedTypes,
-      page: 1,
     },
   });
 
@@ -62,6 +60,12 @@ export default function RecipeListUI() {
   );
 
   // 최신순, 인기순 난이도순 필터
+  const tempObject = [data?.fetchRecipes];
+  const sortScrapRecipes = tempObject.sort(
+    (a, b) => b.scarpCount - a.scarpCount
+  );
+  console.log(sortScrapRecipes);
+  // console.log(data?.fetchRecipes?.sort((a, b) => b.scarpCount - a.scarpCount));
 
   return (
     <List.Container>
