@@ -38,6 +38,7 @@ const SliderItem = styled.div`
 `;
 
 export default function Slider01(props) {
+  console.log(props.mainImages);
   const settings = {
     dots: true,
     arrows: false,

@@ -32,7 +32,7 @@ export default function RecipeDetailUI(props) {
               <Slider01
                 mainImages={props.recipeData?.fetchRecipe?.recipesImages
                   .map((el) => el.mainImage)
-                  .filter((el) => el !== "")}
+                  .filter((el) => el !== " ")}
               />
             </RecipeDetail.SliderWrapper>
           </RecipeDetail.TopWrapper>
