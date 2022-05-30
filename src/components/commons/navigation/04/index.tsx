@@ -1,7 +1,9 @@
 import { useState } from "react";
 import * as Nav from "./Navigation.styles";
+import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
-export default function Navigation01(props) {
+export default function Navigation04(props) {
   const VEGAN_TYPE = [
     {
       name: "전체",
@@ -55,9 +57,12 @@ export default function Navigation01(props) {
   ];
 
   const [isPicked, setIsPicked] = useState("All");
+  const router = useRouter();
+
   const onClickVeganType = (el) => () => {
     setIsPicked(el.enName);
-    props.setSelectedTypes(el.type);
+    const type = el.type;
+    router.push("/recipe", `${type}`);
   };
 
   return (

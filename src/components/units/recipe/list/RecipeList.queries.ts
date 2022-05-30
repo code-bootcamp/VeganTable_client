@@ -14,8 +14,8 @@ export const FETCH_USER = gql`
 `;
 
 export const FETCH_RECIPES = gql`
-  query fetchRecipes($page: Int) {
-    fetchRecipes(page: $page) {
+  query fetchRecipes {
+    fetchRecipes {
       id
       title
       summary
@@ -34,8 +34,8 @@ export const FETCH_RECIPES = gql`
 `;
 
 export const FETCH_RECIPE_TYPES = gql`
-  query fetchRecipeTypes($vegan_types: String!, $page: Int) {
-    fetchRecipeTypes(vegan_types: $vegan_types, page: $page) {
+  query fetchRecipeTypes($vegan_types: String!) {
+    fetchRecipeTypes(vegan_types: $vegan_types) {
       id
       title
       summary
