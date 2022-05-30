@@ -1,9 +1,8 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import * as Nav from "./Navigation.styles";
-import { useNavigate } from "react-router-dom";
-import { useRouter } from "next/router";
 
-export default function Navigation04(props) {
+const Navigation04 = () => {
   const VEGAN_TYPE = [
     {
       name: "전체",
@@ -55,14 +54,14 @@ export default function Navigation04(props) {
       hover: "/img/navigation/icon-vegan-pollo-hover.svg",
     },
   ];
-
-  const [isPicked, setIsPicked] = useState("All");
   const router = useRouter();
+  const [isPicked, setIsPicked] = useState("All");
 
   const onClickVeganType = (el) => () => {
     setIsPicked(el.enName);
-    const type = el.type;
-    router.push("/recipe", `${type}`);
+    router.push(`/recipe/?type=${el.type}`, `/recipe`, {
+      shallow: true,
+    });
   };
 
   return (
@@ -85,4 +84,5 @@ export default function Navigation04(props) {
       ))}
     </Nav.Wrapper>
   );
-}
+};
+export default Navigation04;

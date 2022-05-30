@@ -2,13 +2,10 @@ import { gql } from "@apollo/client";
 
 export const FETCH_USER = gql`
   query fetchUser {
-    user_id
-    name
-    type
-    scrapCount {
-      recipes {
-        id
-      }
+    fetchUser {
+      user_id
+      name
+      type
     }
   }
 `;
@@ -29,6 +26,9 @@ export const FETCH_RECIPES = gql`
       user {
         isPro
       }
+      recipesScraps {
+        scraped
+      }
     }
   }
 `;
@@ -41,14 +41,63 @@ export const FETCH_RECIPE_TYPES = gql`
       summary
       types
       level
+      scrapCount
+      replyCount
       recipesImages {
         mainImage
       }
       user {
         isPro
       }
+      recipesScraps {
+        scraped
+      }
+    }
+  }
+`;
+
+export const FETCH_MY_SCRAPS_HISTORY = gql`
+  query fetchMyScrapHistory($user_id: String!) {
+    fetchMyScrapHistory(user_id: $user_id) {
+      id
+    }
+  }
+`;
+
+export const FETCH_POPULAR_RECIPES = gql`
+  query fetchPopularRecipes {
+    fetchPopularRecipes {
+      id
+      title
+      summary
+      types
+      level
       scrapCount
       replyCount
+      createdAt
+      recipesImages {
+        mainImage
+      }
+    }
+  }
+`;
+
+export const FETCH_RECIPE_TYPES_POPULAR = gql`
+  query fetchRecipeTypesPopular($vegan_types: String!) {
+    fetchRecipeTypesPopular(vegan_types: $vegan_types) {
+      id
+      title
+      summary
+      types
+      level
+      scrapCount
+      replyCount
+      recipesImages {
+        mainImage
+      }
+      user {
+        isPro
+      }
     }
   }
 `;

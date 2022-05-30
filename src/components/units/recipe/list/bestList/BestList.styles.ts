@@ -171,7 +171,13 @@ export const RecipeRecommendSticker = styled.img`
   width: 90%;
   height: auto;
 `;
-
+export const RecipeRecommendStickerHidden = styled.img`
+  visibility: hidden;
+  z-index: 3;
+  max-width: 5rem;
+  width: 90%;
+  height: auto;
+`;
 export const RecipeLevelSticker = styled.img`
   max-width: 5rem;
   width: 90%;

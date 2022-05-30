@@ -1,90 +1,7 @@
 import Slider from "react-slick";
 import * as Best from "./BestList.styles";
 
-export default function BestRecipeList() {
-  const RECIPE_EXAMPLE = [
-    {
-      title: "메뉴 01",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "쉬움",
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-    {
-      title: "메뉴 02",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "중간",
-      bookmarkCount: 25,
-      bookmark: true,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "어려움",
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-    {
-      title: "메뉴 04",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "어려움",
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-    {
-      title: "메뉴 05",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "어려움",
-      bookmarkCount: 25,
-      bookmark: true,
-    },
-    {
-      title: "메뉴 06",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "어려움",
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "어려움",
-      bookmarkCount: 25,
-      bookmark: true,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "어려움",
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "어려움",
-      bookmarkCount: 25,
-      bookmark: true,
-    },
-    {
-      title: "메뉴 03",
-      subTitle: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사",
-      image: "/img/recipeList/recipeExample.png",
-      level: "어려움",
-      bookmarkCount: 25,
-      bookmark: false,
-    },
-  ];
-
+export default function BestRecipeList(props) {
   const settings = {
     dots: false,
     arrows: true,
@@ -93,6 +10,10 @@ export default function BestRecipeList() {
     slidesToShow: 3,
     slidesToScroll: 3,
   };
+
+  const popularRecipes = props?.popularData?.fetchPopularRecipes.filter(
+    (el) => el.scrapCount >= 2
+  );
 
   return (
     <Best.Container>
@@ -106,36 +27,53 @@ export default function BestRecipeList() {
         </Best.TitleWrapper>
         <Best.SliderWrapper>
           <Slider {...settings}>
-            {RECIPE_EXAMPLE.map((el, i) => (
-              <Best.ListWrapper key={el.title}>
-                <Best.RecipeBox>
-                  <Best.RecipeImg src={el.image} />
+            {popularRecipes?.map((el, i) => (
+              <Best.ListWrapper key={i}>
+                <Best.RecipeBox
+                  id={el.id}
+                  onClick={props?.onClickMoveToDetail(el)}
+                >
+                  <Best.RecipeImg
+                    src={
+                      el.recipesImages
+                        ? el.recipesImages.filter((e) => e.mainImage !== " ")
+                            .length === 0
+                          ? "/img/bestRecipe/img-recipe-01.png"
+                          : `https://storage.googleapis.com/${el.recipesImages[0].mainImage}`
+                        : "/img/bestRecipe/img-recipe-01.png"
+                    }
+                  />
                   <Best.IconBookmark>
-                    {el.bookmark ? (
+                    {props.myScraps.includes(el.id) ? (
                       <img src="/img/bestRecipe/icon-bookmark-on.svg" />
                     ) : (
                       <img src="/img/bestRecipe/icon-bookmark-off.svg" />
                     )}
-                    <span>{el.bookmarkCount}</span>
+                    <span>{el.scrapCount}</span>
                   </Best.IconBookmark>
                   <Best.StickerWrapper>
-                    <Best.RecipeRecommendSticker src="/img/icon/recommend.svg" />
-                    {el.level === "쉬움" && (
+                    {el.scrapCount >= 1 && (
+                      <Best.RecipeRecommendSticker src="/img/icon/recommend.svg" />
+                    )}
+                    {el.scrapCount === 0 && (
+                      <Best.RecipeRecommendStickerHidden src="/img/icon/recommend.svg" />
+                    )}
+                    {el.level === "SIMPLE" && (
                       <Best.RecipeLevelSticker src="/img/icon/level1.svg" />
                     )}
-                    {el.level === "중간" && (
+                    {el.level === "NORMAL" && (
                       <Best.RecipeLevelSticker src="/img/icon/level2.svg" />
-                    )}{" "}
-                    {el.level === "어려움" && (
+                    )}
+                    {el.level === "DIFFICULT" && (
                       <Best.RecipeLevelSticker src="/img/icon/level3.svg" />
                     )}
                   </Best.StickerWrapper>
                   <Best.RecipeTitle>{el.title}</Best.RecipeTitle>
-                  <Best.RecipeSubtitle>{el.subTitle}</Best.RecipeSubtitle>
+                  <Best.RecipeSubtitle>{el.summary}</Best.RecipeSubtitle>
                   <Best.RecipeCommentBox>
                     <Best.RecipeCommentIcon src="/img/icon/comment.svg" />
                     <Best.RecipeCommentsCount>
-                      댓글 수 데이터도 받아야겠는뎅..
+                      {el.replyCount}
                     </Best.RecipeCommentsCount>
                   </Best.RecipeCommentBox>
                 </Best.RecipeBox>
