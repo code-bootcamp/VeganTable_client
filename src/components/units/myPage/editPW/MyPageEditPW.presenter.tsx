@@ -3,8 +3,9 @@ import UserInput from "../../../commons/inputs";
 import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container";
 import MyPageTitleBar from "../../../commons/titleBars/01";
 import * as My from "./MyPageEditPW.styles";
+import { IMyPageEditPwUIProps } from "./MyPageEditPW.types";
 
-export default function MyPageEditPwUI(props) {
+export default function MyPageEditPwUI(props: IMyPageEditPwUIProps) {
   return (
     <>
       <My.Container>
@@ -35,7 +36,6 @@ export default function MyPageEditPwUI(props) {
                 <SubmitButton
                   title={"비밀번호 변경"}
                   isActive={props.watch("password")}
-                  onClick={props.onClickSubmit}
                 />
               </My.ButtonWrapper>
             </My.Form>

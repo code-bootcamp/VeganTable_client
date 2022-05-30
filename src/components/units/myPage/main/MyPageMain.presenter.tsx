@@ -1,8 +1,9 @@
 import ViewAllButton from "../../../commons/buttons/viewAll";
 import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container";
 import * as My from "./MyPageMain.styles";
+import { IMyPageMainUIProps, IRecipeImage } from "./MyPageMain.types";
 
-export default function MyPageMainUI(props) {
+export default function MyPageMainUI(props: IMyPageMainUIProps) {
   return (
     <My.Container>
       <My.Wrapper>
@@ -105,7 +106,7 @@ export default function MyPageMainUI(props) {
                 <ViewAllButton href={"/myPage/recent"} title={"전체보기"} />
               </My.Head>
               <My.Body>
-                {props.recentItems.map((el) => (
+                {props.recentItems.map((el: any) => (
                   <My.Menu
                     key={el.id}
                     onClick={props.onClickMoveToDetail}
@@ -114,8 +115,9 @@ export default function MyPageMainUI(props) {
                     <img
                       src={
                         el.recipesImages
-                          ? el.recipesImages.filter((e) => e.mainImage !== " ")
-                              .length === 0
+                          ? el.recipesImages.filter(
+                              (e: IRecipeImage) => e.mainImage !== " "
+                            ).length === 0
                             ? "/img/bestRecipe/img-recipe-01.png"
                             : `https://storage.googleapis.com/${el.recipesImages[0].mainImage}`
                           : "/img/bestRecipe/img-recipe-01.png"
@@ -136,7 +138,7 @@ export default function MyPageMainUI(props) {
                 <ViewAllButton href={"/myPage/myRecipe"} title={"전체보기"} />
               </My.Head>
               <My.Body>
-                {props.userRecipe?.fetchMyRecipe.slice(0, 5).map((el) => (
+                {props.userRecipe?.fetchMyRecipe.slice(0, 5).map((el: any) => (
                   <My.Menu
                     key={el.id}
                     onClick={props.onClickMoveToDetail}
@@ -145,8 +147,9 @@ export default function MyPageMainUI(props) {
                     <img
                       src={
                         el.recipesImages
-                          ? el.recipesImages.filter((e) => e.mainImage !== " ")
-                              .length === 0
+                          ? el.recipesImages.filter(
+                              (e: IRecipeImage) => e.mainImage !== " "
+                            ).length === 0
                             ? "/img/bestRecipe/img-recipe-01.png"
                             : `https://storage.googleapis.com/${el.recipesImages[0].mainImage}`
                           : "/img/bestRecipe/img-recipe-01.png"
@@ -162,26 +165,29 @@ export default function MyPageMainUI(props) {
               <My.Head>
                 <My.Title>
                   찜한 레시피{" "}
-                  <span>{props.userScrap?.fetchMyScraps.length}</span>
+                  <span>{props.userScrap?.fetchMyScrapHistory.length}</span>
                 </My.Title>
                 <ViewAllButton href={"/myPage/wish"} title={"전체보기"} />
               </My.Head>
               <My.Body>
-                {props.userScrap?.fetchMyScraps.slice(0, 5).map((el) => (
-                  <My.Menu key={el.id}>
-                    <img
-                      src={
-                        el.recipesImages
-                          ? el.recipesImages.filter((e) => e.mainImage !== " ")
-                              .length === 0
-                            ? "/img/bestRecipe/img-recipe-01.png"
-                            : `https://storage.googleapis.com/${el.recipesImages[0].mainImage}`
-                          : "/img/bestRecipe/img-recipe-01.png"
-                      }
-                    />
-                    <h2>{el.title}</h2>
-                  </My.Menu>
-                ))}
+                {props.userScrap?.fetchMyScrapHistory
+                  .slice(0, 5)
+                  .map((el: any) => (
+                    <My.Menu key={el.id}>
+                      <img
+                        src={
+                          el.recipesImages
+                            ? el.recipesImages.filter(
+                                (e: IRecipeImage) => e.mainImage !== " "
+                              ).length === 0
+                              ? "/img/bestRecipe/img-recipe-01.png"
+                              : `https://storage.googleapis.com/${el.recipesImages[0].mainImage}`
+                            : "/img/bestRecipe/img-recipe-01.png"
+                        }
+                      />
+                      <h2>{el.title}</h2>
+                    </My.Menu>
+                  ))}
               </My.Body>
             </My.Recipe>
           </My.RecipeWrapper>

@@ -3,8 +3,9 @@ import Navigation03 from "../../../commons/navigation/03";
 import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container";
 import MyPageTitleBar from "../../../commons/titleBars/01";
 import * as My from "./MyPageInfo.styles";
+import { IMyPageInfoUIProps } from "./MyPageInfo.types";
 
-export default function MyPageInfoUI(props) {
+export default function MyPageInfoUI(props: IMyPageInfoUIProps) {
   return (
     <>
       <My.Container>

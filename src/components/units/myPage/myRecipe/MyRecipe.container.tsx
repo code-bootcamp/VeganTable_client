@@ -1,3 +1,4 @@
+import { MouseEvent } from "react";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { FETCH_USER } from "../main/MyPageMain.queries";
@@ -11,8 +12,8 @@ export default function MyRecipe() {
     variables: { user_id: String(userData?.fetchUser.user_id) },
   });
 
-  const onClickMoveToDetail = (e) => {
-    router.push(`/recipe/${e.currentTarget.id}`);
+  const onClickMoveToDetail = (event: MouseEvent<HTMLLIElement>) => {
+    router.push(`/recipe/${event.currentTarget.id}`);
   };
 
   return <MyRecipeUI data={data} onClickMoveToDetail={onClickMoveToDetail} />;

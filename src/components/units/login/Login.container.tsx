@@ -44,10 +44,9 @@ export default function Login() {
       const myAccessToken = result.data?.login;
       setAccessToken(myAccessToken);
       Success("로그인 성공", "건강한 한 끼를 책임지는 채식한상🥗");
-      router.push("/");
+      router.push("/main");
     } catch (error) {
-      if (error instanceof Error)
-        ModalError("로그인 실패", "로그인에 실패하였습니다.");
+      if (error instanceof Error) ModalError("로그인 실패", error.message);
     }
   };
 

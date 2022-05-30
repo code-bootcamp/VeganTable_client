@@ -66,26 +66,50 @@ export default function Slider02() {
     <Wrapper>
       <Slider {...settings}>
         <div>
-          {/* <img src="/img/myPage/img-subs-03.png" /> */}
           <SubsHistory>
             <span>
-              {data?.fetchUser.startDate} <span>|</span>{" "}
-              {data?.fetchUser.SubsHistory + 1}회차 결제예정
+              {/* {data?.fetchUser.startDate} <span>|</span>{" "} */}
+              {data?.fetchUser.isSubs !== "NON_SUB" ? 2 : 1}
+              회차 결제예정
             </span>
             <br />
             <p>
               {data?.fetchUser.isSubs === "BASIC" && "베이직"}
-              {data?.fetchUser.isSubs === "BASIC" && "프리미엄"}정기구독 서비스
+              {data?.fetchUser.isSubs === "PREMIUM" && "프리미엄"} 정기구독
+              서비스
             </p>
             <p>
-              월 {data?.fetchUser.isSubs === "BASIC" && "29,900"}
-              {data?.fetchUser.isSubs === "PREMIUM" && "39,900"}원
+              {data?.fetchUser.isSubs === "NON_SUB" && ""}
+              {data?.fetchUser.isSubs === "BASIC" && "월 29,900 원"}
+              {data?.fetchUser.isSubs === "PREMIUM" && "월 39,900 원"}
             </p>
           </SubsHistory>
         </div>
-        <div>
-          <SubsHistory></SubsHistory>
-        </div>
+        {data?.fetchUser.isSubs !== "NON_SUB" ? (
+          <div>
+            <SubsHistory>
+              <span>
+                {/* {data?.fetchUser.startDate} <span>|</span>{" "} */}
+                1회차 결제완료
+              </span>
+              <br />
+              <p>
+                {data?.fetchUser.isSubs === "BASIC" && "베이직"}
+                {data?.fetchUser.isSubs === "PREMIUM" && "프리미엄"} 정기구독
+                서비스
+              </p>
+              <p>
+                {data?.fetchUser.isSubs === "BASIC" && "월 29,900 원"}
+                {data?.fetchUser.isSubs === "PREMIUM" && "월 39,900 원"}
+              </p>
+            </SubsHistory>
+          </div>
+        ) : (
+          <div>
+            <SubsHistory></SubsHistory>
+          </div>
+        )}
+
         <div>
           <SubsHistory></SubsHistory>
         </div>

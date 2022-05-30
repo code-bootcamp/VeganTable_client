@@ -48,7 +48,7 @@ export default function MyPageEdit() {
 
   // 인풋값
   const onChangeUserInputs =
-    (id: any) => (e: ChangeEvent<HTMLInputElement>) => {
+    (id: string) => (e: ChangeEvent<HTMLInputElement>) => {
       setUserInputs({
         ...userInputs,
         [id]: e.target.value,
