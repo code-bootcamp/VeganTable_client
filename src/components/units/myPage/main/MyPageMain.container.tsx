@@ -19,7 +19,7 @@ export default function MyPageMain() {
   });
 
   useEffect(() => {
-    const recent = JSON.parse(localStorage.getItem("recent") || "[]");
+    const recent = JSON.parse(sessionStorage.getItem("recent") || "[]");
     setRecentItems(recent);
   }, []);
 

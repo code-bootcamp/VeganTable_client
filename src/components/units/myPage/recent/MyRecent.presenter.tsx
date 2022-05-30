@@ -3,6 +3,8 @@ import MyPageTitleBar from "../../../commons/titleBars/01";
 import { IRecipeImage } from "../main/MyPageMain.types";
 import * as My from "./MyRecent.styles";
 import { IMyRecentUIProps } from "./MyRecent.types";
+import { v4 as uuidv4 } from "uuid";
+
 export default function MyRecentUI(props: IMyRecentUIProps) {
   return (
     <My.Container>
@@ -13,7 +15,7 @@ export default function MyRecentUI(props: IMyRecentUIProps) {
           <My.RecipeWrapper>
             {props.recentItems.map((el: any) => (
               <My.Menu
-                key={el.id}
+                key={uuidv4()}
                 id={el.id}
                 onClick={props.onClickMoveToDetail}
               >
@@ -30,7 +32,7 @@ export default function MyRecentUI(props: IMyRecentUIProps) {
                 />
                 <h2>{el.title}</h2>
                 <p>{el.summary}</p>
-                <p className="date">{el.createdAt.slice(0, 10)}</p>
+                <p className="date">{el.createdAt}</p>
               </My.Menu>
             ))}
           </My.RecipeWrapper>
