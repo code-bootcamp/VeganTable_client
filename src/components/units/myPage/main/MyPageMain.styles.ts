@@ -113,7 +113,7 @@ export const RecipeWrapper = styled.div`
   width: 100%;
 `;
 export const Recipe = styled.div`
-  padding-top: 4.75rem;
+  padding-top: 2.75rem;
 `;
 
 export const Head = styled.div`

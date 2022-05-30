@@ -4,7 +4,7 @@ import { useModal } from "../../../commons/hooks/useModal";
 import { FETCH_USER } from "../main/MyPageMain.queries";
 import MyPageInfoUI from "./MyPageEditPW.presenter";
 import { UPDATE_PASSWORD } from "./MyPageEditPW.queries";
-import { ISubmitData } from "./MyPageEditPW.types";
+import { IFormValues } from "./MyPageEditPW.types";
 
 export default function MyPageEditPw() {
   const { data: userData } = useQuery(FETCH_USER);
@@ -12,7 +12,7 @@ export default function MyPageEditPw() {
   const { register, handleSubmit, watch } = useForm({ mode: "onChange" });
   const { Success, ModalError } = useModal();
 
-  const onClickSubmit = async (data: ISubmitData) => {
+  const onClickSubmit = async (data: IFormValues) => {
     try {
       await updatePassword({
         variables: {
@@ -27,7 +27,7 @@ export default function MyPageEditPw() {
       }
 
       const regex = /^(?=.*\d)(?=.*\w)(?=.*[!@#$%^&*_+"|;:'/?.,]).{10,15}$/;
-      if (!regex.test(data.password)) {
+      if (!regex.test(String(data.password))) {
         ModalError(
           "변경 실패",
           "비밀번호는 특수문자를 포함한 10글자 이상 15글자 이하 입니다."

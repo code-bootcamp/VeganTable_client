@@ -23,7 +23,7 @@ export default function TypeCheckQ3() {
   ];
 
   const onClickSubmit = () => {
-    router.push("/");
+    router.push("/main");
   };
 
   return (

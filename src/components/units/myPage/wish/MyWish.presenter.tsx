@@ -1,7 +1,9 @@
 import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container";
 import MyPageTitleBar from "../../../commons/titleBars/01";
+import { IRecipeImage } from "../main/MyPageMain.types";
 import * as My from "./MyWish.styles";
-export default function MyWishUI(props) {
+import { IFetchMyScrapHistory, MyWishUIProps } from "./MyWish.types";
+export default function MyWishUI(props: MyWishUIProps) {
   return (
     <My.Container>
       <My.Wrapper>
@@ -9,7 +11,7 @@ export default function MyWishUI(props) {
         <My.RecentWrapper>
           <MyPageTitleBar title={"찜한 레시피"} />
           <My.RecipeWrapper>
-            {props.data?.fetchMyScraps.map((el) => (
+            {props.data?.fetchMyScrapHistory.map((el: IFetchMyScrapHistory) => (
               <My.Menu
                 key={el.id}
                 onClick={props.onClickMoveToDetail}
@@ -18,8 +20,9 @@ export default function MyWishUI(props) {
                 <img
                   src={
                     el.recipesImages
-                      ? el.recipesImages.filter((e) => e.mainImage !== " ")
-                          .length === 0
+                      ? el.recipesImages.filter(
+                          (e: IRecipeImage) => e.mainImage !== " "
+                        ).length === 0
                         ? "/img/bestRecipe/img-recipe-01.png"
                         : `https://storage.googleapis.com/${el.recipesImages[0].mainImage}`
                       : "/img/bestRecipe/img-recipe-01.png"

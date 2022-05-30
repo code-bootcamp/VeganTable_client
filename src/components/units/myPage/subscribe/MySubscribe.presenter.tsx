@@ -3,8 +3,9 @@ import NormalButton from "../../../commons/buttons/normal";
 import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container";
 import Slider02 from "../../../commons/sliders/02";
 import * as My from "./MySubscribe.styles";
+import { IMySubscribeUIProps } from "./MySubscribe.types";
 
-export default function MySubscribeUI(props) {
+export default function MySubscribeUI(props: IMySubscribeUIProps) {
   return (
     <My.Container>
       <My.Wrapper>
@@ -20,6 +21,14 @@ export default function MySubscribeUI(props) {
               <My.UserGrade className="expert">전문가</My.UserGrade>
             ) : (
               <My.UserGrade className="common">회원</My.UserGrade>
+            )}
+            {props.data?.fetchUser.isSubs === "NON_SUB" && (
+              <>
+                <My.UserSubs>미구독</My.UserSubs>
+                {/* <p>
+                  다음 결제 예정일은 {props.data?.fetchUser.endDate} 입니다.
+                </p> */}
+              </>
             )}
             {props.data?.fetchUser.isSubs === "BASIC" && (
               <>
@@ -40,8 +49,8 @@ export default function MySubscribeUI(props) {
           </My.MySubscribe>
 
           <My.PayHistory>
-            {/* <My.Title>결제 내역</My.Title>
-            <Slider02 /> */}
+            <My.Title>결제 내역</My.Title>
+            <Slider02 />
           </My.PayHistory>
 
           <My.Pay>

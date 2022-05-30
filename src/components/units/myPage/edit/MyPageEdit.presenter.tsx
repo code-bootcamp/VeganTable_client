@@ -191,15 +191,7 @@ export default function MyPageEditUI(props: IMyPageEditUIProps) {
             <My.ButtonWrapper>
               <SubmitButton
                 title={"회원정보수정"}
-                isActive={
-                  props.userInputs.nickname ||
-                  props.userInputs.valid === "true" ||
-                  props.userInputs.address ||
-                  props.userInputs.addressDetail ||
-                  props.userInputs.certImage ||
-                  props.userInputs.certUrl ||
-                  props.userInputs.profilePic
-                }
+                isActive={true}
                 onClick={props.onClickUpdateUser}
               />
             </My.ButtonWrapper>

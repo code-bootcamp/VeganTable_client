@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 interface ISubmitButtonProps {
-  isActive?: Boolean;
+  isActive?: Boolean | String;
   title?: String;
   onClick?: () => void;
   type?: (String & ("button" | "submit" | "reset")) | undefined;

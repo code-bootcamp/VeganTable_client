@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, MouseEvent } from "react";
 import MyRecentUI from "./MyRecent.presenter";
 
 export default function MyRecent() {
@@ -11,8 +11,8 @@ export default function MyRecent() {
     setRecentItems(recent);
   }, []);
 
-  const onClickMoveToDetail = (e) => {
-    router.push(`/recipe/${e.currentTarget.id}`);
+  const onClickMoveToDetail = (event: MouseEvent<HTMLLIElement>) => {
+    router.push(`/recipe/${event.currentTarget.id}`);
   };
 
   return (

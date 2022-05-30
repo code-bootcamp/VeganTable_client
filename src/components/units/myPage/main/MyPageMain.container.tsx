@@ -1,8 +1,8 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import { FETCH_MY_RECIPE } from "../myRecipe/MyRecipe.queries";
-import { FETCH_MY_SCRAPS } from "../wish/MyWish.queries";
+import { FETCH_MY_SCRAP_HISTORY } from "../wish/MyWish.queries";
 import MyPageMainUI from "./MyPageMain.presenter";
 import { FETCH_USER } from "./MyPageMain.queries";
 
@@ -14,7 +14,7 @@ export default function MyPageMain() {
   const { data: userRecipe } = useQuery(FETCH_MY_RECIPE, {
     variables: { user_id: String(userData?.fetchUser.user_id) },
   });
-  const { data: userScrap } = useQuery(FETCH_MY_SCRAPS, {
+  const { data: userScrap } = useQuery(FETCH_MY_SCRAP_HISTORY, {
     variables: { user_id: String(userData?.fetchUser.user_id) },
   });
 
@@ -23,8 +23,8 @@ export default function MyPageMain() {
     setRecentItems(recent);
   }, []);
 
-  const onClickMoveToDetail = (e) => {
-    router.push(`/recipe/${e.currentTarget.id}`);
+  const onClickMoveToDetail = (event: MouseEvent<HTMLLIElement>) => {
+    router.push(`/recipe/${event.currentTarget.id}`);
   };
 
   return (
