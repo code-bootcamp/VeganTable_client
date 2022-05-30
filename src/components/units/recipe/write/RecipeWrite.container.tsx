@@ -144,7 +144,6 @@ export default function RecipeWrite() {
               (el) => `${el.name} ${el.amount}${el.unit}`
             ),
             recipesTags: hashArr,
-            scrapCount: 0,
           },
         },
       });
