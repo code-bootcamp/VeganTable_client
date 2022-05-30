@@ -24,18 +24,20 @@ export const RecipeWrapper = styled.div`
   display: grid;
   align-items: center;
   justify-content: center;
-  grid-template-columns: 15.5rem 15.5rem 15.5rem 15.5rem;
-  column-gap: 1.2rem;
+  grid-template-columns: auto auto auto auto;
+  column-gap: 2.5rem;
   row-gap: 1.3rem;
   padding-top: 1.5rem;
 `;
 
 export const Menu = styled.li`
   width: 14.5rem;
+  cursor: pointer;
 
   & img {
     width: 15.5rem;
     height: 15.5rem;
+    border-radius: 30px;
   }
   & h2 {
     padding: 0.4rem;

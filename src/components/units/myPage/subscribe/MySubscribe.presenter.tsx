@@ -16,7 +16,7 @@ export default function MySubscribeUI(props) {
           </My.TitleWrapper>
 
           <My.MySubscribe>
-            {props.data?.fetchUser.isPro.PRO ? (
+            {props.data?.fetchUser.isPro === "PRO" ? (
               <My.UserGrade className="expert">전문가</My.UserGrade>
             ) : (
               <My.UserGrade className="common">회원</My.UserGrade>
@@ -24,22 +24,24 @@ export default function MySubscribeUI(props) {
             {props.data?.fetchUser.isSubs === "BASIC" && (
               <>
                 <My.UserSubs>베이직 구독중</My.UserSubs>
-                <p>
+                {/* <p>
                   다음 결제 예정일은 {props.data?.fetchUser.endDate} 입니다.
-                </p>
+                </p> */}
               </>
             )}
             {props.data?.fetchUser.isSubs === "PREMIUM" && (
               <>
                 <My.UserSubs>프리미엄 구독중</My.UserSubs>
-                다음 결제 예정일은 {props.data?.fetchUser.endDate} 입니다.
+                {/* <p>
+                  다음 결제 예정일은 {props.data?.fetchUser.endDate} 입니다.
+                </p> */}
               </>
             )}
           </My.MySubscribe>
 
           <My.PayHistory>
-            <My.Title>결제 내역</My.Title>
-            <Slider02 />
+            {/* <My.Title>결제 내역</My.Title>
+            <Slider02 /> */}
           </My.PayHistory>
 
           <My.Pay>

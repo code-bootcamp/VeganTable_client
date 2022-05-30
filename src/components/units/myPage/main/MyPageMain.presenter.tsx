@@ -9,63 +9,64 @@ export default function MyPageMainUI(props) {
         <MyPageSidebar />
         <My.MainWrapper>
           <My.UserWrapper>
-            {props.data?.fetchUser.profilePic !== " " ? (
+            {props.userData?.fetchUser.profilePic !== " " ? (
               <My.UserIcon
-                src={`https://storage.googleapis.com/${props.data?.fetchUser.profilePic}`}
+                src={`https://storage.googleapis.com/${props.userData?.fetchUser.profilePic}`}
               />
             ) : (
               <My.UserIcon src="/img/myPage/icon-profile.svg" />
             )}
             <My.UserProfile>
-              {props.data?.fetchUser.isPro === "PRO" ? (
+              {props.userData?.fetchUser.isPro === "PRO" ? (
                 <My.UserGrade className="expert">전문가</My.UserGrade>
               ) : (
                 <My.UserGrade className="common">회원</My.UserGrade>
               )}
 
               <My.UserName>
-                안녕하세요 <span>{props.data?.fetchUser.name}</span>님 {":)"}
+                안녕하세요 <span>{props.userData?.fetchUser.name}</span>님{" "}
+                {":)"}
               </My.UserName>
             </My.UserProfile>
             <My.UserInfo>
               <My.Info>
-                {props.data?.fetchUser.type === "NON_Vegan" && (
+                {props.userData?.fetchUser.type === "NON_Vegan" && (
                   <>
                     <My.TypeIcon src="/img/navigation/icon-vegan-nonVegan.svg" />
                     <My.Name>채린이</My.Name>
                   </>
                 )}
-                {props.data?.fetchUser.type === "Vegan" && (
+                {props.userData?.fetchUser.type === "Vegan" && (
                   <>
                     <My.TypeIcon src="/img/navigation/icon-vegan-vegan.svg" />
                     <My.Name>비건</My.Name>
                   </>
                 )}
-                {props.data?.fetchUser.type === "Lacto" && (
+                {props.userData?.fetchUser.type === "Lacto" && (
                   <>
                     <My.TypeIcon src="/img/navigation/icon-vegan-lacto.svg" />
                     <My.Name>락토</My.Name>
                   </>
                 )}
-                {props.data?.fetchUser.type === "Ovo" && (
+                {props.userData?.fetchUser.type === "Ovo" && (
                   <>
                     <My.TypeIcon src="/img/navigation/icon-vegan-ovo.svg" />
                     <My.Name>오보</My.Name>
                   </>
                 )}
-                {props.data?.fetchUser.type === "Lacto_Ovo" && (
+                {props.userData?.fetchUser.type === "Lacto_Ovo" && (
                   <>
                     <My.TypeIcon src="/img/navigation/icon-vegan-lactoOvo.svg" />
                     <My.Name>락토오보</My.Name>
                   </>
                 )}
-                {props.data?.fetchUser.type === "Pesco" && (
+                {props.userData?.fetchUser.type === "Pesco" && (
                   <>
                     <My.TypeIcon src="/img/navigation/icon-vegan-pesco.svg" />
                     <My.Name>페스코</My.Name>
                   </>
                 )}
-                {props.data?.fetchUser.type === "Pollo" && (
+                {props.userData?.fetchUser.type === "Pollo" && (
                   <>
                     <My.TypeIcon src="/img/navigation/icon-vegan-pollo.svg" />
                     <My.Name>폴로</My.Name>
@@ -73,19 +74,19 @@ export default function MyPageMainUI(props) {
                 )}
               </My.Info>
               <My.Info>
-                {props.data?.fetchUser.isSubs === "NON_SUB" && (
+                {props.userData?.fetchUser.isSubs === "NON_SUB" && (
                   <>
                     <My.Subscribe>미구독</My.Subscribe>
                     <My.Name>채식한상 어떠세요?</My.Name>
                   </>
                 )}
-                {props.data?.fetchUser.isSubs === "BASIC" && (
+                {props.userData?.fetchUser.isSubs === "BASIC" && (
                   <>
                     <My.Subscribe>베이직</My.Subscribe>
                     <My.Name>정기 구독 이용중</My.Name>
                   </>
                 )}
-                {props.data?.fetchUser.isSubs === "PREMIUM" && (
+                {props.userData?.fetchUser.isSubs === "PREMIUM" && (
                   <>
                     <My.Subscribe>프리미엄</My.Subscribe>
                     <My.Name>정기 구독 이용중</My.Name>
@@ -103,14 +104,27 @@ export default function MyPageMainUI(props) {
                 </My.Title>
                 <ViewAllButton href={"/myPage/recent"} title={"전체보기"} />
               </My.Head>
-              {/* <My.Body>
-                {[1, 2, 3, 4, 5].map((el) => (
-                  <My.Menu key={el}>
-                    <img src="/img/myPage/img-ex.png" />
-                    <h2>맛있는 채소 레시피</h2>
+              <My.Body>
+                {props.recentItems.map((el) => (
+                  <My.Menu
+                    key={el.id}
+                    onClick={props.onClickMoveToDetail}
+                    id={el.id}
+                  >
+                    <img
+                      src={
+                        el.recipesImages
+                          ? el.recipesImages.filter((e) => e.mainImage !== " ")
+                              .length === 0
+                            ? "/img/bestRecipe/img-recipe-01.png"
+                            : `https://storage.googleapis.com/${el.recipesImages[0].mainImage}`
+                          : "/img/bestRecipe/img-recipe-01.png"
+                      }
+                    />
+                    <h2>{el.title}</h2>
                   </My.Menu>
                 ))}
-              </My.Body> */}
+              </My.Body>
             </My.Recipe>
 
             <My.Recipe>
@@ -120,14 +134,27 @@ export default function MyPageMainUI(props) {
                 </My.Title>
                 <ViewAllButton href={"/myPage/myRecipe"} title={"전체보기"} />
               </My.Head>
-              {/* <My.Body>
-                {[1, 2, 3, 4, 5].map((el) => (
-                  <My.Menu key={el}>
-                    <img src="/img/myPage/img-ex.png" />
-                    <h2>메뉴 02</h2>
+              <My.Body>
+                {props.userRecipe?.fetchMyRecipe.slice(0, 5).map((el) => (
+                  <My.Menu
+                    key={el.id}
+                    onClick={props.onClickMoveToDetail}
+                    id={el.id}
+                  >
+                    <img
+                      src={
+                        el.recipesImages
+                          ? el.recipesImages.filter((e) => e.mainImage !== " ")
+                              .length === 0
+                            ? "/img/bestRecipe/img-recipe-01.png"
+                            : `https://storage.googleapis.com/${el.recipesImages[0].mainImage}`
+                          : "/img/bestRecipe/img-recipe-01.png"
+                      }
+                    />
+                    <h2>{el.title}</h2>
                   </My.Menu>
                 ))}
-              </My.Body> */}
+              </My.Body>
             </My.Recipe>
 
             <My.Recipe>
@@ -137,14 +164,14 @@ export default function MyPageMainUI(props) {
                 </My.Title>
                 <ViewAllButton href={"/myPage/wish"} title={"전체보기"} />
               </My.Head>
-              {/* <My.Body>
+              <My.Body>
                 {[1, 2, 3, 4, 5].map((el) => (
                   <My.Menu key={el}>
                     <img src="/img/myPage/img-ex.png" />
                     <h2>레시피03 레시피03 03</h2>
                   </My.Menu>
                 ))}
-              </My.Body> */}
+              </My.Body>
             </My.Recipe>
           </My.RecipeWrapper>
         </My.MainWrapper>
