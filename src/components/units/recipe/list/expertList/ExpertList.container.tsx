@@ -14,6 +14,7 @@ export default function ExpertRecipeList(props) {
   const isProRecipes = props.data?.fetchRecipes.filter(
     (e) => e.user.isPro === "PRO"
   );
+  console.log(props.isProData?.fetchRecipeIsPro);
 
   return (
     <Expert.Container>
@@ -27,7 +28,7 @@ export default function ExpertRecipeList(props) {
         </Expert.TitleWrapper>
         <Expert.SliderWrapper>
           <Slider {...settings}>
-            {isProRecipes?.map((el, i) => (
+            {props.isProData?.fetchRecipeIsPro?.map((el, i) => (
               <Expert.ListWrapper key={i}>
                 <Expert.RecipeBox
                   id={el.id}
