@@ -32,7 +32,6 @@ export default function MyWishUI(props: MyWishUIProps) {
                 />
                 <h2>{el.title}</h2>
                 <p>{el.summary}</p>
-                <p className="date">{el.createdAt.slice(0, 10)}</p>
               </My.Menu>
             ))}
           </My.RecipeWrapper>
