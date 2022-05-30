@@ -115,22 +115,22 @@ export const VeganTypeRadioWrapper = styled.div`
     }
   }
   & > label:nth-of-type(1) {
-    background: ${(props) => (props.types === "VEGAN" ? "#0FBAA3" : "")};
+    background: ${(props) => (props.types === "Vegan" ? "#0FBAA3" : "")};
   }
   & > label:nth-of-type(2) {
-    background: ${(props) => (props.types === "OVO" ? "#FCD921" : "")};
+    background: ${(props) => (props.types === "Ovo" ? "#FCD921" : "")};
   }
   & > label:nth-of-type(3) {
-    background: ${(props) => (props.types === "LACTO" ? "#CEE135" : "")};
+    background: ${(props) => (props.types === "Lacto" ? "#CEE135" : "")};
   }
   & > label:nth-of-type(4) {
-    background: ${(props) => (props.types === "LACTO_OVO" ? "#B991FA" : "")};
+    background: ${(props) => (props.types === "Lacto_Ovo" ? "#B991FA" : "")};
   }
   & > label:nth-of-type(5) {
-    background: ${(props) => (props.types === "PESCO" ? "#EF7C90" : "")};
+    background: ${(props) => (props.types === "Pesco" ? "#EF7C90" : "")};
   }
   & > label:nth-of-type(6) {
-    background: ${(props) => (props.types === "POLLO" ? "#FE974D" : "")};
+    background: ${(props) => (props.types === "Pollo" ? "#FE974D" : "")};
   }
 `;
 

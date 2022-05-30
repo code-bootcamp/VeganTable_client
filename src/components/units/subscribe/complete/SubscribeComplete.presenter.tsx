@@ -24,7 +24,7 @@ export default function SubscribeCompleteUI(props: IPropsSubsComplete) {
             <Subs.TextWrapper>
               <Subs.TextHeader>
                 <Subs.TextCategory>베이직 (주1회 정기 구독)</Subs.TextCategory>
-                <Subs.TextContents>현대카드</Subs.TextContents>
+                <Subs.TextContents>카카오페이</Subs.TextContents>
               </Subs.TextHeader>
               <Subs.TextRow>
                 <Subs.TextCategory>결제금액</Subs.TextCategory>
@@ -32,19 +32,27 @@ export default function SubscribeCompleteUI(props: IPropsSubsComplete) {
               </Subs.TextRow>
               <Subs.TextRow>
                 <Subs.TextCategory>구매일</Subs.TextCategory>
-                <Subs.TextContents>2022.05.22 15:21</Subs.TextContents>
+                <Subs.TextContents>2022.05.31</Subs.TextContents>
               </Subs.TextRow>
               <Subs.TextRow>
                 <Subs.TextCategory>이용기간</Subs.TextCategory>
-                <Subs.TextContents>2022.05.22~2022.06.22</Subs.TextContents>
+                <Subs.TextContents>2022.05.31~2022.06.30</Subs.TextContents>
               </Subs.TextRow>
               <Subs.TextRow>
                 <Subs.TextCategory>결제예정일</Subs.TextCategory>
-                <Subs.TextContents>2022.06.22</Subs.TextContents>
+                <Subs.TextContents>2022.06.30</Subs.TextContents>
               </Subs.TextRow>
               <Subs.TextRow>
                 <Subs.TextCategory>채식타입</Subs.TextCategory>
-                <Subs.TextContents>비건</Subs.TextContents>
+                <Subs.TextContents>
+                  {props.data?.fetchUser.type === "NON_Vegan" && "채린이"}
+                  {props.data?.fetchUser.type === "Vegan" && "비건"}
+                  {props.data?.fetchUser.type === "Lacto" && "락토"}
+                  {props.data?.fetchUser.type === "Ovo" && "오보"}
+                  {props.data?.fetchUser.type === "Lacto_Ovo" && "락토오보"}
+                  {props.data?.fetchUser.type === "Pesco" && "페스코"}
+                  {props.data?.fetchUser.type === "Pollo" && "폴로"}
+                </Subs.TextContents>
               </Subs.TextRow>
               <Subs.TextRow>
                 <Subs.TextCategory>주소</Subs.TextCategory>

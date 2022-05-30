@@ -3,8 +3,10 @@ import { ChangeEvent, useRef } from "react";
 import { useMutation } from "@apollo/client";
 import { checkValidationImage } from "./Uploads03.validations";
 import { UPLOAD_PROFILE_IMAGE } from "./Uploads03.queries";
+import { useModal } from "../../hooks/useModal";
 
 export default function Uploads03(props) {
+  const { ModalError } = useModal();
   const fileRef = useRef<HTMLInputElement>(null);
   const [uploadFile] = useMutation(UPLOAD_PROFILE_IMAGE);
 
@@ -21,7 +23,7 @@ export default function Uploads03(props) {
       props.onChangeDescImage(String(result.data.uploadProfileImage));
     } catch (error) {
       if (error instanceof Error) {
-        alert(error.message);
+        ModalError("업로드 실패", error.message);
       }
     }
   };
