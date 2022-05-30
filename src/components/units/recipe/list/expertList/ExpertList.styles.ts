@@ -198,6 +198,10 @@ export const RecipeSubtitle = styled.p`
   font-size: 1rem;
   color: rgba(38, 38, 38, 0.6);
   margin-bottom: 1rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 21.375rem;
 `;
 
 export const RecipeCommentBox = styled.ul`

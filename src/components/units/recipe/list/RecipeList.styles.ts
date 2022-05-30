@@ -126,7 +126,6 @@ export const ListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  justify-content: center;
   margin-bottom: 3rem;
 `;
 
@@ -144,6 +143,7 @@ export const RecipeImg = styled.img`
   height: 21.375rem;
   margin-bottom: 1.5rem;
   object-fit: cover;
+  overflow: hidden;
 `;
 
 export const IconBookmark = styled.div`
@@ -199,6 +199,10 @@ export const RecipeSummary = styled.p`
   font-size: 1rem;
   color: rgba(38, 38, 38, 0.6);
   margin-bottom: 1rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 21.375rem;
 `;
 
 export const RecipeCommentBox = styled.ul`

@@ -6,13 +6,14 @@ export const FETCH_USER = gql`
       user_id
       name
       type
+      isPro
     }
   }
 `;
 
 export const FETCH_RECIPES = gql`
-  query fetchRecipes {
-    fetchRecipes {
+  query fetchRecipes($page: Int) {
+    fetchRecipes(page: $page) {
       id
       title
       summary
@@ -34,8 +35,8 @@ export const FETCH_RECIPES = gql`
 `;
 
 export const FETCH_RECIPE_TYPES = gql`
-  query fetchRecipeTypes($vegan_types: String!) {
-    fetchRecipeTypes(vegan_types: $vegan_types) {
+  query fetchRecipeTypes($vegan_types: String!, $page: Int) {
+    fetchRecipeTypes(vegan_types: $vegan_types, page: $page) {
       id
       title
       summary
@@ -65,8 +66,8 @@ export const FETCH_MY_SCRAPS_HISTORY = gql`
 `;
 
 export const FETCH_POPULAR_RECIPES = gql`
-  query fetchPopularRecipes {
-    fetchPopularRecipes {
+  query fetchPopularRecipes($page: Int) {
+    fetchPopularRecipes(page: $page) {
       id
       title
       summary
@@ -83,8 +84,8 @@ export const FETCH_POPULAR_RECIPES = gql`
 `;
 
 export const FETCH_RECIPE_TYPES_POPULAR = gql`
-  query fetchRecipeTypesPopular($vegan_types: String!) {
-    fetchRecipeTypesPopular(vegan_types: $vegan_types) {
+  query fetchRecipeTypesPopular($vegan_types: String!, $page: Int) {
+    fetchRecipeTypesPopular(vegan_types: $vegan_types, page: $page) {
       id
       title
       summary
@@ -98,6 +99,32 @@ export const FETCH_RECIPE_TYPES_POPULAR = gql`
       user {
         isPro
       }
+    }
+  }
+`;
+
+export const FETCH_RECIPES_COUNT = gql`
+  query fetchRecipesCount {
+    fetchRecipesCount
+  }
+`;
+
+export const FETCH_RECIPE_ISPRO = gql`
+  query fetchRecipeIsPro($isPro: String!, $page: Int) {
+    fetchRecipeIsPro(isPro: $isPro, page: $page) {
+      id
+      title
+      summary
+      types
+      level
+      recipesImages {
+        mainImage
+      }
+      user {
+        isPro
+      }
+      scrapCount
+      replyCount
     }
   }
 `;
