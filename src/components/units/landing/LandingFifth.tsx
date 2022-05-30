@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 import { useInView } from "react-intersection-observer";
+import { useRouter } from "next/router";
+
 import { keyframes } from "@emotion/react";
 
 const ZoominOut = keyframes`
@@ -26,7 +28,7 @@ const Container = styled.div`
     max-width: 1664px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -20%);
+    transform: translate(-50%, -30%);
 
     & > span:nth-of-type(1) {
       padding-bottom: 2.8rem;
@@ -82,6 +84,8 @@ const Container = styled.div`
 `;
 
 export default function Fifth() {
+  const router = useRouter();
+
   const [ref, inView] = useInView({
     threshold: 0,
   });
@@ -90,7 +94,7 @@ export default function Fifth() {
       <div ref={ref} className={inView ? "isActive" : ""}>
         <span>채식 레시피의 모든 것, 채식한상과 함께 해보세요</span>
         <span>당신의 맞춤 레시피 채식한상</span>
-        <button>채식한상 둘러보기</button>
+        <button onClick={() => router.push("/main")}>채식한상 둘러보기</button>
       </div>
       <img
         className={inView ? "isActive" : ""}
