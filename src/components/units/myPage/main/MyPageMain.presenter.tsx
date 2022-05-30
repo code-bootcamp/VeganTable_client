@@ -106,26 +106,28 @@ export default function MyPageMainUI(props: IMyPageMainUIProps) {
                 <ViewAllButton href={"/myPage/recent"} title={"전체보기"} />
               </My.Head>
               <My.Body>
-                {props.recentItems.slice(0, 5).map((el: any) => (
-                  <My.Menu
-                    key={el.id}
-                    onClick={props.onClickMoveToDetail}
-                    id={el.id}
-                  >
-                    <img
-                      src={
-                        el.recipesImages
-                          ? el.recipesImages.filter(
-                              (e: IRecipeImage) => e.mainImage !== " "
-                            ).length === 0
-                            ? "/img/bestRecipe/img-recipe-01.png"
-                            : `https://storage.googleapis.com/${el.recipesImages[0].mainImage}`
-                          : "/img/bestRecipe/img-recipe-01.png"
-                      }
-                    />
-                    <h2>{el.title}</h2>
-                  </My.Menu>
-                ))}
+                {props.recentItems
+                  .slice(props.recentItems.length - 5, props.recentItems.length)
+                  .map((el: any) => (
+                    <My.Menu
+                      key={el.id}
+                      onClick={props.onClickMoveToDetail}
+                      id={el.id}
+                    >
+                      <img
+                        src={
+                          el.recipesImages
+                            ? el.recipesImages.filter(
+                                (e: IRecipeImage) => e.mainImage !== " "
+                              ).length === 0
+                              ? "/img/bestRecipe/img-recipe-01.png"
+                              : `https://storage.googleapis.com/${el.recipesImages[0].mainImage}`
+                            : "/img/bestRecipe/img-recipe-01.png"
+                        }
+                      />
+                      <h2>{el.title}</h2>
+                    </My.Menu>
+                  ))}
               </My.Body>
             </My.Recipe>
 

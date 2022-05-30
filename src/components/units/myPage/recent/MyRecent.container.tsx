@@ -7,7 +7,7 @@ export default function MyRecent() {
   const router = useRouter();
 
   useEffect(() => {
-    const recent = JSON.parse(localStorage.getItem("recent") || "[]");
+    const recent = JSON.parse(sessionStorage.getItem("recent") || "[]");
     setRecentItems(recent);
   }, []);
 

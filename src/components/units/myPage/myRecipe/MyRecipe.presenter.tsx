@@ -3,6 +3,7 @@ import MyPageTitleBar from "../../../commons/titleBars/01";
 import { IRecipeImage } from "../main/MyPageMain.types";
 import * as My from "./MyRecipe.styles";
 import { IFetchMyRecipe, IMyRecipeUIProps } from "./MyRecipe.types";
+import { v4 as uuidv4 } from "uuid";
 
 export default function MyRecipeUI(props: IMyRecipeUIProps) {
   return (
@@ -14,7 +15,7 @@ export default function MyRecipeUI(props: IMyRecipeUIProps) {
           <My.RecipeWrapper>
             {props.data?.fetchMyRecipe.map((el: IFetchMyRecipe) => (
               <My.Menu
-                key={el.id}
+                key={uuidv4()}
                 onClick={props.onClickMoveToDetail}
                 id={el.id}
               >

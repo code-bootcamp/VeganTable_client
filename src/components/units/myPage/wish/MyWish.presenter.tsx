@@ -3,6 +3,8 @@ import MyPageTitleBar from "../../../commons/titleBars/01";
 import { IRecipeImage } from "../main/MyPageMain.types";
 import * as My from "./MyWish.styles";
 import { IFetchMyScrapHistory, MyWishUIProps } from "./MyWish.types";
+import { v4 as uuidv4 } from "uuid";
+
 export default function MyWishUI(props: MyWishUIProps) {
   return (
     <My.Container>
@@ -13,7 +15,7 @@ export default function MyWishUI(props: MyWishUIProps) {
           <My.RecipeWrapper>
             {props.data?.fetchMyScrapHistory.map((el: IFetchMyScrapHistory) => (
               <My.Menu
-                key={el.id}
+                key={uuidv4()}
                 onClick={props.onClickMoveToDetail}
                 id={el.id}
               >
