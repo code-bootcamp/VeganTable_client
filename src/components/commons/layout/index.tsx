@@ -44,7 +44,6 @@ export default function Layout(props: LayoutProps) {
   const isHiddenBanner = HIDDEN_BANNER.includes(router.asPath);
   const isHiddenPathname = HIDDEN_PATHNAME.includes(router.pathname);
   const isHiddenLandingPage = HIIDEN_LANDINGPAGE.includes(router.asPath);
-  console.log(router.asPath);
   return (
     <>
       {!isHiddenLandingPage && <LayoutHeader />}

@@ -15,7 +15,7 @@ export default function RecipeListItem(props) {
         }
       />
       <List.IconBookmark>
-        {el.id === props.userData?.fetchUser.scrapCount.recipes.id ? (
+        {props.myScraps.includes(el.id) ? (
           <img src="/img/bestRecipe/icon-bookmark-on.svg" />
         ) : (
           <img src="/img/bestRecipe/icon-bookmark-off.svg" />

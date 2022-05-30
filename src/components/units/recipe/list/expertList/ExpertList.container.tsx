@@ -29,7 +29,10 @@ export default function ExpertRecipeList(props) {
           <Slider {...settings}>
             {isProRecipes?.map((el, i) => (
               <Expert.ListWrapper key={i}>
-                <Expert.RecipeBox>
+                <Expert.RecipeBox
+                  id={el.id}
+                  onClick={props?.onClickMoveToDetail(el)}
+                >
                   <Expert.RecipeImg
                     src={
                       el.recipesImages
@@ -41,8 +44,7 @@ export default function ExpertRecipeList(props) {
                     }
                   />
                   <Expert.IconBookmark>
-                    {el.id ===
-                    props.userData?.fetchUser.scrapCount.recipes.id ? (
+                    {props.myScraps.includes(el.id) ? (
                       <img src="/img/bestRecipe/icon-bookmark-on.svg" />
                     ) : (
                       <img src="/img/bestRecipe/icon-bookmark-off.svg" />
@@ -71,7 +73,7 @@ export default function ExpertRecipeList(props) {
                   <Expert.RecipeCommentBox>
                     <Expert.RecipeCommentIcon src="/img/icon/comment.svg" />
                     <Expert.RecipeCommentsCount>
-                      댓글 수 데이터도 받아야겠는뎅..
+                      {el.replyCount}
                     </Expert.RecipeCommentsCount>
                   </Expert.RecipeCommentBox>
                 </Expert.RecipeBox>

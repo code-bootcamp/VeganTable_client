@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Nav from "./Navigation.styles";
 
 export default function Navigation01(props) {
@@ -56,9 +56,13 @@ export default function Navigation01(props) {
 
   const [isPicked, setIsPicked] = useState("All");
   const onClickVeganType = (el) => () => {
-    setIsPicked(el.enName);
+    setIsPicked(el.type);
     props.setSelectedTypes(el.type);
   };
+
+  useEffect(() => {
+    setIsPicked(props.selectedTypes);
+  }, [props.selectedTypes]);
 
   return (
     <Nav.Wrapper>
@@ -66,13 +70,13 @@ export default function Navigation01(props) {
         <Nav.VeganType
           key={i}
           onClick={onClickVeganType(el)}
-          isPicked={isPicked === el.enName}
+          isPicked={isPicked === el.type}
           hover={el.hover}
         >
           <Nav.VeganTypeImg
             image={el.image}
             hover={el.hover}
-            isPicked={isPicked === el.enName}
+            isPicked={isPicked === el.type}
           />
           <Nav.VeganTypeName>{el.name}</Nav.VeganTypeName>
           <Nav.VeganTypeEnName>{el.enName}</Nav.VeganTypeEnName>
