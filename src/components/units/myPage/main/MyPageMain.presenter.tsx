@@ -108,6 +108,7 @@ export default function MyPageMainUI(props: IMyPageMainUIProps) {
               <My.Body>
                 {props.recentItems
                   .slice(props.recentItems.length - 5, props.recentItems.length)
+                  .reverse()
                   .map((el: any) => (
                     <My.Menu
                       key={el.id}

@@ -85,6 +85,8 @@ export default function RecipeListUI() {
   const onClickMoveToDetail = (el) => (e) => {
     router.push(`/recipe/${e.currentTarget.id}`);
     const recent = JSON.parse(sessionStorage.getItem("recent") || "[]");
+    const temp = recent.filter((recentEl) => recentEl.id === el.id);
+    if (temp.length === 1) return;
     const { __typename, ...newEl } = el;
     recent.push(newEl);
     sessionStorage.setItem("recent", JSON.stringify(recent));
@@ -140,7 +142,6 @@ export default function RecipeListUI() {
 
   const lastPage = Math.ceil(recipesCount?.fetchRecipesCount / 12);
 
-  console.log(searchInput, searchData?.searchRecipes);
   return (
     <List.Container>
       <List.BannerWrapper>

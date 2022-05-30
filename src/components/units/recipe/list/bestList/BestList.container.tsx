@@ -12,7 +12,7 @@ export default function BestRecipeList(props) {
   };
 
   const popularRecipes = props?.popularData?.fetchPopularRecipes.filter(
-    (el) => el.scrapCount >= 2
+    (el) => el.scrapCount >= 3
   );
 
   return (
