@@ -74,7 +74,7 @@ const Container = styled.div`
     bottom: 0;
     opacity: 0;
     filter: blur(20px);
-    transition: all 3s ease-in-out;
+    transition: all 1.5s ease-in-out;
 
     &.isActive {
       opacity: 1;

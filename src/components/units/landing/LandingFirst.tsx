@@ -23,7 +23,7 @@ const Container = styled.div`
     width: 90%;
     max-width: 1664px;
     opacity: 0;
-    transition: all 2s ease-in-out;
+    transition: all 1.5s ease-in-out;
 
     &.isActive {
       opacity: 1;
@@ -39,7 +39,7 @@ const Container = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
-    transition: all 3s ease-in-out;
+    transition: all 1.5s ease-in-out;
 
     span {
       padding-top: 2rem;
@@ -86,7 +86,7 @@ const Container = styled.div`
   & > img:nth-of-type(1) {
     left: 0;
     bottom: 0;
-    transition-delay: 1s;
+    transition-delay: 0.5s;
     &.isActive {
       opacity: 1;
     }
@@ -95,7 +95,7 @@ const Container = styled.div`
   & > img:nth-of-type(2) {
     right: 0;
     top: 0;
-    transition-delay: 1.5s;
+    transition-delay: 1s;
     &.isActive {
       opacity: 1;
     }
@@ -105,7 +105,7 @@ const Container = styled.div`
     right: 0;
     bottom: 0;
     transform: translateX(50%);
-    transition-delay: 2.5s;
+    transition-delay: 1.5s;
     &.isActive {
       opacity: 1;
     }

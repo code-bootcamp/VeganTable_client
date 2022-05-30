@@ -128,3 +128,25 @@ export const FETCH_RECIPE_ISPRO = gql`
     }
   }
 `;
+export const SEARCH_RECIPES = gql`
+  query searchRecipes($input: String!, $page: Int) {
+    searchRecipes(input: $input, page: $page) {
+      id
+      title
+      summary
+      types
+      level
+      scrapCount
+      replyCount
+      recipesImages {
+        mainImage
+      }
+      user {
+        isPro
+      }
+      recipesScraps {
+        scraped
+      }
+    }
+  }
+`;

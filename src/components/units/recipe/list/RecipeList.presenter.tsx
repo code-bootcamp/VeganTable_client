@@ -15,22 +15,22 @@ import {
   FETCH_RECIPE_TYPES,
   FETCH_RECIPE_TYPES_POPULAR,
   FETCH_USER,
+  SEARCH_RECIPES,
 } from "./RecipeList.queries";
 import * as List from "./RecipeList.styles";
 
 export default function RecipeListUI() {
   const router = useRouter();
+
   const WHOLE_MENU_LIST = [{ name: "전체 메뉴" }, { name: "전문가 메뉴" }];
   const [myScraps, setMyScraps] = useState([]);
-
   const MENU_LIST = [{ name: "최신순" }, { name: "인기순" }];
-
   const [isPicked, setIsPicked] = useState({
     wholeMenu: "전체 메뉴",
     selectList: "최신순",
   });
-
   const [selectedTypes, setSelectedTypes] = useState("NON_CHECKED");
+  const [searchInput, setSearchInput] = useState("");
 
   const { data, refetch } = useQuery(FETCH_RECIPES, {
     variables: {
@@ -67,6 +67,12 @@ export default function RecipeListUI() {
       page: 1,
     },
   });
+  const { data: searchData } = useQuery(SEARCH_RECIPES, {
+    variables: {
+      input: String(searchInput),
+      page: 1,
+    },
+  });
 
   const onClickWholeMenu = (el) => () => {
     setIsPicked({ ...isPicked, wholeMenu: el.name });
@@ -78,10 +84,10 @@ export default function RecipeListUI() {
 
   const onClickMoveToDetail = (el) => (e) => {
     router.push(`/recipe/${e.currentTarget.id}`);
-    const recent = JSON.parse(localStorage.getItem("recent") || "[]");
+    const recent = JSON.parse(sessionStorage.getItem("recent") || "[]");
     const { __typename, ...newEl } = el;
     recent.push(newEl);
-    localStorage.setItem("recent", JSON.stringify(recent));
+    sessionStorage.setItem("recent", JSON.stringify(recent));
   };
 
   // 전체 > 전문가 필터
@@ -122,6 +128,10 @@ export default function RecipeListUI() {
       const a = router.query.type;
       setSelectedTypes(a);
     }
+    if (router.query.input) {
+      const b = router.query.input;
+      setSearchInput(b);
+    }
     myScrapsData?.fetchMyScrapHistory.map((el) => {
       const { __typename, ...newMyScraps } = el;
       setMyScraps((prev) => [...prev, newMyScraps.id]);
@@ -130,6 +140,7 @@ export default function RecipeListUI() {
 
   const lastPage = Math.ceil(recipesCount?.fetchRecipesCount / 12);
 
+  console.log(searchInput, searchData?.searchRecipes);
   return (
     <List.Container>
       <List.BannerWrapper>
@@ -187,7 +198,17 @@ export default function RecipeListUI() {
         </List.MenuWrapper>
         {/* %%%%%%%%%%%%%%% 리스트 부분 %%%%%%%%%%%%%%% */}
         <List.ListWrapper>
-          {selectedTypes === "NON_CHECKED"
+          {searchData
+            ? searchData?.searchRecipes?.map((el, i) => (
+                <RecipeListItem
+                  key={i}
+                  userData={userData}
+                  el={el}
+                  onClickMoveToDetail={onClickMoveToDetail(el)}
+                  myScraps={myScraps}
+                />
+              ))
+            : selectedTypes === "NON_CHECKED"
             ? // 전체
               isPicked.wholeMenu === "전문가 메뉴"
               ? // 전체 > 전문가

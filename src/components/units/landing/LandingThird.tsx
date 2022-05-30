@@ -50,11 +50,11 @@ const Right = styled.div`
   bottom: 0;
   transform: translateY(90%);
   filter: blur(20px);
-  transition: all 2s ease;
+  transition: all 1.5s ease;
 
   &.isActive {
     filter: blur(0px);
-    transform: translateY(1%);
+    transform: translateY(0.5%);
   }
 `;
 

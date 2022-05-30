@@ -11,10 +11,9 @@ export default function ExpertRecipeList(props) {
     slidesToScroll: 3,
   };
 
-  const isProRecipes = props.data?.fetchRecipes.filter(
-    (e) => e.user.isPro === "PRO"
-  );
-  console.log(props.isProData?.fetchRecipeIsPro);
+  // const isProRecipes = props.data?.fetchRecipes.filter(
+  //   (e) => e.user.isPro === "PRO"
+  // );
 
   return (
     <Expert.Container>
