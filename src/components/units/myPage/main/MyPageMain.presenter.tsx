@@ -100,7 +100,7 @@ export default function MyPageMainUI(props) {
             <My.Recipe>
               <My.Head>
                 <My.Title>
-                  최근 본 레시피 <span>150</span>
+                  최근 본 레시피 <span>{props.recentItems.length}</span>
                 </My.Title>
                 <ViewAllButton href={"/myPage/recent"} title={"전체보기"} />
               </My.Head>
@@ -130,7 +130,8 @@ export default function MyPageMainUI(props) {
             <My.Recipe>
               <My.Head>
                 <My.Title>
-                  등록 레시피 <span>150</span>
+                  등록 레시피{" "}
+                  <span>{props.userRecipe?.fetchMyRecipe.length}</span>
                 </My.Title>
                 <ViewAllButton href={"/myPage/myRecipe"} title={"전체보기"} />
               </My.Head>
@@ -160,15 +161,25 @@ export default function MyPageMainUI(props) {
             <My.Recipe>
               <My.Head>
                 <My.Title>
-                  찜한 레시피 <span>150</span>
+                  찜한 레시피{" "}
+                  <span>{props.userScrap?.fetchMyScraps.length}</span>
                 </My.Title>
                 <ViewAllButton href={"/myPage/wish"} title={"전체보기"} />
               </My.Head>
               <My.Body>
-                {[1, 2, 3, 4, 5].map((el) => (
-                  <My.Menu key={el}>
-                    <img src="/img/myPage/img-ex.png" />
-                    <h2>레시피03 레시피03 03</h2>
+                {props.userScrap?.fetchMyScraps.slice(0, 5).map((el) => (
+                  <My.Menu key={el.id}>
+                    <img
+                      src={
+                        el.recipesImages
+                          ? el.recipesImages.filter((e) => e.mainImage !== " ")
+                              .length === 0
+                            ? "/img/bestRecipe/img-recipe-01.png"
+                            : `https://storage.googleapis.com/${el.recipesImages[0].mainImage}`
+                          : "/img/bestRecipe/img-recipe-01.png"
+                      }
+                    />
+                    <h2>{el.title}</h2>
                   </My.Menu>
                 ))}
               </My.Body>

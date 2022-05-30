@@ -7,8 +7,9 @@ import MyPageSidebar from "../../../commons/sideBars/01/MyPageSidebar.container"
 import ProfileUpload from "../../../commons/uploads/01/ProfileUpload.container";
 import CertificationUpload from "../../../commons/uploads/04/CertificationUpload.container";
 import * as My from "./MyPageEdit.styles";
+import { IMyPageEditUIProps } from "./MyPageEdit.types";
 
-export default function MyPageEditUI(props) {
+export default function MyPageEditUI(props: IMyPageEditUIProps) {
   return (
     <>
       {props.isOpen && (

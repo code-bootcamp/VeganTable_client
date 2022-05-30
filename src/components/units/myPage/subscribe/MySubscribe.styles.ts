@@ -156,6 +156,7 @@ export const Subs = styled.div`
 
   &.premium {
     background-image: url("/img/myPage/img-subscribe.png");
+    background-repeat: no-repeat;
   }
 
   & h1 {

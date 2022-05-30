@@ -97,7 +97,7 @@ export const IntroTop3 = styled.div`
 export const TopText3 = styled.div`
   position: absolute;
   right: 26%;
-  bottom: -9.5%;
+  bottom: -8%;
   text-align: right;
 
   & > h1 {

@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { useModal } from "../../../commons/hooks/useModal";
 import { FETCH_USER } from "../main/MyPageMain.queries";
@@ -11,6 +11,7 @@ import {
   SEND_TOKEN_TO_SMS,
   UPDATE_USER,
 } from "./MyPageEdit.queries";
+import { IPostcode, IUpdateUserInput } from "./MyPageEdit.types";
 
 export default function MyPageEdit() {
   const router = useRouter();
@@ -46,24 +47,25 @@ export default function MyPageEdit() {
   }, [userData]);
 
   // 인풋값
-  const onChangeUserInputs = (id) => (e) => {
-    setUserInputs({
-      ...userInputs,
-      [id]: e.target.value,
-    });
-  };
+  const onChangeUserInputs =
+    (id: any) => (e: ChangeEvent<HTMLInputElement>) => {
+      setUserInputs({
+        ...userInputs,
+        [id]: e.target.value,
+      });
+    };
 
   // 주소
   const onClickAddressSearch = () => {
     setIsOpen(true);
   };
 
-  const onCompleteAddressSearch = (postcode) => {
+  const onCompleteAddressSearch = (postcode: IPostcode) => {
     setUserInputs({ ...userInputs, address: postcode.address });
     setIsOpen(false);
   };
 
-  const onClickClose = (event: ChangeEvent<HTMLDivElement>) => {
+  const onClickClose = (event: MouseEvent<HTMLDivElement>) => {
     if (event.target) setIsOpen(false);
   };
 
@@ -117,16 +119,6 @@ export default function MyPageEdit() {
 
     Info("URL 등록", "회원정보 수정을 완료해야 성공적으로 등록됩니다.");
   };
-
-  interface IUpdateUserInput {
-    nickname: string;
-    address: string;
-    addressDetail: string;
-    type: string;
-    profilePic: string;
-    certImage: string;
-    certUrl: string;
-  }
 
   // 회원정보 수정
   const onClickUpdateUser = async () => {
