@@ -11,7 +11,6 @@ export default function MonthlyRecipe() {
       [name]: value,
     });
   };
-  console.log(pickTag);
 
   const settings = {
     dots: false,

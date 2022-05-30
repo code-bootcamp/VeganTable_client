@@ -33,7 +33,7 @@ export default function Navigation01(props) {
     },
     {
       name: "락토오보",
-      enName: "Lacto-Ovo",
+      enName: "Lacto_Ovo",
       type: "LACTO_OVO",
       image: "/img/navigation/icon-vegan-lactoOvo.svg",
       hover: "/img/navigation/icon-vegan-lactoOvo-hover.svg",

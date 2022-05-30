@@ -106,7 +106,7 @@ export default function MyPageMainUI(props: IMyPageMainUIProps) {
                 <ViewAllButton href={"/myPage/recent"} title={"전체보기"} />
               </My.Head>
               <My.Body>
-                {props.recentItems.map((el: any) => (
+                {props.recentItems.slice(0, 5).map((el: any) => (
                   <My.Menu
                     key={el.id}
                     onClick={props.onClickMoveToDetail}

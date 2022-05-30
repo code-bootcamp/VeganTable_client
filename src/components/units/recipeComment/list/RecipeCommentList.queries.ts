@@ -12,7 +12,6 @@ export const FETCH_REPLIES = gql`
         type
         nickname
       }
-      page
       createdAt
     }
   }

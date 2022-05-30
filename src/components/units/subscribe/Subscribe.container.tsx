@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { useModal } from "../../commons/hooks/useModal";
 import { FETCH_USER } from "../myPage/main/MyPageMain.queries";
 import SubscribeUI from "./Subscribe.presenter";
@@ -19,7 +20,7 @@ export default function Subscribe() {
   const { data: userData } = useQuery(FETCH_USER);
   const router = useRouter();
 
-  const onClickPayBasic = async () => {
+  const onClickPayBasic = () => {
     const IMP = window.IMP;
     IMP.init("imp82070269");
     IMP.request_pay(

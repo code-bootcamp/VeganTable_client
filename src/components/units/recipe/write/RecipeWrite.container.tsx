@@ -102,7 +102,6 @@ export default function RecipeWrite() {
       event.target.value = "";
     }
   };
-  console.log(hashArr);
 
   // 해쉬태그 삭제
   const onClickDeleteTag = (tag) => () => {
