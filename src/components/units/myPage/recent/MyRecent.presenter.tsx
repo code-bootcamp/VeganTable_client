@@ -32,7 +32,6 @@ export default function MyRecentUI(props: IMyRecentUIProps) {
                 />
                 <h2>{el.title}</h2>
                 <p>{el.summary}</p>
-                <p className="date">{el.createdAt}</p>
               </My.Menu>
             ))}
           </My.RecipeWrapper>
