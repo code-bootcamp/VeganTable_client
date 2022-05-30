@@ -41,7 +41,7 @@ export default function LayoutHeader() {
   const { Success, ModalError } = useModal();
 
   const HEADER_MENUS = [
-    { name: "홈", page: "/" },
+    { name: "홈", page: "/main" },
     { name: "레시피", page: "/recipe" },
     { name: "구독서비스", page: "/subscribe" },
   ];
