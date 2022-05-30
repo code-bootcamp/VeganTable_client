@@ -3,9 +3,11 @@ import { useRef, useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { FETCH_RECIPE, FETCH_USER, CLICK_SCRAP } from "./RecipeDetail.queries";
 import { useRouter } from "next/router";
+import { useModal } from "../../../commons/hooks/useModal";
 
 export default function RecipeDetail() {
   const router = useRouter();
+  const { Success, ModalError } = useModal();
   const { data: recipeData } = useQuery(FETCH_RECIPE, {
     variables: {
       recipes_id: String(router.query.recipeId),
@@ -38,9 +40,9 @@ export default function RecipeDetail() {
       await clickScrap({
         variables: { id: String(router.query.recipeId) },
       });
-      alert("이 레시피를 스크랩했어요!");
+      Success("스크랩 완료", "이 레시피를 스크랩했어요!");
     } catch (error) {
-      alert(error.message);
+      if (error instanceof Error) ModalError("스크랩 실패", error.message);
     }
   };
 
