@@ -4,6 +4,7 @@ import { useModal } from "../../../commons/hooks/useModal";
 import { FETCH_USER } from "../main/MyPageMain.queries";
 import MyPageInfoUI from "./MyPageEditPW.presenter";
 import { UPDATE_PASSWORD } from "./MyPageEditPW.queries";
+import { ISubmitData } from "./MyPageEditPW.types";
 
 export default function MyPageEditPw() {
   const { data: userData } = useQuery(FETCH_USER);
@@ -11,7 +12,7 @@ export default function MyPageEditPw() {
   const { register, handleSubmit, watch } = useForm({ mode: "onChange" });
   const { Success, ModalError } = useModal();
 
-  const onClickSubmit = async (data) => {
+  const onClickSubmit = async (data: ISubmitData) => {
     try {
       await updatePassword({
         variables: {

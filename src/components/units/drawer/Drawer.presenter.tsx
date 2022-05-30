@@ -143,8 +143,23 @@ export default function TemporaryDrawer(props: IDrawerUIProps) {
                 </S.VeganType>
               )}
               <S.SubsInfo>
-                <span>3달째</span>
-                <span>정기 구독 이용중</span>
+                {data?.fetchUser.isSubs === "NON_SUB" && (
+                  <>
+                    <span>미구독</span>
+                    <span>채식한상 어떠세요?</span>
+                  </>
+                )}
+                {data?.fetchUser.isSubs === "BASIC" ? (
+                  <>
+                    <span>베이직</span>
+                    <span>정기 구독 이용중</span>
+                  </>
+                ) : (
+                  <>
+                    <span>프리미엄</span>
+                    <span>정기 구독 이용중</span>
+                  </>
+                )}
               </S.SubsInfo>
             </S.DrawerBody>
             <Link href={"/recipe/new"}>

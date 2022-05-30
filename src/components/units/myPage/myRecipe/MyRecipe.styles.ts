@@ -24,10 +24,10 @@ export const RecipeWrapper = styled.div`
   display: grid;
   align-items: center;
   justify-content: center;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 2.5rem;
   row-gap: 1.3rem;
-  padding-top: 1.5rem;
+  padding: 2.5rem 5rem;
 `;
 
 export const Menu = styled.li`
