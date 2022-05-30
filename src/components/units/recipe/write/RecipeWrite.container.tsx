@@ -6,12 +6,14 @@ import * as yup from "yup";
 import { useRef, useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_RECIPE } from "./RecipeWrite.queries";
+import { useModal } from "../../../commons/hooks/useModal";
 
 const nonSchema = yup.object({});
 
 export default function RecipeWrite() {
   const router = useRouter();
   const [createRecipe] = useMutation(CREATE_RECIPE);
+  const { Success, ModalError } = useModal();
   // 탭 Ref
   const ingredientTabRef = useRef<HTMLDivElement>(null);
   const cookOrderTabRef = useRef<HTMLDivElement>(null);
@@ -147,11 +149,11 @@ export default function RecipeWrite() {
           },
         },
       });
-      alert("레시피 등록에 성공하였습니다.");
+      Success("등록 성공", "레시피 등록에 성공하였습니다.");
       console.log(result);
       router.push(`/recipe/${result.data.createRecipe.id}`);
     } catch (error) {
-      alert(error.message);
+      if (error instanceof Error) ModalError("등록 실패", error.message);
     }
   };
 

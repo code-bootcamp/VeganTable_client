@@ -7,9 +7,11 @@ import {
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import { useModal } from "../../../commons/hooks/useModal";
 
 export default function RecipeCommentWrite(props) {
   const router = useRouter();
+  const { Success, Warning, ModalError } = useModal();
   const [createReply] = useMutation(CREATE_REPLY);
   const { register, handleSubmit, setValue } = useForm({
     mode: "onChange",
@@ -17,7 +19,7 @@ export default function RecipeCommentWrite(props) {
 
   // 댓글 작성하기
   const onClickSubmit = async (data) => {
-    if (!data.contents) return alert("댓글을 입력해주세요.");
+    if (!data.contents) return Warning("등록 실패", "댓글을 입력해주세요.");
     try {
       await createReply({
         variables: {
@@ -36,9 +38,9 @@ export default function RecipeCommentWrite(props) {
         ],
       });
       setValue("contents", "");
-      alert("댓글작성 성공");
+      Success("등록 성공", "댓글이 작성되었습니다.");
     } catch (error) {
-      alert(error.message);
+      if (error instanceof Error) ModalError("등록 실패", error.message);
     }
   };
 

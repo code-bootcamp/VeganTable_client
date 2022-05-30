@@ -1,5 +1,6 @@
 import { useMutation } from "@apollo/client";
 import { ChangeEvent, useRef } from "react";
+import { useModal } from "../../hooks/useModal";
 import ProfileUploadUI from "./ProfileUpload.presenter";
 import { UPLOAD_PROFILE_IMAGE } from "./ProfileUpload.queries";
 import { checkValidationImage } from "./ProfileUpload.validation";
@@ -7,6 +8,7 @@ import { checkValidationImage } from "./ProfileUpload.validation";
 export default function ProfileUpload(props) {
   const fileRef = useRef<HTMLInputElement>(null);
   const [uploadProfileImage] = useMutation(UPLOAD_PROFILE_IMAGE);
+  const { ModalError } = useModal();
 
   const onClickUpload = () => {
     fileRef.current?.click();
@@ -24,7 +26,7 @@ export default function ProfileUpload(props) {
       });
     } catch (error) {
       if (error instanceof Error) {
-        alert(error.message);
+        ModalError("업로드 실패", error.message);
       }
     }
   };

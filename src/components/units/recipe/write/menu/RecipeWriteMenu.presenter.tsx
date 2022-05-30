@@ -25,84 +25,84 @@ export default function RecipeWriteMenuUI(props) {
           <input
             type="radio"
             name="types"
-            value="VEGAN"
+            value="Vegan"
             id="vegan"
-            checked={props.selectType.types === "VEGAN"}
+            checked={props.selectType.types === "Vegan"}
             onChange={props.handleChange}
           />
           <label
             htmlFor="vegan"
-            className={props.selectType.types === "VEGAN" ? "isActive" : ""}
+            className={props.selectType.types === "Vegan" ? "isActive" : ""}
           >
             비건
           </label>
           <input
             type="radio"
             name="types"
-            value="OVO"
+            value="Ovo"
             id="ovo"
-            checked={props.selectType.types === "OVO"}
+            checked={props.selectType.types === "Ovo"}
             onChange={props.handleChange}
           />
           <label
             htmlFor="ovo"
-            className={props.selectType.types === "OVO" ? "isActive" : ""}
+            className={props.selectType.types === "Ovo" ? "isActive" : ""}
           >
             오보
           </label>
           <input
             type="radio"
             name="types"
-            value="LACTO"
+            value="Lacto"
             id="lacto"
-            checked={props.selectType.types === "LACTO"}
+            checked={props.selectType.types === "Lacto"}
             onChange={props.handleChange}
           />
           <label
             htmlFor="lacto"
-            className={props.selectType.types === "LACTO" ? "isActive" : ""}
+            className={props.selectType.types === "Lacto" ? "isActive" : ""}
           >
             락토
           </label>
           <input
             type="radio"
             name="types"
-            value="LACTO_OVO"
+            value="Lacto_Ovo"
             id="lactoOvo"
-            checked={props.selectType.types === "LACTO_OVO"}
+            checked={props.selectType.types === "Lacto_Ovo"}
             onChange={props.handleChange}
           />
           <label
             htmlFor="lactoOvo"
-            className={props.selectType.types === "LACTO_OVO" ? "isActive" : ""}
+            className={props.selectType.types === "Lacto_Ovo" ? "isActive" : ""}
           >
             락토오보
           </label>
           <input
             type="radio"
             name="types"
-            value="PESCO"
+            value="Pesco"
             id="pesco"
-            checked={props.selectType.types === "PESCO"}
+            checked={props.selectType.types === "Pesco"}
             onChange={props.handleChange}
           />
           <label
             htmlFor="pesco"
-            className={props.selectType.types === "PESCO" ? "isActive" : ""}
+            className={props.selectType.types === "Pesco" ? "isActive" : ""}
           >
             페스코
           </label>
           <input
             type="radio"
             name="types"
-            value="POLLO"
+            value="Pollo"
             id="pollo"
-            checked={props.selectType.types === "POLLO"}
+            checked={props.selectType.types === "Pollo"}
             onChange={props.handleChange}
           />
           <label
             htmlFor="pollo"
-            className={props.selectType.types === "POLLO" ? "isActive" : ""}
+            className={props.selectType.types === "Pollo" ? "isActive" : ""}
           >
             폴로
           </label>

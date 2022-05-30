@@ -3,6 +3,7 @@ import { ChangeEvent, useRef } from "react";
 import { useMutation } from "@apollo/client";
 import { checkValidationImage } from "./Uploads02.validations";
 import { UPLOAD_PROFILE_IMAGE } from "./Uploads02.queries";
+import { useModal } from "../../hooks/useModal";
 
 export default function Uploads02(props) {
   const fileRef = useRef<HTMLInputElement>(null);
@@ -13,6 +14,8 @@ export default function Uploads02(props) {
   };
 
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
+    const { ModalError } = useModal();
+
     const file = checkValidationImage(event.target.files?.[0]);
     if (!file) return;
 
@@ -24,7 +27,7 @@ export default function Uploads02(props) {
       );
     } catch (error) {
       if (error instanceof Error) {
-        alert(error.message);
+        ModalError("업로드 실패", error.message);
       }
     }
   };

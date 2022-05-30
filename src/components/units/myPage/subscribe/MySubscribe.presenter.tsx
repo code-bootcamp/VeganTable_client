@@ -33,17 +33,13 @@ export default function MySubscribeUI(props: IMySubscribeUIProps) {
             {props.data?.fetchUser.isSubs === "BASIC" && (
               <>
                 <My.UserSubs>베이직 구독중</My.UserSubs>
-                {/* <p>
-                  다음 결제 예정일은 {props.data?.fetchUser.endDate} 입니다.
-                </p> */}
+                <p>다음 결제 예정일은 22.06.30 입니다.</p>
               </>
             )}
             {props.data?.fetchUser.isSubs === "PREMIUM" && (
               <>
                 <My.UserSubs>프리미엄 구독중</My.UserSubs>
-                {/* <p>
-                  다음 결제 예정일은 {props.data?.fetchUser.endDate} 입니다.
-                </p> */}
+                <p>다음 결제 예정일은 22.06.30 입니다.</p>
               </>
             )}
           </My.MySubscribe>
@@ -61,8 +57,8 @@ export default function MySubscribeUI(props: IMySubscribeUIProps) {
                   <My.FlexColumn>
                     <p className="means">등록된 결제수단</p>
                     <span>
-                      현대카드
-                      <span className="cardNumber">1010-****-****-1010</span>
+                      카카오페이
+                      <span className="cardNumber">3333******882</span>
                     </span>
                   </My.FlexColumn>
                   <NormalButton title={"카드정보 등록 / 변경"} />
