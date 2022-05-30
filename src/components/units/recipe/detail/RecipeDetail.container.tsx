@@ -37,10 +37,12 @@ export default function RecipeDetail() {
   // onClick Scrap
   const onClickScrap = async () => {
     try {
-      await clickScrap({
+      const result = await clickScrap({
         variables: { id: String(router.query.recipeId) },
       });
-      Success("스크랩 완료", "이 레시피를 스크랩했어요!");
+      result.data.clickScrap.scraped
+        ? Success("스크랩 완료", "이 레시피를 스크랩했어요!")
+        : Success("스크랩 취소", "이 레시피를 스크랩 취소했어요!");
     } catch (error) {
       if (error instanceof Error) ModalError("스크랩 실패", error.message);
     }
