@@ -134,19 +134,22 @@ export const Title = styled.span`
 
 export const Body = styled.ul`
   display: flex;
-  padding-top: 2.5rem;
+  padding: 2rem;
 `;
 
 export const Menu = styled.li`
   width: 13.5rem;
   margin-right: 0.8rem;
+  cursor: pointer;
 
   &:last-of-type {
     margin-right: 0rem;
   }
 
   & > img {
-    width: 100%;
+    width: 220px;
+    height: 207px;
+    border-radius: 30px;
   }
 
   & > h2 {

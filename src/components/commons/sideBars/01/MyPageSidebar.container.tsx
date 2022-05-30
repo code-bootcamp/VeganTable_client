@@ -9,7 +9,7 @@ export default function MyPageSidebar() {
 
   const onClickSubscribe = () => {
     if (data?.fetchUser.subscribe === "NON_SUB") {
-      ModalError("구독 정보 없음", "구독 정보가 없습니다.");
+      ModalError("접근 실패", "구독 정보가 없습니다.");
     }
   };
 

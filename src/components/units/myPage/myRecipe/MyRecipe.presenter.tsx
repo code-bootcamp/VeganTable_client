@@ -11,7 +11,11 @@ export default function MyRecipeUI(props) {
           <MyPageTitleBar title={"등록 레시피 관리"} />
           <My.RecipeWrapper>
             {props.data?.fetchMyRecipe.map((el) => (
-              <My.Menu key={el.id}>
+              <My.Menu
+                key={el.id}
+                onClick={props.onClickMoveToDetail}
+                id={el.id}
+              >
                 <img
                   src={
                     el.recipesImages

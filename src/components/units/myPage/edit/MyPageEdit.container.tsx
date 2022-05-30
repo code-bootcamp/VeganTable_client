@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { useModal } from "../../../commons/hooks/useModal";
 import { FETCH_USER } from "../main/MyPageMain.queries";
@@ -63,7 +63,7 @@ export default function MyPageEdit() {
     setIsOpen(false);
   };
 
-  const onClickClose = (event) => {
+  const onClickClose = (event: ChangeEvent<HTMLDivElement>) => {
     if (event.target) setIsOpen(false);
   };
 
@@ -118,6 +118,16 @@ export default function MyPageEdit() {
     Info("URL 등록", "회원정보 수정을 완료해야 성공적으로 등록됩니다.");
   };
 
+  interface IUpdateUserInput {
+    nickname: string;
+    address: string;
+    addressDetail: string;
+    type: string;
+    profilePic: string;
+    certImage: string;
+    certUrl: string;
+  }
+
   // 회원정보 수정
   const onClickUpdateUser = async () => {
     if (userInputs.phone && userInputs.valid === "false") {
@@ -125,7 +135,7 @@ export default function MyPageEdit() {
       return;
     }
 
-    const updateUserInput = {};
+    const updateUserInput: IUpdateUserInput = {};
     if (userInputs.nickname) updateUserInput.nickname = userInputs.nickname;
     if (userInputs.address) updateUserInput.address = userInputs.address;
     if (userInputs.addressDetail)
