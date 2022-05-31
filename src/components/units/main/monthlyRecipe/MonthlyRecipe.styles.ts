@@ -150,11 +150,11 @@ export const RecipeItem = styled.div`
 
 export const RecipeItemImageWrapper = styled.div`
   position: relative;
+  height: 342px;
 
   & > img {
     width: 100%;
     height: 100%;
-    max-height: 342px;
     object-fit: cover;
     border-radius: 24px;
   }

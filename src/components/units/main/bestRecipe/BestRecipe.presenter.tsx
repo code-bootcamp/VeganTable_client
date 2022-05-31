@@ -6,6 +6,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { v4 as uuidv4 } from "uuid";
 
 export default function BestRecipeUI(props) {
+  console.log(props.popRecipes?.fetchPopularRecipes);
+
   return (
     <BestRecipe.Container>
       <BestRecipe.Wrapper>
@@ -21,47 +23,47 @@ export default function BestRecipeUI(props) {
         <BestRecipe.RecommendRecipeItems>
           <BestRecipe.SliderWrapper>
             <Slider {...props.settings}>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((el) => (
+              {props.popRecipes?.fetchPopularRecipes?.slice(0, 12).map((el) => (
                 <BestRecipe.RecipeItem key={uuidv4()}>
                   <BestRecipe.RecipeItemImageWrapper>
                     <BestRecipe.IconBookmark>
-                      {el % 2 === 1 ? (
+                      {el.recipesScraps?.user?.user_id?.includes(
+                        props.userData.fetchUser.user_id
+                      ) ? (
                         <img src="/img/bestRecipe/icon-bookmark-on.svg" />
                       ) : (
                         <img src="/img/bestRecipe/icon-bookmark-off.svg" />
                       )}
-                      <span>{el % 2 === 1 ? "+999" : "24"}</span>
+                      <span>{el.scrapCount}</span>
                     </BestRecipe.IconBookmark>
-                    <img src="/img/bestRecipe/img-recipe-01.png" />
+                    <img
+                      src={`https://storage.googleapis.com/${el.recipesImages[0].mainImage}`}
+                    />
                   </BestRecipe.RecipeItemImageWrapper>
                   <BestRecipe.RecipeItemTextWrapper>
-                    <h1>메뉴 01</h1>
-                    <p>동해물과 백두산이 마르고 닳도록 하느님이 보우하사</p>
+                    <h1>{el.title}</h1>
+                    <p>{el.summary}</p>
                     <BestRecipe.Tags>
-                      {(el === 1 && (
+                      {el.types === "VEGAN" && (
                         <BestRecipe.TagVegan>비건</BestRecipe.TagVegan>
-                      )) ||
-                        (el === 2 && (
-                          <BestRecipe.TagLacto>락토</BestRecipe.TagLacto>
-                        )) ||
-                        (el === 3 && (
-                          <BestRecipe.TagPesco>페스코</BestRecipe.TagPesco>
-                        )) ||
-                        (el === 4 && (
-                          <BestRecipe.TagPollo>폴로</BestRecipe.TagPollo>
-                        )) ||
-                        (el === 5 && (
-                          <BestRecipe.TagOvo>오보</BestRecipe.TagOvo>
-                        )) ||
-                        (el === 6 && (
-                          <BestRecipe.TagLactoOvo>
-                            락토오보
-                          </BestRecipe.TagLactoOvo>
-                        )) || (
-                          <BestRecipe.TagLactoOvo>
-                            락토오보
-                          </BestRecipe.TagLactoOvo>
-                        )}
+                      )}
+                      {el.types === "LACTO" && (
+                        <BestRecipe.TagLacto>락토</BestRecipe.TagLacto>
+                      )}
+                      {el.types === "OVO" && (
+                        <BestRecipe.TagOvo>오보</BestRecipe.TagOvo>
+                      )}
+                      {el.types === "LACTO_OVO" && (
+                        <BestRecipe.TagLactoOvo>
+                          락토오보
+                        </BestRecipe.TagLactoOvo>
+                      )}
+                      {el.types === "PESCO" && (
+                        <BestRecipe.TagPesco>페스코</BestRecipe.TagPesco>
+                      )}
+                      {el.types === "POLLO" && (
+                        <BestRecipe.TagPollo>폴로</BestRecipe.TagPollo>
+                      )}
                     </BestRecipe.Tags>
                   </BestRecipe.RecipeItemTextWrapper>
                 </BestRecipe.RecipeItem>
