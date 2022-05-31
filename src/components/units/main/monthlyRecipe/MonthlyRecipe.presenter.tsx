@@ -98,47 +98,47 @@ export default function MonthlyRecipeUI(props) {
       <MonthlyRecipe.RecommendRecipeItems>
         <MonthlyRecipe.SliderWrapper>
           <Slider {...props.settings}>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((el) => (
+            {props.popRecipes?.fetchPopularRecipes?.slice(13, 24).map((el) => (
               <MonthlyRecipe.RecipeItem key={uuidv4()}>
                 <MonthlyRecipe.RecipeItemImageWrapper>
                   <MonthlyRecipe.IconBookmark>
-                    {el % 2 === 1 ? (
+                    {el.recipesScraps?.user?.user_id?.includes(
+                      props.userData.fetchUser.user_id
+                    ) ? (
                       <img src="/img/bestRecipe/icon-bookmark-on.svg" />
                     ) : (
                       <img src="/img/bestRecipe/icon-bookmark-off.svg" />
                     )}
-                    <span>{el % 2 === 1 ? "+999" : "24"}</span>
+                    <span>{el.scrapCount}</span>
                   </MonthlyRecipe.IconBookmark>
-                  <img src="/img/bestRecipe/img-recipe-01.png" />
+                  <img
+                    src={`https://storage.googleapis.com/${el.recipesImages[0]?.mainImage}`}
+                  />
                 </MonthlyRecipe.RecipeItemImageWrapper>
                 <MonthlyRecipe.RecipeItemTextWrapper>
-                  <h1>메뉴 01</h1>
-                  <p>동해물과 백두산이 마르고 닳도록 하느님이 보우하사</p>
+                  <h1>{el.title}</h1>
+                  <p>{el.summary}</p>
                   <MonthlyRecipe.Tags>
-                    {(el === 1 && (
+                    {el.types === "VEGAN" && (
                       <MonthlyRecipe.TagVegan>비건</MonthlyRecipe.TagVegan>
-                    )) ||
-                      (el === 2 && (
-                        <MonthlyRecipe.TagLacto>락토</MonthlyRecipe.TagLacto>
-                      )) ||
-                      (el === 3 && (
-                        <MonthlyRecipe.TagPesco>페스코</MonthlyRecipe.TagPesco>
-                      )) ||
-                      (el === 4 && (
-                        <MonthlyRecipe.TagPollo>폴로</MonthlyRecipe.TagPollo>
-                      )) ||
-                      (el === 5 && (
-                        <MonthlyRecipe.TagOvo>오보</MonthlyRecipe.TagOvo>
-                      )) ||
-                      (el === 6 && (
-                        <MonthlyRecipe.TagLactoOvo>
-                          락토오보
-                        </MonthlyRecipe.TagLactoOvo>
-                      )) || (
-                        <MonthlyRecipe.TagLactoOvo>
-                          락토오보
-                        </MonthlyRecipe.TagLactoOvo>
-                      )}
+                    )}
+                    {el.types === "LACTO" && (
+                      <MonthlyRecipe.TagLacto>락토</MonthlyRecipe.TagLacto>
+                    )}
+                    {el.types === "OVO" && (
+                      <MonthlyRecipe.TagOvo>오보</MonthlyRecipe.TagOvo>
+                    )}
+                    {el.types === "LACTO_OVO" && (
+                      <MonthlyRecipe.TagLactoOvo>
+                        락토오보
+                      </MonthlyRecipe.TagLactoOvo>
+                    )}
+                    {el.types === "PESCO" && (
+                      <MonthlyRecipe.TagPesco>페스코</MonthlyRecipe.TagPesco>
+                    )}
+                    {el.types === "POLLO" && (
+                      <MonthlyRecipe.TagPollo>폴로</MonthlyRecipe.TagPollo>
+                    )}
                   </MonthlyRecipe.Tags>
                 </MonthlyRecipe.RecipeItemTextWrapper>
               </MonthlyRecipe.RecipeItem>
