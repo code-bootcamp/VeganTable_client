@@ -36,7 +36,7 @@ export default function RecipeWrite() {
     image: "",
     desc: "",
   });
-  const [selectType, setSelectType] = useState({ types: "VEGAN" });
+  const [selectType, setSelectType] = useState({ types: "Vegan" });
   // 대표 이미지업로드
   const [imageUrls, setImageUrls] = useState(["", "", "", ""]);
   // 요리순서 이미지 업로드

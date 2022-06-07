@@ -44,6 +44,7 @@ export default function RecipeListUI() {
       page: 1,
     },
   });
+  console.log(typesData);
   const { data: myScrapsData } = useQuery(FETCH_MY_SCRAPS_HISTORY, {
     variables: { user_id: String(userData?.fetchUser?.user_id) },
   });
