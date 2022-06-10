@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Container = styled.div`
   display: flex;
@@ -6,12 +7,21 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   padding: 6.25rem 15rem;
+
+  @media ${breakPoints.tablet} {
+    padding: 4.25rem 2em;
+  }
 `;
 
 export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 90rem;
+
+  @media ${breakPoints.tablet} {
+    flex-direction: column;
+    width: 90%;
+  }
 `;
 
 export const MainWrapper = styled.div`
@@ -23,19 +33,25 @@ export const MainWrapper = styled.div`
 
 export const UserWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   height: 10.5rem;
   background-color: #faf9f9;
   border-radius: 24px;
   padding: 0 4rem;
+
+  @media ${breakPoints.tablet} {
+    margin: 3rem 0;
+    padding: 0 2.5rem;
+  }
 `;
 
 export const UserProfile = styled.div`
   display: flex;
   flex-direction: column;
-  width: 45%;
+  padding-left: 1rem;
+  width: 65%;
 
   & .expert {
     background-color: #bfab87;
@@ -43,6 +59,11 @@ export const UserProfile = styled.div`
 
   & .common {
     background-color: #c2bfb9;
+  }
+
+  @media ${breakPoints.tablet} {
+    width: 45%;
+    padding-left: 0.4rem;
   }
 `;
 
@@ -67,8 +88,14 @@ export const UserGrade = styled.div`
 export const UserName = styled.span`
   font-size: 2rem;
   padding-top: 0.5rem;
+  word-break: keep-all;
+
   & > span {
     font-weight: 700;
+  }
+
+  @media ${breakPoints.tablet} {
+    font-size: 1.8rem;
   }
 `;
 
@@ -76,7 +103,7 @@ export const UserInfo = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40%;
+  text-align: center;
 `;
 
 export const Info = styled.li`
@@ -84,12 +111,20 @@ export const Info = styled.li`
   flex-direction: column;
   align-items: center;
   border-right: 1px solid #c4c4c4;
-  padding: 0 2.5rem;
+  padding-right: 2.5rem;
+  word-break: keep-all;
 
   &:last-of-type {
-    width: 65%;
     border: none;
     padding-right: 0;
+    padding-left: 2.5rem;
+  }
+
+  @media ${breakPoints.tablet} {
+    &:last-of-type {
+      border: none;
+      padding-right: 0;
+    }
   }
 `;
 
@@ -101,6 +136,11 @@ export const TypeIcon = styled.img`
 export const Name = styled.span`
   padding-top: 0.4rem;
   color: #424242;
+
+  @media ${breakPoints.tablet} {
+    word-break: keep-all;
+    text-align: center;
+  }
 `;
 
 export const Subscribe = styled.span`
@@ -133,12 +173,29 @@ export const Title = styled.span`
 `;
 
 export const Body = styled.ul`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0.5rem;
   padding: 2rem;
+
+  @media ${breakPoints.tablet} {
+    display: none;
+  }
+`;
+
+export const TabletBody = styled.ul`
+  display: none;
+
+  @media ${breakPoints.tablet} {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+    padding: 2rem;
+  }
 `;
 
 export const Menu = styled.li`
-  width: 13.5rem;
+  width: 100%;
   margin-right: 0.8rem;
   cursor: pointer;
 
@@ -147,7 +204,7 @@ export const Menu = styled.li`
   }
 
   & > img {
-    width: 220px;
+    width: 100%;
     height: 207px;
     border-radius: 30px;
   }
@@ -158,5 +215,14 @@ export const Menu = styled.li`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  @media ${breakPoints.tablet} {
+    width: 100%;
+
+    & > img {
+      width: 100%;
+      border-radius: 30px;
+    }
   }
 `;

@@ -1,7 +1,7 @@
-import { MutableRefObject } from "react";
+import { LegacyRef } from "react";
 
 export interface IDrawerUIProps {
-  drawerRef: MutableRefObject<null>;
+  drawerRef: LegacyRef<HTMLButtonElement> | undefined;
 }
 
 export interface IDrawerStylesProps {

@@ -1,16 +1,22 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
+import { INavigation03Style } from "./types";
 
 export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: auto auto auto;
   gap: 2.5rem;
   padding-top: 1.5rem;
-`;
 
-interface INavigation02Props {
-  hover: string;
-  image: string;
-}
+  @media ${breakPoints.tablet} {
+    display: grid;
+    place-items: center;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10%;
+    padding-bottom: 2.5rem;
+  }
+`;
 
 // prettier-ignore
 export const VeganType = styled.li`
@@ -28,9 +34,9 @@ export const VeganType = styled.li`
   }
 
   & > div > div {
-    background-image: url(${(props: INavigation02Props) => props.image});
+    background-image: url(${(props: INavigation03Style) => props.image});
     &.type {
-      background-image: url(${(props: INavigation02Props) => props.hover});
+      background-image: url(${(props: INavigation03Style) => props.hover});
 
     }
   }

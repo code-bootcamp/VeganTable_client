@@ -1,15 +1,22 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../commons/styles/media";
 import { IDrawerStylesProps } from "./Drawer.types";
 
 export const Container = styled.div`
   background-image: url("/img/drawer/img-drawer-01.svg");
   background-repeat: no-repeat;
   background-position: bottom;
+  @media ${breakPoints.mobile} {
+    width: 20rem;
+  }
 `;
 export const Wrapper = styled.div`
   padding: 2.68rem 1.875rem;
-  min-width: 329px;
+  width: 20.5rem;
   height: 100vh;
+  @media ${breakPoints.mobile} {
+    width: 20rem;
+  }
 `;
 
 export const NonLoginWrapper = styled.div`
@@ -17,8 +24,11 @@ export const NonLoginWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  height: 100vh;
   width: 329px;
+  @media ${breakPoints.mobile} {
+    width: 20rem;
+  }
 `;
 
 export const DrawerHead = styled.div`
@@ -99,7 +109,6 @@ export const SubsInfo = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-right: 1.75rem;
 
   & > span:nth-of-type(1) {
     padding-top: 6px;

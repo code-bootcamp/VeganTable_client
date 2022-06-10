@@ -34,7 +34,7 @@ const LOGOUT = gql`
 
 export default function LayoutHeader() {
   const router = useRouter();
-  const drawerRef = useRef(null);
+  const drawerRef = useRef<HTMLButtonElement>(null);
   const [accessToken] = useRecoilState(accessTokenState);
 
   // 모달
@@ -58,9 +58,9 @@ export default function LayoutHeader() {
     try {
       await logout();
       Success("로그아웃 성공", "다음에도 건강한 한 끼를 약속할게요🥗");
-      router.push("/");
+      router.push("/main");
     } catch (error) {
-      ModalError("로그아웃 실패", "로그아웃에 실패했습니다.");
+      if (error instanceof Error) ModalError("로그아웃 실패", error.message);
     }
   };
 

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Container = styled.div`
   display: flex;
@@ -6,12 +7,20 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   padding: 6.25rem 15rem;
+
+  @media ${breakPoints.tablet} {
+    padding: 3.25rem 2rem;
+  }
 `;
 
 export const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
   width: 90rem;
+
+  @media ${breakPoints.tablet} {
+    flex-direction: column;
+    width: 90%;
+  }
 `;
 
 export const EditPwWrapper = styled.div`
@@ -49,8 +58,13 @@ export const InputWrapper = styled.div`
 export const Label = styled.label`
   font-size: 1.25rem;
   font-weight: 600;
-  width: 15%;
+  width: 25%;
   color: #464646;
+
+  @media ${breakPoints.tablet} {
+    word-break: keep-all;
+    font-size: 1.2rem;
+  }
 `;
 
 export const ButtonWrapper = styled.div`

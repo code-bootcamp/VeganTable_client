@@ -1,17 +1,22 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
+import { INavigation02Style } from "./types";
 
 export const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 2.5rem;
   padding-top: 1.5rem;
-`;
 
-interface INavigation02Props {
-  isPicked: boolean;
-  hover: string;
-  image: string;
-}
+  @media ${breakPoints.tablet} {
+    display: grid;
+    place-items: center;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10%;
+    padding-bottom: 2.5rem;
+  }
+`;
 
 // prettier-ignore
 export const VeganType = styled.li`
@@ -21,7 +26,7 @@ export const VeganType = styled.li`
   width: 6.125rem;
   cursor: pointer;
   & > div {
-    border: 2px solid ${(props: INavigation02Props) => (props.isPicked ? "#0fbaa3" : "#7f7f7f")};
+    border: 2px solid ${(props: INavigation02Style) => (props.isPicked ? "#0fbaa3" : "#7f7f7f")};
   }
 
   & > div > div {
@@ -43,6 +48,7 @@ export const VeganType = styled.li`
       color: #0fbaa3;
     }
   }
+
 `;
 
 export const Circle = styled.div`

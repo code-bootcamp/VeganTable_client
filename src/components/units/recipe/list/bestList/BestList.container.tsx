@@ -1,18 +1,31 @@
 import Slider from "react-slick";
+import { IPropsExpertBestList } from "../RecipeList.types";
 import * as Best from "./BestList.styles";
 
-export default function BestRecipeList(props) {
+export default function BestRecipeList(props: IPropsExpertBestList) {
   const settings = {
     dots: false,
     arrows: true,
+    // toShow 갯수보다 적을 때 복사가 되는 거 인피니트 false로 하면 해결~
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 575,
+        settings: {
+          dots: false,
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const popularRecipes = props?.popularData?.fetchPopularRecipes.filter(
-    (el) => el.scrapCount >= 3
+    (el: any) => el.scrapCount >= 2
   );
 
   return (
@@ -27,7 +40,7 @@ export default function BestRecipeList(props) {
         </Best.TitleWrapper>
         <Best.SliderWrapper>
           <Slider {...settings}>
-            {popularRecipes?.map((el, i) => (
+            {popularRecipes?.map((el: any, i: number) => (
               <Best.ListWrapper key={i}>
                 <Best.RecipeBox
                   id={el.id}
@@ -36,8 +49,9 @@ export default function BestRecipeList(props) {
                   <Best.RecipeImg
                     src={
                       el.recipesImages
-                        ? el.recipesImages.filter((e) => e.mainImage !== " ")
-                            .length === 0
+                        ? el.recipesImages.filter(
+                            (e: any) => e.mainImage !== " "
+                          ).length === 0
                           ? "/img/bestRecipe/img-recipe-01.png"
                           : `https://storage.googleapis.com/${el.recipesImages[0].mainImage}`
                         : "/img/bestRecipe/img-recipe-01.png"

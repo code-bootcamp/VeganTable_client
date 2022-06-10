@@ -38,11 +38,10 @@ export default function MyPageEditUI(props: IMyPageEditUIProps) {
                 <ProfileUpload
                   setUserInputs={props.setUserInputs}
                   userInputs={props.userInputs}
-                  onChangeUserInputs={props.onChangeUserInputs}
                 />
 
                 <My.FlexColumn>
-                  <My.InputWrapper>
+                  <My.InputWrapper className="nickname">
                     <My.Label>닉네임</My.Label>
                     <UserInput
                       placeholder={"닉네임"}

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Container = styled.div`
   display: flex;
@@ -6,15 +7,20 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   padding: 6.25rem 15rem;
+
+  @media ${breakPoints.tablet} {
+    padding: 3.25rem 2rem;
+  }
 `;
 
 export const Wrapper = styled.div`
   display: flex;
   width: 90rem;
-`;
 
-export const Form = styled.form`
-  width: 100%;
+  @media ${breakPoints.tablet} {
+    flex-direction: column;
+    width: 90%;
+  }
 `;
 
 export const EditWrapper = styled.div`
@@ -30,6 +36,19 @@ export const TitleWrapper = styled.div`
   border-bottom: 1px solid #c4c4c4;
   padding-bottom: 1.5rem;
   width: 100%;
+
+  @media ${breakPoints.tablet} {
+    border-bottom: none;
+  }
+`;
+
+export const Title = styled.span`
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  @media ${breakPoints.tablet} {
+    display: none;
+  }
 `;
 
 export const SignOut = styled.button`
@@ -38,6 +57,13 @@ export const SignOut = styled.button`
   font-weight: 700;
   color: #848484;
   cursor: pointer;
+
+  @media ${breakPoints.tablet} {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0.5rem;
+  }
 `;
 
 export const ExpertTitleWrapper = styled.div`
@@ -50,20 +76,33 @@ export const ExpertTitleWrapper = styled.div`
     padding-left: 15px;
     color: #848484;
   }
-`;
 
-export const Title = styled.span`
-  font-size: 1.5rem;
-  font-weight: 600;
+  @media ${breakPoints.tablet} {
+    flex-direction: column;
+    align-items: center;
+
+    & p {
+      padding-left: 0;
+      padding-top: 0.5rem;
+    }
+  }
 `;
 
 export const ProfileWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 2.5rem;
   width: 100%;
   border-bottom: 1px solid #c4c4c4;
+
+  @media ${breakPoints.tablet} {
+    padding: 2.5rem;
+
+    > div {
+      width: 100%;
+    }
+  }
 `;
 
 export const VeganTypeWrapper = styled.div`
@@ -72,39 +111,21 @@ export const VeganTypeWrapper = styled.div`
 
 export const FlexRow = styled.div`
   display: flex;
+
+  @media ${breakPoints.tablet} {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 export const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 2rem;
-`;
 
-export const ImageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const Image = styled.img`
-  width: 17.125rem;
-  height: 17.125rem;
-  background-color: #c4c4c4;
-  border-radius: 50%;
-  margin: 2rem;
-`;
-
-export const ImageButton = styled.button`
-  border: 1px solid #c4c4c4;
-  border-radius: 2rem;
-  background-color: #ffffff;
-  width: 11.25rem;
-  height: 2.5rem;
-  color: #c4c4c4;
-  font-size: 1.25rem;
-  letter-spacing: -0.06rem;
-  font-weight: 500;
-  cursor: pointer;
+  @media ${breakPoints.tablet} {
+    padding: 0 10%;
+  }
 `;
 
 export const InputWrapper = styled.div`
@@ -124,6 +145,12 @@ export const Label = styled.label`
   font-weight: 600;
   width: 25%;
   color: #464646;
+
+  @media ${breakPoints.tablet} {
+    word-break: keep-all;
+    width: 22%;
+    font-size: 1.2rem;
+  }
 `;
 
 export const Button = styled.button`
@@ -180,4 +207,8 @@ export const Div = styled.div`
   padding: 20px;
   margin: 0 20px;
   visibility: hidden;
+
+  @media ${breakPoints.tablet} {
+    width: 33%;
+  }
 `;
