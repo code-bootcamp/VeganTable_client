@@ -1,15 +1,29 @@
 import * as P from "./Pagination02.styles";
-import { useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
+import { IPropsPagination02 } from "./Pagination02.types";
 
-export default function Pagination02(props) {
+export default function Pagination02(props: IPropsPagination02) {
   const [startPage, setStartPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [isPrevActive, setIsPrevActive] = useState(false);
-  const [isNextActive, setIsNextActive] = useState(true);
+  const [isNextActive, setIsNextActive] = useState(false);
 
-  const onClickPage = (event) => {
-    props.refetch({ page: Number(event.target.id) });
-    setCurrentPage((prev) => Number(event.target.id));
+  useEffect(() => {
+    setCurrentPage(1);
+    setStartPage(1);
+  }, [props.selectedTypes, props.isPicked, props.lastPage]);
+
+  useEffect(() => {
+    if (startPage !== 1) setIsPrevActive(true);
+    if (startPage + 5 > props.lastPage) setIsNextActive(false);
+    if (startPage === 1) setIsPrevActive(false);
+    if (startPage + 5 <= props.lastPage) setIsNextActive(true);
+    props.refetch({ page: Number(currentPage) });
+  }, [currentPage, props.lastPage, props.selectedTypes, props.isPicked]);
+
+  const onClickPage = (event: MouseEvent<HTMLElement>) => {
+    props.refetch({ page: Number((event.target as Element).id) });
+    setCurrentPage((prev) => Number((event.target as Element).id));
     if (startPage !== 1) {
       setIsPrevActive(true);
     }
@@ -38,14 +52,11 @@ export default function Pagination02(props) {
 
   const onClickNextPage = () => {
     setIsPrevActive(true);
-    if (startPage >= props.lastPage - 9) setIsNextActive(false);
-    if (startPage + 10 > props.lastPage) {
-      setIsNextActive(false);
-      return;
-    }
+    if (startPage >= props.lastPage - 4) setIsNextActive(false);
     setStartPage((prev) => prev + 5);
-    props.refetch({ page: startPage + 5 });
     setCurrentPage((prev) => startPage + 5);
+    props.refetch({ page: startPage + 5 });
+    if (startPage + 5 > props.lastPage) setIsNextActive(false);
   };
 
   return (

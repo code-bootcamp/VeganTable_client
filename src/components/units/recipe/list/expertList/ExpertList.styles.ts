@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../../../commons/styles/media";
 
-export const Container = styled.div`
+export const ExpertListContainer = styled.div`
   width: 100%;
-  max-height: 700px;
+  max-height: 730px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,8 +14,22 @@ export const Container = styled.div`
   }
 `;
 
+export const BestListContainer = styled.div`
+  width: 100%;
+  max-height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5.5rem 0;
+  background-color: rgba(177, 198, 134, 0.1);
+  margin-bottom: 5.5rem;
+  @media ${breakPoints.mobile} {
+    max-height: 730px;
+  }
+`;
+
 export const Wrapper = styled.div`
-  max-width: 1438px;
+  max-width: 1440px;
   width: 95%;
   display: flex;
   @media ${breakPoints.tablet} {
@@ -67,8 +81,7 @@ export const SubTitle = styled.p`
 
 // 리스트 부분
 export const SliderWrapper = styled.div`
-  width: 80%;
-
+  width: 75%;
   .slick-slide {
     padding-right: 20px;
   }
@@ -91,7 +104,11 @@ export const SliderWrapper = styled.div`
     right: -3rem;
   }
 
-  .slick-prev:before,
+  .slick-prev:before {
+    font-size: 2rem;
+    color: #000000;
+  }
+
   .slick-next:before {
     font-size: 2rem;
     color: #000000;
@@ -118,10 +135,6 @@ export const SliderWrapper = styled.div`
     margin: 0 auto;
   }
 `;
-export const ListWrapper = styled.div`
-  display: flex;
-  width: 100%;
-`;
 
 export const RecipeBox = styled.div`
   margin-right: 1.5rem;
@@ -136,9 +149,13 @@ export const RecipeBox = styled.div`
 export const RecipeImg = styled.img`
   border-radius: 2rem;
   width: 100%;
-  height: 100%;
+  height: 90%;
   object-fit: cover;
   margin-bottom: 1.5rem;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+    height: 80%;
+  }
 `;
 
 export const IconBookmark = styled.div`

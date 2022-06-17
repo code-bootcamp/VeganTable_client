@@ -11,18 +11,20 @@ import {
   FETCH_POPULAR_RECIPES,
   FETCH_RECIPES,
   FETCH_RECIPES_COUNT,
+  FETCH_RECIPES_TYPES_COUNT,
+  FETCH_RECIPES_TYPES_ISPRO,
   FETCH_RECIPE_ISPRO,
   FETCH_RECIPE_TYPES,
   FETCH_RECIPE_TYPES_POPULAR,
+  FETCH_SEARCH_RESULT_COUNT,
   FETCH_USER,
   SEARCH_RECIPES,
 } from "./RecipeList.queries";
-import * as List from "./RecipeList.styles";
 import { IPropsRecipeList } from "./RecipeList.types";
+import * as List from "./RecipeList.styles";
 
 export default function RecipeListUI() {
   const router = useRouter();
-
   const WHOLE_MENU_LIST = [{ name: "전체 메뉴" }, { name: "전문가 메뉴" }];
   const [myScraps, setMyScraps] = useState<Array<any>>([]);
   const MENU_LIST = [{ name: "최신순" }, { name: "인기순" }];
@@ -38,38 +40,96 @@ export default function RecipeListUI() {
       page: 1,
     },
   });
+  let allRefetch = refetch;
+
   const { data: userData } = useQuery(FETCH_USER);
-  const { data: typesData } = useQuery(FETCH_RECIPE_TYPES, {
-    variables: {
-      vegan_types: selectedTypes,
-      page: 1,
-    },
-  });
-  console.log(typesData);
+
+  const { data: typesData, refetch: typeRefetch } = useQuery(
+    FETCH_RECIPE_TYPES,
+    {
+      variables: {
+        vegan_types: selectedTypes,
+        page: 1,
+      },
+    }
+  );
+  if (selectedTypes !== "NON_CHECKED") allRefetch = typeRefetch;
+
   const { data: myScrapsData } = useQuery(FETCH_MY_SCRAPS_HISTORY, {
     variables: { user_id: String(userData?.fetchUser?.user_id) },
   });
 
-  const { data: popularData } = useQuery(FETCH_POPULAR_RECIPES, {
-    variables: {
-      page: 1,
-    },
-  });
-  const { data: typesPopularData } = useQuery(FETCH_RECIPE_TYPES_POPULAR, {
+  const { data: popularData, refetch: popularRefetch } = useQuery(
+    FETCH_POPULAR_RECIPES,
+    {
+      variables: {
+        page: 1,
+      },
+    }
+  );
+  if (selectedTypes === "NON_CHECKED" && isPicked.selectList === "인기순") {
+    allRefetch = popularRefetch;
+  }
+
+  const { data: typesPopularData, refetch: typesPopularRefetch } = useQuery(
+    FETCH_RECIPE_TYPES_POPULAR,
+    {
+      variables: {
+        vegan_types: selectedTypes,
+        page: 1,
+      },
+    }
+  );
+  if (selectedTypes !== "NON_CHECKED" && isPicked.selectList === "인기순") {
+    allRefetch = typesPopularRefetch;
+  }
+
+  const { data: recipesCount } = useQuery(FETCH_RECIPES_COUNT);
+  const { data: recipesTypesCount } = useQuery(FETCH_RECIPES_TYPES_COUNT, {
     variables: {
       vegan_types: selectedTypes,
       page: 1,
     },
   });
-  const { data: recipesCount } = useQuery(FETCH_RECIPES_COUNT);
 
-  const { data: isProData } = useQuery(FETCH_RECIPE_ISPRO, {
-    variables: {
-      isPro: String(userData?.fetchUser?.isPro),
-      page: 1,
-    },
-  });
-  const { data: searchData } = useQuery(SEARCH_RECIPES, {
+  const { data: isProData, refetch: isProRefetch } = useQuery(
+    FETCH_RECIPE_ISPRO,
+    {
+      variables: {
+        page: 1,
+      },
+    }
+  );
+  if (selectedTypes === "NON_CHECKED" && isPicked.wholeMenu === "전문가 메뉴") {
+    allRefetch = isProRefetch;
+  }
+
+  const { data: typesIsProData, refetch: typesIsProRefetch } = useQuery(
+    FETCH_RECIPES_TYPES_ISPRO,
+    {
+      variables: {
+        vegan_types: selectedTypes,
+        page: 1,
+      },
+    }
+  );
+  if (selectedTypes !== "NON_CHECKED" && isPicked.wholeMenu === "전문가 메뉴") {
+    allRefetch = typesIsProRefetch;
+  }
+
+  const { data: searchData, refetch: searchRefetch } = useQuery(
+    SEARCH_RECIPES,
+    {
+      variables: {
+        input: String(searchInput),
+        page: 1,
+      },
+    }
+  );
+  if (searchInput !== "") {
+    allRefetch = searchRefetch;
+  }
+  const { data: searchResultCount } = useQuery(FETCH_SEARCH_RESULT_COUNT, {
     variables: {
       input: String(searchInput),
       page: 1,
@@ -78,10 +138,12 @@ export default function RecipeListUI() {
 
   const onClickWholeMenu = (el: any) => () => {
     setIsPicked({ ...isPicked, wholeMenu: el.name });
+    setSearchInput("");
   };
 
   const onClickSelectList = (el: any) => () => {
     setIsPicked({ ...isPicked, selectList: el.name });
+    setSearchInput("");
   };
 
   const onClickMoveToDetail = (el: any) => (e: MouseEvent<any>) => {
@@ -94,16 +156,19 @@ export default function RecipeListUI() {
     sessionStorage.setItem("recent", JSON.stringify(recent));
   };
 
+  // 데이터 필터링 =============================================================
+
   // 전체 > 전문가 필터
   const tempProRecipes = isProData?.fetchRecipeIsPro;
   const aaa: any = [];
-  tempProRecipes?.map((el: string) => aaa.push(el));
+  tempProRecipes?.map((el: any) => aaa.push(el));
   const isProRecipes = aaa;
 
   // 타입 > 전문가 필터
-  const isProRecipesType = typesData?.fetchRecipeTypes.filter(
-    (e: any) => e.user.isPro === "PRO"
-  ) || [""];
+  const tempIsProRecipesType = typesIsProData?.fetchRecipesTypeIsPro;
+  const bbb: any = [];
+  tempIsProRecipesType?.map((el: any) => bbb.push(el));
+  const isProRecipesType = bbb;
 
   // 전체 > 전체 > 인기순
   const wholeWholePopular = popularData?.fetchPopularRecipes;
@@ -112,13 +177,13 @@ export default function RecipeListUI() {
   const wholeProPopular = tempWholeProPopular?.sort(
     (a, b) => b.scrapCount - a.scrapCount
   );
-  // ===========================================================================
 
   // 타입 > 전체 > 인기순
   const typeWholePopular = typesPopularData?.fetchRecipeTypesPopular;
-  // 타입 >  인기순 > 전문가
-  const typePopularIsPro = typesPopularData?.fetchRecipeTypesPopular.filter(
-    (e: any) => e.user.isPro === "PRO"
+  // 타입 > 전문가 > 인기순
+  const tempTypeIsProPopular = [...isProRecipesType];
+  const typePopularIsPro = tempTypeIsProPopular?.sort(
+    (a, b) => b.scrapCount - a.scrapCount
   );
 
   // 최신순, 인기순 난이도순 필터
@@ -137,7 +202,12 @@ export default function RecipeListUI() {
     });
   }, [myScrapsData, router.query.type]);
 
-  const lastPage = Math.ceil(recipesCount?.fetchRecipesCount / 12);
+  const lastPage =
+    searchInput === ""
+      ? selectedTypes === "NON_CHECKED"
+        ? Math.ceil(recipesCount?.fetchRecipesCount / 12)
+        : Math.ceil(recipesTypesCount?.fetchRecipesTypesCount / 12)
+      : Math.ceil(searchResultCount?.fetchSearchResultCount / 12);
 
   return (
     <List.Container>
@@ -149,24 +219,20 @@ export default function RecipeListUI() {
         </div>
       </List.BannerWrapper>
       <ExpertRecipeList
-        isProData={isProData}
-        userData={userData}
-        data={data}
         myScraps={myScraps}
         onClickMoveToDetail={onClickMoveToDetail}
       />
       <BestRecipeList
-        popularData={popularData}
         myScraps={myScraps}
         onClickMoveToDetail={onClickMoveToDetail}
       />
       <List.NavigationWrapper>
         <List.NavigationTitle>고객님 맞춤 레시피</List.NavigationTitle>
+        <Navigation01
+          setSelectedTypes={setSelectedTypes}
+          selectedTypes={selectedTypes}
+        />
       </List.NavigationWrapper>
-      <Navigation01
-        setSelectedTypes={setSelectedTypes}
-        selectedTypes={selectedTypes}
-      />
       <List.Wrapper>
         <List.MenuWrapper>
           <List.WholeListBox>
@@ -300,7 +366,12 @@ export default function RecipeListUI() {
                 />
               ))}
         </List.ListWrapper>
-        <Pagination02 lastPage={lastPage} refetch={refetch} />
+        <Pagination02
+          lastPage={lastPage}
+          refetch={allRefetch}
+          selectedTypes={selectedTypes}
+          isPicked={isPicked}
+        />
       </List.Wrapper>
     </List.Container>
   );
