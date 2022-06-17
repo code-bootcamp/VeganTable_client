@@ -21,11 +21,11 @@ export const FETCH_RECIPES = gql`
       level
       scrapCount
       replyCount
-      recipesImages {
-        mainImage
+      recipesMainImage {
+        mainUrl
       }
-      user {
-        isPro
+      recipesContentsImage {
+        contentsUrl
       }
       recipesScraps {
         scraped
@@ -44,23 +44,15 @@ export const FETCH_RECIPE_TYPES = gql`
       level
       scrapCount
       replyCount
-      recipesImages {
-        mainImage
+      recipesMainImage {
+        mainUrl
       }
-      user {
-        isPro
+      recipesContentsImage {
+        contentsUrl
       }
       recipesScraps {
         scraped
       }
-    }
-  }
-`;
-
-export const FETCH_MY_SCRAPS_HISTORY = gql`
-  query fetchMyScrapHistory($user_id: String!) {
-    fetchMyScrapHistory(user_id: $user_id) {
-      id
     }
   }
 `;
@@ -75,9 +67,14 @@ export const FETCH_POPULAR_RECIPES = gql`
       level
       scrapCount
       replyCount
-      createdAt
-      recipesImages {
-        mainImage
+      recipesMainImage {
+        mainUrl
+      }
+      recipesContentsImage {
+        contentsUrl
+      }
+      recipesScraps {
+        scraped
       }
     }
   }
@@ -93,11 +90,14 @@ export const FETCH_RECIPE_TYPES_POPULAR = gql`
       level
       scrapCount
       replyCount
-      recipesImages {
-        mainImage
+      recipesMainImage {
+        mainUrl
       }
-      user {
-        isPro
+      recipesContentsImage {
+        contentsUrl
+      }
+      recipesScraps {
+        scraped
       }
     }
   }
@@ -109,25 +109,69 @@ export const FETCH_RECIPES_COUNT = gql`
   }
 `;
 
+export const FETCH_RECIPES_TYPES_COUNT = gql`
+  query fetchRecipesTypesCount($vegan_types: String!, $page: Int) {
+    fetchRecipesTypesCount(vegan_types: $vegan_types, page: $page)
+  }
+`;
+
 export const FETCH_RECIPE_ISPRO = gql`
-  query fetchRecipeIsPro($isPro: String!, $page: Int) {
-    fetchRecipeIsPro(isPro: $isPro, page: $page) {
+  query fetchRecipeIsPro($page: Int) {
+    fetchRecipeIsPro(page: $page) {
       id
       title
       summary
       types
       level
-      recipesImages {
-        mainImage
+      scrapCount
+      replyCount
+      recipesMainImage {
+        mainUrl
+      }
+      recipesContentsImage {
+        contentsUrl
+      }
+      recipesScraps {
+        scraped
+      }
+    }
+  }
+`;
+
+export const FETCH_RECIPES_TYPES_ISPRO = gql`
+  query fetchRecipesTypeIsPro($vegan_types: String!, $page: Int) {
+    fetchRecipesTypeIsPro(vegan_types: $vegan_types, page: $page) {
+      id
+      title
+      summary
+      types
+      level
+      scrapCount
+      replyCount
+      recipesMainImage {
+        mainUrl
+      }
+      recipesContentsImage {
+        contentsUrl
+      }
+      recipesScraps {
+        scraped
       }
       user {
         isPro
       }
-      scrapCount
-      replyCount
     }
   }
 `;
+
+export const FETCH_MY_SCRAPS_HISTORY = gql`
+  query fetchMyScrapHistory($user_id: String!) {
+    fetchMyScrapHistory(user_id: $user_id) {
+      id
+    }
+  }
+`;
+
 export const SEARCH_RECIPES = gql`
   query searchRecipes($input: String!, $page: Int) {
     searchRecipes(input: $input, page: $page) {
@@ -138,15 +182,24 @@ export const SEARCH_RECIPES = gql`
       level
       scrapCount
       replyCount
-      recipesImages {
-        mainImage
+      recipesMainImage {
+        mainUrl
       }
-      user {
-        isPro
+      recipesContentsImage {
+        contentsUrl
       }
       recipesScraps {
         scraped
       }
+      user {
+        isPro
+      }
     }
+  }
+`;
+
+export const FETCH_SEARCH_RESULT_COUNT = gql`
+  query fetchSearchResultCount($input: String!, $page: Int) {
+    fetchSearchResultCount(input: $input, page: $page)
   }
 `;

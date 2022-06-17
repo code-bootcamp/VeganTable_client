@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { IPropsPaginationStyled } from "./Pagination02.types";
 
 export const Wrapper = styled.ul`
   width: 100%;
@@ -15,11 +16,8 @@ export const PagePrevButton = styled.li`
   border: 0px;
   margin-left: 1rem;
   margin-right: 2rem;
-  &:first-of-type {
-    margin-left: 0;
-    margin-right: 0;
-  }
-  /* color: ${(props) => (props.isPrevActive ? "black" : "white")}; */
+  display: ${(props: IPropsPaginationStyled) =>
+    props.isPrevActive ? "y" : "none"};
 `;
 
 export const PageNextButton = styled.li`
@@ -28,10 +26,8 @@ export const PageNextButton = styled.li`
   cursor: pointer;
   border: 0px;
   margin-right: 1rem;
-  &:last-of-type {
-    margin-right: 0;
-  }
-  /* display: ${(props) => (props.isNextActive ? "y" : "none")}; */
+  display: ${(props: IPropsPaginationStyled) =>
+    props.isNextActive ? "y" : "none"};
 `;
 
 export const PageNumber = styled.li`
@@ -45,7 +41,8 @@ export const PageNumber = styled.li`
   cursor: pointer;
   font-weight: 500;
   margin-right: 2rem;
-  background-color: ${(props) => (props.currentPage ? "#0FBAA3" : "white")};
-  color: ${(props) => (props.currentPage ? "white" : "rgba(0, 0, 0, 0.5)")};
-  /* font-weight: ${(props) => (props.currentPage ? "bold" : "normal")}; */
+  background-color: ${(props: IPropsPaginationStyled) =>
+    props.currentPage ? "#0FBAA3" : "white"};
+  color: ${(props: IPropsPaginationStyled) =>
+    props.currentPage ? "white" : "rgba(0, 0, 0, 0.5)"};
 `;

@@ -7,6 +7,8 @@ import { v4 as uuidv4 } from "uuid";
 const Wrapper = styled.div`
   .slick-list {
     width: 600px;
+    background: #fbfbfb;
+    border-radius: 1rem;
   }
 
   .slick-dots {
@@ -21,7 +23,8 @@ const Wrapper = styled.div`
     & > li > a > img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      background: #fbfbfb;
       border-radius: 1rem;
     }
   }
@@ -29,11 +32,11 @@ const Wrapper = styled.div`
 
 const SliderItem = styled.div`
   & > img {
-    margin: 0 auto;
-    height: 559px;
-    width: auto;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     border-radius: 2rem;
+    padding: 0.5rem;
   }
 `;
 
@@ -42,6 +45,7 @@ interface ISlider01Props {
 }
 
 export default function Slider01(props: ISlider01Props) {
+  console.log(props.mainImages);
   const settings = {
     dots: true,
     arrows: false,

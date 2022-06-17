@@ -9,7 +9,11 @@ export const Container = styled.div`
   padding: 6.25rem 15rem;
 
   @media ${breakPoints.tablet} {
-    padding: 4.25rem 2em;
+    padding: 3.25rem 3rem;
+  }
+
+  @media ${breakPoints.mobile} {
+    padding: 3rem 2rem;
   }
 `;
 
@@ -18,9 +22,9 @@ export const Wrapper = styled.div`
   justify-content: center;
   width: 90rem;
 
-  @media ${breakPoints.tablet} {
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
     flex-direction: column;
-    width: 90%;
+    width: 100%;
   }
 `;
 
@@ -45,6 +49,12 @@ export const UserWrapper = styled.div`
     margin: 3rem 0;
     padding: 0 2.5rem;
   }
+
+  @media ${breakPoints.mobile} {
+    justify-content: center;
+    height: 7rem;
+    padding: 0;
+  }
 `;
 
 export const UserProfile = styled.div`
@@ -61,9 +71,8 @@ export const UserProfile = styled.div`
     background-color: #c2bfb9;
   }
 
-  @media ${breakPoints.tablet} {
-    width: 45%;
-    padding-left: 0.4rem;
+  @media ${breakPoints.mobile} {
+    width: fit-content;
   }
 `;
 
@@ -72,6 +81,11 @@ export const UserIcon = styled.img`
   height: 5.2rem;
   border-radius: 50%;
   border: 1px solid #c4c4c4;
+
+  @media ${breakPoints.mobile} {
+    width: 4.2rem;
+    height: 4.2rem;
+  }
 `;
 
 export const UserGrade = styled.div`
@@ -83,6 +97,12 @@ export const UserGrade = styled.div`
   border: none;
   color: #ffffff;
   border-radius: 20px;
+
+  @media ${breakPoints.mobile} {
+    width: 4rem;
+    height: 1.1rem;
+    font-size: 0.8rem;
+  }
 `;
 
 export const UserName = styled.span`
@@ -97,6 +117,10 @@ export const UserName = styled.span`
   @media ${breakPoints.tablet} {
     font-size: 1.8rem;
   }
+
+  @media ${breakPoints.mobile} {
+    font-size: 1.4rem;
+  }
 `;
 
 export const UserInfo = styled.ul`
@@ -104,6 +128,10 @@ export const UserInfo = styled.ul`
   justify-content: center;
   align-items: center;
   text-align: center;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const Info = styled.li`
@@ -120,10 +148,12 @@ export const Info = styled.li`
     padding-left: 2.5rem;
   }
 
-  @media ${breakPoints.tablet} {
+  @media ${breakPoints.mobile} {
+    padding-right: 1rem;
+    font-size: 0.6rem;
+
     &:last-of-type {
-      border: none;
-      padding-right: 0;
+      padding-left: 0.7rem;
     }
   }
 `;
@@ -152,6 +182,7 @@ export const Subscribe = styled.span`
 export const RecipeWrapper = styled.div`
   width: 100%;
 `;
+
 export const Recipe = styled.div`
   padding-top: 2.75rem;
 `;
@@ -170,6 +201,10 @@ export const Title = styled.span`
   & > span {
     color: #848484;
   }
+
+  @media ${breakPoints.mobile} {
+    font-size: 1.2rem;
+  }
 `;
 
 export const Body = styled.ul`
@@ -178,7 +213,7 @@ export const Body = styled.ul`
   gap: 0.5rem;
   padding: 2rem;
 
-  @media ${breakPoints.tablet} {
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
     display: none;
   }
 `;
@@ -194,18 +229,25 @@ export const TabletBody = styled.ul`
   }
 `;
 
+export const MobileBody = styled.ul`
+  display: none;
+
+  @media ${breakPoints.mobile} {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+`;
+
 export const Menu = styled.li`
   width: 100%;
-  margin-right: 0.8rem;
   cursor: pointer;
-
-  &:last-of-type {
-    margin-right: 0rem;
-  }
 
   & > img {
     width: 100%;
     height: 207px;
+    object-fit: cover;
     border-radius: 30px;
   }
 
@@ -217,12 +259,15 @@ export const Menu = styled.li`
     text-overflow: ellipsis;
   }
 
-  @media ${breakPoints.tablet} {
-    width: 100%;
-
+  @media ${breakPoints.mobile} {
     & > img {
       width: 100%;
-      border-radius: 30px;
+      height: 9rem;
+      border-radius: 20px;
     }
+  }
+
+  & > h2 {
+    font-size: 1rem;
   }
 `;
